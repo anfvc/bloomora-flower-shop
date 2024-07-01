@@ -1,9 +1,15 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import authRouter from './routes/authRouter.js'
+import cookieParser from 'cookie-parser'
+
 
 const app = express()
 
 app.use(express.json())
+app.use(cookieParser())
+
+app.use('/api/auth',authRouter)
 
 app.use('*', (req, res)=>{
     res.status(404).json({msg: 'not found'})
