@@ -8,10 +8,12 @@ import { landingSlider } from "../../data/landingPageSlider.js";
 function LandingSlider() {
   const settings = {
     dots: true,
+    fade: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    waitForAnimate: false
   };
 
   return (

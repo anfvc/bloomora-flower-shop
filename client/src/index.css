@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 :root {
   font-family: "Merriweather", serif;
   font-family: "Roboto Condensed", sans-serif;
