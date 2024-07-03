@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import "./Navbar.css";
 import { NavLink } from "react-router-dom";
 import logo from "../../images/logo/bloomoraV2.svg";
-import scrolledLogo from "../../images/logo/bloomoraV3.svg"
+import scrolledLogo from "../../images/logo/bloomoraV3.svg";
 import { AiOutlineUser } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 import { PiShoppingBag } from "react-icons/pi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineClose } from "react-icons/ai";
+import "./Navbar.css";
+import Login from '../Login/Login';
+import Register from '../Register/Register';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,6 +38,21 @@ function Navbar() {
     document.body.classList.toggle('menu-open', !isMenuOpen);
   };
 
+  const openLogin = () => {
+    setIsLoginOpen(true);
+    setIsRegisterOpen(false);
+  };
+
+  const openRegister = () => {
+    setIsLoginOpen(false);
+    setIsRegisterOpen(true);
+  };
+
+  const closeModals = () => {
+    setIsLoginOpen(false);
+    setIsRegisterOpen(false);
+  };
+
   return (
     <>
       <div className={isMenuOpen ? 'overlay active' : 'overlay'} onClick={toggleMenu}></div>
@@ -54,7 +73,7 @@ function Navbar() {
             </ul>
           </div>
           <div className="user-cart-search">
-            <AiOutlineUser className={`user ${scrolled ? 'scrolled-icon' : ''}`} />
+            <AiOutlineUser className={`user ${scrolled ? 'scrolled-icon' : ''}`} onClick={openLogin} />
             <FiSearch className={`search ${scrolled ? 'scrolled-icon' : ''}`} />
             <PiShoppingBag className={`cart ${scrolled ? 'scrolled-icon' : ''}`} />
           </div>
@@ -71,7 +90,7 @@ function Navbar() {
               <li><NavLink to="/blog" onClick={toggleMenu} className={scrolled ? 'scrolled' : ''}>Blog</NavLink></li>
               <li><NavLink to="/contact" onClick={toggleMenu} className={scrolled ? 'scrolled' : ''}>Contact</NavLink></li>
               <div className="dropdownUserCartBag">
-                <li><AiOutlineUser className='user' /></li>
+                <li><AiOutlineUser className='user' onClick={openLogin} /></li>
                 <li><FiSearch className='search' /></li>
                 <li><PiShoppingBag className='cart' /></li>
               </div>
@@ -79,6 +98,8 @@ function Navbar() {
           </div>
         )}
       </div>
+      {isLoginOpen && <Login openRegister={openRegister} closeModals={closeModals} />}
+      {isRegisterOpen && <Register openLogin={openLogin} closeModals={closeModals} />}
     </>
   );
 }
