@@ -32,6 +32,12 @@ const userSchema = new Schema({
         "Password must have minimum 5 characters, 1 lowercase character, 1 uppercase character, 1 number and 1 symbol.",
     },
   },
+  role: {
+    type: String,
+    required: true,
+    enum: [ "admin", "user" ],
+    default: "user"
+  }
 });
 
 const User = model("User", userSchema);
