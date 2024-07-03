@@ -1,0 +1,331 @@
+.weddingSliderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* flex-wrap: wrap; */
+  gap: 15rem;
+  width: 100%;
+  /* height: 100vh; */
+  padding-top: 15rem;
+  padding-bottom: 15rem;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.weddingInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.weddingInfo h2 {
+  font-size: 2.2rem;
+  font-weight: 300;
+  font-family: "Merriweather", serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.weddingInfo h1 {
+  font-size: 3.7rem;
+  font-weight: 400;
+  font-family: "Merriweather", serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.weddingInfo button {
+  width: 23rem;
+  height: 5rem;
+  border-radius: 3px;
+  border: none;
+  background-color: transparent;
+  border: 1px solid rgb(11, 11, 11);
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 2rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease-in-out;
+  -webkit-box-shadow: 6px 6px 7px -3px rgba(102, 102, 102, 1);
+  -moz-box-shadow: 6px 6px 7px -3px rgba(102, 102, 102, 1);
+  box-shadow: 5px 5px 7px -3px rgb(173, 173, 173);
+}
+
+.weddingInfo button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgb(11, 11, 11);
+  z-index: -1;
+  transition: transform 0.3s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.weddingInfo button:hover,
+.weddingInfo button:focus {
+  color: white;
+}
+
+.weddingInfo button:hover::before,
+.weddingInfo button:focus::before {
+  transform: scaleX(1);
+}
+
+.weddingSliderContainer .sliderContainer {
+  width: 55rem;
+  height: 80rem;
+  border-radius: 5px;
+  -webkit-box-shadow: 6px 6px 7px -3px rgba(102, 102, 102, 1);
+  -moz-box-shadow: 6px 6px 7px -3px rgba(102, 102, 102, 1);
+  box-shadow: 14px 15px 7px -3px rgba(102, 102, 102, 0.588);
+}
+
+.sliderContainer .weddingImages {
+  width: 55rem;
+}
+
+.sliderContainer .weddingImages img {
+  width: 55rem;
+  height: 80rem;
+  border-radius: 5px;
+  z-index: -11;
+}
+
+.weddingSliderContainer .sliderContainer .slick-slider {
+  width: 55rem;
+  height: 80rem;
+}
+
+.sliderContainer .weddingImages .slick-list {
+  width: 55rem;
+  height: 80rem;
+}
+
+.weddingSliderContainer .sliderContainer .slick-slider .slick-dots {
+  bottom: 5rem;
+}
+
+.weddingSliderContainer .sliderContainer .slick-slider .slick-dots li {
+  margin: 0 5px;
+}
+
+.weddingSliderContainer
+  .sliderContainer
+  .slick-slider
+  .slick-dots
+  li
+  button:before {
+  font-size: 20px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.33);
+  content: "";
+}
+
+.weddingSliderContainer .sliderContainer .slick-slider .slick-prev {
+  left: 15px;
+  width: 4rem;
+  height: 4rem;
+  z-index: 1;
+}
+
+.weddingSliderContainer .sliderContainer .slick-slider .slick-prev::before {
+  font-size: 4rem;
+  border: none;
+}
+
+.weddingSliderContainer .sliderContainer .slick-slider .slick-next {
+  right: 35px;
+  top: 38rem;
+  z-index: 1;
+}
+
+.weddingSliderContainer .sliderContainer .slick-slider .slick-next::before {
+  font-size: 4rem;
+}
+
+@media (max-width: 1370px) {
+  .weddingSliderContainer {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 7rem;
+    padding-top: 10rem;
+  }
+
+  .weddingSliderContainer .sliderContainer {
+    width: 40rem;
+    height: 55rem;
+  }
+
+  .sliderContainer .weddingImages {
+    width: 40rem;
+  }
+
+  .sliderContainer .weddingImages img {
+    width: 40rem;
+    height: 55rem;
+    border-radius: 5px;
+  }
+
+  .weddingSliderContainer .sliderContainer .slick-slider {
+    width: 40rem;
+    height: 55rem;
+  }
+
+  .sliderContainer .weddingImages .slick-list {
+    width: 40rem;
+    height: 55rem;
+  }
+
+  .weddingInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .weddingSliderContainer .sliderContainer .slick-slider .slick-next {
+    right: 35px;
+    top: 26.5rem;
+    z-index: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .weddingSliderContainer {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 7rem;
+    padding-top: 10rem;
+  }
+
+  .weddingSliderContainer .sliderContainer {
+    width: 35rem;
+    height: 50rem;
+  }
+
+  .sliderContainer .weddingImages {
+    width: 35rem;
+  }
+
+  .sliderContainer .weddingImages img {
+    width: 35rem;
+    height: 50rem;
+    border-radius: 5px;
+  }
+
+  .weddingSliderContainer .sliderContainer .slick-slider {
+    width: 35rem;
+    height: 50rem;
+  }
+
+  .sliderContainer .weddingImages .slick-list {
+    width: 35rem;
+    height: 50rem;
+  }
+
+  .weddingInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .weddingInfo h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 300;
+    font-family: "Merriweather", serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .weddingInfo h1 {
+    text-align: center;
+    font-size: 2.7rem;
+    font-weight: 400;
+    font-family: "Merriweather", serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .weddingSliderContainer .sliderContainer .slick-slider .slick-next {
+    right: 35px;
+    top: 24rem;
+    z-index: 1;
+  }
+}
+
+@media (max-width: 430px) {
+  .weddingSliderContainer {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 7rem;
+    padding-top: 10rem;
+  }
+
+  .weddingSliderContainer .sliderContainer {
+    width: 30rem;
+    height: 50rem;
+  }
+
+  .sliderContainer .weddingImages {
+    width: 30rem;
+  }
+
+  .sliderContainer .weddingImages img {
+    width: 30rem;
+    height: 50rem;
+    border-radius: 5px;
+  }
+
+  .weddingSliderContainer .sliderContainer .slick-slider {
+    width: 30rem;
+    height: 50rem;
+  }
+
+  .sliderContainer .weddingImages .slick-list {
+    width: 30rem;
+    height: 50rem;
+  }
+
+  .weddingInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .weddingInfo h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 300;
+    font-family: "Merriweather", serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .weddingInfo h1 {
+    text-align: center;
+    font-size: 2.7rem;
+    font-weight: 400;
+    font-family: "Merriweather", serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .weddingSliderContainer .sliderContainer .slick-slider .slick-next {
+    right: 35px;
+    top: 24rem;
+    z-index: 1;
+  }
+}
