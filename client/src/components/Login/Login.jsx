@@ -1,13 +1,45 @@
-import React, { useState } from 'react';
-import './Login.css';
+import React, { useState, useContext } from "react";
+import "./Login.css";
+import { UserContext } from "../../context/userContext";
 
 function Login({ openRegister, closeModals }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { setUser } = useContext(UserContext);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Backend işlemleri burada yapılacak.
+
+    if (!email || !password) {
+      alert("Missing credentials");
+      return;
+    }
+
+    try {
+      const settings = {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: {
+          "Content-Type": "application/JSON",
+        },
+      };
+
+      const response = await fetch(
+        `http://localhost:5100/api/auth/login`,
+        settings
+      );
+
+      if (response.ok) {
+        const userData = await response.json();
+        console.log(userData);
+        setUser(userData);
+      } else {
+        const { error } = await response.json();
+        throw new Error(error.message);
+      }
+    } catch (error) {
+      alert("Please let me sleep.")
+    }
   };
 
   return (
@@ -19,7 +51,7 @@ function Login({ openRegister, closeModals }) {
           <input
             type="email"
             value={email}
-            placeholder='abcd@example.com'
+            placeholder="abcd@example.com"
             onChange={(e) => setEmail(e.target.value)}
             required
           />
@@ -27,14 +59,23 @@ function Login({ openRegister, closeModals }) {
           <input
             type="password"
             value={password}
-            placeholder='abcD&12345'
+            placeholder="abcD&12345"
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <p>If you don't have an account, <a href="#" className='loginToRegister' onClick={openRegister}>Register</a></p>
-          <button type="submit" className='loginButton'>Login</button>
+          <p>
+            If you don't have an account,{" "}
+            <a href="#" className="loginToRegister" onClick={openRegister}>
+              Register
+            </a>
+          </p>
+          <button type="submit" className="loginButton">
+            Login
+          </button>
         </form>
-        <button className='closeLoginButton' onClick={closeModals}>X</button>
+        <button className="closeLoginButton" onClick={closeModals}>
+          X
+        </button>
       </div>
     </div>
   );
