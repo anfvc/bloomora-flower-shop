@@ -10,7 +10,15 @@ const productSchema = new Schema({
   price: {
     type: String,
   },
+  // image: {
+  //   type: String,
+  //   required: true,
+  // },
   category: {
+    type: String,
+    required: true,
+  },
+  subcategory: {
     type: String,
   },
 });
