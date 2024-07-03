@@ -13,7 +13,10 @@ function LandingSlider() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    waitForAnimate: false
+    waitForAnimate: false,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    cssEase: "linear"
   };
 
   return (
