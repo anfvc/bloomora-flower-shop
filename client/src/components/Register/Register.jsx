@@ -1,15 +1,51 @@
-import React, { useState } from 'react';
-import './Register.css';
+import { useContext, useState } from "react";
+import { UserContext } from "../../context/userContext";
+
+import "./Register.css";
 
 function Register({ openLogin, closeModals }) {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const { setUser } = useContext(UserContext);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!firstName || !lastName || !email || !password) {
+      alert("Missing credentials.");
+      return;
+    }
+
+    try {
+      const settings = {
+        method: "POST",
+        body: JSON.stringify({ firstName, lastName, email, password }),
+        headers: {
+          "Content-Type": "application/JSON",
+        },
+      };
+
+      const response = await fetch(
+        `http://localhost:5100/api/auth/register`,
+        settings
+      );
+
+      if (response.ok) {
+        const userData = await response.json();
+        console.log(userData);
+        setUser(userData);
+      } else {
+        const { error } = await response.json();
+        throw new Error(error.message);
+      }
+    } catch {
+      alert("Please let me sleep.")
+    }
     // Backend işlemleri burada yapılacak.
+    //* We should take the user to their profile (navigate("/userProfile"))
     openLogin();
   };
 
@@ -22,7 +58,7 @@ function Register({ openLogin, closeModals }) {
           <input
             type="text"
             value={firstName}
-            placeholder='Name'
+            placeholder="Name"
             onChange={(e) => setFirstName(e.target.value)}
             required
           />
@@ -30,7 +66,7 @@ function Register({ openLogin, closeModals }) {
           <input
             type="text"
             value={lastName}
-            placeholder='Last Name'
+            placeholder="Last Name"
             onChange={(e) => setLastName(e.target.value)}
             required
           />
@@ -38,7 +74,7 @@ function Register({ openLogin, closeModals }) {
           <input
             type="email"
             value={email}
-            placeholder='abcd@example.com'
+            placeholder="abcd@example.com"
             onChange={(e) => setEmail(e.target.value)}
             required
           />
@@ -46,14 +82,23 @@ function Register({ openLogin, closeModals }) {
           <input
             type="password"
             value={password}
-            placeholder='abcD&12345'
+            placeholder="abcD&12345"
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <p>Already have an account? <a href="#" className='registerToLogin' onClick={openLogin}>Login</a></p>
-          <button type="submit" className='registerButton'>Register</button>
+          <p>
+            Already have an account?{" "}
+            <a href="#" className="registerToLogin" onClick={openLogin}>
+              Login
+            </a>
+          </p>
+          <button type="submit" className="registerButton">
+            Register
+          </button>
         </form>
-        <button className='closeRegisterButton' onClick={closeModals}>X</button>
+        <button className="closeRegisterButton" onClick={closeModals}>
+          X
+        </button>
       </div>
     </div>
   );
