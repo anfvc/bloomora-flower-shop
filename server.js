@@ -2,7 +2,7 @@ import express from "express";
 import "express-async-errors";
 import authRouter from "./routes/authRouter.js";
 import connection from "./libs/database.js";
-import cors from "express";
+import cors from "cors";
 import cookieParser from "cookie-parser";
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
 import productRouter from "./routes/productRouter.js";
