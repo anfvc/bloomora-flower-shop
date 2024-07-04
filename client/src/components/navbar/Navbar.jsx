@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { NavLink } from "react-router-dom";
 import logo from "../../images/logo/bloomoraV2.svg";
 import scrolledLogo from "../../images/logo/bloomoraV3.svg";
@@ -10,12 +10,14 @@ import { AiOutlineClose } from "react-icons/ai";
 import "./Navbar.css";
 import Login from '../Login/Login';
 import Register from '../Register/Register';
+import { UserContext } from '../../context/userContext';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+  const{isLoggedIn, user} = useContext(UserContext)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,9 +63,13 @@ function Navbar() {
           <NavLink to="/">
             <img src={scrolled ? scrolledLogo : logo} alt="logo" className="navbar-logo" />
           </NavLink>
+         
         </div>
+        {/* Hello, user */}
+        {isLoggedIn && <p>Hello, {user.firstName} </p>}
         <div className="links-icons">
           <div className="links">
+           
             <ul>
               <li><NavLink to="/" className={scrolled ? 'scrolled' : ''}>Home</NavLink></li>
               <li><NavLink to="/about" className={scrolled ? 'scrolled' : ''}>About</NavLink></li>

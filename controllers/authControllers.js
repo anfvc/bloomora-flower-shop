@@ -33,7 +33,7 @@ export const login = async (req, res) => {
 
   res
     .status(StatusCodes.OK)
-    .json({ msg: `${user.email} has successfully logged in.`, id: user._id });
+    .json({ msg: `${user.email} has successfully logged in.`, id: user._id, firstName: user.firstName});
 };
 
 export const logout = (req, res) => {

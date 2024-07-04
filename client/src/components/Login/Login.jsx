@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
+import  { useState, useContext } from "react";
 import "./Login.css";
 import { UserContext } from "../../context/userContext";
 
 function Login({ openRegister, closeModals }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setUser } = useContext(UserContext);
+  const { setUser, setIsLoggedIn } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,6 +33,7 @@ function Login({ openRegister, closeModals }) {
         const userData = await response.json();
         console.log(userData);
         setUser(userData);
+        setIsLoggedIn(true)
       } else {
         const { error } = await response.json();
         throw new Error(error.message);
@@ -40,6 +41,7 @@ function Login({ openRegister, closeModals }) {
     } catch (error) {
       alert("Please let me sleep.")
     }
+    
   };
 
   return (
