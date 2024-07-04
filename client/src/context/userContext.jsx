@@ -4,7 +4,9 @@ import { products } from "../data.js";
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
+   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState({});
+
   const [sortedProducts, setSortedProducts] = useState(products[0].artificial);
 
   const sortAlphabeticallyAZ = () => {
