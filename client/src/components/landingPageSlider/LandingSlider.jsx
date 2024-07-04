@@ -16,7 +16,8 @@ function LandingSlider() {
     waitForAnimate: false,
     autoplay: true,
     autoplaySpeed: 5000,
-    cssEase: "linear"
+    cssEase: "linear",
+    pauseOnHover: false
   };
 
   return (

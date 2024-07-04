@@ -41,6 +41,7 @@
   text-decoration: none;
   font-size: 2rem;
   font-weight: 300;
+  text-transform: capitalize;
   letter-spacing: 1px;
   color: #e9ecf0;
   border-bottom: transparent;

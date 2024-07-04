@@ -26,11 +26,11 @@ function WeddingSlider() {
       <div className="sliderContainer">
         <Slider {...settings}>
           {weddingSlider.map((item, index) => (
-            <>
-              <div className="weddingImages" key={index}>
+            <div key={index}>
+              <div className="weddingImages">
                 <img src={item.image} alt="wedding image" />
               </div>
-            </>
+            </div>
           ))}
         </Slider>
       </div>
