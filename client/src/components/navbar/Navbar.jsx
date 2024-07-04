@@ -12,6 +12,8 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import { UserContext } from '../../context/userContext';
 
+
+
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -21,23 +23,23 @@ function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) { 
+      if (window.scrollY > 100) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    document.body.classList.toggle('menu-open', !isMenuOpen);
+    document.body.classList.toggle("menu-open", !isMenuOpen);
   };
 
   const openLogin = () => {
@@ -57,11 +59,18 @@ function Navbar() {
 
   return (
     <>
-      <div className={isMenuOpen ? 'overlay active' : 'overlay'} onClick={toggleMenu}></div>
-      <div className={`navbarContainer ${scrolled ? 'scrolled' : ''}`}>
+      <div
+        className={isMenuOpen ? "overlay active" : "overlay"}
+        onClick={toggleMenu}
+      ></div>
+      <div className={`navbarContainer ${scrolled ? "scrolled" : ""}`}>
         <div className="logo">
           <NavLink to="/">
-            <img src={scrolled ? scrolledLogo : logo} alt="logo" className="navbar-logo" />
+            <img
+              src={scrolled ? scrolledLogo : logo}
+              alt="logo"
+              className="navbar-logo"
+            />
           </NavLink>
          
         </div>
@@ -71,41 +80,130 @@ function Navbar() {
           <div className="links">
            
             <ul>
-              <li><NavLink to="/" className={scrolled ? 'scrolled' : ''}>Home</NavLink></li>
-              <li><NavLink to="/about" className={scrolled ? 'scrolled' : ''}>About</NavLink></li>
-              <li><NavLink to="/shop" className={scrolled ? 'scrolled' : ''}>Shop</NavLink></li>
-              <li><NavLink to="/blog" className={scrolled ? 'scrolled' : ''}>Blog</NavLink></li>
-              <li><NavLink to="/contact" className={scrolled ? 'scrolled' : ''}>Contact</NavLink></li>
+              <li>
+                <NavLink to="/" className={scrolled ? "scrolled" : ""}>
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/about" className={scrolled ? "scrolled" : ""}>
+                  About
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/shop" className={scrolled ? "scrolled" : ""}>
+                  Shop
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/blog" className={scrolled ? "scrolled" : ""}>
+                  Blog
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/contact" className={scrolled ? "scrolled" : ""}>
+                  Contact
+                </NavLink>
+              </li>
             </ul>
           </div>
           <div className="user-cart-search">
-            <AiOutlineUser className={`user ${scrolled ? 'scrolled-icon' : ''}`} onClick={openLogin} />
-            <FiSearch className={`search ${scrolled ? 'scrolled-icon' : ''}`} />
-            <PiShoppingBag className={`cart ${scrolled ? 'scrolled-icon' : ''}`} />
+            <AiOutlineUser
+              className={`user ${scrolled ? "scrolled-icon" : ""}`}
+              onClick={openLogin}
+            />
+            <FiSearch className={`search ${scrolled ? "scrolled-icon" : ""}`} />
+            <PiShoppingBag
+              className={`cart ${scrolled ? "scrolled-icon" : ""}`}
+            />
           </div>
           <div className="burgerMenu" onClick={toggleMenu}>
-            {isMenuOpen ? <AiOutlineClose className={`burger ${scrolled ? 'scrolled-icon' : ''}`} /> : <RxHamburgerMenu className={`burger ${scrolled ? 'scrolled-icon' : ''}`} />}
+            {isMenuOpen ? (
+              <AiOutlineClose
+                className={`burger ${scrolled ? "scrolled-icon" : ""}`}
+              />
+            ) : (
+              <RxHamburgerMenu
+                className={`burger ${scrolled ? "scrolled-icon" : ""}`}
+              />
+            )}
           </div>
         </div>
         {isMenuOpen && (
           <div className="dropdownMenu">
             <ul>
-              <li><NavLink to="/" onClick={toggleMenu} className={scrolled ? 'scrolled' : ''}>Home</NavLink></li>
-              <li><NavLink to="/about" onClick={toggleMenu} className={scrolled ? 'scrolled' : ''}>About</NavLink></li>
-              <li><NavLink to="/shop" onClick={toggleMenu} className={scrolled ? 'scrolled' : ''}>Shop</NavLink></li>
-              <li><NavLink to="/blog" onClick={toggleMenu} className={scrolled ? 'scrolled' : ''}>Blog</NavLink></li>
-              <li><NavLink to="/contact" onClick={toggleMenu} className={scrolled ? 'scrolled' : ''}>Contact</NavLink></li>
+              <li>
+                <NavLink
+                  to="/"
+                  onClick={toggleMenu}
+                  className={scrolled ? "scrolled" : ""}
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/about"
+                  onClick={toggleMenu}
+                  className={scrolled ? "scrolled" : ""}
+                >
+                  About
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/shop"
+                  onClick={toggleMenu}
+                  className={scrolled ? "scrolled" : ""}
+                >
+                  Shop
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/blog"
+                  onClick={toggleMenu}
+                  className={scrolled ? "scrolled" : ""}
+                >
+                  Blog
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/contact"
+                  onClick={toggleMenu}
+                  className={scrolled ? "scrolled" : ""}
+                >
+                  Contact
+                </NavLink>
+              </li>
               <div className="dropdownUserCartBag">
-                <li><AiOutlineUser className='user' onClick={openLogin} /></li>
-                <li><FiSearch className='search' /></li>
-                <li><PiShoppingBag className='cart' /></li>
+                <li>
+                  <AiOutlineUser
+                    className="user"
+                    onClick={() => {
+                      openLogin();
+                      isMenuOpen && toggleMenu();
+                    }}
+                  />
+                </li>
+                <li>
+                  <FiSearch className="search" />
+                </li>
+                <li>
+                  <PiShoppingBag className="cart" />
+                </li>
               </div>
             </ul>
           </div>
         )}
       </div>
-      {isLoginOpen && <Login openRegister={openRegister} closeModals={closeModals} />}
-      {isRegisterOpen && <Register openLogin={openLogin} closeModals={closeModals} />}
+      {isLoginOpen && (
+        <Login openRegister={openRegister} closeModals={closeModals} />
+      )}
+      {isRegisterOpen && (
+        <Register openLogin={openLogin} closeModals={closeModals} />
+      )}
     </>
   );
 }
