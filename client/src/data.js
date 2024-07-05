@@ -1,7 +1,7 @@
 //Decor - Artificial
 import apple from "./images/decor/artificial/apple_bouq.jpg";
 import fl_b from "./images/decor/artificial/fl_b.jpg";
-import fl_b1 from "./images/decor/artificial/fl_b1.jpg";
+// import fl_b1 from "./images/decor/artificial/fl_b1.jpg";
 import fl_b2 from "./images/decor/artificial/fl_b2.jpg";
 import fl_b3 from "./images/decor/artificial/fl_b3.jpg";
 import magnolia_p from "./images/decor/artificial/magnolia_p.jpg";
@@ -49,15 +49,6 @@ export const products = [
         size: ["Small", "Medium", "Large"],
       },
       {
-        name: "Fl_b1",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean mattis interdum vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce facilisis lorem dui, eu volutpat ex faucibus vel",
-        price: "60",
-        type: "Artificial",
-        category: "Decor",
-        image: fl_b1,
-        size: ["Small", "Medium", "Large"],
-      },
-      {
         name: "Fl_b2",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean mattis interdum vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce facilisis lorem dui, eu volutpat ex faucibus vel",
         type: "Artificial",
@@ -78,7 +69,7 @@ export const products = [
       {
         name: "Magnolia P",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean mattis interdum vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce facilisis lorem dui, eu volutpat ex faucibus vel",
-        price: "70",
+        price: "50",
         category: "Decor",
         image: magnolia_p,
         size: ["Small", "Medium", "Large"],
@@ -87,7 +78,7 @@ export const products = [
         name: "Magnolia SP",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean mattis interdum vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce facilisis lorem dui, eu volutpat ex faucibus vel",
         type: "Artificial",
-        price: "60",
+        price: "30",
         category: "Decor",
         image: magnolia_sp,
         size: ["Small", "Medium", "Large"],
@@ -96,7 +87,7 @@ export const products = [
         name: "Magnolia",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean mattis interdum vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce facilisis lorem dui, eu volutpat ex faucibus vel",
         type: "Artificial",
-        price: "50",
+        price: "35",
         category: "Decor",
         image: magnolia,
         size: ["Small", "Medium", "Large"],
@@ -105,7 +96,7 @@ export const products = [
         name: "Peonies B",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean mattis interdum vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce facilisis lorem dui, eu volutpat ex faucibus vel",
         type: "Artificial",
-        price: "50",
+        price: "30",
         category: "Decor",
         image: peonies_b,
         size: ["Small", "Medium", "Large"],
@@ -114,7 +105,7 @@ export const products = [
         name: "Peonies",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean mattis interdum vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce facilisis lorem dui, eu volutpat ex faucibus vel",
         type: "Artificial",
-        price: "50",
+        price: "25",
         category: "Decor",
         image: peonies,
         size: ["Small", "Medium", "Large"],
@@ -123,7 +114,7 @@ export const products = [
         name: "Roses",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean mattis interdum vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce facilisis lorem dui, eu volutpat ex faucibus vel",
         type: "Artificial",
-        price: "50",
+        price: "20",
         category: "Decor",
         image: roses,
         size: ["Small", "Medium", "Large"],
