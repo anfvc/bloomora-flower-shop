@@ -22,6 +22,10 @@ const productSchema = new Schema(
     subcategory: {
       type: String,
     },
+    createdBy: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }
   },
   {
     versionKey: false,
