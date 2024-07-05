@@ -14,13 +14,31 @@ const productSchema = new Schema(
     image: {
       type: String,
       required: true,
+      default: "",
     },
     category: {
       type: String,
       required: true,
+      enum: [
+        "Decor",
+        "Eustoma",
+        "Flowers on Ocassion",
+        "Gifts",
+        "House Plants",
+        "Peonies",
+        "Roses",
+      ],
     },
     subcategory: {
       type: String,
+      enum: [
+        "Artificial",
+        "Christmas",
+        "For Home",
+        "Birthday",
+        "St. Valentine's Day",
+        "Wedding Anniversary",
+      ],
     },
     createdBy: {
       type: Schema.Types.ObjectId,
