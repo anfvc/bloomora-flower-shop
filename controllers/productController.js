@@ -2,37 +2,30 @@ import { StatusCodes } from "http-status-codes";
 import Product from "../models/Product.js";
 
 export async function createProduct(req, res) {
+  console.log("File Received", req.file);
+  console.log("Body Data", req.body);
+
   let imageFile = req.file ? req.file.filename : null;
-  // const { name, description, price, category, subcategory } = req.body;
-
-  // try {
-  //   const newProduct = await Product.create({
-  //     name,
-  //     description,
-  //     price,
-  //     category,
-  //     subcategory,
-  //     image: imageFile,
-  //   });
-
-  const product = new Product({
-    name: req.body.name,
-    description: req.body.description,
-    price: req.body.price,
-    category: req.body.category,
-    subcategory: req.body.subcategory,
-    image: imageFile,
-  });
+  const { name, description, price, category, subcategory } = req.body;
 
   try {
-    await product.save();
+    const newProduct = await Product.create({
+      name,
+      description,
+      price,
+      category,
+      subcategory,
+      image: imageFile,
+    });
+
 
     res.status(StatusCodes.CREATED).json({
-      id: product._id,
-      name: product.name,
-      msg: `${product.name} has been created.`,
-      image: product.image,
+      id: newProduct._id,
+      name: newProduct.name,
+      msg: `${newProduct.name} has been created.`,
+      image: newProduct.image,
     });
+    console.log("This Product has been created!", newProduct);
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR);
   }
