@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../../context/userContext";
-
 import "./Register.css";
 
 function Register({ openLogin, closeModals }) {
@@ -37,6 +36,8 @@ function Register({ openLogin, closeModals }) {
         const userData = await response.json();
         console.log(userData);
         setUser(userData);
+        closeModals();
+        document.querySelector('details[open]').removeAttribute('open'); 
       } else {
         const { error } = await response.json();
         throw new Error(error.message);
@@ -44,9 +45,6 @@ function Register({ openLogin, closeModals }) {
     } catch {
       alert("Please let me sleep.")
     }
-    // Backend işlemleri burada yapılacak.
-    //* We should take the user to their profile (navigate("/userProfile"))
-    openLogin();
   };
 
   return (
