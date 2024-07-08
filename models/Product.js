@@ -43,6 +43,10 @@ const productSchema = new Schema(
       ],
       required: true,
     },
+    createdBy: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }
   },
   {
     versionKey: false,

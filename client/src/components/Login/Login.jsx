@@ -34,6 +34,8 @@ function Login({ openRegister, closeModals }) {
         console.log(userData);
         setUser(userData);
         setIsLoggedIn(true);
+        closeModals();
+        document.querySelector('details[open]').removeAttribute('open'); 
       } else {
         const { error } = await response.json();
         throw new Error(error.message);
