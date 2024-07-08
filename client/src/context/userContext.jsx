@@ -4,28 +4,36 @@ import { products } from "../data.js";
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({});
 
   const [sortedProducts, setSortedProducts] = useState(products[0].artificial);
 
   const sortAlphabeticallyAZ = () => {
-    const sorted = [...sortedProducts].sort((a, b) => a.name.localeCompare(b.name));
+    const sorted = [...sortedProducts].sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
     setSortedProducts(sorted);
   };
 
   const sortAlphabeticallyZA = () => {
-    const sorted = [...sortedProducts].sort((a, b) => b.name.localeCompare(a.name));
+    const sorted = [...sortedProducts].sort((a, b) =>
+      b.name.localeCompare(a.name)
+    );
     setSortedProducts(sorted);
   };
 
   const sortByPriceLowToHigh = () => {
-    const sorted = [...sortedProducts].sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+    const sorted = [...sortedProducts].sort(
+      (a, b) => parseFloat(a.price) - parseFloat(b.price)
+    );
     setSortedProducts(sorted);
   };
 
   const sortByPriceHighToLow = () => {
-    const sorted = [...sortedProducts].sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+    const sorted = [...sortedProducts].sort(
+      (a, b) => parseFloat(b.price) - parseFloat(a.price)
+    );
     setSortedProducts(sorted);
   };
 
@@ -34,7 +42,20 @@ const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, setUser, logout, sortedProducts, sortAlphabeticallyAZ, sortAlphabeticallyZA, sortByPriceLowToHigh, sortByPriceHighToLow }}>
+    <UserContext.Provider
+      value={{
+        user,
+        setUser,
+        isLoggedIn,
+        setIsLoggedIn,
+        logout,
+        sortedProducts,
+        sortAlphabeticallyAZ,
+        sortAlphabeticallyZA,
+        sortByPriceLowToHigh,
+        sortByPriceHighToLow,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );
