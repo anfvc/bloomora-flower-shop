@@ -3,6 +3,11 @@ import { UserContext } from "../../context/userContext";
 import { FaUser } from "react-icons/fa6";
 import "./userPanel.css";
 import EditProfile from "../editProfile/editProfile";
+import { FaUserEdit } from "react-icons/fa";
+import { FaClipboardList } from "react-icons/fa6";
+import { FaFileInvoice } from "react-icons/fa";
+import { PiListHeartFill } from "react-icons/pi";
+
 
 function UserPanel() {
   const { user } = useContext(UserContext);
@@ -21,11 +26,21 @@ function UserPanel() {
       <div className="sidebar">
         <FaUser className="userImage" />
         <button className="sidebarButton" onClick={handleEditProfile}>
-          Edit Profile
+          <p>Edit Profile</p>
+          <FaUserEdit />
         </button>
-        <button className="sidebarButton">My Orders</button>
-        <button className="sidebarButton">My Invoices</button>
-        <button className="sidebarButton">Wishlist</button>
+        <button className="sidebarButton">
+          <p>My Orders</p>
+          <FaClipboardList />
+          </button>
+        <button className="sidebarButton">
+          <p>My Invoices</p>
+          <FaFileInvoice />
+          </button>
+        <button className="sidebarButton">
+          <p>Wishlist</p>
+          <PiListHeartFill />
+          </button>
       </div>
       <div className="userDetails">
         {isEditing ? (

@@ -116,7 +116,7 @@ function Navbar() {
           </div>
           <div className="user-cart-search">
             {isLoggedIn && (
-              <p className="welcomeMessage">Hello, {user.firstName} </p>
+              <p className={`welcomeMessage ${scrolled ? "scrolled" : ""}`}>Hello, {user.firstName} </p>
             )}
             <details>
               <summary>
