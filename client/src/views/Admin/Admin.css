@@ -108,7 +108,7 @@
   transform: scaleX(1);
 }
 
-form {
+.adminContainer form {
   font-family: "Roboto Condensed", sans-serif;
   padding: 5rem;
   background-color: white;
