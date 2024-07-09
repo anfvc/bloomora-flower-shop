@@ -6,7 +6,9 @@ import Shop from "./views/shop/Shop.jsx";
 import About from "./views/about/About.jsx";
 import Blog from "./views/blog/Blog.jsx";
 import Contact from "./views/contact/Contact.jsx";
+import CreateProduct from "./views/Admin/CreateOrder.jsx";
 import UserPanel from "./components/userPanel/userPanel.jsx";
+
 
 function App() {
   return (
@@ -18,7 +20,9 @@ function App() {
         <Route path="/shop" element={<Shop />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/admin" element={<CreateProduct />} />
         <Route path="/userPanel" element={<UserPanel />} />
+
       </Routes>
     </>
   );
