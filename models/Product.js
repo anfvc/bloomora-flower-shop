@@ -40,8 +40,9 @@ const productSchema = new Schema(
         "Birthday",
         "St. Valentine's Day",
         "Wedding Anniversary",
+        "",
       ],
-      required: true,
+      default: "",
     },
     createdBy: {
       type: Schema.Types.ObjectId,
