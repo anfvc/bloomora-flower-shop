@@ -4,6 +4,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import "./editProfile.css";
 
 function EditProfile({ closeEdit }) {
+  
   const { user, setUser } = useContext(UserContext);
   const [formData, setFormData] = useState({
     firstName: user.firstName || "",
