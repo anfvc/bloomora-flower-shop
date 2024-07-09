@@ -4,17 +4,19 @@ const productSchema = new Schema(
   {
     name: {
       type: String,
+      required: true,
     },
     description: {
       type: String,
+      required: true,
     },
     price: {
       type: Number,
+      required: true,
     },
     image: {
       type: String,
       required: true,
-      default: "",
     },
     category: {
       type: String,
@@ -39,6 +41,7 @@ const productSchema = new Schema(
         "St. Valentine's Day",
         "Wedding Anniversary",
       ],
+      required: true,
     },
     createdBy: {
       type: Schema.Types.ObjectId,

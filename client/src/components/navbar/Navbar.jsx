@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect, useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom"; 
 import logo from "../../images/logo/bloomoraV2.svg";
 import scrolledLogo from "../../images/logo/bloomoraV3.svg";
 import { AiOutlineUser } from "react-icons/ai";
@@ -7,19 +7,22 @@ import { FiSearch } from "react-icons/fi";
 import { PiShoppingBag } from "react-icons/pi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineClose } from "react-icons/ai";
+import { IoLogIn } from "react-icons/io5";
+import { MdPersonAdd } from "react-icons/md";
+import { FaSignOutAlt } from "react-icons/fa";
+import { AiFillEdit } from "react-icons/ai";
 import "./Navbar.css";
-import Login from '../Login/Login';
-import Register from '../Register/Register';
-import { UserContext } from '../../context/userContext';
-
-
+import Login from "../Login/Login";
+import Register from "../Register/Register";
+import { UserContext } from "../../context/userContext";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-  const{isLoggedIn, user} = useContext(UserContext)
+  const { isLoggedIn, user, logout } = useContext(UserContext);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,6 +55,12 @@ function Navbar() {
     setIsRegisterOpen(true);
   };
 
+  const handleLogout = () => {
+    logout();
+    navigate("/"); 
+    document.querySelector('details[open]').removeAttribute('open'); 
+  };
+
   const closeModals = () => {
     setIsLoginOpen(false);
     setIsRegisterOpen(false);
@@ -72,13 +81,11 @@ function Navbar() {
               className="navbar-logo"
             />
           </NavLink>
-         
         </div>
         {/* Hello, user */}
-        {isLoggedIn && <p>Hello, {user.firstName} </p>}
+
         <div className="links-icons">
           <div className="links">
-           
             <ul>
               <li>
                 <NavLink to="/" className={scrolled ? "scrolled" : ""}>
@@ -108,10 +115,41 @@ function Navbar() {
             </ul>
           </div>
           <div className="user-cart-search">
-            <AiOutlineUser
-              className={`user ${scrolled ? "scrolled-icon" : ""}`}
-              onClick={openLogin}
-            />
+            {isLoggedIn && (
+              <p className={`welcomeMessage ${scrolled ? "scrolled" : ""}`}>Hello, {user.firstName} </p>
+            )}
+            <details>
+              <summary>
+                <AiOutlineUser
+                  className={`user ${scrolled ? "scrolled-icon" : ""}`}
+                />
+              </summary>
+              <ul className="loginSignUp">
+                {isLoggedIn ? ( 
+                  <>
+                    <li onClick={() => navigate('/userPanel')}> 
+                      <AiFillEdit />
+                      Profile
+                    </li>
+                    <li onClick={handleLogout}>
+                      <FaSignOutAlt />
+                      Logout
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li onClick={openLogin}>
+                      <IoLogIn />
+                      Login
+                    </li>
+                    <li onClick={openRegister}>
+                      <MdPersonAdd />
+                      Sign Up
+                    </li>
+                  </>
+                )}
+              </ul>
+            </details>
             <FiSearch className={`search ${scrolled ? "scrolled-icon" : ""}`} />
             <PiShoppingBag
               className={`cart ${scrolled ? "scrolled-icon" : ""}`}

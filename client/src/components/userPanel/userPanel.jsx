@@ -1,0 +1,60 @@
+import React, { useState, useContext } from "react";
+import { UserContext } from "../../context/userContext";
+import { FaUser } from "react-icons/fa6";
+import "./userPanel.css";
+import EditProfile from "../editProfile/editProfile";
+import { FaUserEdit } from "react-icons/fa";
+import { FaClipboardList } from "react-icons/fa6";
+import { FaFileInvoice } from "react-icons/fa";
+import { PiListHeartFill } from "react-icons/pi";
+
+
+function UserPanel() {
+  const { user } = useContext(UserContext);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleEditProfile = () => {
+    setIsEditing(true);
+  };
+
+  const closeEdit = () => {
+    setIsEditing(false);
+  };
+
+  return (
+    <div className="userPanelContainer">
+      <div className="sidebar">
+        <FaUser className="userImage" />
+        <button className="sidebarButton" onClick={handleEditProfile}>
+          <p>Edit Profile</p>
+          <FaUserEdit />
+        </button>
+        <button className="sidebarButton">
+          <p>My Orders</p>
+          <FaClipboardList />
+          </button>
+        <button className="sidebarButton">
+          <p>My Invoices</p>
+          <FaFileInvoice />
+          </button>
+        <button className="sidebarButton">
+          <p>Wishlist</p>
+          <PiListHeartFill />
+          </button>
+      </div>
+      <div className="userDetails">
+        {isEditing ? (
+          <EditProfile closeEdit={closeEdit} />
+        ) : (
+          <div className="welcome">
+            <h1>
+              Welcome, {user.firstName} {user.lastName}
+            </h1>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export default UserPanel;

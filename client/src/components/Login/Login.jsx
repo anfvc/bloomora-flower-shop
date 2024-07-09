@@ -1,4 +1,4 @@
-import  { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import "./Login.css";
 import { UserContext } from "../../context/userContext";
 
@@ -33,15 +33,16 @@ function Login({ openRegister, closeModals }) {
         const userData = await response.json();
         console.log(userData);
         setUser(userData);
-        setIsLoggedIn(true)
+        setIsLoggedIn(true);
+        closeModals();
+        document.querySelector('details[open]').removeAttribute('open'); 
       } else {
         const { error } = await response.json();
         throw new Error(error.message);
       }
     } catch (error) {
-      alert("Please let me sleep.")
+      alert("Please let me sleep.");
     }
-    
   };
 
   return (
