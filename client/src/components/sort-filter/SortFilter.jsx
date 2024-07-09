@@ -1,11 +1,20 @@
 import React, { useState, useContext } from "react";
 import "./SortFilter.css";
 import { RiArrowDownWideLine } from "react-icons/ri";
-import { UserContext } from "../../context/userContext";
+// import { UserContext } from "../../context/userContext";
 
 function SortFilter() {
-  const { sortAlphabeticallyAZ, sortAlphabeticallyZA, sortByPriceLowToHigh, sortByPriceHighToLow } = useContext(UserContext);
+  // const { sortAlphabeticallyAZ, sortAlphabeticallyZA, sortByPriceLowToHigh, sortByPriceHighToLow } = useContext(UserContext);
   const [isSortOpen, setIsSortOpen] = useState(false);
+  const [filter, setFilter] = useState({
+    sortby: "name",
+    order: "asc"
+  });
+
+
+  function handleFilter(e) {
+    setFilter({...filter, [e.target.name]: e.target.value})
+  }
 
   function handleSort() {
     setIsSortOpen(!isSortOpen);
@@ -20,10 +29,10 @@ function SortFilter() {
       {isSortOpen && (
         <div className="sort">
           <ul>
-            <li onClick={sortAlphabeticallyAZ}>alphabetically, a-z</li>
-            <li onClick={sortAlphabeticallyZA}>alphabetically, z-a</li>
-            <li onClick={sortByPriceHighToLow}>price, high to low</li>
-            <li onClick={sortByPriceLowToHigh}>price, low to high</li>
+            <li onClick={/* sortAlphabeticallyAZ */handleFilter}>alphabetically, a-z</li>
+            <li onClick={/* sortAlphabeticallyZA */handleFilter}>alphabetically, z-a</li>
+            <li onClick={/* sortByPriceHighToLow */handleFilter}>price, high to low</li>
+            <li onClick={/* sortByPriceLowToHigh */handleFilter}>price, low to high</li>
           </ul>
         </div>
       )}

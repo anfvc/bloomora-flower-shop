@@ -1,6 +1,7 @@
 import express from "express";
 import {
   createProduct,
+  showAllFilteredProducts,
   showAllProducts,
   updateProduct,
 } from "../controllers/productController.js";
@@ -25,5 +26,7 @@ const upload = multer({ storage: storage });
 router.post("/create", upload.single("image"), createProduct);
 router.patch("/update/:id", updateProduct);
 router.get("/show", showAllProducts)
+router.get("/showFiltered", showAllFilteredProducts)
+
 
 export default router;
