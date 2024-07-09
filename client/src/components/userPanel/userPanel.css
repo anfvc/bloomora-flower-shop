@@ -127,6 +127,7 @@
   color: rgb(12, 12, 12);
 }
 
+
 @media screen and (max-width: 1024px) {
   .sidebar {
     width: 10rem;
