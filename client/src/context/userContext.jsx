@@ -7,7 +7,7 @@ const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const [user, setUser] = useState({});
 
-  const [sortedProducts, setSortedProducts] = useState(products[0].artificial);
+  const [sortedProducts, setSortedProducts] = useState(products);
 
   const sortAlphabeticallyAZ = () => {
     const sorted = [...sortedProducts].sort((a, b) =>

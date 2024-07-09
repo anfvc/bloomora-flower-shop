@@ -21,7 +21,6 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<CreateProduct />} />
-
         <Route path="/userPanel" element={<UserPanel />} />
 
       </Routes>
