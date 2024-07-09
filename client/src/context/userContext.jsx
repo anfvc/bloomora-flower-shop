@@ -43,6 +43,7 @@ const UserProvider = ({ children }) => {
   };
 
   return (
+
     <UserContext.Provider
       value={{
         user,
@@ -57,6 +58,7 @@ const UserProvider = ({ children }) => {
         sortByPriceHighToLow,
       }}
     >
+
       {children}
     </UserContext.Provider>
   );
