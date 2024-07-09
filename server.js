@@ -6,6 +6,13 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
 import productRouter from "./routes/productRouter.js";
+import cloudinary from "cloudinary";
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
 
 await connection();
 
@@ -17,12 +24,12 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRouter);
 app.use("/api/product", productRouter);
+app.use("/images", express.static("uploads"));
 
 app.use("*", (req, res) => {
   res.status(404).json({ msg: "not found" });
 });
 
-app.use("/images", express.static("uploads"));
 const port = process.env.PORT || 5100;
 
 app.listen(port, () => {

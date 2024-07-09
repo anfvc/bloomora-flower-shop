@@ -54,10 +54,10 @@ function CreateProduct() {
         });
       } else {
         const { error } = await response.json();
-        throw new Error(error.message);
+        throw new Error(error.msg);
       }
     } catch (error) {
-      alert(error.message);
+      alert(error.msg);
     }
     setImage("");
     imageInput.current.value = "";

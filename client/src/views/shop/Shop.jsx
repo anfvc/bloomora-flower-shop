@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./Shop.css";
 import { UserContext } from "../../context/userContext.jsx";
 import SortFilter from "../../components/sort-filter/SortFilter.jsx";
@@ -7,10 +7,35 @@ import { IoMdHeart } from "react-icons/io";
 
 function Shop() {
   const { sortedProducts } = useContext(UserContext);
-  const [likedItems, setLikedItems] = useState(
-    new Array(sortedProducts.length).fill(false)
-  );
   const [hoveredIndex, setHoveredIndex] = useState(-1);
+  const [list, setList] = useState([]);
+  // const [page, setPage] = useState(1)
+  // const [filter, setFilter] = useState({
+  //   sortby: "name",
+  // })
+  const [likedItems, setLikedItems] = useState(
+    new Array(/* sortedProducts */list.length).fill(false)
+  );
+
+  useEffect(() => {
+    async function showAllProducts() {
+      try {
+        const response = await fetch(`http://localhost:5100/api/product/show`);
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          setList(data);
+        } else {
+          const { error } = await response.json();
+          throw new Error(error.message);
+        }
+      } catch (error) {
+        alert(error.message);
+      }
+    }
+    showAllProducts();
+  }, []);
 
   function handleLike(index) {
     const newLikedItems = [...likedItems];
@@ -26,19 +51,21 @@ function Shop() {
     setHoveredIndex(-1);
   }
 
+  console.log(list);
+
   return (
     <div className="shopContainer">
       <div className="topBackgroundImage"></div>
       <SortFilter />
       <div className="shopProducts">
-        {sortedProducts.map((item, index) => (
-          <div className="productsBox" key={index}>
+        {list.map((item, index) => (
+          <div className="productsBox" key={item._id}>
             <div className="imageBox">
-              <img src={item.image} alt={item.name} />
+              <img src={`http://localhost:5100/images/${item.image}`} alt="" width={100} height={100}/>
               <button className="addToCart">add to cart</button>
               <div
                 className="likeButton"
-                onClick={() => handleLike(index)}
+                onClick={() => handleLike(item._id)}
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
               >
@@ -54,6 +81,7 @@ function Shop() {
             <div className="info">
               <p>~ {item.name} ~</p>
               <p>{item.price}€</p>
+              {/* <p>{item.description}</p> */}
             </div>
           </div>
         ))}

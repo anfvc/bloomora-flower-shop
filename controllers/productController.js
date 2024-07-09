@@ -1,11 +1,17 @@
 import { StatusCodes } from "http-status-codes";
 import Product from "../models/Product.js";
+import cloudinary from "cloudinary"
 
 export async function createProduct(req, res) {
   console.log("File Received", req.file);
   console.log("Body Data", req.body);
 
-  let imageFile = req.file ? req.file.filename : null;
+  let imageFile = `${req.file.filename}`;
+
+  // const timestamp = Math.round((new Date()).getTime()/1000)
+
+  // const signature = cloudinary.utils.api_sign_request({timestamp: timestamp}, cloudinary.config().process.env.CLOUD_API_SECRET)
+
   const { name, description, price, category, subcategory } = req.body;
 
   try {
@@ -45,8 +51,14 @@ export async function updateProduct(req, res) {
   console.log(`${updatedProduct.name} has been updated.`);
 }
 
+export async function showAllProducts(req, res, next) {
+  const allProducts = await Product.find()
 
-export const showAllProducts = async (req, res, next)=> {
+  res.status(StatusCodes.OK).json(allProducts)
+}
+
+
+export const showAllFilteredProducts = async (req, res, next)=> {
   try {
     const {page = 1,
           sortby = "name",
