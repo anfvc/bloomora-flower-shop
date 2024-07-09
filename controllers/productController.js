@@ -61,3 +61,34 @@ export async function updateProduct(req, res) {
 
   console.log(`${updatedProduct.name} has been updated.`);
 }
+
+
+export const showAllProducts = async (req, res, next)=> {
+  try {
+    const {page = 1,
+          sortby = "name",
+          order = "asc"
+    } = req.query
+
+    const limit = 8;
+    const skip = (page - 1) * limit
+
+    const sortOrder = order === "desc" ? -1 : 1;
+
+    const sortCriteria = {};
+    sortCriteria[sortby] = sortOrder;
+
+    const allProducts = await Product.find()
+    .sort(sortCriteria)
+    .skip(skip)
+    .limit(limit)
+
+    const products = await allProducts.exec()
+
+    res.status(StatusCodes.OK).json(products)
+
+
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR)
+  }
+}

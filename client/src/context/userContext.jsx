@@ -34,7 +34,7 @@ const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, setUser, logout, sortedProducts, sortAlphabeticallyAZ, sortAlphabeticallyZA, sortByPriceLowToHigh, sortByPriceHighToLow }}>
+    <UserContext.Provider value={{ user, setIsLoggedIn,setUser, isLoggedIn, logout, sortedProducts, sortAlphabeticallyAZ, sortAlphabeticallyZA, sortByPriceLowToHigh, sortByPriceHighToLow }}>
       {children}
     </UserContext.Provider>
   );
