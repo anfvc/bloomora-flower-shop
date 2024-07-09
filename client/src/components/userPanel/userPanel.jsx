@@ -8,7 +8,6 @@ import { FaClipboardList } from "react-icons/fa6";
 import { FaFileInvoice } from "react-icons/fa";
 import { PiListHeartFill } from "react-icons/pi";
 
-
 function UserPanel() {
   const { user } = useContext(UserContext);
   const [isEditing, setIsEditing] = useState(false);
@@ -32,15 +31,15 @@ function UserPanel() {
         <button className="sidebarButton">
           <p>My Orders</p>
           <FaClipboardList />
-          </button>
+        </button>
         <button className="sidebarButton">
           <p>My Invoices</p>
           <FaFileInvoice />
-          </button>
+        </button>
         <button className="sidebarButton">
           <p>Wishlist</p>
           <PiListHeartFill />
-          </button>
+        </button>
       </div>
       <div className="userDetails">
         {isEditing ? (
