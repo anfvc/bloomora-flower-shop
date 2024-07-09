@@ -1,0 +1,133 @@
+.ourRootsContainer {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 12rem;
+  background-color: rgb(248, 248, 248);
+  position: relative;
+}
+
+.ourRootsContainer .backgroundImage {
+  width: 100%;
+  height: 45rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url(../../images/ourRootsImage/image3.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+}
+
+.ourRootsContainer .backgroundImage::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.ourRootsContainer .header {
+  z-index: 111;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20rem;
+}
+
+.ourRootsContainer .header h1 {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: white;
+}
+
+.ourRootsImage {
+  z-index: 1111;
+  padding-top: 10rem;
+}
+
+.ourRootsImage img {
+  width: 70rem;
+  border-radius: 5px;
+}
+
+.roots {
+  width: 100%;
+  height: 80rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10rem;
+  margin-top: 10rem;
+}
+
+.roots .index {
+  width: 80rem;
+  padding: 10px;
+}
+
+.roots .index p {
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: .6px;
+  line-height: 2.6rem;
+  text-align: center;
+}
+
+.roots .index a {
+  color: rgba(0, 0, 0, 0.7);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+
+.roots .index a:hover {
+text-decoration: underline;
+}
+
+.rootImages {
+  width: 80rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.rootImages img {
+  width: 36rem;
+  height: 60rem;
+  border-radius: 3px;
+  opacity: 0;
+  box-shadow: 6px 7px 5px 1px rgba(0, 0, 0, 0.299);
+  border-radius: 5px;
+  transition: transform .8s ease-out, opacity .8s ease-out;
+}
+
+.rootImages .image1 {
+  transform: translateY(50%);
+  opacity: 0;
+}
+
+.rootImages .image2 {
+  transform: translateY(-50%);
+  opacity: 0;
+}
+
+.rootImages .visible1 {
+  opacity: 1;
+  transform: translateY(-10%);
+}
+
+.rootImages .visible2 {
+  opacity: 1; 
+  transform: translateY(10%);
+}
