@@ -98,7 +98,7 @@ function Navbar() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/about" className={scrolled ? "scrolled" : ""}>
+                <NavLink to="/ourroots" className={scrolled ? "scrolled" : ""}>
                   our roots
                 </NavLink>
               </li>
@@ -190,7 +190,7 @@ function Navbar() {
               </li>
               <li>
                 <NavLink
-                  to="/about"
+                  to="/ourroots"
                   onClick={toggleMenu}
                   className={scrolled ? "scrolled" : ""}
                 >
