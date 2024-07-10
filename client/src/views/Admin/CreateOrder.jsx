@@ -36,6 +36,8 @@ function CreateProduct() {
     formData.append("subcategory", data.subcategory);
     formData.append("description", data.description);
     formData.append("image", image);
+    // formData.append("file", file);
+    // formData.append("upload_preset", "bloomora");
 
     try {
       const settings = {
@@ -51,7 +53,7 @@ function CreateProduct() {
       if (response.ok) {
         const newData = await response.json();
         console.log(newData);
-        alert("Product Added Successfully!");
+        alert(newData.msg);
         setData({
           price: 0,
           name: "",
