@@ -61,7 +61,7 @@ function Shop() {
         {list.map((item, index) => (
           <div className="productsBox" key={item._id}>
             <div className="imageBox">
-              <img src={`http://localhost:5100/images/${item.image}`} alt="" width={100} height={100}/>
+              <img src={item.image} alt="" width={100} height={100}/>
               <button className="addToCart">add to cart</button>
               <div
                 className="likeButton"
