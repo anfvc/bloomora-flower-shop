@@ -6,6 +6,10 @@ export const UserContext = createContext();
 const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const [user, setUser] = useState({});
+  const [filter, setFilter] = useState({
+    sortby: "name",
+    order: "asc"
+  })
 
   const [sortedProducts, setSortedProducts] = useState(products);
 
@@ -42,6 +46,11 @@ const UserProvider = ({ children }) => {
     setIsLoggedIn(false); 
   };
 
+
+  function handleFilter(e) {
+    setFilter({...filter, [e.target.name]: e.target.value})
+  }
+
   return (
 
     <UserContext.Provider
@@ -56,6 +65,9 @@ const UserProvider = ({ children }) => {
         sortAlphabeticallyZA,
         sortByPriceLowToHigh,
         sortByPriceHighToLow,
+        filter,
+        setFilter,
+        handleFilter
       }}
     >
 

@@ -1,20 +1,16 @@
 import React, { useState, useContext } from "react";
 import "./SortFilter.css";
 import { RiArrowDownWideLine } from "react-icons/ri";
+import { UserContext } from "../../context/userContext";
 // import { UserContext } from "../../context/userContext";
 
 function SortFilter() {
   // const { sortAlphabeticallyAZ, sortAlphabeticallyZA, sortByPriceLowToHigh, sortByPriceHighToLow } = useContext(UserContext);
   const [isSortOpen, setIsSortOpen] = useState(false);
-  const [filter, setFilter] = useState({
-    sortby: "name",
-    order: "asc"
-  });
+ const {handleFilter} = useContext(UserContext)
 
 
-  function handleFilter(e) {
-    setFilter({...filter, [e.target.name]: e.target.value})
-  }
+  
 
   function handleSort() {
     setIsSortOpen(!isSortOpen);

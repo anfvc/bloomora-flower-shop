@@ -60,10 +60,19 @@ export async function updateProduct(req, res) {
 }
 
 export async function showAllProducts(req, res, next) {
-  const allProducts = await Product.find();
+  const {page} = req.query;
+  const limit = 10;
+  const skip = (page - 1) * limit;
+  const allProducts = await Product.find()
+  .skip(skip)
+  .limit(limit);
+
 
   res.status(StatusCodes.OK).json(allProducts);
 }
+
+
+
 
 export const showAllFilteredProducts = async (req, res, next) => {
   try {
@@ -72,7 +81,7 @@ export const showAllFilteredProducts = async (req, res, next) => {
     const limit = 8;
     const skip = (page - 1) * limit;
 
-    const sortOrder = order === "desc" ? -1 : 1;
+    const sortOrder = order === "asc" ? 1 : -1;
 
     const sortCriteria = {};
     sortCriteria[sortby] = sortOrder;
@@ -84,7 +93,14 @@ export const showAllFilteredProducts = async (req, res, next) => {
 
     const products = await allProducts.exec();
 
-    res.status(StatusCodes.OK).json(products);
+    const totalProd = await Product.countDocuments()
+
+
+    res.status(StatusCodes.OK).json({
+      products: products,
+      currentPage: page,
+      totalPages: totalProd/limit
+      });
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR);
   }
