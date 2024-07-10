@@ -1,38 +1,45 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./SortFilter.css";
 import { RiArrowDownWideLine } from "react-icons/ri";
-// import { UserContext } from "../../context/userContext";
+import { UserContext } from "../../context/userContext";
 
 function SortFilter() {
-  // const { sortAlphabeticallyAZ, sortAlphabeticallyZA, sortByPriceLowToHigh, sortByPriceHighToLow } = useContext(UserContext);
+  const { sortAlphabeticallyAZ, sortAlphabeticallyZA, sortByPriceLowToHigh, sortByPriceHighToLow, resetSorting } = useContext(UserContext);
   const [isSortOpen, setIsSortOpen] = useState(false);
-  const [filter, setFilter] = useState({
-    sortby: "name",
-    order: "asc"
-  });
 
-
-  function handleFilter(e) {
-    setFilter({...filter, [e.target.name]: e.target.value})
-  }
-
-  function handleSort() {
-    setIsSortOpen(!isSortOpen);
+  function handleSortChange(sortOption) {
+    switch(sortOption) {
+      case 'az':
+        sortAlphabeticallyAZ();
+        break;
+      case 'za':
+        sortAlphabeticallyZA();
+        break;
+      case 'priceLowToHigh':
+        sortByPriceLowToHigh();
+        break;
+      case 'priceHighToLow':
+        sortByPriceHighToLow();
+        break;
+      default:
+        resetSorting();
+    }
+    setIsSortOpen(false);
   }
 
   return (
     <div className="sort-filter">
-      <div className="sortButton" onClick={handleSort}>
+      <div className="sortButton" onClick={() => setIsSortOpen(!isSortOpen)}>
         <p>sort</p>
         <RiArrowDownWideLine className="sortIcon" />
       </div>
       {isSortOpen && (
         <div className="sort">
           <ul>
-            <li onClick={/* sortAlphabeticallyAZ */handleFilter}>alphabetically, a-z</li>
-            <li onClick={/* sortAlphabeticallyZA */handleFilter}>alphabetically, z-a</li>
-            <li onClick={/* sortByPriceHighToLow */handleFilter}>price, high to low</li>
-            <li onClick={/* sortByPriceLowToHigh */handleFilter}>price, low to high</li>
+            <li onClick={() => handleSortChange('az')}>alphabetically, a-z</li>
+            <li onClick={() => handleSortChange('za')}>alphabetically, z-a</li>
+            <li onClick={() => handleSortChange('priceHighToLow')}>price, high to low</li>
+            <li onClick={() => handleSortChange('priceLowToHigh')}>price, low to high</li>
           </ul>
         </div>
       )}

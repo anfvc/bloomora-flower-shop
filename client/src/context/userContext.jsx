@@ -1,13 +1,31 @@
-import React, { useState, createContext } from "react";
-import { products } from "../data.js";
+import React, { useState, createContext, useEffect } from "react";
 
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const [user, setUser] = useState({});
+  const [sortedProducts, setSortedProducts] = useState([]);
+  const [originalProducts, setOriginalProducts] = useState([]); // Original products to reset sorting
 
-  const [sortedProducts, setSortedProducts] = useState(products);
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const response = await fetch(`http://localhost:5100/api/product/show`);
+        if (response.ok) {
+          const data = await response.json();
+          setSortedProducts(data);
+          setOriginalProducts(data);
+        } else {
+          const { error } = await response.json();
+          throw new Error(error.message);
+        }
+      } catch (error) {
+        alert(error.message);
+      }
+    }
+    fetchProducts();
+  }, []);
 
   const sortAlphabeticallyAZ = () => {
     const sorted = [...sortedProducts].sort((a, b) =>
@@ -37,13 +55,16 @@ const UserProvider = ({ children }) => {
     setSortedProducts(sorted);
   };
 
+  const resetSorting = () => {
+    setSortedProducts(originalProducts);
+  };
+
   const logout = () => {
     setUser(null);
     setIsLoggedIn(false); 
   };
 
   return (
-
     <UserContext.Provider
       value={{
         user,
@@ -56,9 +77,9 @@ const UserProvider = ({ children }) => {
         sortAlphabeticallyZA,
         sortByPriceLowToHigh,
         sortByPriceHighToLow,
+        resetSorting
       }}
     >
-
       {children}
     </UserContext.Provider>
   );
