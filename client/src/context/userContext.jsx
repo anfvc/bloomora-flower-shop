@@ -7,6 +7,7 @@ const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [sortedProducts, setSortedProducts] = useState([]);
   const [originalProducts, setOriginalProducts] = useState([]); // Original products to reset sorting
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -77,7 +78,9 @@ const UserProvider = ({ children }) => {
         sortAlphabeticallyZA,
         sortByPriceLowToHigh,
         sortByPriceHighToLow,
-        resetSorting
+        resetSorting,
+        setIsMenuOpen,
+        isMenuOpen
       }}
     >
       {children}
