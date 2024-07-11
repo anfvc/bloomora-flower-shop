@@ -17,12 +17,14 @@ import Register from "../Register/Register";
 import { UserContext } from "../../context/userContext";
 
 function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
   const [scrolled, setScrolled] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const { isLoggedIn, user, logout } = useContext(UserContext);
   const navigate = useNavigate(); 
+
+  const { isMenuOpen,setIsMenuOpen } = useContext(UserContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,7 +84,6 @@ function Navbar() {
             />
           </NavLink>
         </div>
-        {/* Hello, user */}
 
         <div className="links-icons">
           <div className="links">
@@ -98,8 +99,8 @@ function Navbar() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/about" className={scrolled ? "scrolled" : ""}>
-                  our roots
+                <NavLink to="/ourroots" className={scrolled ? "scrolled" : ""}>
+                  Our Roots
                 </NavLink>
               </li>
               <li>
@@ -190,11 +191,11 @@ function Navbar() {
               </li>
               <li>
                 <NavLink
-                  to="/about"
+                  to="/ourroots"
                   onClick={toggleMenu}
                   className={scrolled ? "scrolled" : ""}
                 >
-                  our roots
+                  Our Roots
                 </NavLink>
               </li>
               <li>
