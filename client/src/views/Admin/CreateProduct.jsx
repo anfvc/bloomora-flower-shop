@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import "./Admin.css";
+import "./CreateProduct.css";
 import {
   FaClipboardList,
   FaFileInvoice,
@@ -36,8 +36,6 @@ function CreateProduct() {
     formData.append("subcategory", data.subcategory);
     formData.append("description", data.description);
     formData.append("image", image);
-    // formData.append("file", file);
-    // formData.append("upload_preset", "bloomora");
 
     try {
       const settings = {
@@ -145,11 +143,11 @@ function CreateProduct() {
                 value={data.category}
                 onChange={handleChange}
               >
-                <option value="" disabled selected>
+                <option value="" disabled>
                   Select your Option
                 </option>
                 <option value="Decor">Decor</option>
-                <option value="Eustoma">Rolls</option>
+                <option value="Eustoma">Eustoma</option>
                 <option value="Flowers on Ocassion">Flowers on Ocassion</option>
                 <option value="Gifts">Gifts</option>
                 <option value="House Plants">House Plants</option>
@@ -164,7 +162,7 @@ function CreateProduct() {
                 value={data.subcategory}
                 onChange={handleChange}
               >
-                <option value="" disabled selected>
+                <option value="" disabled>
                   Select your Option
                 </option>
                 <option value="Artificial">Artificial</option>

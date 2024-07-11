@@ -51,7 +51,6 @@ function Shop() {
     setHoveredIndex(-1);
   }
 
-  console.log(list);
 
   return (
     <div className="shopContainer">

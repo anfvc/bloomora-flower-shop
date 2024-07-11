@@ -20,7 +20,7 @@ export async function createProduct(req, res) {
 
     fs.unlinkSync(req.file.path);
 
-    console.log(result);
+    // console.log(result);
 
     const newProduct = await Product.create({
       name,
