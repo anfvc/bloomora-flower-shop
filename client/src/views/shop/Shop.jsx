@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import "./Shop.css";
 import { UserContext } from "../../context/userContext.jsx";
 import SortFilter from "../../components/sort-filter/SortFilter.jsx";
@@ -6,49 +6,29 @@ import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
 
 function Shop() {
-  const { sortedProducts, filter } = useContext(UserContext);
+  const { sortedProducts, originalProducts } = useContext(UserContext);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
 
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
-  const [allProd, setAllProd] = useState([])
-  const [totalPages, setTotalPages] = useState(0)
+  const [allProd, setAllProd] = useState([]);
+  const [totalPages, setTotalPages] = useState(0);
   const [likedItems, setLikedItems] = useState(
-    new Array(/* sortedProducts */list.length).fill(false)
+    new Array(sortedProducts.length).fill(false)
   );
-
-  useEffect(()=>{
-
-    async function getAllProducts(){
-      try {
-        const response = await fetch(`http://localhost:5100/api/product/show`);
-    
-        if (response.ok) {
-          const data = await response.json();
-          setAllProd(data);
-          console.log(data.length);
-        } else {
-          const { error } = await response.json();
-          throw new Error(error.message);
-        }
-      } catch (error) {
-        alert(error.message);
-      }
-    }
-    
-    getAllProducts()
-  },[])
-  
 
   useEffect(() => {
     async function showAllProducts() {
       try {
-        const response = await fetch(`http://localhost:5100/api/product/show?page=${page}&sortby=${filter.sortby}&order=${filter.order}`);
+        const response = await fetch(
+          `http://localhost:5100/api/product/show?page=${page}`
+        );
 
         if (response.ok) {
           const data = await response.json();
           // console.log(data);
           setList(data);
+          console.log(originalProducts.length);
           // console.log(data);
         } else {
           const { error } = await response.json();
@@ -60,9 +40,6 @@ function Shop() {
     }
     showAllProducts();
   }, [page]);
-
-
-  const [likedItems, setLikedItems] = useState(new Array(sortedProducts.length).fill(false));
 
 
   function handleLike(index) {
@@ -79,14 +56,13 @@ function Shop() {
     setHoveredIndex(-1);
   }
 
-  
   function handleBtnPrev() {
     setPage(page - 1);
     if (page <= 1) {
       setPage(1);
     }
   }
-  
+
   function handleBtnNext() {
     if (list.length < 10) {
       return;
@@ -94,7 +70,7 @@ function Shop() {
     setPage(page + 1);
   }
 
-//console.log(list);
+  //console.log(list);
 
   return (
     <div className="shopContainer">
@@ -129,15 +105,19 @@ function Shop() {
         ))}
       </div>
       <div>
-      <label>
-        current page: {page} of {allProd.length}
-        <input
-          type="button"
-          value="to the previous page"
-          onClick={handleBtnPrev}
-        />
-        <input type="button" value="to the next page" onClick={handleBtnNext} />
-      </label>
+        <label>
+          current page: {page} of {allProd.length}
+          <input
+            type="button"
+            value="to the previous page"
+            onClick={handleBtnPrev}
+          />
+          <input
+            type="button"
+            value="to the next page"
+            onClick={handleBtnNext}
+          />
+        </label>
       </div>
     </div>
   );

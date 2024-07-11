@@ -15,23 +15,27 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      validate: {
-        validator: function (value) {
-          return validator.isEmail(value);
-        },
-        message: "Incorrect email format. Please check.",
-      },
     },
     password: {
       type: String,
       required: true,
-      validate: {
-        validator: function (value) {
-          return validator.isStrongPassword(value, { minLength: 5 });
+    },
+    cart: {
+      type: [
+        {
+          productId: {
+            type: Schema.Types.ObjectId,
+            ref: "Product",
+            required: true,
+          },
+          quantity: {
+            type: Number,
+            required: true,
+            default: 1,
+          },
         },
-        message:
-          "Password must have minimum 5 characters, 1 lowercase character, 1 uppercase character, 1 number and 1 symbol.",
-      },
+      ],
+      default: [],
     },
     role: {
       type: String,
@@ -42,6 +46,7 @@ const userSchema = new Schema(
   },
   {
     versionKey: false,
+    timestamps: true
   }
 );
 

@@ -3,7 +3,7 @@ import React, { useState, createContext, useEffect } from "react";
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({});
 
   const [sortedProducts, setSortedProducts] = useState([]);
@@ -64,13 +64,13 @@ const UserProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null);
-    setIsLoggedIn(false); 
+    setIsLoggedIn(false);
   };
 
 
-  function handleFilter(e) {
-    setFilter({...filter, [e.target.name]: e.target.value})
-  }
+  // function handleFilter(e) {
+  //   setFilter({...filter, [e.target.name]: e.target.value})
+  // }
 
   return (
     <UserContext.Provider
@@ -87,8 +87,8 @@ const UserProvider = ({ children }) => {
         sortByPriceHighToLow,
         resetSorting,
         setIsMenuOpen,
-        isMenuOpen
-
+        isMenuOpen,
+        originalProducts
       }}
     >
       {children}

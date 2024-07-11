@@ -60,19 +60,13 @@ export async function updateProduct(req, res) {
 }
 
 export async function showAllProducts(req, res, next) {
-  const {page} = req.query;
+  const { page } = req.query;
   const limit = 10;
   const skip = (page - 1) * limit;
-  const allProducts = await Product.find()
-  .skip(skip)
-  .limit(limit);
-
+  const allProducts = await Product.find().skip(skip).limit(limit);
 
   res.status(StatusCodes.OK).json(allProducts);
 }
-
-
-
 
 export const showAllFilteredProducts = async (req, res, next) => {
   try {
@@ -93,15 +87,16 @@ export const showAllFilteredProducts = async (req, res, next) => {
 
     const products = await allProducts.exec();
 
-    const totalProd = await Product.countDocuments()
-
+    const totalProd = await Product.countDocuments();
 
     res.status(StatusCodes.OK).json({
       products: products,
       currentPage: page,
-      totalPages: totalProd/limit
-      });
+      totalPages: totalProd / limit,
+    });
   } catch (error) {
-    res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+    res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({ message: "Server Error" });
   }
 };
