@@ -6,10 +6,10 @@ import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
 
 function Shop() {
-  const { sortedProducts, originalProducts, setOriginalProducts } = useContext(UserContext);
+  const { sortedProducts, list, setList} = useContext(UserContext);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
 
-  const [list, setList] = useState([]);
+  // const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   // const [allProd, setAllProd] = useState([])
   // const [totalPages, setTotalPages] = useState(0)
@@ -45,6 +45,8 @@ function Shop() {
 
 
 
+
+
   function handleLike(index) {
     const newLikedItems = [...likedItems];
     newLikedItems[index] = !newLikedItems[index];
@@ -74,14 +76,16 @@ function Shop() {
     setPage(page + 1);
   }
 
-//console.log(list);
+const productLength=(sortedProducts.length/10).toFixed(0)
+
+
 
   return (
     <div className="shopContainer">
       <div className="topBackgroundImage"></div>
       <SortFilter />
       <div className="shopProducts">
-        {sortedProducts.map((item, index) => (
+        {list.map((item, index) => (
           <div className="productsBox" key={item._id}>
             <div className="imageBox">
               <img src={item.image} alt="" width={100} height={100} />
@@ -108,9 +112,9 @@ function Shop() {
           </div>
         ))}
       </div>
-      <div>
+      <div className="pagebtn">
       <label>
-        current page: {page} of {originalProducts.length}
+        current page: {page} of {productLength}
         <input
           type="button"
           value="to the previous page"
