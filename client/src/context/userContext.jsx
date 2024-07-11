@@ -5,9 +5,11 @@ export const UserContext = createContext();
 const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const [user, setUser] = useState({});
+
   const [sortedProducts, setSortedProducts] = useState([]);
   const [originalProducts, setOriginalProducts] = useState([]); // Original products to reset sorting
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
 
   useEffect(() => {
     async function fetchProducts() {
@@ -65,6 +67,11 @@ const UserProvider = ({ children }) => {
     setIsLoggedIn(false); 
   };
 
+
+  function handleFilter(e) {
+    setFilter({...filter, [e.target.name]: e.target.value})
+  }
+
   return (
     <UserContext.Provider
       value={{
@@ -81,6 +88,7 @@ const UserProvider = ({ children }) => {
         resetSorting,
         setIsMenuOpen,
         isMenuOpen
+
       }}
     >
       {children}

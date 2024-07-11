@@ -4,6 +4,7 @@ import { RiArrowDownWideLine } from "react-icons/ri";
 import { UserContext } from "../../context/userContext";
 import { IoClose } from "react-icons/io5";
 
+
 function SortFilter() {
   const { sortAlphabeticallyAZ, sortAlphabeticallyZA, sortByPriceLowToHigh, sortByPriceHighToLow, resetSorting, setIsMenuOpen } = useContext(UserContext);
   const [isSortOpen, setIsSortOpen] = useState(false);
@@ -29,6 +30,7 @@ function SortFilter() {
     }
     setIsSortOpen(false);
   }
+
 
   const handlePriceChange = (e) => {
     const { value, name } = e.target;
