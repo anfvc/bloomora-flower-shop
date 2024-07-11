@@ -6,7 +6,7 @@ import Shop from "./views/shop/Shop.jsx";
 import OurRoots from "./views/OurRoots/OurRoots.jsx";
 import Blog from "./views/blog/Blog.jsx";
 import Contact from "./views/contact/Contact.jsx";
-import CreateProduct from "./views/Admin/CreateOrder.jsx";
+import CreateProduct from "./views/Admin/CreateProduct.jsx";
 import UserPanel from "./components/userPanel/userPanel.jsx";
 
 

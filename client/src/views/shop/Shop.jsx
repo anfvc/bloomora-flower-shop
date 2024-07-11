@@ -13,10 +13,6 @@ function Shop() {
   const [page, setPage] = useState(1);
   const [allProd, setAllProd] = useState([])
   const [totalPages, setTotalPages] = useState(0)
-  
-  
-  
- 
   const [likedItems, setLikedItems] = useState(
     new Array(/* sortedProducts */list.length).fill(false)
   );
@@ -66,10 +62,6 @@ function Shop() {
   }, [page]);
 
 
-
-
-
-
   const [likedItems, setLikedItems] = useState(new Array(sortedProducts.length).fill(false));
 
 
@@ -87,8 +79,7 @@ function Shop() {
     setHoveredIndex(-1);
   }
 
-
-  //console.log(list);
+  
   function handleBtnPrev() {
     setPage(page - 1);
     if (page <= 1) {
@@ -103,7 +94,7 @@ function Shop() {
     setPage(page + 1);
   }
 
-
+//console.log(list);
 
   return (
     <div className="shopContainer">
