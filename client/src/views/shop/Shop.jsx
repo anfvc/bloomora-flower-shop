@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import "./Shop.css";
 import { UserContext } from "../../context/userContext.jsx";
 import SortFilter from "../../components/sort-filter/SortFilter.jsx";
@@ -8,6 +8,7 @@ import { IoMdHeart } from "react-icons/io";
 function Shop() {
   const { sortedProducts, filter } = useContext(UserContext);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
+
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
   const [allProd, setAllProd] = useState([])
@@ -69,6 +70,9 @@ function Shop() {
 
 
 
+  const [likedItems, setLikedItems] = useState(new Array(sortedProducts.length).fill(false));
+
+
   function handleLike(index) {
     const newLikedItems = [...likedItems];
     newLikedItems[index] = !newLikedItems[index];
@@ -82,6 +86,7 @@ function Shop() {
   function handleMouseLeave() {
     setHoveredIndex(-1);
   }
+
 
   //console.log(list);
   function handleBtnPrev() {
@@ -99,19 +104,20 @@ function Shop() {
   }
 
 
+
   return (
     <div className="shopContainer">
       <div className="topBackgroundImage"></div>
       <SortFilter />
       <div className="shopProducts">
-        {list.map((item, index) => (
+        {sortedProducts.map((item, index) => (
           <div className="productsBox" key={item._id}>
             <div className="imageBox">
-              <img src={item.image} alt="" width={100} height={100}/>
+              <img src={item.image} alt="" width={100} height={100} />
               <button className="addToCart">add to cart</button>
               <div
                 className="likeButton"
-                onClick={() => handleLike(item._id)}
+                onClick={() => handleLike(index)}
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
               >
@@ -127,7 +133,6 @@ function Shop() {
             <div className="info">
               <p>~ {item.name} ~</p>
               <p>{item.price}€</p>
-              {/* <p>{item.description}</p> */}
             </div>
           </div>
         ))}
