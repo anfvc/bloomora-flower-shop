@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./Shop.css";
 import { UserContext } from "../../context/userContext.jsx";
 import SortFilter from "../../components/sort-filter/SortFilter.jsx";
@@ -6,50 +6,31 @@ import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
 
 function Shop() {
-  const { sortedProducts, filter } = useContext(UserContext);
+  const { sortedProducts, list, setList} = useContext(UserContext);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
 
-  const [list, setList] = useState([]);
+  // const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
-  const [allProd, setAllProd] = useState([])
-  const [totalPages, setTotalPages] = useState(0)
-  const [likedItems, setLikedItems] = useState(
-    new Array(/* sortedProducts */list.length).fill(false)
-  );
+  // const [allProd, setAllProd] = useState([])
+  // const [totalPages, setTotalPages] = useState(0)
+  // const [likedItems, setLikedItems] = useState(
+  //   new Array(/* sortedProducts */list.length).fill(false)
+  // );
+  const [likedItems, setLikedItems] = useState(new Array(sortedProducts.length).fill(false));
 
-  useEffect(()=>{
-
-    async function getAllProducts(){
-      try {
-        const response = await fetch(`http://localhost:5100/api/product/show`);
-    
-        if (response.ok) {
-          const data = await response.json();
-          setAllProd(data);
-          console.log(data.length);
-        } else {
-          const { error } = await response.json();
-          throw new Error(error.message);
-        }
-      } catch (error) {
-        alert(error.message);
-      }
-    }
-    
-    getAllProducts()
-  },[])
+  
   
 
   useEffect(() => {
     async function showAllProducts() {
       try {
-        const response = await fetch(`http://localhost:5100/api/product/show?page=${page}&sortby=${filter.sortby}&order=${filter.order}`);
+        const response = await fetch(`http://localhost:5100/api/product/show?page=${page}`);
 
         if (response.ok) {
           const data = await response.json();
-          // console.log(data);
+        
           setList(data);
-          // console.log(data);
+          console.log(data);
         } else {
           const { error } = await response.json();
           throw new Error(error.message);
@@ -62,7 +43,8 @@ function Shop() {
   }, [page]);
 
 
-  const [likedItems, setLikedItems] = useState(new Array(sortedProducts.length).fill(false));
+
+
 
 
   function handleLike(index) {
@@ -94,14 +76,16 @@ function Shop() {
     setPage(page + 1);
   }
 
-//console.log(list);
+const productLength=(sortedProducts.length/10).toFixed(0)
+
+
 
   return (
     <div className="shopContainer">
       <div className="topBackgroundImage"></div>
       <SortFilter />
       <div className="shopProducts">
-        {sortedProducts.map((item, index) => (
+        {list.map((item, index) => (
           <div className="productsBox" key={item._id}>
             <div className="imageBox">
               <img src={item.image} alt="" width={100} height={100} />
@@ -128,9 +112,9 @@ function Shop() {
           </div>
         ))}
       </div>
-      <div>
+      <div className="pagebtn">
       <label>
-        current page: {page} of {allProd.length}
+        current page: {page} of {productLength}
         <input
           type="button"
           value="to the previous page"
