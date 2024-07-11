@@ -68,9 +68,7 @@ const UserProvider = ({ children }) => {
   };
 
 
-  function handleFilter(e) {
-    setFilter({...filter, [e.target.name]: e.target.value})
-  }
+ 
 
   return (
     <UserContext.Provider
@@ -87,7 +85,9 @@ const UserProvider = ({ children }) => {
         sortByPriceHighToLow,
         resetSorting,
         setIsMenuOpen,
-        isMenuOpen
+        isMenuOpen,
+        originalProducts,
+        setOriginalProducts
 
       }}
     >

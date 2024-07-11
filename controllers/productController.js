@@ -93,14 +93,11 @@ export const showAllFilteredProducts = async (req, res, next) => {
 
     const products = await allProducts.exec();
 
-    const totalProd = await Product.countDocuments()
+    // const totalProd = await Product.countDocuments()
 
 
     res.status(StatusCodes.OK).json({
-      products: products,
-      currentPage: page,
-      totalPages: totalProd/limit
-      });
+      products: products});
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR);
   }
