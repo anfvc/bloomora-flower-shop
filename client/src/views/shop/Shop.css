@@ -11,6 +11,7 @@
   justify-content: space-evenly;
   gap: 3rem;
   padding-top: 5rem;
+ 
 }
 
 .shopContainer .productsBox {
@@ -59,7 +60,7 @@
   right: 3rem;
   font-size: 2.5rem;
   cursor: pointer;
-  z-index: 22;
+  z-index: 1;
 }
 
 .shopContainer .productsBox .imageBox .addToCart {
@@ -67,15 +68,15 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 15rem;
+  width: 14rem;
   height: 3.5rem;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: .5px;
   text-transform: uppercase;
   border-radius: 3px;
   border: none;
-  z-index: 2;
+  z-index: 1;
   border: none;
   background-color: transparent;
   color: white;

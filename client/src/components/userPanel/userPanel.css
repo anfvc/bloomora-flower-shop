@@ -29,7 +29,7 @@
   align-items: center;
   padding: 20px;
   padding-top: 5rem;
-  z-index: 333;
+  z-index: 1;
   position: sticky;
   top: 12rem;
   height: calc(100vh - 12rem);
@@ -108,7 +108,7 @@
   flex-direction: column;
   flex-grow: 1;
   background-color: white;
-  z-index: 333;
+  z-index: 1;
   border-top: 1px solid #0c6409;
   border-right: 1px solid #0c6409;
   border-bottom: 1px solid #0c6409;
