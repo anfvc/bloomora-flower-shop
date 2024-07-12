@@ -9,12 +9,13 @@ const UserProvider = ({ children }) => {
   const [sortedProducts, setSortedProducts] = useState([]);
   const [originalProducts, setOriginalProducts] = useState([]); // Original products to reset sorting
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [list, setList] = useState([]);
 
 
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const response = await fetch(`http://localhost:5100/api/product/show`);
+        const response = await fetch(`http://localhost:5100/api/product/show/all`);
         if (response.ok) {
           const data = await response.json();
           setSortedProducts(data);
@@ -67,11 +68,6 @@ const UserProvider = ({ children }) => {
     setIsLoggedIn(false);
   };
 
-
-  // function handleFilter(e) {
-  //   setFilter({...filter, [e.target.name]: e.target.value})
-  // }
-
   return (
     <UserContext.Provider
       value={{
@@ -88,7 +84,8 @@ const UserProvider = ({ children }) => {
         resetSorting,
         setIsMenuOpen,
         isMenuOpen,
-        originalProducts
+        setSortedProducts
+        
       }}
     >
       {children}

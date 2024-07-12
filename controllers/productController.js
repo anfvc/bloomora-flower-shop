@@ -59,8 +59,8 @@ export async function updateProduct(req, res) {
   console.log(`${updatedProduct.name} has been updated.`);
 }
 
-export async function showAllProducts(req, res, next) {
-  const { page } = req.query;
+export async function showAllProductsOnPage(req, res, next) {
+  const {page} = req.query;
   const limit = 10;
   const skip = (page - 1) * limit;
   const allProducts = await Product.find().skip(skip).limit(limit);
@@ -68,35 +68,41 @@ export async function showAllProducts(req, res, next) {
   res.status(StatusCodes.OK).json(allProducts);
 }
 
-export const showAllFilteredProducts = async (req, res, next) => {
-  try {
-    const { page = 1, sortby = "name", order = "asc" } = req.query;
-
-    const limit = 8;
-    const skip = (page - 1) * limit;
-
-    const sortOrder = order === "asc" ? 1 : -1;
-
-    const sortCriteria = {};
-    sortCriteria[sortby] = sortOrder;
-
+export async function showAllProducts(req, res, next) {
     const allProducts = await Product.find()
-      .sort(sortCriteria)
-      .skip(skip)
-      .limit(limit);
+ 
+ res.status(StatusCodes.OK).json(allProducts);
+}
 
-    const products = await allProducts.exec();
 
-    const totalProd = await Product.countDocuments();
 
-    res.status(StatusCodes.OK).json({
-      products: products,
-      currentPage: page,
-      totalPages: totalProd / limit,
-    });
-  } catch (error) {
-    res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ message: "Server Error" });
-  }
-};
+// export const showAllFilteredProducts = async (req, res, next) => {
+//   try {
+//     const { page = 1, sortby = "name", order = "asc" } = req.query;
+
+//     const limit = 8;
+//     const skip = (page - 1) * limit;
+
+//     const sortOrder = order === "asc" ? 1 : -1;
+
+//     const sortCriteria = {};
+//     sortCriteria[sortby] = sortOrder;
+
+//     const allProducts = await Product.find()
+//       .sort(sortCriteria)
+//       .skip(skip)
+//       .limit(limit);
+
+//     const products = await allProducts.exec();
+
+
+//     // const totalProd = await Product.countDocuments()
+
+
+//     res.status(StatusCodes.OK).json({
+//       products: products});
+//   } catch (error) {
+//     res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+//   }
+// };
+
