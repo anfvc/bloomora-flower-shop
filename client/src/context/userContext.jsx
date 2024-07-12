@@ -3,7 +3,7 @@ import React, { useState, createContext, useEffect } from "react";
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({});
 
   const [sortedProducts, setSortedProducts] = useState([]);
@@ -65,11 +65,8 @@ const UserProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null);
-    setIsLoggedIn(false); 
+    setIsLoggedIn(false);
   };
-
-
- 
 
   return (
     <UserContext.Provider

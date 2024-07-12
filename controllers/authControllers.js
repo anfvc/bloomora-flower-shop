@@ -18,7 +18,7 @@ export const login = async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
   const isValidUser =
     user && (await comparePassword(req.body.password, user.password));
-  if (!isValidUser) throw new UnauthenticatedError("invalid credentials");
+  if (!isValidUser) throw new UnauthenticatedError("Invalid credentials");
 
   const token = createJWT({ userId: user._id, role: user.role });
   // console.log(user);
@@ -34,8 +34,11 @@ export const login = async (req, res) => {
   res
     .status(StatusCodes.OK)
 
-    .json({ msg: `${user.email} has successfully logged in.`, id: user._id, firstName: user.firstName});
-
+    .json({
+      msg: `${user.email} has successfully logged in.`,
+      id: user._id,
+      firstName: user.firstName,
+    });
 };
 
 export const logout = (req, res) => {

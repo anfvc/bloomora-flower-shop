@@ -6,7 +6,7 @@ import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
 
 function Shop() {
-  const { sortedProducts, list, setList} = useContext(UserContext);
+const { sortedProducts, list, setList} = useContext(UserContext);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
 
   // const [list, setList] = useState([]);
@@ -21,11 +21,11 @@ function Shop() {
   
   
 
+
   useEffect(() => {
     async function showAllProducts() {
       try {
         const response = await fetch(`http://localhost:5100/api/product/show?page=${page}`);
-
         if (response.ok) {
           const data = await response.json();
         
@@ -47,6 +47,8 @@ function Shop() {
 
 
 
+
+
   function handleLike(index) {
     const newLikedItems = [...likedItems];
     newLikedItems[index] = !newLikedItems[index];
@@ -61,14 +63,13 @@ function Shop() {
     setHoveredIndex(-1);
   }
 
-  
   function handleBtnPrev() {
     setPage(page - 1);
     if (page <= 1) {
       setPage(1);
     }
   }
-  
+
   function handleBtnNext() {
     if (list.length < 10) {
       return;
@@ -77,6 +78,7 @@ function Shop() {
   }
 
 const productLength=(sortedProducts.length/10).toFixed(0)
+
 
 
 
