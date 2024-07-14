@@ -1,4 +1,37 @@
 .weddingGalleryContainer {
   width: 100%;
-  /* padding-top: 40rem; */
+  position: relative;
 }
+
+.weddingGalleryContainer .header {
+  position: absolute;
+  width: 100%;
+  position: absolute;
+  top: 30rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.weddingGalleryContainer .header::before {
+  content: "";
+  width: 20rem;
+  height: 0.1rem;
+  background-color: white;
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.weddingGalleryContainer h1 {
+  text-align: center;
+  font-family: "Merriweather", serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 2px;
+}
+
+

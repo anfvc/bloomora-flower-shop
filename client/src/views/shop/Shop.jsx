@@ -6,7 +6,7 @@ import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
 
 function Shop() {
-  const { sortedProducts, list, setList} = useContext(UserContext);
+  const { sortedProducts, list, setList } = useContext(UserContext);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
 
   // const [list, setList] = useState([]);
@@ -16,19 +16,20 @@ function Shop() {
   // const [likedItems, setLikedItems] = useState(
   //   new Array(/* sortedProducts */list.length).fill(false)
   // );
-  const [likedItems, setLikedItems] = useState(new Array(sortedProducts.length).fill(false));
-
-  
-  
+  const [likedItems, setLikedItems] = useState(
+    new Array(sortedProducts.length).fill(false)
+  );
 
   useEffect(() => {
     async function showAllProducts() {
       try {
-        const response = await fetch(`http://localhost:5100/api/product/show?page=${page}`);
+        const response = await fetch(
+          `http://localhost:5100/api/product/show?page=${page}`
+        );
 
         if (response.ok) {
           const data = await response.json();
-        
+
           setList(data);
           console.log(data);
         } else {
@@ -41,11 +42,6 @@ function Shop() {
     }
     showAllProducts();
   }, [page]);
-
-
-
-
-
 
   function handleLike(index) {
     const newLikedItems = [...likedItems];
@@ -61,14 +57,13 @@ function Shop() {
     setHoveredIndex(-1);
   }
 
-  
   function handleBtnPrev() {
     setPage(page - 1);
     if (page <= 1) {
       setPage(1);
     }
   }
-  
+
   function handleBtnNext() {
     if (list.length < 10) {
       return;
@@ -76,13 +71,14 @@ function Shop() {
     setPage(page + 1);
   }
 
-const productLength=(sortedProducts.length/10).toFixed(0)
-
-
+  const productLength = (sortedProducts.length / 10).toFixed(0);
 
   return (
     <div className="shopContainer">
       <div className="topBackgroundImage"></div>
+      <div className="header">
+        <h1>shop flowers & gifts</h1>
+      </div>
       <SortFilter />
       <div className="shopProducts">
         {list.map((item, index) => (
@@ -113,15 +109,19 @@ const productLength=(sortedProducts.length/10).toFixed(0)
         ))}
       </div>
       <div className="pagebtn">
-      <label>
-        current page: {page} of {productLength}
-        <input
-          type="button"
-          value="to the previous page"
-          onClick={handleBtnPrev}
-        />
-        <input type="button" value="to the next page" onClick={handleBtnNext} />
-      </label>
+        <label>
+          current page: {page} of {productLength}
+          <input
+            type="button"
+            value="to the previous page"
+            onClick={handleBtnPrev}
+          />
+          <input
+            type="button"
+            value="to the next page"
+            onClick={handleBtnNext}
+          />
+        </label>
       </div>
     </div>
   );

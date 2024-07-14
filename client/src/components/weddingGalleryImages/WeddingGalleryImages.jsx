@@ -65,6 +65,7 @@ function WeddingGalleryImages() {
           <div className="left1">
             <img src={image6} alt="" />
             <img src={image7} alt="" />
+            <img src={image33} alt="" />
           </div>
           <div className="left2">
             <img src={image8} alt="" />
@@ -84,6 +85,7 @@ function WeddingGalleryImages() {
           <div className="left1">
             <img src={image11} alt="" />
             <img src={image12} alt="" />
+            <img src={image28} alt="" />
           </div>
           <div className="left2">
             <img src={image13} alt="" />
@@ -103,6 +105,7 @@ function WeddingGalleryImages() {
           <div className="left1">
             <img src={image16} alt="" />
             <img src={image17} alt="" />
+            <img src={image28} alt="" />
           </div>
           <div className="left2">
             <img src={image18} alt="" />
@@ -128,7 +131,7 @@ function WeddingGalleryImages() {
             <img src={image23} alt="" />
             <img src={image24} alt="" />
             <img src={image8} alt="" />
-            {/* <img src={image6} alt="" /> */}
+            <img src={image6} alt="" />
           </div>
         </div>
 
@@ -150,6 +153,7 @@ function WeddingGalleryImages() {
           <div className="left2">
             <img src={image28} alt="" />
             <img src={image29} alt="" />
+            <img src={image11} alt="" />
           </div>
         </div>
 
