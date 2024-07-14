@@ -1,9 +1,12 @@
 import React from 'react'
 import "./Weddings&Events.css"
+import WeddingProcess from '../weddingProcess/WeddingProcess'
 
 function WeddingsEvents() {
   return (
-    <div>weddings & events</div>
+    <div className='weddings&EventsContainer'>
+      <WeddingProcess/>
+    </div>
   )
 }
 
