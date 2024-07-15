@@ -6,11 +6,20 @@ import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
 
 function Shop() {
-  const { sortedProducts, list, setList, filter } = useContext(UserContext);
+
+
+  const { sortedProducts, list, setList, filter} = useContext(UserContext);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
-
   const [page, setPage] = useState(1);
+  const [likedItems, setLikedItems, /*  filter*/] = useState(new Array(sortedProducts.length).fill(false));
 
+  const [newList, setNewList] = useState([])
+
+  // const [allProd, setAllProd] = useState([])
+  // const [totalPages, setTotalPages] = useState(0)
+  // const [likedItems, setLikedItems] = useState(
+  //   new Array(/* sortedProducts */list.length).fill(false)
+  // );
   const [likedItems, setLikedItems] = useState(
     new Array(sortedProducts.length).fill(false)
   );
@@ -78,6 +87,9 @@ function Shop() {
   return (
     <div className="shopContainer">
       <div className="topBackgroundImage"></div>
+      <div className="header">
+        <h1>shop flowers & gifts</h1>
+      </div>
       <SortFilter />
       <div className="shopProducts">
         {!!list.length &&

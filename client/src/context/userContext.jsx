@@ -11,6 +11,7 @@ const UserProvider = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [list, setList] = useState([]);
 
+
   const [filter, setFilter] = useState({
     // sortby: "name",
     // sortdir: "",
@@ -28,6 +29,7 @@ const UserProvider = ({ children }) => {
         let response;
         if (!filter.category) {
           response = await fetch(`http://localhost:5100/api/product/show/all`);
+
         } else
           response = await fetch(
             `http://localhost:5100/api/product/show/filtered/all?category=${filter.category}`
@@ -84,7 +86,7 @@ const UserProvider = ({ children }) => {
     setUser(null);
     setIsLoggedIn(false);
   };
-console.log("sortedProducts",sortedProducts)
+
   return (
     <UserContext.Provider
       value={{

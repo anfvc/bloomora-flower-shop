@@ -118,3 +118,4 @@ export const showFilteredProducts = async (req, res, next) => {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR);
   }
 };
+

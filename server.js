@@ -6,6 +6,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
 import productRouter from "./routes/productRouter.js";
+import cartRouter from "./routes/cartRouter.js"
 
 await connection();
 
@@ -17,6 +18,7 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRouter);
 app.use("/api/product", productRouter);
+app.use("/api/cart", cartRouter)
 app.use("/images", express.static("uploads"));
 
 app.use("*", (req, res) => {
