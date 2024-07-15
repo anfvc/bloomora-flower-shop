@@ -84,8 +84,9 @@ const UserProvider = ({ children }) => {
         resetSorting,
         setIsMenuOpen,
         isMenuOpen,
-        setSortedProducts
-        
+        setSortedProducts,
+        list,
+        setList
       }}
     >
       {children}
