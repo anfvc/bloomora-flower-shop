@@ -60,24 +60,19 @@ export async function updateProduct(req, res) {
 }
 
 export async function showAllProductsOnPage(req, res, next) {
-  const {page} = req.query;
+  const { page } = req.query;
   const limit = 10;
   const skip = (page - 1) * limit;
-  const allProducts = await Product.find()
-  .skip(skip)
-  .limit(limit);
-
+  const allProducts = await Product.find().skip(skip).limit(limit);
 
   res.status(StatusCodes.OK).json(allProducts);
 }
 
 export async function showAllProducts(req, res, next) {
-    const allProducts = await Product.find()
- 
- res.status(StatusCodes.OK).json(allProducts);
+  const allProducts = await Product.find();
+
+  res.status(StatusCodes.OK).json(allProducts);
 }
-
-
 
 // export const showAllFilteredProducts = async (req, res, next) => {
 //   try {
@@ -99,7 +94,6 @@ export async function showAllProducts(req, res, next) {
 //     const products = await allProducts.exec();
 
 //     // const totalProd = await Product.countDocuments()
-
 
 //     res.status(StatusCodes.OK).json({
 //       products: products});

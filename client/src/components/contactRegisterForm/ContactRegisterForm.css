@@ -1,0 +1,191 @@
+.contactRegisterFormContainer {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+
+.contactRegisterFormContainer form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 80rem;
+}
+
+.contactRegisterFormContainer form label {
+  font-size: 1.6rem;
+  letter-spacing: .6px;
+}
+
+.contactRegisterFormContainer input {
+  width: 39rem;
+  height: 4rem;
+  padding-left: 1rem;
+  border-radius: 3px;
+  border: 1px solid #698474;
+  /* outline: 1px solid #698474; */
+}
+
+.inputValidation {
+  font-size: 1.44rem;
+  color: rgb(105, 18, 18);
+}
+
+.contactRegisterFormContainer input::placeholder {
+  color: #698474;
+  letter-spacing: .5px;
+}
+
+.contactRegisterFormContainer form .firstName-lastName .firstName, .firstName-lastName .lastName {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  height: 9rem;
+}
+
+.contactRegisterFormContainer form .email-phone .email, .email-phone .phone {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+}
+
+.contactRegisterFormContainer form .firstName-lastName, .email-phone {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.contactRegisterFormContainer .subject {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+}
+
+.contactRegisterFormContainer .subject select {
+  width: 100%;
+  height: 3.5rem;
+  font-size: 1.4rem;
+  letter-spacing: .5px;
+  border-radius: 3px;
+  border: 1px solid #698474;
+  color: #698474;
+  padding-left: 1rem;
+}
+
+.contactRegisterFormContainer .subject select option {
+  border-radius: 3px;
+  font-size: 1.6rem;
+  color: #698474;
+}
+
+.contactRegisterFormContainer .message {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  width: 100%;
+}
+
+.contactRegisterFormContainer .message textarea {
+  resize: none;
+}
+
+.contactRegisterFormContainer form .submitButton {
+  width: 100%;
+}
+
+.contactRegisterFormContainer form .submitButton button {
+  width: 100%;
+  height: 4rem;
+  margin-top: 2rem;
+  font-size: 1.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  background-color: #698474;
+  color: white;
+  cursor: pointer;
+  position: relative;
+  transition: all .4s ease-in-out;
+}
+
+.contactRegisterFormContainer form .submitButton button:hover {
+  background-color: #043a1a;
+}
+
+@media (max-width: 912px) {
+  .contactRegisterFormContainer form {
+    width: 70rem;
+  }
+
+  .contactRegisterFormContainer input {
+    width: 34rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactRegisterFormContainer form {
+    width: 65rem;
+  }
+
+  .contactRegisterFormContainer input {
+    width: 31.5rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .contactRegisterFormContainer form {
+    width: 36rem;
+  }
+
+  .contactRegisterFormContainer form .firstName-lastName .firstName, .firstName-lastName .lastName {
+    height: 11.5rem;
+  }
+
+  .contactRegisterFormContainer input {
+    width: 17rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .contactRegisterFormContainer form {
+    width: 36rem;
+  }
+
+  .contactRegisterFormContainer form .firstName-lastName .firstName, .firstName-lastName .lastName {
+    height: 11rem;
+  }
+
+  .contactRegisterFormContainer input {
+    width: 17rem;
+  }
+}
+
+@media (max-width: 412px) {
+  .contactRegisterFormContainer form {
+    width: 36rem;
+  }
+
+  .contactRegisterFormContainer form .firstName-lastName .firstName, .firstName-lastName .lastName {
+    height: 11rem;
+  }
+
+  .contactRegisterFormContainer input {
+    width: 17rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .contactRegisterFormContainer form {
+    width: 36rem;
+  }
+
+  .contactRegisterFormContainer input {
+    width: 17rem;
+  }
+}
+

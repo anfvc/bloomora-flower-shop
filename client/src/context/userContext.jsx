@@ -3,13 +3,14 @@ import React, { useState, createContext, useEffect } from "react";
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({});
 
   const [sortedProducts, setSortedProducts] = useState([]);
   const [originalProducts, setOriginalProducts] = useState([]); // Original products to reset sorting
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [list, setList] = useState([]);
+
 
   const [filter, setFilter]= useState({
     // sortby: "name",
@@ -32,6 +33,14 @@ const UserProvider = ({ children }) => {
         }else
         response = await fetch(`http://localhost:5100/api/product/show/filtered/all`);
         
+
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        const response = await fetch(
+          `http://localhost:5100/api/product/show/all`
+        );
+
         if (response.ok) {
           const data = await response.json();
 
@@ -82,11 +91,9 @@ const UserProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null);
-    setIsLoggedIn(false); 
+    setIsLoggedIn(false);
   };
 
-  
- 
 
   return (
     <UserContext.Provider
@@ -110,6 +117,7 @@ const UserProvider = ({ children }) => {
         filter,
         setFilter,
         handleFilter
+        
       }}
     >
       {children}
