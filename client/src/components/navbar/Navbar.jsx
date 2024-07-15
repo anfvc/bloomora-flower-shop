@@ -179,7 +179,7 @@ function Navbar() {
                 )}
               </ul>
             </details>
-            <FiSearch className={`search ${scrolled ? "scrolled-icon" : ""}`} />
+            <NavLink to="/search"><FiSearch className={`search ${scrolled ? "scrolled-icon" : ""}`} /></NavLink>
             <PiShoppingBag
               className={`cart ${scrolled ? "scrolled-icon" : ""}`}
             />
