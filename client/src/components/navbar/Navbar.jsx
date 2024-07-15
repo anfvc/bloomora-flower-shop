@@ -27,6 +27,29 @@ function Navbar() {
   const { isMenuOpen,setIsMenuOpen } = useContext(UserContext);
 
   useEffect(() => {
+    const userIcon = document.querySelector('.user-cart-search details summary');
+    userIcon.addEventListener('mouseover', openDetails);
+    userIcon.addEventListener('mouseout', closeDetails);
+
+    return () => {
+      userIcon.removeEventListener('mouseover', openDetails);
+      userIcon.removeEventListener('mouseout', closeDetails);
+    };
+  }, []);
+
+  const openDetails = () => {
+    document.querySelector('.user-cart-search details').setAttribute('open', true);
+  };
+
+  const closeDetails = () => {
+    setTimeout(() => {
+      if (!document.querySelector('.user-cart-search details:hover')) {
+        document.querySelector('.user-cart-search details').removeAttribute('open');
+      }
+    }, 500);
+  };
+
+  useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
         setScrolled(true);
@@ -103,9 +126,14 @@ function Navbar() {
                   Our Roots
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/blog" className={scrolled ? "scrolled" : ""}>
-                  Blog
+              <li className="weddings-events">
+                <NavLink to="/weddings-events" className={scrolled ? "scrolled" : ""}>
+                  weddings & events
+                  <ul className="dropdownLinks">
+                    <li className="dropdown-li"><NavLink to="/wedding-process" className="dropdown-a">Wedding Process</NavLink></li>
+                    <li className="dropdown-li"><NavLink to="/wedding-gallery" className="dropdown-a">Wedding Gallery</NavLink></li>
+                    <li className="dropdown-li"><NavLink to="/events" className="dropdown-a">Events</NavLink></li>
+                  </ul>
                 </NavLink>
               </li>
               <li>
@@ -141,11 +169,11 @@ function Navbar() {
                   <>
                     <li onClick={openLogin}>
                       <IoLogIn />
-                      Login
+                      Sign In
                     </li>
                     <li onClick={openRegister}>
                       <MdPersonAdd />
-                      Sign Up
+                      Register
                     </li>
                   </>
                 )}
@@ -200,11 +228,11 @@ function Navbar() {
               </li>
               <li>
                 <NavLink
-                  to="/blog"
+                  to="/weddings-events"
                   onClick={toggleMenu}
                   className={scrolled ? "scrolled" : ""}
                 >
-                  Blog
+                  Weddings & Events
                 </NavLink>
               </li>
               <li>

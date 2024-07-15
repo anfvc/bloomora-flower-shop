@@ -6,25 +6,40 @@ import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
 
 function Shop() {
+
   const { sortedProducts, list, setList, filter} = useContext(UserContext);
+
+  const { sortedProducts, list, setList } = useContext(UserContext);
+
   const [hoveredIndex, setHoveredIndex] = useState(-1);
 
   
   const [page, setPage] = useState(1);
+
  
   const [likedItems, setLikedItems, /*  filter*/] = useState(new Array(sortedProducts.length).fill(false));
 
   const [newList, setNewList] = useState([])
-  
+
+  // const [allProd, setAllProd] = useState([])
+  // const [totalPages, setTotalPages] = useState(0)
+  // const [likedItems, setLikedItems] = useState(
+  //   new Array(/* sortedProducts */list.length).fill(false)
+  // );
+  const [likedItems, setLikedItems] = useState(
+    new Array(sortedProducts.length).fill(false)
+  );
+
 
   useEffect(() => {
     async function showAllProducts() {
       try {
-        const response = await fetch(`http://localhost:5100/api/product/show?page=${page}`);
-
+        const response = await fetch(
+          `http://localhost:5100/api/product/show?page=${page}`
+        );
         if (response.ok) {
           const data = await response.json();
-        
+
           setList(data);
           console.log(data);
         } else {
@@ -37,6 +52,7 @@ function Shop() {
     }
     showAllProducts();
   }, [page]);
+
 
 
   useEffect(() => {
@@ -68,8 +84,6 @@ function Shop() {
 console.log(list);
 
 
-
-
   function handleLike(index) {
     const newLikedItems = [...likedItems];
     newLikedItems[index] = !newLikedItems[index];
@@ -84,20 +98,20 @@ console.log(list);
     setHoveredIndex(-1);
   }
 
-  
   function handleBtnPrev() {
     setPage(page - 1);
     if (page <= 1) {
       setPage(1);
     }
   }
-  
+
   function handleBtnNext() {
     if (list.length < 10) {
       return;
     }
     setPage(page + 1);
   }
+
 
   // console.log(list);
 // const productLength=(sortedProducts.length/10).toFixed(0)
@@ -106,9 +120,13 @@ const productLength = Math.ceil(sortedProducts.length/10)
 
 
 
+
   return (
     <div className="shopContainer">
       <div className="topBackgroundImage"></div>
+      <div className="header">
+        <h1>shop flowers & gifts</h1>
+      </div>
       <SortFilter />
       <div className="shopProducts">
         {!!list.length && list.map((item, index) => (
@@ -140,15 +158,19 @@ const productLength = Math.ceil(sortedProducts.length/10)
       }
       </div>
       <div className="pagebtn">
-      <label>
-        current page: {page} of {productLength}
-        <input
-          type="button"
-          value="to the previous page"
-          onClick={handleBtnPrev}
-        />
-        <input type="button" value="to the next page" onClick={handleBtnNext} />
-      </label>
+        <label>
+          current page: {page} of {productLength}
+          <input
+            type="button"
+            value="to the previous page"
+            onClick={handleBtnPrev}
+          />
+          <input
+            type="button"
+            value="to the next page"
+            onClick={handleBtnNext}
+          />
+        </label>
       </div>
     </div>
   );
