@@ -12,38 +12,31 @@ const UserProvider = ({ children }) => {
   const [list, setList] = useState([]);
 
 
-  const [filter, setFilter]= useState({
+  const [filter, setFilter] = useState({
     // sortby: "name",
     // sortdir: "",
-    category: ""
-  })
+    category: "",
+  });
 
-  // filter part 
+  // filter part
   function handleFilter(e) {
     setFilter({ ...filter, category: e.target.value });
   }
-
 
   useEffect(() => {
     async function fetchProducts() {
       try {
         let response;
-        if(!filter.category){
+        if (!filter.category) {
           response = await fetch(`http://localhost:5100/api/product/show/all`);
-        }else
-        response = await fetch(`http://localhost:5100/api/product/show/filtered/all`);
-        
 
-  useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const response = await fetch(
-          `http://localhost:5100/api/product/show/all`
-        );
+        } else
+          response = await fetch(
+            `http://localhost:5100/api/product/show/filtered/all?category=${filter.category}`
+          );
 
         if (response.ok) {
           const data = await response.json();
-
           setSortedProducts(data);
           setOriginalProducts(data);
         } else {
@@ -55,7 +48,7 @@ const UserProvider = ({ children }) => {
       }
     }
     fetchProducts();
-  }, []);
+  }, [filter.category]);
 
   const sortAlphabeticallyAZ = () => {
     const sorted = [...sortedProducts].sort((a, b) =>
@@ -94,7 +87,6 @@ const UserProvider = ({ children }) => {
     setIsLoggedIn(false);
   };
 
-
   return (
     <UserContext.Provider
       value={{
@@ -116,8 +108,7 @@ const UserProvider = ({ children }) => {
         setList,
         filter,
         setFilter,
-        handleFilter
-        
+        handleFilter,
       }}
     >
       {children}
