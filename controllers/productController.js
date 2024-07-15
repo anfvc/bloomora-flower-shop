@@ -60,28 +60,22 @@ export async function updateProduct(req, res) {
 }
 
 export async function showAllProductsOnPage(req, res, next) {
-  const {page} = req.query;
+  const { page } = req.query;
   const limit = 10;
   const skip = (page - 1) * limit;
-  const allProducts = await Product.find()
-  .skip(skip)
-  .limit(limit);
-
+  const allProducts = await Product.find().skip(skip).limit(limit);
 
   res.status(StatusCodes.OK).json(allProducts);
 }
 
 export async function showAllProducts(req, res, next) {
-    const allProducts = await Product.find()
- 
- res.status(StatusCodes.OK).json(allProducts);
+  const allProducts = await Product.find();
+
+  res.status(StatusCodes.OK).json(allProducts);
 }
-
-
 
 export const showAllPaginatedFilteredProducts = async (req, res, next) => {
   try {
-   
     // const { page = 1, sortby = "name", sortdir = "",category } = req.query;
 
     const { page = 1, category } = req.query;
@@ -89,41 +83,37 @@ export const showAllPaginatedFilteredProducts = async (req, res, next) => {
     const limit = 10;
     const skip = (page - 1) * limit;
 
-   
     const allProducts = await Product.find()
       // .sort(sortCriteria)
-      .where("category").equals(category)
+      .where("category")
+      .equals(category)
       // .sort({ [sortby]: sortdir })
       .sort(category)
       .skip(skip)
-      .limit(limit)
-      
-      // const products = await allProducts.exec();
-      
+      .limit(limit);
+
+    // const products = await allProducts.exec();
+
     // const totalProd = await Product.countDocuments()
 
-    res.status(StatusCodes.OK).json({
-      products: allProducts});
+    res.status(StatusCodes.OK).json(allProducts);
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR);
   }
 };
 
-export const  showFilteredProducts = async (req, res, next) => {
+export const showFilteredProducts = async (req, res, next) => {
   try {
-   
-
     const { category } = req.query;
 
-      
     const allProducts = await Product.find()
-      
-      .where("category").equals(category)
-      .sort(category)
-  
-      
-    res.status(StatusCodes.OK).json({
-      products: allProducts});
+
+      .where("category")
+      .equals(category)
+      .sort(category);
+
+    // console.log("allProducts", allProducts)
+    res.status(StatusCodes.OK).json(allProducts);
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR);
   }
