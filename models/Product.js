@@ -29,7 +29,9 @@ const productSchema = new Schema(
         "House Plants",
         "Peonies",
         "Roses",
+        ""
       ],
+      default: "",
     },
     subcategory: {
       type: String,
