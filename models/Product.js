@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
 
 const productSchema = new Schema(
   {
@@ -45,13 +45,13 @@ const productSchema = new Schema(
       default: "",
     },
     createdBy: {
-      type: Schema.Types.ObjectId,
-      ref: 'User'
-    }
+      type: mongoose.ObjectId,
+      default: null,
+    },
   },
   {
     versionKey: false,
-    timestamps: true
+    timestamps: true,
   }
 );
 

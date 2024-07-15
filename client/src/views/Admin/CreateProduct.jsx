@@ -106,7 +106,7 @@ function CreateProduct() {
                 onChange={(e) => setImage(e.target.files[0])}
                 ref={imageInput}
               />
-              Dosya Seç
+              Upload Image
             </label>
           </div>
           <div className="inputs">

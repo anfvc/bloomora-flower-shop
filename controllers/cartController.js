@@ -5,6 +5,7 @@ import Product from "../models/Product.js";
 //* Get the cart data:
 
 export async function getCartData(req, res) {
+  // const {userId } = req.params;
   try {
     const userId = req.user.id;
     const user = await User.findById(userId);
@@ -51,11 +52,21 @@ export async function addToCart(req, res) {
     if (itemInCart) {
       itemInCart.quantity += quantity;
     } else {
-      user.cart.push({ productId, userId });
+      user.cart.push({
+        productId,
+        quantity,
+        userId,
+      });
     }
 
     await user.save();
+
+    await user.populate({
+      path: "cart.productId",
+      select: "name image price category"
+    });
     res.status(StatusCodes.OK).json(user.cart);
+    console.log(user.cart);
   } catch (error) {
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)

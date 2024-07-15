@@ -13,7 +13,8 @@ export async function createProduct(req, res) {
 
   // const signature = cloudinary.utils.api_sign_request({timestamp: timestamp}, cloudinary.config().process.env.CLOUD_API_SECRET)
 
-  const { name, description, price, category, subcategory } = req.body;
+  const { name, description, price, category, subcategory, createdBy } =
+    req.body;
 
   try {
     const result = await cloudinary.uploader.upload(req.file.path);
@@ -28,6 +29,7 @@ export async function createProduct(req, res) {
       price,
       category,
       subcategory,
+      createdBy,
       image: result.secure_url,
     });
 
