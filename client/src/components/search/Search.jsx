@@ -28,21 +28,29 @@ function Search() {
             placeholder="Search"
             className="searchInput"
             value={query}
-            onChange={handleInputChange} 
+            onChange={handleInputChange}
           />
           <CiSearch className="searchIcon" />
         </div>
         <div className="searchResults">
           {isSearchBarEmpty ? (
-            <p className="emptyMessage">Your card is empty</p>
+            <p className="emptyMessage">There is no item!</p>
           ) : (
             filteredProducts.map((product) => (
               <div className="productItem" key={product._id}>
-                <img src={product.image} alt={product.name} width={50} height={50} />
+                <div className="productItemImage">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    width={50}
+                    height={50}
+                  />
+                </div>
                 <div>
                   <p>{product.name}</p>
                   <p>{product.price}€</p>
                 </div>
+                <button className="searchAddToCartBtn">add to cart</button>
               </div>
             ))
           )}

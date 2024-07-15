@@ -10,8 +10,6 @@ const UserProvider = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [list, setList] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]); 
-
-
   const [filter, setFilter] = useState({
     // sortby: "name",
     // sortdir: "",
@@ -118,14 +116,11 @@ const UserProvider = ({ children }) => {
         setSortedProducts,
         list,
         setList,
-
         filteredProducts, 
         searchProducts, 
-
         filter,
         setFilter,
         handleFilter,
-
       }}
     >
       {children}
