@@ -112,12 +112,8 @@
   width: 100%;
   background: #fff;
   border-radius: 0 0 10px 10px;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); */
   z-index: 2;
-  position: absolute;
-  top: 65rem; /* Adjust as needed */
-  left: 50%;
-  transform: translateX(-50%);
+  top: 65rem;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

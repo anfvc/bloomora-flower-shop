@@ -12,7 +12,7 @@ function Search() {
     const value = e.target.value;
     setQuery(value);
     searchProducts(value);
-    setIsSearchBarEmpty(value === ""); // Arama çubuğunun boş olup olmadığını kontrol etme
+    setIsSearchBarEmpty(value === "");
   };
 
   return (
