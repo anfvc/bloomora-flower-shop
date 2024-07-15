@@ -75,6 +75,9 @@ function Shop() {
   return (
     <div className="shopContainer">
       <div className="topBackgroundImage"></div>
+      <div className="header">
+        <h1>shop flowers & gifts</h1>
+      </div>
       <SortFilter />
       <div className="shopProducts">
         {list.map((item, index) => (
