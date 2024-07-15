@@ -3,8 +3,10 @@ import {
   createProduct,
   // showAllFilteredProducts,
   showAllProducts,
-  showAllProductsOnPage,
+  showAllPaginatedFilteredProducts,
   updateProduct,
+  showAllProductsOnPage,
+  showFilteredProducts
 } from "../controllers/productController.js";
 import upload from "../middleware/multer.js";
 
@@ -16,8 +18,11 @@ router.use("/uploads", express.static("uploads"));
 router.post("/create", upload.single("image"), createProduct);
 router.patch("/update/:id", updateProduct);
 router.get("/show", showAllProductsOnPage);
+// router.get("/show", showAllFilteredProducts);
 router.get("/show/all", showAllProducts)
 
-// router.get("/showFiltered", showAllFilteredProducts);
+router.get("/show/filtered", showAllPaginatedFilteredProducts);
+
+router.get("/show/filtered/all", showFilteredProducts)
 
 export default router;

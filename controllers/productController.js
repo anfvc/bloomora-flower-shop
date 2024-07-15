@@ -74,30 +74,53 @@ export async function showAllProducts(req, res, next) {
   res.status(StatusCodes.OK).json(allProducts);
 }
 
-// export const showAllFilteredProducts = async (req, res, next) => {
-//   try {
-//     const { page = 1, sortby = "name", order = "asc" } = req.query;
+export const showAllPaginatedFilteredProducts = async (req, res, next) => {
+  try {
+   
+    // const { page = 1, sortby = "name", sortdir = "",category } = req.query;
 
-//     const limit = 8;
-//     const skip = (page - 1) * limit;
+    const { page = 1, category } = req.query;
 
-//     const sortOrder = order === "asc" ? 1 : -1;
+    const limit = 10;
+    const skip = (page - 1) * limit;
 
-//     const sortCriteria = {};
-//     sortCriteria[sortby] = sortOrder;
+   
+    const allProducts = await Product.find()
+      // .sort(sortCriteria)
+      .where("category").equals(category)
+      // .sort({ [sortby]: sortdir })
+      .sort(category)
+      .skip(skip)
+      .limit(limit)
+      
+      // const products = await allProducts.exec();
+      
+    // const totalProd = await Product.countDocuments()
 
-//     const allProducts = await Product.find()
-//       .sort(sortCriteria)
-//       .skip(skip)
-//       .limit(limit);
+    res.status(StatusCodes.OK).json({
+      products: allProducts});
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+  }
+};
 
-//     const products = await allProducts.exec();
+export const  showFilteredProducts = async (req, res, next) => {
+  try {
+   
 
-//     // const totalProd = await Product.countDocuments()
+    const { category } = req.query;
 
-//     res.status(StatusCodes.OK).json({
-//       products: products});
-//   } catch (error) {
-//     res.status(StatusCodes.INTERNAL_SERVER_ERROR);
-//   }
-// };
+      
+    const allProducts = await Product.find()
+      
+      .where("category").equals(category)
+      .sort(category)
+  
+      
+    res.status(StatusCodes.OK).json({
+      products: allProducts});
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+  }
+};
+
