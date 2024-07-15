@@ -5,11 +5,11 @@ export const UserContext = createContext();
 const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({});
-
   const [sortedProducts, setSortedProducts] = useState([]);
   const [originalProducts, setOriginalProducts] = useState([]); // Original products to reset sorting
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [list, setList] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]); // Eş zamanlı arama sonuçları için
 
 
   const [filter, setFilter] = useState({
@@ -49,6 +49,18 @@ const UserProvider = ({ children }) => {
     }
     fetchProducts();
   }, [filter.category]);
+
+  // Arama işlevi
+  const searchProducts = (query) => {
+    if (!query) {
+      setFilteredProducts([]);
+      return;
+    }
+    const filtered = sortedProducts.filter((product) =>
+      product.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredProducts(filtered);
+  };
 
   const sortAlphabeticallyAZ = () => {
     const sorted = [...sortedProducts].sort((a, b) =>
@@ -106,9 +118,14 @@ const UserProvider = ({ children }) => {
         setSortedProducts,
         list,
         setList,
+
+        filteredProducts, 
+        searchProducts, 
+
         filter,
         setFilter,
         handleFilter,
+
       }}
     >
       {children}
