@@ -20,11 +20,12 @@ function Shop() {
     new Array(sortedProducts.length).fill(false)
   );
 
-
   useEffect(() => {
     async function showAllProducts() {
       try {
-        const response = await fetch(`http://localhost:5100/api/product/show?page=${page}`);
+        const response = await fetch(
+          `http://localhost:5100/api/product/show?page=${page}`
+        );
         if (response.ok) {
           const data = await response.json();
 
@@ -70,7 +71,6 @@ function Shop() {
   }
 
   const productLength = (sortedProducts.length / 10).toFixed(0);
-
 
   return (
     <div className="shopContainer">

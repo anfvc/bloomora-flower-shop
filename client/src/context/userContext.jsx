@@ -11,11 +11,12 @@ const UserProvider = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [list, setList] = useState([]);
 
-
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const response = await fetch(`http://localhost:5100/api/product/show/all`);
+        const response = await fetch(
+          `http://localhost:5100/api/product/show/all`
+        );
         if (response.ok) {
           const data = await response.json();
           setSortedProducts(data);
