@@ -27,7 +27,7 @@ function Shop() {
             `http://localhost:5100/api/product/show?page=${page}`
           );
         } else {
-          setPage((prev) => (prev > productLength ? productLength : page));
+          setPage((prev) => (prev > productLength ? 1 : page));
           response = await fetch(
             `http://localhost:5100/api/product/show/filtered?page=${page}&category=${filter.category}`
           );

@@ -96,7 +96,7 @@ export const showAllPaginatedFilteredProducts = async (req, res, next) => {
 
     // const totalProd = await Product.countDocuments()
 
-    res.status(StatusCodes.OK).json(allProducts);
+    res.status(StatusCodes.OK).json(allProducts); //{products: allProducts}
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR);
   }
