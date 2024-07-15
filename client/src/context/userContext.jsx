@@ -11,13 +11,30 @@ const UserProvider = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [list, setList] = useState([]);
 
+  const [filter, setFilter]= useState({
+    // sortby: "name",
+    // sortdir: "",
+    category: ""
+  })
+
+  // filter part 
+  function handleFilter(e) {
+    setFilter({ ...filter, category: e.target.value });
+  }
+
 
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const response = await fetch(`http://localhost:5100/api/product/show/all`);
+        let response;
+        if(!filter.category){
+          response = await fetch(`http://localhost:5100/api/product/show/all`);
+        }else
+        response = await fetch(`http://localhost:5100/api/product/show/filtered/all`);
+        
         if (response.ok) {
           const data = await response.json();
+
           setSortedProducts(data);
           setOriginalProducts(data);
         } else {
@@ -25,7 +42,7 @@ const UserProvider = ({ children }) => {
           throw new Error(error.message);
         }
       } catch (error) {
-        alert(error.message);
+        console.log(error.message);
       }
     }
     fetchProducts();
@@ -68,7 +85,7 @@ const UserProvider = ({ children }) => {
     setIsLoggedIn(false); 
   };
 
-
+  
  
 
   return (
@@ -87,8 +104,12 @@ const UserProvider = ({ children }) => {
         resetSorting,
         setIsMenuOpen,
         isMenuOpen,
-        setSortedProducts
-        
+        setSortedProducts,
+        list,
+        setList,
+        filter,
+        setFilter,
+        handleFilter
       }}
     >
       {children}
