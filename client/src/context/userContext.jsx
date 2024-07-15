@@ -11,14 +11,39 @@ const UserProvider = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [list, setList] = useState([]);
 
+
+  const [filter, setFilter]= useState({
+    // sortby: "name",
+    // sortdir: "",
+    category: ""
+  })
+
+  // filter part 
+  function handleFilter(e) {
+    setFilter({ ...filter, category: e.target.value });
+  }
+
+
+  useEffect(() => {
+    async function fetchProducts() {
+      try {
+        let response;
+        if(!filter.category){
+          response = await fetch(`http://localhost:5100/api/product/show/all`);
+        }else
+        response = await fetch(`http://localhost:5100/api/product/show/filtered/all`);
+        
+
   useEffect(() => {
     async function fetchProducts() {
       try {
         const response = await fetch(
           `http://localhost:5100/api/product/show/all`
         );
+
         if (response.ok) {
           const data = await response.json();
+
           setSortedProducts(data);
           setOriginalProducts(data);
         } else {
@@ -26,7 +51,7 @@ const UserProvider = ({ children }) => {
           throw new Error(error.message);
         }
       } catch (error) {
-        alert(error.message);
+        console.log(error.message);
       }
     }
     fetchProducts();
@@ -69,6 +94,7 @@ const UserProvider = ({ children }) => {
     setIsLoggedIn(false);
   };
 
+
   return (
     <UserContext.Provider
       value={{
@@ -87,7 +113,11 @@ const UserProvider = ({ children }) => {
         isMenuOpen,
         setSortedProducts,
         list,
-        setList
+        setList,
+        filter,
+        setFilter,
+        handleFilter
+        
       }}
     >
       {children}

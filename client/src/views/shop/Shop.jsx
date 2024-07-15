@@ -6,11 +6,21 @@ import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
 
 function Shop() {
+
+  const { sortedProducts, list, setList, filter} = useContext(UserContext);
+
   const { sortedProducts, list, setList } = useContext(UserContext);
+
   const [hoveredIndex, setHoveredIndex] = useState(-1);
 
-  // const [list, setList] = useState([]);
+  
   const [page, setPage] = useState(1);
+
+ 
+  const [likedItems, setLikedItems, /*  filter*/] = useState(new Array(sortedProducts.length).fill(false));
+
+  const [newList, setNewList] = useState([])
+
   // const [allProd, setAllProd] = useState([])
   // const [totalPages, setTotalPages] = useState(0)
   // const [likedItems, setLikedItems] = useState(
@@ -19,6 +29,7 @@ function Shop() {
   const [likedItems, setLikedItems] = useState(
     new Array(sortedProducts.length).fill(false)
   );
+
 
   useEffect(() => {
     async function showAllProducts() {
@@ -36,11 +47,42 @@ function Shop() {
           throw new Error(error.message);
         }
       } catch (error) {
-        alert(error.message);
+        console.log(error.message);
       }
     }
     showAllProducts();
   }, [page]);
+
+
+
+  useEffect(() => {
+    async function showAllFilteredProducts() {
+      try {
+        //  const response = await fetch(`http://localhost:5100/api/product/show/filtered?page=${page}&sortby=${filter.sortby}&category=${filter.category}`);
+
+        //  const response = await fetch(`http://localhost:5100/api/product/show/filtered?page=${page}&sortby=${filter.sortby}&sortdir=${filter.sortdir}`);
+
+        const response = await fetch(`http://localhost:5100/api/product/show/filtered?page=${page}&category=${filter.category}`);
+      
+        if (response.ok) {
+          const data = await response.json();
+        
+          setList(data.products);
+          console.log(`2nd fetch`, data);
+        } else {
+          const { error } = await response.json();
+          throw new Error(error.message);
+        }
+      } catch (error) {
+      console.log(error.message);
+      
+      }
+    }
+    showAllFilteredProducts();
+  }, [page, filter.category]);
+
+console.log(list);
+
 
   function handleLike(index) {
     const newLikedItems = [...likedItems];
@@ -70,7 +112,14 @@ function Shop() {
     setPage(page + 1);
   }
 
-  const productLength = (sortedProducts.length / 10).toFixed(0);
+
+  // console.log(list);
+// const productLength=(sortedProducts.length/10).toFixed(0)
+
+const productLength = Math.ceil(sortedProducts.length/10)
+
+
+
 
   return (
     <div className="shopContainer">
@@ -80,7 +129,7 @@ function Shop() {
       </div>
       <SortFilter />
       <div className="shopProducts">
-        {list.map((item, index) => (
+        {!!list.length && list.map((item, index) => (
           <div className="productsBox" key={item._id}>
             <div className="imageBox">
               <img src={item.image} alt="" width={100} height={100} />
@@ -97,7 +146,7 @@ function Shop() {
                   <IoMdHeart style={{ color: "white" }} />
                 ) : (
                   <CiHeart style={{ color: "white" }} />
-                )}
+                ) }
               </div>
             </div>
             <div className="info">
@@ -105,7 +154,8 @@ function Shop() {
               <p>{item.price}€</p>
             </div>
           </div>
-        ))}
+        ))
+      }
       </div>
       <div className="pagebtn">
         <label>
