@@ -6,7 +6,7 @@ import { IoClose } from "react-icons/io5";
 
 
 function SortFilter() {
-  const { sortAlphabeticallyAZ, sortAlphabeticallyZA, sortByPriceLowToHigh, sortByPriceHighToLow, resetSorting, setIsMenuOpen } = useContext(UserContext);
+  const { sortAlphabeticallyAZ, sortAlphabeticallyZA, sortByPriceLowToHigh, sortByPriceHighToLow, resetSorting, setIsMenuOpen, handleFilter, filter, setList } = useContext(UserContext);
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [priceRange, setPriceRange] = useState([0, 1000]);
@@ -46,6 +46,8 @@ function SortFilter() {
     setPriceRange(value);
   };
   // console.log(isFilterOpen);
+
+ 
   return (
     <div className="sort-filter">
       <div className="sortButton" onClick={() => setIsSortOpen(!isSortOpen)}>
@@ -53,14 +55,31 @@ function SortFilter() {
         <RiArrowDownWideLine className="sortIcon" />
       </div>
       {isSortOpen && (
-        <div className="sort">
-          <ul>
-            <li onClick={() => handleSortChange('az')}>alphabetically, a-z</li>
-            <li onClick={() => handleSortChange('za')}>alphabetically, z-a</li>
-            <li onClick={() => handleSortChange('priceHighToLow')}>price, high to low</li>
-            <li onClick={() => handleSortChange('priceLowToHigh')}>price, low to high</li>
-          </ul>
-        </div>
+        // <div className="sort">
+        //   <ul>
+        //     <li onClick={() => handleSortChange('az')}>alphabetically, a-z</li>
+        //     <li onClick={() => handleSortChange('za')}>alphabetically, z-a</li>
+        //     <li onClick={() => handleSortChange('priceHighToLow')}>price, high to low</li>
+        //     <li onClick={() => handleSortChange('priceLowToHigh')}>price, low to high</li>
+        //   </ul>
+        // </div>
+        <div className="category">
+             
+              <select
+                value = {filter}
+                onChange={handleFilter}
+              >
+                <option value="" disabled>
+                  Select your Option
+                </option>
+                <option value="asc" >alphabetically, a-z</option>
+                <option value="dis" >alphabetically, z-a</option>
+                <option value="dis" >price, high to low</option>
+                <option value="asc" >price, low to high</option>
+                
+              </select>
+              
+            </div>
       )}
       <div className="filter" onClick={() => {
         setIsFilterOpen(true)
@@ -73,7 +92,7 @@ function SortFilter() {
           <div className="filter-header">
             <IoClose className="close-icon" onClick={() => setIsFilterOpen(false)} />
           </div>
-          <div className="filter-body">
+          {/* <div className="filter-body">
             <h2>Filter Options</h2>
             <div className="filter-options">
               <a href="#">Flower Types</a>
@@ -115,7 +134,28 @@ function SortFilter() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
+
+<div className="filter-body">
+             
+             <select
+               name="category"
+               value={filter.category || ""}
+               onChange={handleFilter}
+             >
+               <option value="" disabled>
+                 Select your Option
+               </option>
+               <option value="Decor"  onChange={handleFilter}>Decor</option>
+               <option value="Eustoma"   onChange={handleFilter} >Eustoma</option>
+               <option value="Flowers on Ocassion" onChange={handleFilter} >Flowers on Ocassion</option>
+               <option value="Gifts"  onChange={handleFilter}>Gifts</option>
+               <option value="House Plants" onChange={handleFilter}>House Plants</option>
+               <option value="Peonies"  onChange={handleFilter} >Peonies</option>
+               <option value="Roses" onChange={handleFilter} >Roses</option>
+             </select>
+          
+           </div>
         </div>
       )}
     </div>

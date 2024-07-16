@@ -76,30 +76,48 @@ export async function showAllProducts(req, res, next) {
   res.status(StatusCodes.OK).json(allProducts);
 }
 
-// export const showAllFilteredProducts = async (req, res, next) => {
-//   try {
-//     const { page = 1, sortby = "name", order = "asc" } = req.query;
+export const showAllPaginatedFilteredProducts = async (req, res, next) => {
+  try {
+    // const { page = 1, sortby = "name", sortdir = "",category } = req.query;
 
-//     const limit = 8;
-//     const skip = (page - 1) * limit;
+    const { page = 1, category } = req.query;
 
-//     const sortOrder = order === "asc" ? 1 : -1;
+    const limit = 10;
+    const skip = (page - 1) * limit;
 
-//     const sortCriteria = {};
-//     sortCriteria[sortby] = sortOrder;
+    const allProducts = await Product.find()
+      // .sort(sortCriteria)
+      .where("category")
+      .equals(category)
+      // .sort({ [sortby]: sortdir })
+      .sort(category)
+      .skip(skip)
+      .limit(limit);
 
-//     const allProducts = await Product.find()
-//       .sort(sortCriteria)
-//       .skip(skip)
-//       .limit(limit);
+    // const products = await allProducts.exec();
 
-//     const products = await allProducts.exec();
+    // const totalProd = await Product.countDocuments()
 
-//     // const totalProd = await Product.countDocuments()
+    res.status(StatusCodes.OK).json(allProducts); //{products: allProducts}
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+  }
+};
 
-//     res.status(StatusCodes.OK).json({
-//       products: products});
-//   } catch (error) {
-//     res.status(StatusCodes.INTERNAL_SERVER_ERROR);
-//   }
-// };
+export const showFilteredProducts = async (req, res, next) => {
+  try {
+    const { category } = req.query;
+
+    const allProducts = await Product.find()
+
+      .where("category")
+      .equals(category)
+      .sort(category);
+
+    // console.log("allProducts", allProducts)
+    res.status(StatusCodes.OK).json(allProducts);
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+  }
+};
+

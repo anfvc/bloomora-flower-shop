@@ -5,18 +5,36 @@ export const UserContext = createContext();
 const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState({});
-
   const [sortedProducts, setSortedProducts] = useState([]);
   const [originalProducts, setOriginalProducts] = useState([]); // Original products to reset sorting
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [list, setList] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]); // Eş zamanlı arama sonuçları için
+
+
+  const [filter, setFilter] = useState({
+    // sortby: "name",
+    // sortdir: "",
+    category: "",
+  });
+
+  // filter part
+  function handleFilter(e) {
+    setFilter({ ...filter, category: e.target.value });
+  }
 
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const response = await fetch(
-          `http://localhost:5100/api/product/show/all`
-        );
+        let response;
+        if (!filter.category) {
+          response = await fetch(`http://localhost:5100/api/product/show/all`);
+
+        } else
+          response = await fetch(
+            `http://localhost:5100/api/product/show/filtered/all?category=${filter.category}`
+          );
+
         if (response.ok) {
           const data = await response.json();
           setSortedProducts(data);
@@ -26,11 +44,23 @@ const UserProvider = ({ children }) => {
           throw new Error(error.message);
         }
       } catch (error) {
-        alert(error.message);
+        console.log(error.message);
       }
     }
     fetchProducts();
-  }, []);
+  }, [filter.category]);
+
+  // Arama işlevi
+  const searchProducts = (query) => {
+    if (!query) {
+      setFilteredProducts([]);
+      return;
+    }
+    const filtered = sortedProducts.filter((product) =>
+      product.name.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredProducts(filtered);
+  };
 
   const sortAlphabeticallyAZ = () => {
     const sorted = [...sortedProducts].sort((a, b) =>
@@ -87,7 +117,15 @@ const UserProvider = ({ children }) => {
         isMenuOpen,
         setSortedProducts,
         list,
-        setList
+        setList,
+
+        filteredProducts, 
+        searchProducts, 
+
+        filter,
+        setFilter,
+        handleFilter,
+
       }}
     >
       {children}
