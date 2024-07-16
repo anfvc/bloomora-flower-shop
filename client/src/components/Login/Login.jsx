@@ -22,6 +22,7 @@ function Login({ openRegister, closeModals }) {
         headers: {
           "Content-Type": "application/JSON",
         },
+         credentials: "include"
       };
 
       const response = await fetch(
@@ -41,7 +42,7 @@ function Login({ openRegister, closeModals }) {
         throw new Error(error.message);
       }
     } catch (error) {
-      alert("Please let me sleep.");
+      alert(error.message);
     }
   };
 
