@@ -28,7 +28,7 @@ function Footer() {
           </div>
         </div>
         <div className="helps">
-          <div className="header">helps</div>
+          <div className="header">Help</div>
           <div className="links">
             <a href="">help center</a>
             <a href="">report a problem</a>
