@@ -5,6 +5,11 @@ import { comparePassword, hashPassword } from "../utils/passwordUtils.js";
 import { createJWT } from "../utils/tokenUtils.js";
 
 export const register = async (req, res) => {
+  // the first user will be an admin
+  const isFirstAccount = await User.countDocuments() === 0
+    req.body.role = isFirstAccount ? 'admin' : 'user';
+
+
   const hashedPassword = await hashPassword(req.body.password);
   req.body.password = hashedPassword;
   const user = await User.create(req.body);
@@ -31,10 +36,7 @@ export const login = async (req, res) => {
     secure: process.env.NODE_ENV === "production",
   });
 
-  res
-    .status(StatusCodes.OK)
-
-    .json({
+  res.status(StatusCodes.OK).json({
       msg: `${user.email} has successfully logged in.`,
       id: user._id,
       firstName: user.firstName,

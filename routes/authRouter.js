@@ -10,9 +10,7 @@ const router = Router();
 
 router.post(
   "/register",
-  validateRegisterInputs,
-  userValidationErrorHandling,
-  register
+  validateRegisterInputs, register
 );
 router.post("/login", validateLoginInputs, userValidationErrorHandling, login);
 
