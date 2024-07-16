@@ -4,11 +4,11 @@ import { UserContext } from "../../context/userContext.jsx";
 import SortFilter from "../../components/sort-filter/SortFilter.jsx";
 import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
+import ProductDetails from "../../components/productDetails/ProductDetails.jsx";
+
 
 function Shop() {
-
-
-  const { sortedProducts, list, setList, filter} = useContext(UserContext);
+  const { sortedProducts, list, setList, filter } = useContext(UserContext);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   const [page, setPage] = useState(1);
 
@@ -23,6 +23,8 @@ function Shop() {
 
   const [newList, setNewList] = useState([]);
   const productLength = Math.ceil(sortedProducts.length / 10);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     async function showAllProducts() {
@@ -81,6 +83,16 @@ function Shop() {
     setPage(page + 1);
   }
 
+  function openModal(product) {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  }
+
+  function closeModal() {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
+  }
+
   return (
     <div className="shopContainer">
       <div className="topBackgroundImage"></div>
@@ -92,12 +104,12 @@ function Shop() {
         {!!list.length &&
           list.map((item, index) => (
             <div className="productsBox" key={item._id}>
-              <div className="imageBox">
+              <div className="imageBox" onClick={() => openModal(item)}> 
                 <img src={item.image} alt="" width={100} height={100} />
                 <button className="addToCart">add to cart</button>
                 <div
                   className="likeButton"
-                  onClick={() => handleLike(index)}
+                  onClick={(e) => { e.stopPropagation(); handleLike(index); }} 
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -111,7 +123,7 @@ function Shop() {
                 </div>
               </div>
               <div className="info">
-                <p>~ {item.name} ~</p>
+                <p>{item.name}</p>
                 <p>{item.price}€</p>
               </div>
             </div>
@@ -132,6 +144,9 @@ function Shop() {
           />
         </label>
       </div>
+      {isModalOpen && (
+        <ProductDetails product={selectedProduct} onClose={closeModal} />
+      )}
     </div>
   );
 }

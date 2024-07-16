@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import "./Search.css";
 import { CiSearch } from "react-icons/ci";
 import { UserContext } from "../../context/userContext.jsx";
@@ -14,6 +14,8 @@ function Search() {
     searchProducts(value);
     setIsSearchBarEmpty(value === "");
   };
+
+  const hasNoResults = !isSearchBarEmpty && filteredProducts.length === 0;
 
   return (
     <div className="searchContainer">
@@ -35,6 +37,8 @@ function Search() {
         <div className="searchResults">
           {isSearchBarEmpty ? (
             <p className="emptyMessage">There is no item!</p>
+          ) : hasNoResults ? (
+            <p className="emptyMessage">Product not found!</p>
           ) : (
             filteredProducts.map((product) => (
               <div className="productItem" key={product._id}>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { NavLink, useNavigate } from "react-router-dom"; 
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../images/logo/bloomoraV2.svg";
 import scrolledLogo from "../../images/logo/bloomoraV3.svg";
 import { AiOutlineUser } from "react-icons/ai";
@@ -17,34 +17,38 @@ import Register from "../Register/Register";
 import { UserContext } from "../../context/userContext";
 
 function Navbar() {
-  
   const [scrolled, setScrolled] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const { isLoggedIn, user, logout } = useContext(UserContext);
-  const navigate = useNavigate(); 
-
-  const { isMenuOpen,setIsMenuOpen } = useContext(UserContext);
+  const { isMenuOpen, setIsMenuOpen } = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const userIcon = document.querySelector('.user-cart-search details summary');
-    userIcon.addEventListener('mouseover', openDetails);
-    userIcon.addEventListener('mouseout', closeDetails);
+    const userIcon = document.querySelector(
+      ".user-cart-search details summary"
+    );
+    userIcon.addEventListener("mouseover", openDetails);
+    userIcon.addEventListener("mouseout", closeDetails);
 
     return () => {
-      userIcon.removeEventListener('mouseover', openDetails);
-      userIcon.removeEventListener('mouseout', closeDetails);
+      userIcon.removeEventListener("mouseover", openDetails);
+      userIcon.removeEventListener("mouseout", closeDetails);
     };
   }, []);
 
   const openDetails = () => {
-    document.querySelector('.user-cart-search details').setAttribute('open', true);
+    document
+      .querySelector(".user-cart-search details")
+      .setAttribute("open", true);
   };
 
   const closeDetails = () => {
     setTimeout(() => {
-      if (!document.querySelector('.user-cart-search details:hover')) {
-        document.querySelector('.user-cart-search details').removeAttribute('open');
+      if (!document.querySelector(".user-cart-search details:hover")) {
+        document
+          .querySelector(".user-cart-search details")
+          .removeAttribute("open");
       }
     }, 500);
   };
@@ -82,8 +86,8 @@ function Navbar() {
 
   const handleLogout = () => {
     logout();
-    navigate("/"); 
-    document.querySelector('details[open]').removeAttribute('open'); 
+    navigate("/");
+    document.querySelector("details[open]").removeAttribute("open");
   };
 
   const closeModals = () => {
@@ -127,12 +131,27 @@ function Navbar() {
                 </NavLink>
               </li>
               <li className="weddings-events">
-                <NavLink to="/weddings-events" className={scrolled ? "scrolled" : ""}>
+                <NavLink
+                  to="/weddings-events"
+                  className={scrolled ? "scrolled" : ""}
+                >
                   weddings & events
                   <ul className="dropdownLinks">
-                    <li className="dropdown-li"><NavLink to="/wedding-process" className="dropdown-a">Wedding Process</NavLink></li>
-                    <li className="dropdown-li"><NavLink to="/wedding-gallery" className="dropdown-a">Wedding Gallery</NavLink></li>
-                    <li className="dropdown-li"><NavLink to="/events" className="dropdown-a">Events</NavLink></li>
+                    <li className="dropdown-li">
+                      <NavLink to="/wedding-process" className="dropdown-a">
+                        Wedding Process
+                      </NavLink>
+                    </li>
+                    <li className="dropdown-li">
+                      <NavLink to="/wedding-gallery" className="dropdown-a">
+                        Wedding Gallery
+                      </NavLink>
+                    </li>
+                    <li className="dropdown-li">
+                      <NavLink to="/events" className="dropdown-a">
+                        Events
+                      </NavLink>
+                    </li>
                   </ul>
                 </NavLink>
               </li>
@@ -145,7 +164,9 @@ function Navbar() {
           </div>
           <div className="user-cart-search">
             {isLoggedIn && (
-              <p className={`welcomeMessage ${scrolled ? "scrolled" : ""}`}>Hello, {user.firstName} </p>
+              <p className={`welcomeMessage ${scrolled ? "scrolled" : ""}`}>
+                Hello, {user.firstName}{" "}
+              </p>
             )}
             <details>
               <summary>
@@ -154,9 +175,9 @@ function Navbar() {
                 />
               </summary>
               <ul className="loginSignUp">
-                {isLoggedIn ? ( 
+                {isLoggedIn ? (
                   <>
-                    <li onClick={() => navigate('/userPanel')}> 
+                    <li onClick={() => navigate("/userPanel")}>
                       <AiFillEdit />
                       Profile
                     </li>
@@ -179,7 +200,11 @@ function Navbar() {
                 )}
               </ul>
             </details>
-            <NavLink to="/search"><FiSearch className={`search ${scrolled ? "scrolled-icon" : ""}`} /></NavLink>
+            <NavLink to="/search">
+              <FiSearch
+                className={`search ${scrolled ? "scrolled-icon" : ""}`}
+              />
+            </NavLink>
             <PiShoppingBag
               className={`cart ${scrolled ? "scrolled-icon" : ""}`}
             />
@@ -246,16 +271,49 @@ function Navbar() {
               </li>
               <div className="dropdownUserCartBag">
                 <li>
-                  <AiOutlineUser
-                    className="user"
-                    onClick={() => {
-                      openLogin();
-                      isMenuOpen && toggleMenu();
-                    }}
-                  />
+                  <details>
+                    <summary>
+                      <AiOutlineUser
+                        className={`user ${scrolled ? "scrolled-icon" : ""}`}
+                      />
+                    </summary>
+                    <ul className="loginSignUp">
+                      {isLoggedIn ? (
+                        <>
+                          <li
+                            className="dd-li"
+                            onClick={() => navigate("/userPanel")}
+                          >
+                            <AiFillEdit />
+                            Profile
+                          </li>
+                          <li className="dd-li" onClick={handleLogout}>
+                            <FaSignOutAlt />
+                            Logout
+                          </li>
+                        </>
+                      ) : (
+                        <>
+                          <li className="dd-li" onClick={openLogin}>
+                            <IoLogIn />
+                            Sign In
+                          </li>
+                          <li className="dd-li" onClick={openRegister}>
+                            <MdPersonAdd />
+                            Register
+                          </li>
+                        </>
+                      )}
+                    </ul>
+                  </details>
                 </li>
                 <li>
-                  <FiSearch className="search" />
+                  <NavLink to="/search">
+                    <FiSearch
+                    onClick={toggleMenu}
+                      className={`search ${scrolled ? "scrolled-icon" : ""}`}
+                    />
+                  </NavLink>
                 </li>
                 <li>
                   <PiShoppingBag className="cart" />

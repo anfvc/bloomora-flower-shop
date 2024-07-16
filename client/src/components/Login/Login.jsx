@@ -41,8 +41,7 @@ function Login({ openRegister, closeModals }) {
         throw new Error(error.message);
       }
     } catch (error) {
-      // alert("Please let me sleep.");
-      console.log(error.message); //Cannot read properties of null (reading 'removeAttribute') error from browser
+      console.log(error.message); 
     }
   };
 

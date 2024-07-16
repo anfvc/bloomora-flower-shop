@@ -1,0 +1,559 @@
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.modalContent {
+  background: white;
+  padding: 20px;
+  padding-top: 40px;
+  border-radius: 10px;
+  /* max-width: 500px; */
+  width: 90rem;
+  height: 95vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: #698474;
+  cursor: pointer;
+}
+
+.productDetails {
+  display: flex;
+  gap: 3rem;
+}
+
+.productDetails .details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.productDetails img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.productDetails h2 {
+  font-size: 4rem;
+  font-weight: 500;
+  font-family: "Merriweather", serif;
+  letter-spacing: 1px;
+  color: #698474;
+  margin-bottom: 2rem;
+}
+
+.productDetails .details p {
+  font-size: 3rem;
+  font-weight: 500;
+  font-family: "Roboto";
+  display: flex;
+  align-items: center;
+}
+
+.productDetails .details span {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-left: .5rem;
+}
+
+.productDetails .details a {
+  text-decoration: underline;
+  font-size: 1.7rem;
+  margin-left: 1rem;
+  color: black;
+  text-transform: capitalize;
+}
+
+.productDetails .details p:nth-child(3n) {
+  font-size: 1.7rem;
+  font-weight: 400;
+  line-height: 2.3rem;
+}
+
+.productDetails .details .incDecBuy {
+  display: flex;
+  align-items: center;
+}
+
+.productDetails .details .incDecBuy .incDec {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  width: 20rem;
+}
+
+.productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.productDetails .details .incDecBuy .incDec .productDetails-buttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts .productDetails-buttons button {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #698474;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all .4s ease-in-out;
+}
+.productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts .productDetails-buttons button:hover {
+  background-color: #043A1A;
+}
+
+.productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts .productDetails-buttons span {
+  margin: 0;
+  font-size: 1.8rem;
+}
+.productDetails .details .incDecBuy .productDetailsAmount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.productDetails .details .incDecBuy .productDetailsAmount p {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.productDetails .details .incDecBuy .productDetailsAmount span {
+  font-size: 2rem;
+  font-family: "Roboto";
+  color: #698474;
+  margin: 0;
+}
+
+.productDetails .details .incDecBuy .productDetailsAddToCart {
+  width: 100%;
+}
+
+.productDetails .details .incDecBuy .productDetailsAddToCart button {
+  width: 100%;
+  height: 4rem;
+  background-color: #698474;
+  border: none;
+  border-radius: 3px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: "Roboto";
+  letter-spacing: 1px;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .4s ease-in-out;
+}
+
+.productDetails .details .incDecBuy .productDetailsAddToCart button:hover {
+  background-color: #043A1A;
+}
+
+.recommendedProducts {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.recommendedProducts h3 {
+  font-size: 1.8rem;
+  font-weight: 500;
+  font-family: "Merriweather", serif;
+  letter-spacing: .7px;
+}
+
+
+@media screen and (max-width:1024px) {
+  .modalContent {
+    width: 90rem;
+    height: 85vh;
+  }
+
+  .recommendedProducts {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .recommendedProducts h3 {
+    font-size: 2.5rem;
+    font-weight: 500;
+    font-family: "Merriweather", serif;
+    letter-spacing: .7px;
+  }
+}
+
+@media screen and (max-width:912px) {
+  .modalContent {
+    width: 75rem;
+    height: 80vh;
+  }
+}
+
+@media screen and (max-width:820px) {
+  .modalContent {
+    width: 75rem;
+    height: 80vh;
+  }
+}
+
+@media screen and (max-width:540px) {
+  .modalContent {
+    width: 40rem;
+    height: 85vh;
+    gap: 10rem;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+  }
+
+  .productDetails {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .productDetails img {
+    width: 50%;
+    height: 50%;
+    border-radius: 5px;
+  }
+
+  .productDetails h2 {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+
+  .productDetails .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5;
+  }
+
+  .productDetails .details p {
+    font-size: 1.4rem;
+    font-weight: 500;
+    font-family: "Roboto";
+    display: flex;
+    align-items: center;
+  }
+
+  .productDetails .details p:nth-child(3n) {
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 2.3rem;
+    text-align: center;
+  }
+  
+  .productDetails .details span {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-left: .5rem;
+  }
+  
+  .productDetails .details a {
+    text-decoration: underline;
+    font-size: 1.4rem;
+    margin-left: 1rem;
+    color: black;
+    text-transform: capitalize;
+  }
+
+  .productDetails .details .incDecBuy .incDec {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    width: 25rem;
+  }
+
+  .productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts .productDetails-buttons button {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.3rem;
+  }
+
+  .productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts .productDetailsAmount span {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts .productDetailsAmount p {
+    font-size: 1.5rem;
+    width: 13rem;
+  }
+
+  .recommendedProducts {
+    display: none;
+  }
+}
+
+@media screen and (max-width:430px) {
+  .modalContent {
+    width: 40rem;
+    height: 70vh;
+    gap: 10rem;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+  }
+
+  .productDetails {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .productDetails img {
+    width: 50%;
+    height: 50%;
+    border-radius: 5px;
+  }
+
+  .productDetails h2 {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+
+  .productDetails .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5;
+  }
+
+  .productDetails .details p {
+    font-size: 1.4rem;
+    font-weight: 500;
+    font-family: "Roboto";
+    display: flex;
+    align-items: center;
+  }
+
+  .productDetails .details p:nth-child(3n) {
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 2.3rem;
+    text-align: center;
+  }
+  
+  .productDetails .details span {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-left: .5rem;
+  }
+  
+  .productDetails .details a {
+    text-decoration: underline;
+    font-size: 1.4rem;
+    margin-left: 1rem;
+    color: black;
+    text-transform: capitalize;
+  }
+
+  .productDetails .details .incDecBuy .incDec {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    width: 25rem;
+  }
+
+  .productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts .productDetails-buttons button {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.3rem;
+  }
+
+  .productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts .productDetailsAmount span {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts .productDetailsAmount p {
+    font-size: 1.5rem;
+    width: 13rem;
+  }
+
+  .recommendedProducts {
+    display: none;
+  }
+}
+
+@media screen and (max-width:414px) {
+  .modalContent {
+    width: 40rem;
+    height: 70vh;
+    gap: 10rem;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+  }
+
+  .productDetails {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+  }
+
+  .productDetails img {
+    width: 50%;
+    height: 50%;
+    border-radius: 5px;
+  }
+
+  .productDetails h2 {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+
+  .productDetails .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5;
+  }
+
+  .productDetails .details p {
+    font-size: 1.4rem;
+    font-weight: 500;
+    font-family: "Roboto";
+    display: flex;
+    align-items: center;
+  }
+
+  .productDetails .details p:nth-child(3n) {
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 2.3rem;
+    text-align: center;
+  }
+  
+  .productDetails .details span {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-left: .5rem;
+  }
+  
+  .productDetails .details a {
+    text-decoration: underline;
+    font-size: 1.4rem;
+    margin-left: 1rem;
+    color: black;
+    text-transform: capitalize;
+  }
+
+  .productDetails .details .incDecBuy .incDec {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    width: 25rem;
+  }
+
+  .productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts .productDetails-buttons button {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.3rem;
+  }
+
+  .productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts .productDetailsAmount span {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts .productDetailsAmount p {
+    font-size: 1.5rem;
+    width: 13rem;
+  }
+
+  .recommendedProducts {
+    display: none;
+  }
+}
+
+@media screen and (max-width:390px) {
+  .modalContent {
+    width: 35rem;
+    height: 75vh;
+    gap: 10rem;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+  }
+}
+@media screen and (max-width:390px) {
+  .modalContent {
+    width: 35rem;
+    height: 85vh;
+    gap: 10rem;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+  }
+}
