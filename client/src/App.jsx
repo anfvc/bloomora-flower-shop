@@ -11,6 +11,7 @@ import WeddingsEvents from "./views/weddings&events/Weddings&Events.jsx";
 import WeddingProcess from "./views/weddingProcess/WeddingProcess.jsx";
 import WeddingGallery from "./views/weddingGallery/WeddingGallery.jsx";
 import Search from "./components/search/Search.jsx";
+import Footer from "./components/footer/Footer.jsx";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/userPanel" element={<UserPanel />} />
         <Route path="/search" element={<Search />}/>
       </Routes>
+      <Footer />
     </>
   );
 }

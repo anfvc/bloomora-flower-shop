@@ -1,10 +1,8 @@
 .searchContainer {
   width: 100vw;
-  /* max-width: 1200px; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-direction: column;
   position: relative;
 }
 
@@ -77,7 +75,6 @@
   font-family: "Merriweather", serif;
   font-weight: 200;
   letter-spacing: 0.5px;
-  /* position: relative; */
 }
 
 .searchContainer .searchBox .searchBar .searchInput::placeholder {
@@ -112,16 +109,21 @@
   width: 100%;
   background: #fff;
   border-radius: 0 0 10px 10px;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); */
   z-index: 2;
-  position: absolute;
-  top: 65rem; /* Adjust as needed */
-  left: 50%;
-  transform: translateX(-50%);
+  top: 65rem;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 2rem;
+}
+
+.searchContainer .searchBox .searchResults .emptyMessage {
+  font-size: 4rem;
+  font-family: "Merriweather", serif;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: rgba(37, 37, 37, 0.3);
+  margin-top: 5rem;
 }
 
 .searchContainer .searchBox .searchResults .productItem {
@@ -132,15 +134,31 @@
   border-bottom: 1px solid #eee;
   border-radius: 3px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
-.searchContainer .searchBox .searchResults .productItem:hover {
+.searchContainer .searchBox .searchResults .productItem .productItemImage {
+  width: 100%;
+  height: 100%;
+}
+
+.searchContainer .searchBox .searchResults .productItem .productItemImage::before {
+  content: "";
+  width: 30rem;
+  height: 30rem;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  display: none;
 }
 
 .searchContainer .searchBox .searchResults .productItem img {
   width: 100%;
   height: 30rem;
   border-radius: 3px;
+  position: relative;
 }
 
 .searchContainer .searchBox .searchResults .productItem p:first-child {
@@ -155,6 +173,32 @@
   font-size: 1.6rem;
   text-align: center;
   margin-top: 1rem;
+}
+
+.searchContainer .searchBox .searchResults .productItem .searchAddToCartBtn {
+  position: absolute;
+  top: 15rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12rem;
+  height: 3rem;
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  cursor: pointer;
+  z-index: 2;
+  display: none; 
+}
+
+.searchContainer .searchBox .searchResults .productItem:hover .searchAddToCartBtn {
+  display: block; 
+  background-color: #80af81;
+  color: white;
+}
+
+.searchContainer .searchBox .searchResults .productItem:hover .productItemImage::before {
+  display: block;
 }
 
 @media screen and (max-width: 1024px) {
@@ -387,6 +431,11 @@
     font-size: 2rem;
     color: hsla(0, 0%, 15%, 0.4);
   }
+
+  .searchContainer .searchBox .searchResults .emptyMessage {
+    font-size: 3rem;
+    margin-top: 5rem;
+  }
 }
 
 @media screen and (max-width: 414px) {
@@ -416,5 +465,10 @@
     right: 2rem;
     font-size: 2rem;
     color: hsla(0, 0%, 15%, 0.4);
+  }
+
+  .searchContainer .searchBox .searchResults .emptyMessage {
+    font-size: 3rem;
+    margin-top: 5rem;
   }
 }
