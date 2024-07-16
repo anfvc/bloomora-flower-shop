@@ -9,6 +9,7 @@ import { FaFileInvoice } from "react-icons/fa";
 import { PiListHeartFill } from "react-icons/pi";
 import { GrDocumentConfig } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
+import Wishlist from "../wishlist/wishlist";
 
 function UserPanel() {
   const { user } = useContext(UserContext);
@@ -60,6 +61,7 @@ function UserPanel() {
             <h1>
               Welcome, {user.firstName} {user.lastName}
             </h1>
+            <Wishlist/>
           </div>
         )}
       </div>
