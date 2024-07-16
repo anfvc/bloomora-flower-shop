@@ -95,6 +95,10 @@ function Navbar() {
     setIsRegisterOpen(false);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <>
       <div
@@ -103,7 +107,7 @@ function Navbar() {
       ></div>
       <div className={`navbarContainer ${scrolled ? "scrolled" : ""}`}>
         <div className="logo">
-          <NavLink to="/">
+          <NavLink to="/" onClick={scrollToTop}>
             <img
               src={scrolled ? scrolledLogo : logo}
               alt="logo"
@@ -116,17 +120,17 @@ function Navbar() {
           <div className="links">
             <ul>
               <li>
-                <NavLink to="/" className={scrolled ? "scrolled" : ""}>
+                <NavLink to="/" className={scrolled ? "scrolled" : ""} onClick={scrollToTop}>
                   Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/shop" className={scrolled ? "scrolled" : ""}>
+                <NavLink to="/shop" className={scrolled ? "scrolled" : ""} onClick={scrollToTop}>
                   Shop
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/ourroots" className={scrolled ? "scrolled" : ""}>
+                <NavLink to="/ourroots" className={scrolled ? "scrolled" : ""} onClick={scrollToTop}>
                   Our Roots
                 </NavLink>
               </li>
@@ -134,21 +138,22 @@ function Navbar() {
                 <NavLink
                   to="/weddings-events"
                   className={scrolled ? "scrolled" : ""}
+                  onClick={scrollToTop}
                 >
                   weddings & events
                   <ul className="dropdownLinks">
                     <li className="dropdown-li">
-                      <NavLink to="/wedding-process" className="dropdown-a">
+                      <NavLink to="/wedding-process" className="dropdown-a" onClick={scrollToTop}>
                         Wedding Process
                       </NavLink>
                     </li>
                     <li className="dropdown-li">
-                      <NavLink to="/wedding-gallery" className="dropdown-a">
+                      <NavLink to="/wedding-gallery" className="dropdown-a" onClick={scrollToTop}>
                         Wedding Gallery
                       </NavLink>
                     </li>
                     <li className="dropdown-li">
-                      <NavLink to="/events" className="dropdown-a">
+                      <NavLink to="/events" className="dropdown-a" onClick={scrollToTop}>
                         Events
                       </NavLink>
                     </li>
@@ -156,7 +161,7 @@ function Navbar() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/contact" className={scrolled ? "scrolled" : ""}>
+                <NavLink to="/contact" className={scrolled ? "scrolled" : ""} onClick={scrollToTop}>
                   Contact
                 </NavLink>
               </li>
@@ -227,7 +232,10 @@ function Navbar() {
               <li>
                 <NavLink
                   to="/"
-                  onClick={toggleMenu}
+                  onClick={() => {
+                    toggleMenu();
+                    scrollToTop();
+                  }}
                   className={scrolled ? "scrolled" : ""}
                 >
                   Home
@@ -236,7 +244,10 @@ function Navbar() {
               <li>
                 <NavLink
                   to="/shop"
-                  onClick={toggleMenu}
+                  onClick={() => {
+                    toggleMenu();
+                    scrollToTop();
+                  }}
                   className={scrolled ? "scrolled" : ""}
                 >
                   Shop
@@ -245,7 +256,10 @@ function Navbar() {
               <li>
                 <NavLink
                   to="/ourroots"
-                  onClick={toggleMenu}
+                  onClick={() => {
+                    toggleMenu();
+                    scrollToTop();
+                  }}
                   className={scrolled ? "scrolled" : ""}
                 >
                   Our Roots
@@ -254,7 +268,10 @@ function Navbar() {
               <li>
                 <NavLink
                   to="/weddings-events"
-                  onClick={toggleMenu}
+                  onClick={() => {
+                    toggleMenu();
+                    scrollToTop();
+                  }}
                   className={scrolled ? "scrolled" : ""}
                 >
                   Weddings & Events
@@ -263,7 +280,10 @@ function Navbar() {
               <li>
                 <NavLink
                   to="/contact"
-                  onClick={toggleMenu}
+                  onClick={() => {
+                    toggleMenu();
+                    scrollToTop();
+                  }}
                   className={scrolled ? "scrolled" : ""}
                 >
                   Contact
@@ -308,9 +328,8 @@ function Navbar() {
                   </details>
                 </li>
                 <li>
-                  <NavLink to="/search">
+                  <NavLink to="/search" onClick={toggleMenu}>
                     <FiSearch
-                    onClick={toggleMenu}
                       className={`search ${scrolled ? "scrolled-icon" : ""}`}
                     />
                   </NavLink>

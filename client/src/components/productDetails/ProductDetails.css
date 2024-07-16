@@ -231,10 +231,112 @@
   }
 }
 
+@media screen and (max-width:768px) {
+  .modalContent {
+    width: 55rem;
+    height: 65vh;
+    gap: 10rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .productDetails {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5rem;
+  }
+
+  .productDetails img {
+    width: 50%;
+    height: 50%;
+    border-radius: 5px;
+  }
+
+  .productDetails h2 {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+
+  .productDetails .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .productDetails .details p {
+    font-size: 1.4rem;
+    font-weight: 500;
+    font-family: "Roboto";
+    display: flex;
+    align-items: center;
+  }
+
+  .productDetails .details p:nth-child(3n) {
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 2.3rem;
+    text-align: center;
+  }
+  
+  .productDetails .details span {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-left: .5rem;
+  }
+  
+  .productDetails .details a {
+    text-decoration: underline;
+    font-size: 1.4rem;
+    margin-left: 1rem;
+    color: black;
+    text-transform: capitalize;
+  }
+
+  .productDetails .details .incDecBuy .incDec {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    width: 25rem;
+  }
+
+  .productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts .productDetails-buttons button {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.3rem;
+  }
+
+  .productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts .productDetailsAmount span {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  .productDetails .details .incDecBuy .incDec .prdDetailsBtn-Amounts .productDetailsAmount p {
+    font-size: 1.5rem;
+    width: 13rem;
+  }
+
+  .recommendedProducts {
+    display: none;
+  }
+}
+
 @media screen and (max-width:540px) {
   .modalContent {
     width: 40rem;
-    height: 85vh;
+    height: 92vh;
     gap: 10rem;
     display: flex;
     /* justify-content: center; */
@@ -437,7 +539,7 @@
 
 @media screen and (max-width:414px) {
   .modalContent {
-    width: 40rem;
+    width: 37rem;
     height: 70vh;
     gap: 10rem;
     display: flex;
@@ -547,10 +649,21 @@
     align-items: center;
   }
 }
-@media screen and (max-width:390px) {
+@media screen and (max-width:375px) {
   .modalContent {
-    width: 35rem;
-    height: 85vh;
+    width: 30rem;
+    height: 90vh;
+    gap: 10rem;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+  }
+}
+
+@media screen and (max-width:344px) {
+  .modalContent {
+    width: 30rem;
+    height: 75vh;
     gap: 10rem;
     display: flex;
     /* justify-content: center; */

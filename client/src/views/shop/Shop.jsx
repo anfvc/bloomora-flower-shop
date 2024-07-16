@@ -4,8 +4,8 @@ import { UserContext } from "../../context/userContext.jsx";
 import SortFilter from "../../components/sort-filter/SortFilter.jsx";
 import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
+import { GrNext } from "react-icons/gr";
 import ProductDetails from "../../components/productDetails/ProductDetails.jsx";
-
 
 function Shop() {
   const { sortedProducts, list, setList, filter } = useContext(UserContext);
@@ -74,6 +74,7 @@ function Shop() {
     if (page <= 1) {
       setPage(1);
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function handleBtnNext() {
@@ -81,6 +82,7 @@ function Shop() {
       return;
     }
     setPage(page + 1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function openModal(product) {
@@ -104,12 +106,15 @@ function Shop() {
         {!!list.length &&
           list.map((item, index) => (
             <div className="productsBox" key={item._id}>
-              <div className="imageBox" onClick={() => openModal(item)}> 
+              <div className="imageBox" onClick={() => openModal(item)}>
                 <img src={item.image} alt="" width={100} height={100} />
-                <button className="addToCart">add to cart</button>
+
                 <div
                   className="likeButton"
-                  onClick={(e) => { e.stopPropagation(); handleLike(index); }} 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleLike(index);
+                  }}
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -125,23 +130,25 @@ function Shop() {
               <div className="info">
                 <p>{item.name}</p>
                 <p>{item.price}€</p>
+                <button className="addToCart">add to cart</button>
               </div>
             </div>
           ))}
       </div>
       <div className="pagebtn">
+        <div className="next-prev">
+          <div className="prevContainer">
+            <GrNext onClick={handleBtnPrev} className="prev" />
+            <p className="prevText">Back</p>
+          </div>
+          <p>{page}</p>
+          <div className="nextContainer">
+            <p className="nextText">Next</p>
+            <GrNext onClick={handleBtnNext} className="next" />
+          </div>
+        </div>
         <label>
-          current page: {page} of {productLength}
-          <input
-            type="button"
-            value="to the previous page"
-            onClick={handleBtnPrev}
-          />
-          <input
-            type="button"
-            value="to the next page"
-            onClick={handleBtnNext}
-          />
+          Page: {page} of {productLength}
         </label>
       </div>
       {isModalOpen && (
