@@ -33,18 +33,6 @@ const userSchema = new Schema(
             required: true,
             default: 1,
           },
-          productName: {
-            type: String,
-            ref: "Product",
-          },
-          productPrice: {
-            type: Number,
-            ref: "Product",
-          },
-          productImg: {
-            type: String,
-            ref: "Product",
-          },
         },
       ],
       default: [],

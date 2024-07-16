@@ -4,15 +4,17 @@ import { UserContext } from "../../context/userContext.jsx";
 import SortFilter from "../../components/sort-filter/SortFilter.jsx";
 import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
 
 function Shop() {
-
-
-  const { sortedProducts, list, setList, filter} = useContext(UserContext);
+  const { sortedProducts, list, setList, filter } = useContext(UserContext);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   const [page, setPage] = useState(1);
 
-  const [likedItems, setLikedItems, /*  filter*/] = useState(new Array(sortedProducts.length).fill(false));
+  const [likedItems, setLikedItems /*  filter*/] = useState(
+    new Array(sortedProducts.length).fill(false)
+  );
 
   // const [allProd, setAllProd] = useState([])
   // const [totalPages, setTotalPages] = useState(0)
@@ -36,7 +38,7 @@ function Shop() {
           );
         } else {
           setPage((prev) => (prev > productLength ? 1 : page));
-             // setPage(page)
+          // setPage(page)
           response = await fetch(
             `http://localhost:5100/api/product/show/filtered?page=${page}&category=${filter.category}`
           );
@@ -120,20 +122,22 @@ function Shop() {
             </div>
           ))}
       </div>
-      <div className="pagebtn">
-        <label>
-          current page: {page} of {productLength}
-          <input
-            type="button"
-            value="to the previous page"
+      <div className="pagebtn" style={{display: "flex", alignItems: "center", gap: "2rem"}}>
+        <button style={{display: "flex", alignItems: "center"}}>
+          <IoIosArrowBack
             onClick={handleBtnPrev}
+            style={{ fontSize: "3rem" }}
           />
-          <input
-            type="button"
-            value="to the next page"
-            onClick={handleBtnNext}
-          />
+        </button>
+        <label>
+          Page: {page} of {productLength}
         </label>
+          <button style={{display: "flex", alignItems: "center"}}>
+          <IoIosArrowForward
+            onClick={handleBtnNext}
+            style={{ fontSize: "3rem"}}
+          />
+        </button>
       </div>
     </div>
   );
