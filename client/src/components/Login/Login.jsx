@@ -36,13 +36,17 @@ function Login({ openRegister, closeModals }) {
         setUser(userData);
         setIsLoggedIn(true);
         closeModals();
-        document.querySelector('details[open]').removeAttribute('open'); 
+        document.querySelector("details[open]").removeAttribute("open");
       } else {
         const { error } = await response.json();
         throw new Error(error.message);
       }
     } catch (error) {
-      alert(error.message);
+
+     
+      // alert("Please let me sleep.");
+      console.log(error.message); //Cannot read properties of null (reading 'removeAttribute') error from browser
+
     }
   };
 

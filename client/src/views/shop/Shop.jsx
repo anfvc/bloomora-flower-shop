@@ -11,9 +11,8 @@ function Shop() {
   const { sortedProducts, list, setList, filter} = useContext(UserContext);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   const [page, setPage] = useState(1);
-  const [likedItems, setLikedItems, /*  filter*/] = useState(new Array(sortedProducts.length).fill(false));
 
- 
+  const [likedItems, setLikedItems, /*  filter*/] = useState(new Array(sortedProducts.length).fill(false));
 
   // const [allProd, setAllProd] = useState([])
   // const [totalPages, setTotalPages] = useState(0)
