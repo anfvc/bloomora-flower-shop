@@ -12,16 +12,20 @@ function Shop() {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   const [page, setPage] = useState(1);
 
+  const [likedItems, setLikedItems /*  filter*/] = useState(
+    new Array(sortedProducts.length).fill(false)
+  );
+
   // const [allProd, setAllProd] = useState([])
   // const [totalPages, setTotalPages] = useState(0)
   // const [likedItems, setLikedItems] = useState(
   //   new Array(/* sortedProducts */list.length).fill(false)
   // );
-  const [likedItems, setLikedItems] = useState(
-    new Array(sortedProducts.length).fill(false)
-  );
+  // const [likedItems, setLikedItems] = useState(
+  //   new Array(sortedProducts.length).fill(false)
+  // );
 
-  const [newList, setNewList] = useState([]);
+  // const [newList, setNewList] = useState([]);
   const productLength = Math.ceil(sortedProducts.length / 10);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -36,6 +40,7 @@ function Shop() {
           );
         } else {
           setPage((prev) => (prev > productLength ? 1 : page));
+          // setPage(page)
           response = await fetch(
             `http://localhost:5100/api/product/show/filtered?page=${page}&category=${filter.category}`
           );

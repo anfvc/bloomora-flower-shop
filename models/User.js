@@ -33,18 +33,6 @@ const userSchema = new Schema(
             required: true,
             default: 1,
           },
-          productName: {
-            type: String,
-            ref: "Product",
-          },
-          productPrice: {
-            type: Number,
-            ref: "Product",
-          },
-          productImg: {
-            type: String,
-            ref: "Product",
-          },
         },
       ],
       default: [],
@@ -52,11 +40,26 @@ const userSchema = new Schema(
     wishlist: {
       type: [
         {
-          type: Schema.Types.ObjectId,
-          ref: "Product",
+          productId: {
+            type: Schema.Types.ObjectId,
+            ref: "Product",
+            required: true,
+          },
+          name: {
+            type: String,
+            ref: "Product",
+          },
+          price: {
+            type: Number,
+            ref: "Product",
+          },
+          image: {
+            type: String,
+            ref: "Product",
+          },
         },
       ],
-      defaul: [],
+      default: [],
     },
     role: {
       type: String,
