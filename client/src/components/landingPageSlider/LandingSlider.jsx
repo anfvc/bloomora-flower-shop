@@ -4,8 +4,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { landingSlider } from "../../data/landingPageSlider.js";
+import { useNavigate } from "react-router-dom";
 
 function LandingSlider() {
+  const navigate = useNavigate();
+
   const settings = {
     dots: true,
     fade: true,
@@ -32,8 +35,8 @@ function LandingSlider() {
               <h2>{item.title1}</h2>
               <h1>{item.title2}</h1>
               <div className="buttons">
-                <button>Shop</button>
-                <button>Contact</button>
+                <button onClick={() => navigate("/shop")}>Shop</button>
+                <button onClick={() => navigate("/contact")}>Contact</button>
               </div>
             </div>
           </div>
