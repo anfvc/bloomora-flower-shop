@@ -35,7 +35,11 @@ export async function addToWishList(req, res){
         const productInWishList = user.wishlist.find( item => item.productId.equals(productId))
         
         if(!productInWishList){
-            user.wishlist.push({productId, userId})
+            user.wishlist.push({productId, userId,
+                name: product.name,
+                price: product.price,
+                image: product.image
+            })
         } else {
             user.wishlist = user.wishlist.filter(item => !item.productId.equals(productId))
                     
