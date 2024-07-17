@@ -169,9 +169,7 @@ function Navbar() {
           </div>
           <div className="user-cart-search">
             {isLoggedIn && (
-              <p className={`welcomeMessage ${scrolled ? "scrolled" : ""}`}>
-                Hello, {user.firstName}{" "}
-              </p>
+              <p className={`welcomeMessage ${scrolled ? "scrolled" : ""}`}>Hello, {user.user.firstName[0].toUpperCase() + user.user.firstName.slice(1)} </p>
             )}
             <details>
               <summary>

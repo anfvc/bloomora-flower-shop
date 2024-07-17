@@ -33,6 +33,22 @@ const userSchema = new Schema(
             required: true,
             default: 1,
           },
+          productName: {
+            type: String,
+            required: true,
+          },
+          productPrice: {
+            type: Number,
+            required: true,
+          },
+          productCategory: {
+            type: String,
+            required: true,
+          },
+          productImage: {
+            type: String,
+            required: true,
+          },
         },
       ],
       default: [],

@@ -59,17 +59,17 @@ export async function addToCart(req, res) {
       user.cart.push({
         productId,
         quantity,
-        userId,
+        productName: product.name,
+        productPrice: product.price,
+        productImage: product.image,
+        productCategory: product.category
       });
     }
 
     await user.save();
-    await user.populate({
-      path: "cart.productId",
-      select: "name image price category",
-    });
 
     res.status(StatusCodes.OK).json(user.cart);
+    console.log(product);
     console.log(user.cart);
   } catch (error) {
     res
