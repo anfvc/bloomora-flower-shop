@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { NavLink, useNavigate } from "react-router-dom"; 
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../images/logo/bloomoraV2.svg";
 import scrolledLogo from "../../images/logo/bloomoraV3.svg";
 import { AiOutlineUser } from "react-icons/ai";
@@ -17,12 +17,12 @@ import Register from "../Register/Register";
 import { UserContext } from "../../context/userContext";
 
 function Navbar() {
-  
+
   const [scrolled, setScrolled] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const { isLoggedIn, user, logout } = useContext(UserContext);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const { isMenuOpen,setIsMenuOpen } = useContext(UserContext);
 
@@ -82,8 +82,8 @@ function Navbar() {
 
   const handleLogout = () => {
     logout();
-    navigate("/"); 
-    document.querySelector('details[open]').removeAttribute('open'); 
+    navigate("/");
+    document.querySelector('details[open]').removeAttribute('open');
   };
 
   const closeModals = () => {
@@ -145,7 +145,7 @@ function Navbar() {
           </div>
           <div className="user-cart-search">
             {isLoggedIn && (
-              <p className={`welcomeMessage ${scrolled ? "scrolled" : ""}`}>Hello, {user.firstName} </p>
+              <p className={`welcomeMessage ${scrolled ? "scrolled" : ""}`}>Hello, {user.user.firstName[0].toUpperCase() + user.user.firstName.slice(1)} </p>
             )}
             <details>
               <summary>
@@ -154,9 +154,9 @@ function Navbar() {
                 />
               </summary>
               <ul className="loginSignUp">
-                {isLoggedIn ? ( 
+                {isLoggedIn ? (
                   <>
-                    <li onClick={() => navigate('/userPanel')}> 
+                    <li onClick={() => navigate('/userPanel')}>
                       <AiFillEdit />
                       Profile
                     </li>
