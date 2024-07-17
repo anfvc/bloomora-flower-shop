@@ -4,17 +4,17 @@ import { UserContext } from "../../context/userContext"
 
 function Wishlist() {
   const {user} = useContext(UserContext)
-  const [wishList, setWishList] = useState([])
+  const [wishList, setWishList] = useState(JSON.parse(localStorage.getItem("wishlist")) || [])
 
   useEffect(()=>{
       async function getWishList(){
         try {
-          const response = await fetch(`http://localhost:5100/api/wishlist/get/${user._id}`)
+          const response = await fetch(`http://localhost:5100/api/wishlist/get/${user.user._id}`)
 
             if(response.ok){
               const data = await response.json();
               setWishList(data)
-              console.log(data);
+              console.log(`wishlist, ${data}`);
             }else {
               const { error } = await response.json();
               throw new Error(error.message);
@@ -25,12 +25,16 @@ function Wishlist() {
 
     }
     getWishList()
-  },[user._id])
+  },[user.user._id])
+
+  useEffect(()=>{
+    const savedWishlist = localStorage.setItem("wishlist", JSON.stringify(wishList))
+  },[wishList])
 
 
   return (
     <>
-    <h3>Wishlist</h3>
+    <h2>Wishlist</h2>
     {!!wishList.length &&
           wishList.map((item) => (
             <div className="productsBox" key={item._id}>
@@ -40,7 +44,7 @@ function Wishlist() {
                 
               </div>
               <div className="info">
-                <p>~ {item.name} ~</p>
+                <p>{item.name}</p>
                 <p>{item.price}€</p>
               </div>
             </div>

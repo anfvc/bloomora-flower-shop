@@ -208,9 +208,12 @@ function Navbar() {
                 className={`search ${scrolled ? "scrolled-icon" : ""}`}
               />
             </NavLink>
+            <NavLink to="/cart">
+
             <PiShoppingBag
               className={`cart ${scrolled ? "scrolled-icon" : ""}`}
             />
+            </NavLink>
           </div>
           <div className="burgerMenu" onClick={toggleMenu}>
             {isMenuOpen ? (
@@ -333,7 +336,9 @@ function Navbar() {
                   </NavLink>
                 </li>
                 <li>
-                  <PiShoppingBag className="cart" />
+                  <NavLink to="/cart">
+                    <PiShoppingBag className="cart" />
+                  </NavLink>
                 </li>
               </div>
             </ul>

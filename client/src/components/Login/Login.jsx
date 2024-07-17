@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext} from "react";
 import "./Login.css";
 import { UserContext } from "../../context/userContext";
 
@@ -22,7 +22,7 @@ function Login({ openRegister, closeModals }) {
         headers: {
           "Content-Type": "application/JSON",
         },
-         credentials: "include"
+          credentials: "include"
       };
 
       const response = await fetch(
@@ -46,6 +46,8 @@ function Login({ openRegister, closeModals }) {
       console.log(error.message); 
     }
   };
+
+ 
 
   return (
     <div className="loginModal">
