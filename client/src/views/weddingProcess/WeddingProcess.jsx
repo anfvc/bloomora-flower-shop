@@ -1,6 +1,9 @@
 import React from "react";
 import "./WeddingProcess.css";
 import image2 from "../../images/wedding/weddingProcess/image2.jpg";
+import image3 from "../../images/wedding/weddingProcess/image3.jpg";
+import image4 from "../../images/wedding/weddingProcess/image4.jpg";
+import image5 from "../../images/wedding/weddingProcess/image5.jpg";
 import { NavLink } from "react-router-dom";
 
 function WeddingProcess() {
@@ -51,11 +54,11 @@ function WeddingProcess() {
               <button><NavLink to="/wedding-gallery">wedding gallery</NavLink></button>
             </div>
           </div>
-          <img src={image2} alt="image2" />
+          <img src={image3} alt="image2" />
         </div>
 
         <div className="we-box">
-          <img src={image2} alt="image2" />
+          <img src={image4} alt="image2" />
           <div className="step">
             <h1>
               step <span>3</span>
@@ -81,7 +84,7 @@ function WeddingProcess() {
               with your guests: eating, drinking, laughing, and dancing!
             </p>
           </div>
-          <img src={image2} alt="image2" />
+          <img src={image5} alt="image2" />
         </div>
       </div>
     </div>
