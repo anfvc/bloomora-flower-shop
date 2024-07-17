@@ -38,7 +38,8 @@ export const login = async (req, res) => {
       msg: `${user.email} has successfully logged in.`,
       id: user._id,
       firstName: user.firstName,
-      role: user.role
+      role: user.role,
+      cart: user.cart
     });
 };
 
