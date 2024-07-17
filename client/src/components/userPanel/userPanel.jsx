@@ -11,6 +11,7 @@ import { GrDocumentConfig } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
 import Wishlist from "../wishlist/wishlist";
 
+
 function UserPanel() {
   const { user } = useContext(UserContext);
   const [isEditing, setIsEditing] = useState(false);
@@ -61,6 +62,7 @@ function UserPanel() {
             <h1>
               Welcome, {user.user.firstName[0].toUpperCase() + user.user.firstName.slice(1)} {user.user.lastName[0].toUpperCase() + user.user.lastName.slice(1)}
             </h1>
+            
             <Wishlist/>
           </div>
         )}

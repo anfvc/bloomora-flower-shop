@@ -33,15 +33,11 @@ export const login = async (req, res) => {
   res.cookie("token", token, {
     httpOnly: true,
     expires: new Date(Date.now() + oneDay),
-    secure: process.env.NODE_ENV === "production",
+    secure: true,
   });
 
   res.status(StatusCodes.OK).json({
-      msg: `${user.email} has successfully logged in.`,
-
-      user
-
-    });
+      msg: `${user.email} has successfully logged in.`, user});
 };
 
 export const logout = (req, res) => {
