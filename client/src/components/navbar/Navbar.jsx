@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { NavLink, useNavigate } from "react-router-dom"; 
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../images/logo/bloomoraV2.svg";
 import scrolledLogo from "../../images/logo/bloomoraV3.svg";
 import { AiOutlineUser } from "react-icons/ai";
@@ -17,34 +17,38 @@ import Register from "../Register/Register";
 import { UserContext } from "../../context/userContext";
 
 function Navbar() {
-  
   const [scrolled, setScrolled] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const { isLoggedIn, user, logout } = useContext(UserContext);
-  const navigate = useNavigate(); 
-
-  const { isMenuOpen,setIsMenuOpen } = useContext(UserContext);
+  const { isMenuOpen, setIsMenuOpen } = useContext(UserContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const userIcon = document.querySelector('.user-cart-search details summary');
-    userIcon.addEventListener('mouseover', openDetails);
-    userIcon.addEventListener('mouseout', closeDetails);
+    const userIcon = document.querySelector(
+      ".user-cart-search details summary"
+    );
+    userIcon.addEventListener("mouseover", openDetails);
+    userIcon.addEventListener("mouseout", closeDetails);
 
     return () => {
-      userIcon.removeEventListener('mouseover', openDetails);
-      userIcon.removeEventListener('mouseout', closeDetails);
+      userIcon.removeEventListener("mouseover", openDetails);
+      userIcon.removeEventListener("mouseout", closeDetails);
     };
   }, []);
 
   const openDetails = () => {
-    document.querySelector('.user-cart-search details').setAttribute('open', true);
+    document
+      .querySelector(".user-cart-search details")
+      .setAttribute("open", true);
   };
 
   const closeDetails = () => {
     setTimeout(() => {
-      if (!document.querySelector('.user-cart-search details:hover')) {
-        document.querySelector('.user-cart-search details').removeAttribute('open');
+      if (!document.querySelector(".user-cart-search details:hover")) {
+        document
+          .querySelector(".user-cart-search details")
+          .removeAttribute("open");
       }
     }, 500);
   };
@@ -82,13 +86,17 @@ function Navbar() {
 
   const handleLogout = () => {
     logout();
-    navigate("/"); 
-    document.querySelector('details[open]').removeAttribute('open'); 
+    navigate("/");
+    document.querySelector("details[open]").removeAttribute("open");
   };
 
   const closeModals = () => {
     setIsLoginOpen(false);
     setIsRegisterOpen(false);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -99,7 +107,7 @@ function Navbar() {
       ></div>
       <div className={`navbarContainer ${scrolled ? "scrolled" : ""}`}>
         <div className="logo">
-          <NavLink to="/">
+          <NavLink to="/" onClick={scrollToTop}>
             <img
               src={scrolled ? scrolledLogo : logo}
               alt="logo"
@@ -112,32 +120,48 @@ function Navbar() {
           <div className="links">
             <ul>
               <li>
-                <NavLink to="/" className={scrolled ? "scrolled" : ""}>
+                <NavLink to="/" className={scrolled ? "scrolled" : ""} onClick={scrollToTop}>
                   Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/shop" className={scrolled ? "scrolled" : ""}>
+                <NavLink to="/shop" className={scrolled ? "scrolled" : ""} onClick={scrollToTop}>
                   Shop
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/ourroots" className={scrolled ? "scrolled" : ""}>
+                <NavLink to="/ourroots" className={scrolled ? "scrolled" : ""} onClick={scrollToTop}>
                   Our Roots
                 </NavLink>
               </li>
               <li className="weddings-events">
-                <NavLink to="/weddings-events" className={scrolled ? "scrolled" : ""}>
+                <NavLink
+                  to="/weddings-events"
+                  className={scrolled ? "scrolled" : ""}
+                  onClick={scrollToTop}
+                >
                   weddings & events
                   <ul className="dropdownLinks">
-                    <li className="dropdown-li"><NavLink to="/wedding-process" className="dropdown-a">Wedding Process</NavLink></li>
-                    <li className="dropdown-li"><NavLink to="/wedding-gallery" className="dropdown-a">Wedding Gallery</NavLink></li>
-                    <li className="dropdown-li"><NavLink to="/events" className="dropdown-a">Events</NavLink></li>
+                    <li className="dropdown-li">
+                      <NavLink to="/wedding-process" className="dropdown-a" onClick={scrollToTop}>
+                        Wedding Process
+                      </NavLink>
+                    </li>
+                    <li className="dropdown-li">
+                      <NavLink to="/wedding-gallery" className="dropdown-a" onClick={scrollToTop}>
+                        Wedding Gallery
+                      </NavLink>
+                    </li>
+                    <li className="dropdown-li">
+                      <NavLink to="/events" className="dropdown-a" onClick={scrollToTop}>
+                        Events
+                      </NavLink>
+                    </li>
                   </ul>
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/contact" className={scrolled ? "scrolled" : ""}>
+                <NavLink to="/contact" className={scrolled ? "scrolled" : ""} onClick={scrollToTop}>
                   Contact
                 </NavLink>
               </li>
@@ -145,7 +169,9 @@ function Navbar() {
           </div>
           <div className="user-cart-search">
             {isLoggedIn && (
-              <p className={`welcomeMessage ${scrolled ? "scrolled" : ""}`}>Hello, {user.firstName} </p>
+              <p className={`welcomeMessage ${scrolled ? "scrolled" : ""}`}>
+                Hello, {user.firstName}{" "}
+              </p>
             )}
             <details>
               <summary>
@@ -154,9 +180,9 @@ function Navbar() {
                 />
               </summary>
               <ul className="loginSignUp">
-                {isLoggedIn ? ( 
+                {isLoggedIn ? (
                   <>
-                    <li onClick={() => navigate('/userPanel')}> 
+                    <li onClick={() => navigate("/userPanel")}>
                       <AiFillEdit />
                       Profile
                     </li>
@@ -179,7 +205,11 @@ function Navbar() {
                 )}
               </ul>
             </details>
-            <NavLink to="/search"><FiSearch className={`search ${scrolled ? "scrolled-icon" : ""}`} /></NavLink>
+            <NavLink to="/search">
+              <FiSearch
+                className={`search ${scrolled ? "scrolled-icon" : ""}`}
+              />
+            </NavLink>
             <PiShoppingBag
               className={`cart ${scrolled ? "scrolled-icon" : ""}`}
             />
@@ -202,7 +232,10 @@ function Navbar() {
               <li>
                 <NavLink
                   to="/"
-                  onClick={toggleMenu}
+                  onClick={() => {
+                    toggleMenu();
+                    scrollToTop();
+                  }}
                   className={scrolled ? "scrolled" : ""}
                 >
                   Home
@@ -211,7 +244,10 @@ function Navbar() {
               <li>
                 <NavLink
                   to="/shop"
-                  onClick={toggleMenu}
+                  onClick={() => {
+                    toggleMenu();
+                    scrollToTop();
+                  }}
                   className={scrolled ? "scrolled" : ""}
                 >
                   Shop
@@ -220,7 +256,10 @@ function Navbar() {
               <li>
                 <NavLink
                   to="/ourroots"
-                  onClick={toggleMenu}
+                  onClick={() => {
+                    toggleMenu();
+                    scrollToTop();
+                  }}
                   className={scrolled ? "scrolled" : ""}
                 >
                   Our Roots
@@ -229,7 +268,10 @@ function Navbar() {
               <li>
                 <NavLink
                   to="/weddings-events"
-                  onClick={toggleMenu}
+                  onClick={() => {
+                    toggleMenu();
+                    scrollToTop();
+                  }}
                   className={scrolled ? "scrolled" : ""}
                 >
                   Weddings & Events
@@ -238,7 +280,10 @@ function Navbar() {
               <li>
                 <NavLink
                   to="/contact"
-                  onClick={toggleMenu}
+                  onClick={() => {
+                    toggleMenu();
+                    scrollToTop();
+                  }}
                   className={scrolled ? "scrolled" : ""}
                 >
                   Contact
@@ -246,16 +291,48 @@ function Navbar() {
               </li>
               <div className="dropdownUserCartBag">
                 <li>
-                  <AiOutlineUser
-                    className="user"
-                    onClick={() => {
-                      openLogin();
-                      isMenuOpen && toggleMenu();
-                    }}
-                  />
+                  <details>
+                    <summary>
+                      <AiOutlineUser
+                        className={`user ${scrolled ? "scrolled-icon" : ""}`}
+                      />
+                    </summary>
+                    <ul className="loginSignUp">
+                      {isLoggedIn ? (
+                        <>
+                          <li
+                            className="dd-li"
+                            onClick={() => navigate("/userPanel")}
+                          >
+                            <AiFillEdit />
+                            Profile
+                          </li>
+                          <li className="dd-li" onClick={handleLogout}>
+                            <FaSignOutAlt />
+                            Logout
+                          </li>
+                        </>
+                      ) : (
+                        <>
+                          <li className="dd-li" onClick={openLogin}>
+                            <IoLogIn />
+                            Sign In
+                          </li>
+                          <li className="dd-li" onClick={openRegister}>
+                            <MdPersonAdd />
+                            Register
+                          </li>
+                        </>
+                      )}
+                    </ul>
+                  </details>
                 </li>
                 <li>
-                  <FiSearch className="search" />
+                  <NavLink to="/search" onClick={toggleMenu}>
+                    <FiSearch
+                      className={`search ${scrolled ? "scrolled-icon" : ""}`}
+                    />
+                  </NavLink>
                 </li>
                 <li>
                   <PiShoppingBag className="cart" />

@@ -150,13 +150,13 @@
   border-bottom: 1px solid #151515;
 }
 
-/* Scrolled durumunda dropdown menü için stil */
+
 .navbarContainer.scrolled .links-icons .links .weddings-events .dropdownLinks {
-  background-color: #fdfdfd; /* Scrolled durumunda arka plan beyaz olacak */
+  background-color: #fdfdfd; 
 }
 
 .navbarContainer.scrolled .links-icons .links .weddings-events .dropdownLinks .dropdown-li .dropdown-a {
-  color: #151515; /* Scrolled durumunda yazı rengi siyah olacak */
+  color: #151515; 
 }
 
 
@@ -317,6 +317,7 @@
 
   .dropdownMenu ul {
     width: 100%;
+    /* height: 100%; */
     list-style: none;
     padding: 0;
     margin: 0;
@@ -367,6 +368,60 @@
     display: flex;
     gap: 3rem;
     margin-top: 2rem;
+    position: relative;
+    height: 13rem;
+    /* width: 100%; */
+  }
+
+  .dropdownMenu .dropdownUserCartBag li {
+    height: 20px;
+  }
+
+  .dropdownMenu .dropdownUserCartBag details {
+    position: relative;
+  }
+  
+  .dropdownMenu .dropdownUserCartBag details summary {
+    list-style: none;
+  }
+  
+  .dropdownMenu .dropdownUserCartBag details .loginSignUp {
+    position: absolute;
+    left: 0;
+    top: 2.5rem;
+    width: max-content;
+    gap: 0;
+    background-color: transparent;
+    border-radius: 3px;
+    list-style: none;
+    z-index: 3;
+  }
+  
+  .dropdownMenu .dropdownUserCartBag details .loginSignUp .dd-li {
+    width: 12rem;
+    height: 5rem;
+    cursor: pointer;
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    letter-spacing: .5px;
+    /* border-bottom: 1px solid #ffffff; */
+    border-radius: 1px;
+    color: #ffffff;
+    transition: all .3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.3rem;
+  }
+  
+  .dropdownMenu .dropdownUserCartBag details .loginSignUp .dd-li:hover {
+    background-color: #ffffff;
+    /* border-bottom: 1px solid white; */
+    color: rgb(14, 14, 14);
+  }
+  
+  .dropdownMenu .dropdownUserCartBag details .loginSignUp li svg {
+    font-size: 1.8rem;
   }
 
   .dropdownMenu ul a {

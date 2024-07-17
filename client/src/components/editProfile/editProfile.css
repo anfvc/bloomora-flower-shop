@@ -4,7 +4,7 @@
   align-items: flex-start;
   gap: 3rem;
   padding: 4rem;
-  background-color: white;
+  background-color: #6e8377;
   border-radius: 10px;
   width: 100%;
   height: 100vh;
@@ -12,6 +12,10 @@
 
 .editProfileForm h1 {
   margin-bottom: 20px;
+  color: white;
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: 1px;
 }
 
 .editProfileForm label {
@@ -22,6 +26,7 @@
   gap: 1rem;
   font-size: 1.6rem;
   letter-spacing: 0.5px;
+  color: white;
   position: relative;
 }
 
@@ -30,7 +35,8 @@
   height: 4rem;
   padding-left: 1.5rem;
   border: none;
-  border: 1px solid #011e00;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
   font-size: 1.4rem;
 }
 
@@ -68,9 +74,9 @@
   height: 4.5rem;
   padding: 12px 0;
   margin-bottom: 10px;
-  color: #011e00;
+  color: #ffffff;
   background-color: transparent;
-  border: 1px solid #698474;
+  border: 1px solid #ffffff;
   border-radius: 5px;
   cursor: pointer;
   position: relative;
@@ -81,8 +87,8 @@
 
 .saveButton:hover,
 .cancelButton:hover {
-  color: rgb(248, 248, 248);
-  background-color: #698474;
+  color: rgb(18, 18, 18);
+  background-color: #ffffff;
 }
 
 @media screen and (max-width: 1024px) {
