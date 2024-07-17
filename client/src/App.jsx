@@ -13,6 +13,8 @@ import WeddingGallery from "./views/weddingGallery/WeddingGallery.jsx";
 import Search from "./components/search/Search.jsx";
 import Footer from "./components/footer/Footer.jsx";
 import WeddingEvents from "./views/weddingEvents/WeddingEvents.jsx";
+import Cart from "./components/cart/Cart.jsx";
+
 
 function App() {
   return (
@@ -30,6 +32,7 @@ function App() {
         <Route path="/admin" element={<CreateProduct />} />
         <Route path="/userPanel" element={<UserPanel />} />
         <Route path="/search" element={<Search />}/>
+        <Route path="/cart" element={<Cart />}/>
       </Routes>
       <Footer />
     </>
