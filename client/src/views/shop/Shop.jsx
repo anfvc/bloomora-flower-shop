@@ -4,8 +4,8 @@ import { UserContext } from "../../context/userContext.jsx";
 import SortFilter from "../../components/sort-filter/SortFilter.jsx";
 import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
-import { IoIosArrowBack } from "react-icons/io";
-import { IoIosArrowForward } from "react-icons/io";
+import { GrNext } from "react-icons/gr";
+import ProductDetails from "../../components/productDetails/ProductDetails.jsx";
 
 function Shop() {
   const { sortedProducts, list, setList, filter } = useContext(UserContext);
@@ -27,6 +27,8 @@ function Shop() {
 
   // const [newList, setNewList] = useState([]);
   const productLength = Math.ceil(sortedProducts.length / 10);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     async function showAllProducts() {
@@ -77,6 +79,7 @@ function Shop() {
     if (page <= 1) {
       setPage(1);
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function handleBtnNext() {
@@ -84,6 +87,17 @@ function Shop() {
       return;
     }
     setPage(page + 1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function openModal(product) {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  }
+
+  function closeModal() {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
   }
 
   return (
@@ -97,12 +111,15 @@ function Shop() {
         {!!list.length &&
           list.map((item, index) => (
             <div className="productsBox" key={item._id}>
-              <div className="imageBox">
+              <div className="imageBox" onClick={() => openModal(item)}>
                 <img src={item.image} alt="" width={100} height={100} />
-                <button className="addToCart">add to cart</button>
+
                 <div
                   className="likeButton"
-                  onClick={() => handleLike(index)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleLike(index);
+                  }}
                   onMouseEnter={() => handleMouseEnter(index)}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -116,29 +133,32 @@ function Shop() {
                 </div>
               </div>
               <div className="info">
-                <p>~ {item.name} ~</p>
+                <p>{item.name}</p>
                 <p>{item.price}€</p>
+                <button className="addToCart">add to cart</button>
               </div>
             </div>
           ))}
       </div>
-      <div className="pagebtn" style={{display: "flex", alignItems: "center", gap: "2rem"}}>
-        <button style={{display: "flex", alignItems: "center"}}>
-          <IoIosArrowBack
-            onClick={handleBtnPrev}
-            style={{ fontSize: "3rem" }}
-          />
-        </button>
+      <div className="pagebtn">
+        <div className="next-prev">
+          <div className="prevContainer">
+            <GrNext onClick={handleBtnPrev} className="prev" />
+            <p className="prevText">Back</p>
+          </div>
+          <p>{page}</p>
+          <div className="nextContainer">
+            <p className="nextText">Next</p>
+            <GrNext onClick={handleBtnNext} className="next" />
+          </div>
+        </div>
         <label>
           Page: {page} of {productLength}
         </label>
-          <button style={{display: "flex", alignItems: "center"}}>
-          <IoIosArrowForward
-            onClick={handleBtnNext}
-            style={{ fontSize: "3rem"}}
-          />
-        </button>
       </div>
+      {isModalOpen && (
+        <ProductDetails product={selectedProduct} onClose={closeModal} />
+      )}
     </div>
   );
 }
