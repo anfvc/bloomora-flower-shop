@@ -12,7 +12,9 @@ import WeddingProcess from "./views/weddingProcess/WeddingProcess.jsx";
 import WeddingGallery from "./views/weddingGallery/WeddingGallery.jsx";
 import Search from "./components/search/Search.jsx";
 import Footer from "./components/footer/Footer.jsx";
+import WeddingEvents from "./views/weddingEvents/WeddingEvents.jsx";
 import Cart from "./components/cart/Cart.jsx";
+
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
         <Route path="/weddings-events" element={<WeddingsEvents />} />
         <Route path="/wedding-process" element={<WeddingProcess />} />
         <Route path="/wedding-gallery" element={<WeddingGallery />} />
+        <Route path="/events" element={<WeddingEvents />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<CreateProduct />} />
         <Route path="/userPanel" element={<UserPanel />} />
