@@ -9,7 +9,7 @@ function Wishlist() {
   useEffect(()=>{
       async function getWishList(){
         try {
-          const response = await fetch(`http://localhost:5100/api/wishlist/get/${user.id}`)
+          const response = await fetch(`http://localhost:5100/api/wishlist/get/${user._id}`)
 
             if(response.ok){
               const data = await response.json();
@@ -25,7 +25,7 @@ function Wishlist() {
 
     }
     getWishList()
-  },[user.id])
+  },[user._id])
 
 
   return (
