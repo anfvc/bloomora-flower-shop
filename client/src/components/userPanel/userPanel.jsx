@@ -42,7 +42,7 @@ function UserPanel() {
           <p>My Invoices</p>
           <FaFileInvoice />
         </button>
-        <button className="sidebarButton">
+        <button className="sidebarButton" onClick={() => navigate("/wishlist")}>
           <p>Wishlist</p>
           <PiListHeartFill />
         </button>
@@ -62,8 +62,8 @@ function UserPanel() {
             <h1>
               Welcome, {user.user.firstName[0].toUpperCase() + user.user.firstName.slice(1)} {user.user.lastName[0].toUpperCase() + user.user.lastName.slice(1)}
             </h1>
-            
-            <Wishlist/>
+
+            {/* <Wishlist/> */}
           </div>
         )}
       </div>
