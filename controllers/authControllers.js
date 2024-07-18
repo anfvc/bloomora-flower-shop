@@ -26,8 +26,9 @@ export const login = async (req, res) => {
   if (!isValidUser) throw new UnauthenticatedError("Invalid credentials");
 
   const token = createJWT({ userId: user._id, role: user.role });
-  // console.log(user);
-
+  //  const token = createJWT({ user });
+  // console.log("created token", token);
+  
   const oneDay = 1000 * 60 * 60 * 24;
 
   res.cookie("token", token, {
@@ -35,15 +36,24 @@ export const login = async (req, res) => {
     expires: new Date(Date.now() + oneDay),
     secure: true,
   });
-
+console.log("login");
   res.status(StatusCodes.OK).json({
       msg: `${user.email} has successfully logged in.`, user});
 };
 
 export const logout = (req, res) => {
-  res.cookies("token", "logout", {
-    httpOnly: true,
-    expires: new Date(Date.now()),
-  });
+  // res.cookie("token", "logout", {
+  //   httpOnly: true,
+  //   expires: new Date(Date.now()),
+  //   });
+  res.clearCookie("token")
+    console.log('logout');
   res.status(StatusCodes.OK).json({ msg: "User logged out!" });
 };
+
+export const getUser = async (req, res)=>{
+  const foundUser = await User.findById(req.user.userId)
+  console.log("foundUser", foundUser);
+  res.json({user: foundUser})
+  // res.end()
+}

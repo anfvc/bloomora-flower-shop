@@ -16,6 +16,24 @@ const UserProvider = ({ children }) => {
     category: "",
   });
 
+
+  useEffect(()=>{
+    async function checkUserAuth(){
+      try {
+        const response = await fetch(`http://localhost:5100/api/auth/refreshuser`,{credentials: "include"})
+        if(response.ok){
+          const data = await response.json()
+          console.log(data);
+          setIsLoggedIn(true);
+          setUser(data)
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+    checkUserAuth()
+  },[])
+
   // filter part
   function handleFilter(e) {
     setFilter({ ...filter, category: e.target.value });
@@ -92,9 +110,23 @@ const UserProvider = ({ children }) => {
     setSortedProducts(originalProducts);
   };
 
-  const logout = () => {
-    setUser(null);
-    setIsLoggedIn(false);
+   const logout = async() => {
+    try {
+      const settings = {
+        method: "POST",
+        credentials: "include"
+      }
+      const response = await fetch(`http://localhost:5100/api/auth/logout`, settings)
+      if(response.ok){
+        const data = await response.json()
+        setUser(data);
+        setIsLoggedIn(false);
+        console.log(user);
+      }
+    } catch (error) {
+      
+      console.log(error.message); 
+    }
   };
 
   return (

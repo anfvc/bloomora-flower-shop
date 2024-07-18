@@ -1,4 +1,4 @@
-import { useState, useContext} from "react";
+import { useState, useContext, useEffect} from "react";
 import "./Login.css";
 import { UserContext } from "../../context/userContext";
 
@@ -6,6 +6,9 @@ function Login({ openRegister, closeModals }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setUser, setIsLoggedIn } = useContext(UserContext);
+
+
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
