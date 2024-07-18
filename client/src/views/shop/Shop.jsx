@@ -8,7 +8,8 @@ import { GrNext } from "react-icons/gr";
 import ProductDetails from "../../components/productDetails/ProductDetails.jsx";
 
 function Shop() {
-  const { sortedProducts, list, setList, filter } = useContext(UserContext);
+  const { sortedProducts, list, setList, filter, addToWishList } =
+    useContext(UserContext);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   const [page, setPage] = useState(1);
 
@@ -20,9 +21,6 @@ function Shop() {
   // const [totalPages, setTotalPages] = useState(0)
   // const [likedItems, setLikedItems] = useState(
   //   new Array(/* sortedProducts */list.length).fill(false)
-  // );
-  // const [likedItems, setLikedItems] = useState(
-  //   new Array(sortedProducts.length).fill(false)
   // );
 
   // const [newList, setNewList] = useState([]);
@@ -64,6 +62,8 @@ function Shop() {
     const newLikedItems = [...likedItems];
     newLikedItems[index] = !newLikedItems[index];
     setLikedItems(newLikedItems);
+    const product = list[index];
+    addToWishList(product);
   }
 
   function handleMouseEnter(index) {
@@ -79,7 +79,7 @@ function Shop() {
     if (page <= 1) {
       setPage(1);
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function handleBtnNext() {
@@ -87,7 +87,7 @@ function Shop() {
       return;
     }
     setPage(page + 1);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function openModal(product) {

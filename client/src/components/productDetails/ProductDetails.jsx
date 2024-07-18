@@ -7,7 +7,7 @@ function ProductDetails({ product, onClose }) {
   const [productCount, setProductCount] = useState(1);
   const [totalPrice, setTotalPrice] = useState(product.price);
 
-  const { user, setUser } = useContext(UserContext);
+  const { user, setUser, addToCart } = useContext(UserContext);
 
   useEffect(() => {
     setProductCount(1);
@@ -36,6 +36,11 @@ function ProductDetails({ product, onClose }) {
       }
       return prevCount;
     });
+  }
+
+  //* Handles the function we get from userContext
+  function handleAddToCart() {
+    addToCart(product, productCount);
   }
 
   return (
@@ -73,7 +78,7 @@ function ProductDetails({ product, onClose }) {
                   </div>
                 </div>
                 <div className="productDetailsAddToCart">
-                  <button>add to cart</button>
+                  <button onClick={handleAddToCart}>add to cart</button>
                 </div>
               </div>
             </div>
