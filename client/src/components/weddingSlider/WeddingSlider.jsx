@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { weddingSlider } from "../../data/weddingSlider";
+import { NavLink } from "react-router-dom";
 
 function WeddingSlider() {
   const settings = {
@@ -16,12 +17,16 @@ function WeddingSlider() {
     waitForAnimate: false,
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="weddingSliderContainer">
       <div className="weddingInfo">
         <h2>hand-crafted in the blue mountains</h2>
         <h1>wedding flowers & bouquets</h1>
-        <button>wedding quotes</button>
+        <button onClick={scrollToTop}><NavLink to="wedding-process">wedding quotes</NavLink></button>
       </div>
       <div className="sliderContainer">
         <Slider {...settings}>
