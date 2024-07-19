@@ -42,7 +42,11 @@ function UserPanel() {
           <p>My Invoices</p>
           <FaFileInvoice />
         </button>
-        <button className="sidebarButton" onClick={() => setActiveSection("wishlist")}>
+
+//         <button className="sidebarButton" onClick={() => setActiveSection("wishlist")}>
+
+        <button className="sidebarButton" onClick={() => navigate("/wishlist")}>
+
           <p>Wishlist</p>
           <PiListHeartFill />
         </button>
@@ -58,18 +62,27 @@ function UserPanel() {
         {isEditing ? (
           <EditProfile closeEdit={closeEdit} />
         ) : (
-          <div className="sectionContent">
-            {activeSection === "welcome" && (
-              <div className="welcome">
-                <h1>
-                  Welcome, {user.user.firstName[0].toUpperCase() + user.user.firstName.slice(1)} {user.user.lastName[0].toUpperCase() + user.user.lastName.slice(1)}
-                </h1>
-                <Wishlist />
-              </div>
-            )}
-            {activeSection === "orders" && <div>Orders Component</div>}
-            {activeSection === "invoices" && <Invoice />} 
-            {activeSection === "wishlist" && <Wishlist />} 
+
+//           <div className="sectionContent">
+//             {activeSection === "welcome" && (
+//               <div className="welcome">
+//                 <h1>
+//                   Welcome, {user.user.firstName[0].toUpperCase() + user.user.firstName.slice(1)} {user.user.lastName[0].toUpperCase() + user.user.lastName.slice(1)}
+//                 </h1>
+//                 <Wishlist />
+//               </div>
+//             )}
+//             {activeSection === "orders" && <div>Orders Component</div>}
+//             {activeSection === "invoices" && <Invoice />} 
+//             {activeSection === "wishlist" && <Wishlist />} 
+
+          <div className="welcome">
+            <h1>
+              Welcome, {user.user.firstName[0].toUpperCase() + user.user.firstName.slice(1)} {user.user.lastName[0].toUpperCase() + user.user.lastName.slice(1)}
+            </h1>
+
+            {/* <Wishlist/> */}
+
           </div>
         )}
       </div> 

@@ -14,6 +14,7 @@ import Search from "./components/search/Search.jsx";
 import Footer from "./components/footer/Footer.jsx";
 import WeddingEvents from "./views/weddingEvents/WeddingEvents.jsx";
 import Cart from "./components/cart/Cart.jsx";
+import Wishlist from "./components/wishlist/wishlist.jsx";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path="/userPanel" element={<UserPanel />} />
         <Route path="/search" element={<Search />}/>
         <Route path="/cart" element={<Cart />}/>
+        <Route path="/wishlist" element={<Wishlist />}/>
       </Routes>
       <Footer />
     </>

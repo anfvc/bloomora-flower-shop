@@ -9,12 +9,30 @@ const UserProvider = ({ children }) => {
   const [originalProducts, setOriginalProducts] = useState([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [list, setList] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]); 
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [filter, setFilter] = useState({
-    // sortby: "name",
-    // sortdir: "",
     category: "",
   });
+
+  useEffect(() => {
+    async function checkUserAuth() {
+      try {
+        const response = await fetch(
+          `http://localhost:5100/api/auth/refreshuser`,
+          { credentials: "include" }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          setIsLoggedIn(true);
+          setUser(data);
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+    checkUserAuth();
+  }, []);
 
   // filter part
   function handleFilter(e) {
@@ -27,7 +45,6 @@ const UserProvider = ({ children }) => {
         let response;
         if (!filter.category) {
           response = await fetch(`http://localhost:5100/api/product/show/all`);
-
         } else
           response = await fetch(
             `http://localhost:5100/api/product/show/filtered/all?category=${filter.category}`
@@ -47,6 +64,98 @@ const UserProvider = ({ children }) => {
     }
     fetchProducts();
   }, [filter.category]);
+
+  //* addToCart is in userContext as it can be used in other places:
+  async function addToCart(product, quantity) {
+    try {
+      const settings = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/JSON",
+        },
+        body: JSON.stringify({
+          productId: product._id,
+          quantity,
+        }),
+      };
+
+      const response = await fetch(
+        `http://localhost:5100/api/cart/add/${user.user._id}`,
+        settings
+      );
+
+      if (response.ok) {
+        const newCart = await response.json();
+        console.log(newCart);
+        setUser({ ...user, cart: newCart });
+        alert("Item added to the cart.")
+      } else {
+        const { error } = await response.json();
+        throw new Error(error.message);
+      }
+    } catch (error) {
+      console.log("Error adding product to cart.");
+    }
+  }
+
+  async function removeFromCart(product) {
+    try {
+      const settings = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/JSON",
+        },
+        body: JSON.stringify({
+          productId: product._id
+        }),
+      };
+
+      const response = await fetch(
+        `http://localhost:5100/api/cart/remove/${user.user._id}`,
+        settings
+      );
+
+      if (response.ok) {
+        const newCart = await response.json();
+        console.log(newCart);
+        setUser({ ...user, cart: newCart });
+      } else {
+        const { error } = await response.json();
+        throw new Error(error.message);
+      }
+    } catch (error) {
+      console.log("Error adding product to cart.");
+    }
+  }
+
+  async function addToWishList(product) {
+    try {
+      const settings = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/JSON",
+        },
+        body: JSON.stringify({
+          productId: product._id,
+        }),
+      };
+
+      const response = await fetch(
+        `http://localhost:5100/api/wishlist/add/${user.user._id}`,
+        settings
+      );
+
+      if (response.ok) {
+        const updatedWishlist = await response.json();
+        console.log(updatedWishlist);
+      } else {
+        const { error } = await response.json();
+        throw new Error(error.message);
+      }
+    } catch (error) {
+      console.log("Error adding product to wishlist.");
+    }
+  }
 
   // Arama işlevi
   const searchProducts = (query) => {
@@ -92,9 +201,25 @@ const UserProvider = ({ children }) => {
     setSortedProducts(originalProducts);
   };
 
-  const logout = () => {
-    setUser(null);
-    setIsLoggedIn(false);
+  const logout = async () => {
+    try {
+      const settings = {
+        method: "POST",
+        credentials: "include",
+      };
+      const response = await fetch(
+        `http://localhost:5100/api/auth/logout`,
+        settings
+      );
+      if (response.ok) {
+        const data = await response.json();
+        setUser(data);
+        setIsLoggedIn(false);
+        console.log(user);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -116,11 +241,14 @@ const UserProvider = ({ children }) => {
         setSortedProducts,
         list,
         setList,
-        filteredProducts, 
-        searchProducts, 
+        filteredProducts,
+        searchProducts,
         filter,
         setFilter,
         handleFilter,
+        addToCart,
+        addToWishList,
+        removeFromCart
       }}
     >
       {children}
