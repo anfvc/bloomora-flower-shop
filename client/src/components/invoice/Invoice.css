@@ -1,0 +1,527 @@
+.invoiceContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.invoiceBox {
+  width: 70%;
+  height: 17rem;
+  display: flex;
+  gap: 1rem;
+  background-color: white;
+  border-radius: 7px;
+  padding: 1rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.invoiceBox .invoicePrice {
+  width: 7rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.invoiceBox .invoicePrice p {
+  font-size: 2rem;
+  margin-top: 0.5rem;
+}
+
+.invoiceBox .invoiceProduct {
+  width: calc(100% - 5rem);
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.invoiceBox .invoiceProduct h2 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #698474;
+  text-transform: capitalize;
+  letter-spacing: 0.6px;
+}
+
+.invoiceBox .invoiceProduct img {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 5px;
+}
+
+.invoiceBox .invoiceProduct p:nth-child(2n) {
+  font-size: 1.7rem;
+}
+
+.invoiceBox .invoiceProduct p:nth-child(3n) {
+  font-size: 1.7rem;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+.invoiceBox svg {
+  font-size: 2.5rem;
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+}
+
+.ReactModal__Content {
+  width: 60rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  width: 90%;
+  height: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent h2 {
+  border-bottom: 1px solid #698474;
+  margin: 1rem 0;
+  font-size: 2.5rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #698474;
+}
+
+.invoiceHeader {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.businessInfo,
+.invoiceInfo {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.businessInfo h3 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.businessInfo p {
+  font-size: 1.35rem;
+  font-weight: 300;
+  line-height: 2rem;
+}
+
+.invoiceInfo p {
+  font-size: 1.3rem;
+}
+
+.invoiceInfo strong {
+  color: #44594c;
+}
+
+.customerInfo p {
+  font-size: 1.3rem;
+  line-height: 2rem;
+}
+
+.customerInfo,
+.additionalCharges,
+.summary,
+.paymentTerms,
+.notes {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.itemList table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.itemList th,
+.itemList td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: left;
+  font-size: 1.4rem;
+}
+
+.itemList th {
+  color: #44594c;
+}
+
+.additionalCharges p,
+.summary p {
+  font-size: 1.4rem;
+}
+
+.additionalCharges strong,
+.summary strong {
+  color: #44594c;
+}
+
+.paymentTerms p {
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+.paymentTerms strong {
+  color: #44594c;
+}
+
+.notes p {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.notes strong {
+  color: #44594c;
+}
+
+.customOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1000;
+}
+
+.customModal {
+  width: 80%;
+  height: 80%;
+  padding: 20px;
+  background-color: white;
+  position: relative;
+  z-index: 1001;
+  overflow: auto;
+  outline: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.invoiceModalClose button {
+  width: 10rem;
+  height: 3rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #698474;
+  color: white;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1024px) {
+  .invoiceContainer {
+    width: 80rem;
+    justify-content: center;
+  }
+
+  .invoiceBox {
+    width: 100%;
+    height: 22rem;
+  }
+
+  .customModal {
+    width: 80%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .modalContent {
+    width: 60rem;
+    height: 80rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 912px) {
+  .invoiceContainer {
+    width: 75rem;
+    justify-content: center;
+  }
+
+  .invoiceBox {
+    width: 100%;
+    height: 22rem;
+  }
+
+  .customModal {
+    width: 80%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media screen and (max-width: 853px) {
+  .invoiceContainer {
+    width: 70rem;
+    justify-content: center;
+  }
+
+  .invoiceBox {
+    width: 100%;
+    height: 22rem;
+  }
+
+  .customModal {
+    width: 80%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .invoiceContainer {
+    width: 65rem;
+    justify-content: center;
+  }
+
+  .invoiceBox {
+    width: 100%;
+    height: 22rem;
+  }
+
+  .customModal {
+    width: 80%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .invoiceContainer {
+    width: 50rem;
+    justify-content: center;
+  }
+
+  .invoiceBox {
+    width: 100%;
+    height: 22rem;
+  }
+
+  .modalContent {
+    width: 60rem;
+    height: 70rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .invoiceHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .businessInfo,
+  .invoiceInfo,
+  .customerInfo,
+  .additionalCharges,
+  .summary,
+  .paymentTerms,
+  .notes {
+    width: 100%;
+    text-align: left;
+    gap: 0.5rem;
+  }
+
+  .itemList table {
+    font-size: 1.2rem;
+  }
+
+  .itemList th,
+  .itemList td {
+    padding: 0.3rem;
+  }
+
+  .modalContent h2,
+  .businessInfo h3,
+  .businessInfo p,
+  .invoiceInfo p,
+  .customerInfo p,
+  .additionalCharges p,
+  .summary p,
+  .paymentTerms p,
+  .notes p {
+    font-size: 1.4rem;
+  }
+
+  .customModal {
+    width: 80%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .invoiceContainer {
+    width: 40rem;
+    justify-content: center;
+  }
+
+  .invoiceBox {
+    width: 40rem;
+    height: 22rem;
+  }
+
+  .modalContent {
+    width: 40rem;
+    height: 70rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .invoiceHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .businessInfo,
+  .invoiceInfo,
+  .customerInfo,
+  .additionalCharges,
+  .summary,
+  .paymentTerms,
+  .notes {
+    width: 100%;
+    text-align: left;
+    gap: 0.5rem;
+  }
+
+  .itemList table {
+    font-size: 1.2rem;
+  }
+
+  .itemList th,
+  .itemList td {
+    padding: 0.3rem;
+  }
+
+  .modalContent h2,
+  .businessInfo h3,
+  .businessInfo p,
+  .invoiceInfo p,
+  .customerInfo p,
+  .additionalCharges p,
+  .summary p,
+  .paymentTerms p,
+  .notes p {
+    font-size: 1.4rem;
+  }
+
+  .customModal {
+    width: 80%;
+    height: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .invoiceContainer {
+    width: 30rem;
+    justify-content: center;
+  }
+
+  .invoiceBox {
+    width: 100%;
+    height: 22rem;
+  }
+
+  .invoiceBox .invoiceProduct {
+    flex-direction: column;
+  }
+
+  .customModal {
+    width: 90%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .modalContent {
+    width: 35rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .invoiceContainer {
+    width: 30rem;
+    justify-content: center;
+  }
+
+  .invoiceBox {
+    width: 100%;
+    height: 22rem;
+  }
+
+  .invoiceBox .invoiceProduct {
+    flex-direction: column;
+  }
+
+  .customModal {
+    width: 90%;
+    height: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .ReactModal__Content {
+    width: 70rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .modalContent {
+    width: 35rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+

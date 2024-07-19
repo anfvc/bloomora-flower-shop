@@ -169,6 +169,39 @@
   }
 }
 
+@media screen and (max-width: 820px) {
+  .sidebar {
+    width: 10rem;
+    top: 12rem;
+    height: calc(100vh - 12rem);
+  }
+
+  .userDetails {
+    width: calc(100vw - 10rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-left: 10rem; */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 10rem;
+    top: 12rem;
+    height: calc(100vh - 12rem);
+  }
+
+  .userDetails {
+    width: calc(100vw - 10rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-left: 10rem; */
+  }
+}
+
+
 @media screen and (max-width: 414px) {
   .sidebar {
     width: 10rem;
@@ -179,7 +212,7 @@
   .userDetails {
     width: calc(100vw - 10rem);
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     /* margin-left: 10rem; */
   }
