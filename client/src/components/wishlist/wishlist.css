@@ -1,4 +1,122 @@
 .wishlist-container {
-  min-height: 100vh;
-  margin-top: 15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.wishListHeader {
+  width: 15rem;
+  position: relative;
+}
+
+/* .wishListHeader::before {
+  content: "";
+  width: 10rem;
+  height: .1rem;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  z-index: 2;
+} */
+
+.wishListHeader h2 {
+  font-family: "Merriweather", serif;
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.wishlist-container .wishListBox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.wishlist-container .wishListBox .productsBox {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: white;
+  border-radius: 3px;
+  padding: 2rem;
+}
+
+.wishlist-container .wishListBox .productsBox .imageBox {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.wishlist-container .wishListBox .productsBox .imageBox::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+}
+
+.wishlist-container .wishListBox .productsBox .imageBox:hover::before {
+  opacity: 1;
+}
+
+.wishlist-container .wishListBox .productsBox .imageBox:hover .addToCart {
+  opacity: 1;
+}
+
+.wishlist-container .wishListBox .productsBox .imageBox img {
+  width: 25rem;
+  height: 25rem;
+  border-radius: 3px;
+}
+
+.wishlist-container .wishListBox .productsBox .imageBox .addToCart {
+  width: 60%;
+  height: 3rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  border-radius: 3px;
+  background-color: white;
+  color: #698474;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+  opacity: 0;
+}
+
+.wishlist-container .wishListBox .productsBox .imageBox .addToCart:hover {
+  background-color: #698474;
+  color: white;
+}
+
+.wishlist-container .wishListBox .productsBox .info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.wishlist-container .wishListBox .productsBox .info p:first-child {
+  font-size: 2.2rem;
+  font-family: "Merriweather", serif;
+  letter-spacing: 1px;
+  color: #698474;
+}
+
+.wishlist-container .wishListBox .productsBox .info p:nth-child(2n) {
+  font-size: 2rem;
+  color: #698474;
+}
+
+@media screen and (max-width: 768px) {
+  .wishlist-container .wishListBox {
+    justify-content: center;
+  }
 }

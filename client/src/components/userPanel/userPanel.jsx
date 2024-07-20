@@ -10,12 +10,12 @@ import { PiListHeartFill } from "react-icons/pi";
 import { GrDocumentConfig } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
 import Wishlist from "../wishlist/wishlist";
-import Invoice from "../invoice/Invoice"; 
+import Invoice from "../invoice/Invoice";
 
 function UserPanel() {
   const { user } = useContext(UserContext);
   const [isEditing, setIsEditing] = useState(false);
-  const [activeSection, setActiveSection] = useState("welcome"); 
+  const [activeSection, setActiveSection] = useState("welcome");
   const navigate = useNavigate();
 
   const handleEditProfile = () => {
@@ -34,22 +34,35 @@ function UserPanel() {
           <p>Edit Profile</p>
           <FaUserEdit />
         </button>
-        <button className="sidebarButton" onClick={() => setActiveSection("orders")}>
+        <button
+          className="sidebarButton"
+          onClick={() => setActiveSection("orders")}
+        >
           <p>My Orders</p>
           <FaClipboardList />
         </button>
-        <button className="sidebarButton" onClick={() => setActiveSection("invoices")}> {/* Set active section to invoices */}
+        <button
+          className="sidebarButton"
+          onClick={() => setActiveSection("invoices")}
+        >
+          {" "}
+          {/* Set active section to invoices */}
           <p>My Invoices</p>
           <FaFileInvoice />
         </button>
 
-//         <button className="sidebarButton" onClick={() => setActiveSection("wishlist")}>
-
-        <button className="sidebarButton" onClick={() => navigate("/wishlist")}>
-
+        <button
+          className="sidebarButton"
+          onClick={() => setActiveSection("wishlist")}
+        >
           <p>Wishlist</p>
           <PiListHeartFill />
         </button>
+
+        {/* <button className="sidebarButton" onClick={() => navigate("/wishlist")}>
+          <p>Wishlist</p>
+          <PiListHeartFill />
+        </button> */}
         {user.role === "admin" && (
           <button className="sidebarButton" onClick={() => navigate("/admin")}>
             <p>Admin Panel</p>
@@ -62,30 +75,36 @@ function UserPanel() {
         {isEditing ? (
           <EditProfile closeEdit={closeEdit} />
         ) : (
-
-//           <div className="sectionContent">
-//             {activeSection === "welcome" && (
-//               <div className="welcome">
-//                 <h1>
-//                   Welcome, {user.user.firstName[0].toUpperCase() + user.user.firstName.slice(1)} {user.user.lastName[0].toUpperCase() + user.user.lastName.slice(1)}
-//                 </h1>
-//                 <Wishlist />
-//               </div>
-//             )}
-//             {activeSection === "orders" && <div>Orders Component</div>}
-//             {activeSection === "invoices" && <Invoice />} 
-//             {activeSection === "wishlist" && <Wishlist />} 
-
-          <div className="welcome">
-            <h1>
-              Welcome, {user.user.firstName[0].toUpperCase() + user.user.firstName.slice(1)} {user.user.lastName[0].toUpperCase() + user.user.lastName.slice(1)}
-            </h1>
-
-            {/* <Wishlist/> */}
-
-          </div>
+          <>
+            <div className="sectionContent">
+              {activeSection === "welcome" && (
+                <div className="welcome">
+                  <h1>
+                    Welcome,{" "}
+                    {user.user.firstName[0].toUpperCase() +
+                      user.user.firstName.slice(1)}{" "}
+                    {user.user.lastName[0].toUpperCase() +
+                      user.user.lastName.slice(1)}
+                  </h1>
+                  <Wishlist />
+                </div>
+              )}
+              {activeSection === "orders" && <div>Orders Component</div>}
+              {activeSection === "invoices" && <Invoice />}
+              {activeSection === "wishlist" && <Wishlist />}
+            </div>
+            {/* <div className="welcome">
+              <h1>
+                Welcome,{" "}
+                {user.user.firstName[0].toUpperCase() +
+                  user.user.firstName.slice(1)}{" "}
+                {user.user.lastName[0].toUpperCase() +
+                  user.user.lastName.slice(1)}
+              </h1>
+            </div> */}
+          </>
         )}
-      </div> 
+      </div>
     </div>
   );
 }

@@ -20,8 +20,8 @@ function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-  const { isLoggedIn, user, logout } = useContext(UserContext);
-  const { isMenuOpen, setIsMenuOpen } = useContext(UserContext);
+  const { isLoggedIn, user, logout, isMenuOpen, setIsMenuOpen } = useContext(UserContext);
+  // const { isMenuOpen, setIsMenuOpen } = useContext(UserContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -96,7 +96,7 @@ function Navbar() {
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -120,17 +120,29 @@ function Navbar() {
           <div className="links">
             <ul>
               <li>
-                <NavLink to="/" className={scrolled ? "scrolled" : ""} onClick={scrollToTop}>
+                <NavLink
+                  to="/"
+                  className={scrolled ? "scrolled" : ""}
+                  onClick={scrollToTop}
+                >
                   Home
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/shop" className={scrolled ? "scrolled" : ""} onClick={scrollToTop}>
+                <NavLink
+                  to="/shop"
+                  className={scrolled ? "scrolled" : ""}
+                  onClick={scrollToTop}
+                >
                   Shop
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/ourroots" className={scrolled ? "scrolled" : ""} onClick={scrollToTop}>
+                <NavLink
+                  to="/ourroots"
+                  className={scrolled ? "scrolled" : ""}
+                  onClick={scrollToTop}
+                >
                   Our Roots
                 </NavLink>
               </li>
@@ -143,17 +155,29 @@ function Navbar() {
                   weddings & events
                   <ul className="dropdownLinks">
                     <li className="dropdown-li">
-                      <NavLink to="/wedding-process" className="dropdown-a" onClick={scrollToTop}>
+                      <NavLink
+                        to="/wedding-process"
+                        className="dropdown-a"
+                        onClick={scrollToTop}
+                      >
                         Wedding Process
                       </NavLink>
                     </li>
                     <li className="dropdown-li">
-                      <NavLink to="/wedding-gallery" className="dropdown-a" onClick={scrollToTop}>
+                      <NavLink
+                        to="/wedding-gallery"
+                        className="dropdown-a"
+                        onClick={scrollToTop}
+                      >
                         Wedding Gallery
                       </NavLink>
                     </li>
                     <li className="dropdown-li">
-                      <NavLink to="/events" className="dropdown-a" onClick={scrollToTop}>
+                      <NavLink
+                        to="/events"
+                        className="dropdown-a"
+                        onClick={scrollToTop}
+                      >
                         Events
                       </NavLink>
                     </li>
@@ -161,7 +185,11 @@ function Navbar() {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/contact" className={scrolled ? "scrolled" : ""} onClick={scrollToTop}>
+                <NavLink
+                  to="/contact"
+                  className={scrolled ? "scrolled" : ""}
+                  onClick={scrollToTop}
+                >
                   Contact
                 </NavLink>
               </li>
@@ -169,7 +197,11 @@ function Navbar() {
           </div>
           <div className="user-cart-search">
             {isLoggedIn && (
-              <p className={`welcomeMessage ${scrolled ? "scrolled" : ""}`}>Hello, {user.user.firstName[0].toUpperCase() + user.user.firstName.slice(1)} </p>
+              <p className={`welcomeMessage ${scrolled ? "scrolled" : ""}`}>
+                Hello,{" "}
+                {user.user.firstName[0].toUpperCase() +
+                  user.user.firstName.slice(1)}{" "}
+              </p>
             )}
             <details>
               <summary>
@@ -209,10 +241,14 @@ function Navbar() {
               />
             </NavLink>
             <NavLink to="/cart">
-
-            <PiShoppingBag
-              className={`cart ${scrolled ? "scrolled-icon" : ""}`}
-            />
+              <div className="cart-icon">
+                <PiShoppingBag
+                  className={`cart ${scrolled ? "scrolled-icon" : ""}`}
+                />
+                {user.cart?.length > 0 && (
+                  <span className="cart-count">{user.cart.length}</span>
+                )}
+              </div>
             </NavLink>
           </div>
           <div className="burgerMenu" onClick={toggleMenu}>
@@ -337,7 +373,12 @@ function Navbar() {
                 </li>
                 <li>
                   <NavLink to="/cart">
-                    <PiShoppingBag className="cart" />
+                    <div className="cart-icon">
+                      <PiShoppingBag className="cart" />
+                      {user.cart?.length > 0 && (
+                        <span className="cart-count">{user.cart.length}</span>
+                      )}
+                    </div>
                   </NavLink>
                 </li>
               </div>

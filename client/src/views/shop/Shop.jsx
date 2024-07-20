@@ -8,7 +8,7 @@ import { GrNext } from "react-icons/gr";
 import ProductDetails from "../../components/productDetails/ProductDetails.jsx";
 
 function Shop() {
-  const { sortedProducts, list, setList, filter, addToWishList } =
+  const { sortedProducts, list, setList, filter, addToWishList, addToCart } =
     useContext(UserContext);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   const [page, setPage] = useState(1);
@@ -135,7 +135,12 @@ function Shop() {
               <div className="info">
                 <p>{item.name}</p>
                 <p>{item.price}€</p>
-                <button className="addToCart">add to cart</button>
+                <button
+                  className="addToCart"
+                  onClick={() => addToCart(item, 1)}
+                >
+                  add to cart
+                </button>
               </div>
             </div>
           ))}
