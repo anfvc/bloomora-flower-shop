@@ -12,24 +12,26 @@ import past6 from "../../images/wedding/weddingEvents/past6.jpg";
 import past7 from "../../images/wedding/weddingEvents/past7.jpg";
 import past8 from "../../images/wedding/weddingEvents/past8.jpg";
 import past9 from "../../images/wedding/weddingEvents/past9.jpg";
+import { useTranslation } from "react-i18next";
 
 function WeddingEvents() {
+  const { t } = useTranslation();
+
   return (
     <div className="weddingEventsContainer">
       <div className="backGroundImage"></div>
       <div className="header">
-        <h1>events</h1>
+        <h1>{t("weddingEvents.header")}</h1>
       </div>
 
       <div className="eventBoxContainer">
         <div className="box1">
           <div className="infoBox">
-            <h2>flowers that work for you</h2>
+            <h2>{t("weddingEvents.flowersForYouTitle")}</h2>
             <p>
-              Using our <span>19 YEARS OF EXPERIENCE</span> in service and
-              hospitality industries, venue coordination, wedding planning, and
-              floral design, we create innovative, whimsical, and elegant
-              designs to make your vision come to life.
+              {t("weddingEvents.flowersForYouDescription1")}{" "}
+              <span>{t("weddingEvents.experience")}</span>{" "}
+              {t("weddingEvents.flowersForYouDescription2")}
             </p>
           </div>
           <div className="imageBox1">
@@ -42,21 +44,21 @@ function WeddingEvents() {
             <img src={image2} alt="" />
           </div>
           <div className="infoBox2">
-            <h2>what we offer</h2>
+            <h2>{t("weddingEvents.whatWeOfferTitle")}</h2>
             <div className="offers">
               <ul>
-                <li>Cocktail Arrangements</li>
-                <li>Centerpieces</li>
-                <li>Statement Pieces</li>
-                <li>Floral Installations</li>
-                <li>Plant Installations</li>
+                <li>{t("weddingEvents.cocktailArrangements")}</li>
+                <li>{t("weddingEvents.centerpieces")}</li>
+                <li>{t("weddingEvents.statementPieces")}</li>
+                <li>{t("weddingEvents.floralInstallations")}</li>
+                <li>{t("weddingEvents.plantInstallations")}</li>
               </ul>
               <ul>
-                <li>Corporate Events</li>
-                <li>Dinner Parties</li>
-                <li>Showers</li>
-                <li>Rehearsals</li>
-                <li>Staging</li>
+                <li>{t("weddingEvents.corporateEvents")}</li>
+                <li>{t("weddingEvents.dinnerParties")}</li>
+                <li>{t("weddingEvents.showers")}</li>
+                <li>{t("weddingEvents.rehearsals")}</li>
+                <li>{t("weddingEvents.staging")}</li>
               </ul>
             </div>
           </div>
@@ -64,15 +66,14 @@ function WeddingEvents() {
 
         <div className="box3">
           <div className="infoBox3">
-            <h2>flowers that work for you</h2>
+            <h2>{t("weddingEvents.flowersForYouTitle")}</h2>
             <p>
-              Using our <span>19 YEARS OF EXPERIENCE</span> in service and
-              hospitality industries, venue coordination, wedding planning, and
-              floral design, we create innovative, whimsical, and elegant
-              designs to make your vision come to life.
+              {t("weddingEvents.flowersForYouDescription1")}{" "}
+              <span>{t("weddingEvents.experience")}</span>{" "}
+              {t("weddingEvents.flowersForYouDescription2")}
             </p>
             <div className="orderButtonBox">
-              <button>inquire about event</button>
+              <button>{t("weddingEvents.inquireAboutEvent")}</button>
             </div>
           </div>
           <div className="imageBox3">
@@ -82,7 +83,7 @@ function WeddingEvents() {
 
         <div className="pastEventsContainer">
           <div className="past-header">
-            <h2>past events</h2>
+            <h2>{t("weddingEvents.pastEventsTitle")}</h2>
           </div>
 
           <div className="pastEventBoxContainer">

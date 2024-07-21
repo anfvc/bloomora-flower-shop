@@ -21,13 +21,16 @@ function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-  const { isLoggedIn, user, logout, isMenuOpen, setIsMenuOpen } = useContext(UserContext);
+  const { isLoggedIn, user, logout, isMenuOpen, setIsMenuOpen } =
+    useContext(UserContext);
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
 
   useEffect(() => {
-    const userIcon = document.querySelector(".user-cart-search details summary");
+    const userIcon = document.querySelector(
+      ".user-cart-search details summary"
+    );
     userIcon.addEventListener("mouseover", openDetails);
     userIcon.addEventListener("mouseout", closeDetails);
 
@@ -38,13 +41,17 @@ function Navbar() {
   }, []);
 
   const openDetails = () => {
-    document.querySelector(".user-cart-search details").setAttribute("open", true);
+    document
+      .querySelector(".user-cart-search details")
+      .setAttribute("open", true);
   };
 
   const closeDetails = () => {
     setTimeout(() => {
       if (!document.querySelector(".user-cart-search details:hover")) {
-        document.querySelector(".user-cart-search details").removeAttribute("open");
+        document
+          .querySelector(".user-cart-search details")
+          .removeAttribute("open");
       }
     }, 500);
   };
@@ -106,11 +113,18 @@ function Navbar() {
 
   return (
     <>
-      <div className={isMenuOpen ? "overlay active" : "overlay"} onClick={toggleMenu}></div>
+      <div
+        className={isMenuOpen ? "overlay active" : "overlay"}
+        onClick={toggleMenu}
+      ></div>
       <div className={`navbarContainer ${scrolled ? "scrolled" : ""}`}>
         <div className="logo">
           <NavLink to="/" onClick={scrollToTop}>
-            <img src={scrolled ? scrolledLogo : logo} alt="logo" className="navbar-logo" />
+            <img
+              src={scrolled ? scrolledLogo : logo}
+              alt="logo"
+              className="navbar-logo"
+            />
           </NavLink>
         </div>
 
@@ -118,45 +132,77 @@ function Navbar() {
           <div className="links">
             <ul>
               <li>
-                <NavLink to="/" className={scrolled ? "scrolled" : ""} onClick={scrollToTop}>
-                  {t('home')}
+                <NavLink
+                  to="/"
+                  className={scrolled ? "scrolled" : ""}
+                  onClick={scrollToTop}
+                >
+                  {t("home")}
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/shop" className={scrolled ? "scrolled" : ""} onClick={scrollToTop}>
-                  {t('shop')}
+                <NavLink
+                  to="/shop"
+                  className={scrolled ? "scrolled" : ""}
+                  onClick={scrollToTop}
+                >
+                  {t("shop.header1")}
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/ourroots" className={scrolled ? "scrolled" : ""} onClick={scrollToTop}>
-                  {t('our_roots')}
+                <NavLink
+                  to="/ourroots"
+                  className={scrolled ? "scrolled" : ""}
+                  onClick={scrollToTop}
+                >
+                  {t("ourRoots.header")}
                 </NavLink>
               </li>
               <li className="weddings-events">
-                <NavLink to="/weddings-events" className={scrolled ? "scrolled" : ""} onClick={scrollToTop}>
-                  {t('weddings_events')}
+                <NavLink
+                  to="/weddings-events"
+                  className={scrolled ? "scrolled" : ""}
+                  onClick={scrollToTop}
+                >
+                  {t("weddings_events")}
                   <ul className="dropdownLinks">
                     <li className="dropdown-li">
-                      <NavLink to="/wedding-process" className="dropdown-a" onClick={scrollToTop}>
-                        {t('wedding_process')}
+                      <NavLink
+                        to="/wedding-process"
+                        className="dropdown-a"
+                        onClick={scrollToTop}
+                      >
+                        {t("wedding_process")}
                       </NavLink>
                     </li>
                     <li className="dropdown-li">
-                      <NavLink to="/wedding-gallery" className="dropdown-a" onClick={scrollToTop}>
-                        {t('wedding_gallery')}
+                      <NavLink
+                        to="/wedding-gallery"
+                        className="dropdown-a"
+                        onClick={scrollToTop}
+                      >
+                        {t("wedding_gallery")}
                       </NavLink>
                     </li>
                     <li className="dropdown-li">
-                      <NavLink to="/events" className="dropdown-a" onClick={scrollToTop}>
-                        {t('events')}
+                      <NavLink
+                        to="/events"
+                        className="dropdown-a"
+                        onClick={scrollToTop}
+                      >
+                        {t("events")}
                       </NavLink>
                     </li>
                   </ul>
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/contact" className={scrolled ? "scrolled" : ""} onClick={scrollToTop}>
-                  {t('contact')}
+                <NavLink
+                  to="/contact"
+                  className={scrolled ? "scrolled" : ""}
+                  onClick={scrollToTop}
+                >
+                  {t("contact.header")}
                 </NavLink>
               </li>
             </ul>
@@ -164,68 +210,93 @@ function Navbar() {
           <div className="user-cart-search">
             {isLoggedIn && (
               <p className={`welcomeMessage ${scrolled ? "scrolled" : ""}`}>
-                {t('hello_user', { name: user.user.firstName[0].toUpperCase() + user.user.firstName.slice(1) })}
+                {t("hello_user", {
+                  name:
+                    user.user.firstName[0].toUpperCase() +
+                    user.user.firstName.slice(1),
+                })}
               </p>
             )}
             <details>
               <summary>
-                <AiOutlineUser className={`user ${scrolled ? "scrolled-icon" : ""}`} />
+                <AiOutlineUser
+                  className={`user ${scrolled ? "scrolled-icon" : ""}`}
+                />
               </summary>
               <ul className="loginSignUp">
                 {isLoggedIn ? (
                   <>
                     <li onClick={() => navigate("/userPanel")}>
                       <AiFillEdit />
-                      {t('profile')}
+                      {t("profile")}
                     </li>
                     <li onClick={handleLogout}>
                       <FaSignOutAlt />
-                      {t('logout')}
+                      {t("logout")}
                     </li>
                   </>
                 ) : (
                   <>
                     <li onClick={openLogin}>
                       <IoLogIn />
-                      {t('sign_in')}
+                      {t("sign_in")}
                     </li>
                     <li onClick={openRegister}>
                       <MdPersonAdd />
-                      {t('register')}
+                      {t("register")}
                     </li>
                   </>
                 )}
               </ul>
             </details>
             <NavLink to="/search">
-              <FiSearch className={`search ${scrolled ? "scrolled-icon" : ""}`} />
+              <FiSearch
+                className={`search ${scrolled ? "scrolled-icon" : ""}`}
+              />
             </NavLink>
             <NavLink to="/cart">
               <div className="cart-icon">
-                <PiShoppingBag className={`cart ${scrolled ? "scrolled-icon" : ""}`} />
-                {user.cart?.length > 0 && <span className="cart-count">{user.cart.length}</span>}
+                <PiShoppingBag
+                  className={`cart ${scrolled ? "scrolled-icon" : ""}`}
+                />
+                {user.cart?.length > 0 && (
+                  <span className="cart-count">{user.cart.length}</span>
+                )}
               </div>
             </NavLink>
             <div className="language-switcher">
               <button onClick={toggleLanguageMenu}>Language</button>
               {languageMenuOpen && (
                 <div className="language-menu">
-                  <button onClick={() => changeLanguage('en')}>EN</button>
-                  <button onClick={() => changeLanguage('de')}>DE</button>
+                  <button onClick={() => changeLanguage("en")}>EN</button>
+                  <button onClick={() => changeLanguage("de")}>DE</button>
                 </div>
               )}
             </div>
           </div>
           <div className="burgerMenu" onClick={toggleMenu}>
             {isMenuOpen ? (
-              <AiOutlineClose className={`burger ${scrolled ? "scrolled-icon" : ""}`} />
+              <AiOutlineClose
+                className={`burger ${scrolled ? "scrolled-icon" : ""}`}
+              />
             ) : (
-              <RxHamburgerMenu className={`burger ${scrolled ? "scrolled-icon" : ""}`} />
+              <RxHamburgerMenu
+                className={`burger ${scrolled ? "scrolled-icon" : ""}`}
+              />
             )}
           </div>
         </div>
         {isMenuOpen && (
           <div className="dropdownMenu">
+            <div className="language-switcher">
+              <button onClick={toggleLanguageMenu}>Language</button>
+              {languageMenuOpen && (
+                <div className="language-menu">
+                  <button onClick={() => changeLanguage("en")}>EN</button>
+                  <button onClick={() => changeLanguage("de")}>DE</button>
+                </div>
+              )}
+            </div>
             <ul>
               <li>
                 <NavLink
@@ -236,7 +307,7 @@ function Navbar() {
                   }}
                   className={scrolled ? "scrolled" : ""}
                 >
-                  {t('home')}
+                  {t("home")}
                 </NavLink>
               </li>
               <li>
@@ -248,7 +319,7 @@ function Navbar() {
                   }}
                   className={scrolled ? "scrolled" : ""}
                 >
-                  {t('shop')}
+                  {t("shop")}
                 </NavLink>
               </li>
               <li>
@@ -260,7 +331,7 @@ function Navbar() {
                   }}
                   className={scrolled ? "scrolled" : ""}
                 >
-                  {t('our_roots')}
+                  {t("ourRoots.header")}
                 </NavLink>
               </li>
               <li>
@@ -272,7 +343,7 @@ function Navbar() {
                   }}
                   className={scrolled ? "scrolled" : ""}
                 >
-                  {t('weddings_events')}
+                  {t("weddings_events")}
                 </NavLink>
               </li>
               <li>
@@ -284,36 +355,41 @@ function Navbar() {
                   }}
                   className={scrolled ? "scrolled" : ""}
                 >
-                  {t('contact')}
+                  {t("contact.header")}
                 </NavLink>
               </li>
               <div className="dropdownUserCartBag">
                 <li>
                   <details>
                     <summary>
-                      <AiOutlineUser className={`user ${scrolled ? "scrolled-icon" : ""}`} />
+                      <AiOutlineUser
+                        className={`user ${scrolled ? "scrolled-icon" : ""}`}
+                      />
                     </summary>
                     <ul className="loginSignUp">
                       {isLoggedIn ? (
                         <>
-                          <li className="dd-li" onClick={() => navigate("/userPanel")}>
+                          <li
+                            className="dd-li"
+                            onClick={() => navigate("/userPanel")}
+                          >
                             <AiFillEdit />
-                            {t('profile')}
+                            {t("profile")}
                           </li>
                           <li className="dd-li" onClick={handleLogout}>
                             <FaSignOutAlt />
-                            {t('logout')}
+                            {t("logout")}
                           </li>
                         </>
                       ) : (
                         <>
                           <li className="dd-li" onClick={openLogin}>
                             <IoLogIn />
-                            {t('sign_in')}
+                            {t("sign_in")}
                           </li>
                           <li className="dd-li" onClick={openRegister}>
                             <MdPersonAdd />
-                            {t('register')}
+                            {t("register")}
                           </li>
                         </>
                       )}
@@ -322,33 +398,32 @@ function Navbar() {
                 </li>
                 <li>
                   <NavLink to="/search" onClick={toggleMenu}>
-                    <FiSearch className={`search ${scrolled ? "scrolled-icon" : ""}`} />
+                    <FiSearch
+                      className={`search ${scrolled ? "scrolled-icon" : ""}`}
+                    />
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/cart">
                     <div className="cart-icon">
                       <PiShoppingBag className="cart" />
-                      {user.cart?.length > 0 && <span className="cart-count">{user.cart.length}</span>}
+                      {user.cart?.length > 0 && (
+                        <span className="cart-count">{user.cart.length}</span>
+                      )}
                     </div>
                   </NavLink>
                 </li>
-              </div>
-              <div className="language-switcher">
-                <button onClick={toggleLanguageMenu}>Language</button>
-                {languageMenuOpen && (
-                  <div className="language-menu">
-                    <button onClick={() => changeLanguage('en')}>EN</button>
-                    <button onClick={() => changeLanguage('de')}>DE</button>
-                  </div>
-                )}
               </div>
             </ul>
           </div>
         )}
       </div>
-      {isLoginOpen && <Login openRegister={openRegister} closeModals={closeModals} />}
-      {isRegisterOpen && <Register openLogin={openLogin} closeModals={closeModals} />}
+      {isLoginOpen && (
+        <Login openRegister={openRegister} closeModals={closeModals} />
+      )}
+      {isRegisterOpen && (
+        <Register openLogin={openLogin} closeModals={closeModals} />
+      )}
     </>
   );
 }

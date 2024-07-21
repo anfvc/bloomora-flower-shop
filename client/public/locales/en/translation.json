@@ -1,17 +1,152 @@
 {
   "home": "Home",
-  "shop": "Shop",
-  "our_roots": "Our Roots",
-  "weddings_events": "Weddings & Events",
-  "wedding_process": "Wedding Process",
+  "landingSlider": {
+    "title1_1": "Shop online or visit our store",
+    "title2_1": "10 Station St Wentworth Falls",
+    "title1_2": "Bloomora is there to support you in every special moment.",
+    "title2_2": "Beautiful flowers for every occasion",
+    "title1_3": "Bloomora is there to support you in every special moment.",
+    "title2_3": "Beautiful flowers for every occasion"
+  },
+  "shop": {
+    "header1": "shop",
+    "header2": "Shop Flower & Gifts",
+    "addToCart": "Add to Cart",
+    "prevText": "back",
+    "nextText": "next",
+    "page": "Page"
+  },
+  "sort": {
+    "header": "sort",
+    "category1": "select your option",
+    "category2": "alphabetically, a-z",
+    "category3": "alphabetically, z-a",
+    "category4": "price, high to low",
+    "category5": "price, low to high"
+  },
+  "filter": {
+    "header": "filter",
+    "category1": "select your option",
+    "category2": "decor",
+    "category3": "Eustoma",
+    "category4": "Flowers on Ocassion",
+    "category5": "Gifts",
+    "category6": "House Plants",
+    "category7": "Peonies",
+    "category8": "Roses"
+  },
+  "ourRoots": {
+    "header": "Our Roots",
+    "description": "Melissa Feveyear is the visionary behind Terra Bella Flowers. She combined her formal floral design training (San Francisco and UK) with her education in Environmental Studies/Hazardous Waste Management to create a sustainable flower shop in what has historically been a toxic industry. Sourcing her flowers from farmers markets and local growers, she realized that this business model needed to be expanded to her fellow florists. In 2011 she collaborated with several local flower farmers to create the Seattle Wholesale Growers Market Cooperative, a non-profit marketplace for NW florists to source local and US grown flowers.",
+    "bio": "Learn more about SWGM here.",
+    "publications": " Melissa and her work in the sustainable flower movement has been published in national and international publications, printed in The 50 Mile Bouquet by Debra Prinzing and interviewed on NPR.",
+    "learnMore": "To Learn more about the sustainable floral movement please visit"
+  },
+  "weddingSlider": {
+    "subtitle": "Hand-crafted in the Blue Mountains",
+    "title": "Wedding Flowers & Bouquets",
+    "buttonText": "Wedding Quotes"
+  },
+  "weddingEvents": {
+    "header": "Events",
+    "flowersForYouTitle": "Flowers that Work for You",
+    "flowersForYouDescription1": "Using our",
+    "experience": "19 YEARS OF EXPERIENCE",
+    "flowersForYouDescription2": "in service and hospitality industries, venue coordination, wedding planning, and floral design, we create innovative, whimsical, and elegant designs to make your vision come to life.",
+    "whatWeOfferTitle": "What We Offer",
+    "cocktailArrangements": "Cocktail Arrangements",
+    "centerpieces": "Centerpieces",
+    "statementPieces": "Statement Pieces",
+    "floralInstallations": "Floral Installations",
+    "plantInstallations": "Plant Installations",
+    "corporateEvents": "Corporate Events",
+    "dinnerParties": "Dinner Parties",
+    "showers": "Showers",
+    "rehearsals": "Rehearsals",
+    "staging": "Staging",
+    "inquireAboutEvent": "Inquire About Event",
+    "pastEventsTitle": "Past Events"
+  },
+  "weddingProcess": {
+    "header": "The Wedding Process",
+    "step": "Step",
+    "step1Description": "Complete the form, think about how you want your day to unfold, and use as many visual terms as you can think of. We’ll look over your intake form and be in touch to schedule a consultation. For a full service 100+ guest count wedding, our minimum is $4800 in order to ensure a unique, lovely, and elegant event. A-la-carte services are offered for clients who are having a smaller, more intimate affair and who do not need as many components as our full-service clients; pricing varies.",
+    "weddingInquiry": "Wedding Inquiry",
+    "aLaCarteInquiry": "A la Carte Inquiry",
+    "step2Description": "Next we’ll meet at our studio and talk all about your vision: colors, decor, styles, blooms! We’ll get to know each other and look at inspiration. See some of our recent work in our gallery below to get inspired for your big day.",
+    "weddingGallery": "Wedding Gallery",
+    "step3Description": "From there we'll begin the contract process by sending you a curated proposal complete with itemized line items and mood board for your review.",
+    "step4Description": "After a few edits, you’ll sign our contract and pay a retainer electronically. Over the following months, we’ll finalize any details and tie up loose ends by emails and meetings. Day-of, we will deliver, install, and clean-up so you can focus on time spent with your guests: eating, drinking, laughing, and dancing!"
+  },
   "wedding_gallery": "Wedding Gallery",
   "events": "Events",
-  "contact": "Contact",
+  "contact": {
+    "header": "Contact",
+    "shopHours": {
+      "title": "Shop Hours",
+      "mondayFriday": "Monday-Friday | 9-5pm",
+      "saturday": "Saturday | 9-4pm",
+      "sunday": "Sunday | Closed"
+    },
+    "daysOutOfService": {
+      "title": "Days Out of Service",
+      "dates": "Shop will be closed from the 4th to the 7th of June",
+      "message": "Enjoy the festivities"
+    },
+    "contactOrder": {
+      "title": "Contact & Order",
+      "emailLabel": "Email",
+      "email": "hello@bloomora.com",
+      "addressLabel": "Address",
+      "address": "Schwarz Straße 123 76543 Berlin",
+      "phoneLabel": "Phone",
+      "phone": "0123 4567890"
+    }
+  },
+  "contactForm": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone",
+    "subject": "Select Subject",
+    "message": "Message",
+    "submit": "Submit",
+    "placeholder": {
+      "firstName": "Name",
+      "lastName": "Last Name",
+      "email": "abcd@example.com",
+      "phone": "+49 123 4567890"
+    },
+    "subjectOptions": {
+      "default": "Select your subject",
+      "bouquetOrder": "Bouquet Order",
+      "specialEventArrangements": "Special Event Arrangements",
+      "deliveryInquiry": "Delivery Inquiry",
+      "customFloralDesign": "Custom Floral Design",
+      "storeFeedback": "Store Feedback",
+      "otherInquiries": "Other Inquiries"
+    }
+  },
+  "search": {
+    "header": "I’m so excited to help you find it!",
+    "placeholder": "Search",
+    "emptyMessage": "There is no item!",
+    "noResults": "Product not found!",
+    "addToCart": "Add to Cart"
+  },
   "hello_user": "Hello, {{name}}",
   "profile": "Profile",
   "logout": "Logout",
   "sign_in": "Sign In",
   "register": "Register",
+  "userPanel": {
+    "edit": "Edit",
+    "myOrders": "Orders",
+    "myInvoice": "Invoice",
+    "wishList": "Wishlist",
+    "adminPanel": "Admin Panel",
+    "welcome": "Welcome"
+  },
   "add_to_cart": "Add to Cart",
   "total_to_pay": "Total to Pay",
   "go_to_checkout": "Go to Checkout",

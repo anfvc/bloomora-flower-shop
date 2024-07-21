@@ -6,16 +6,17 @@ import { CiHeart } from "react-icons/ci";
 import { IoMdHeart } from "react-icons/io";
 import { GrNext } from "react-icons/gr";
 import ProductDetails from "../../components/productDetails/ProductDetails.jsx";
+import { useTranslation } from "react-i18next";
 
 function Shop() {
   const { sortedProducts, list, setList, filter, addToWishList, addToCart } =
     useContext(UserContext);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   const [page, setPage] = useState(1);
-
   const [likedItems, setLikedItems /*  filter*/] = useState(
     new Array(sortedProducts.length).fill(false)
   );
+  const { t } = useTranslation();
 
   // const [allProd, setAllProd] = useState([])
   // const [totalPages, setTotalPages] = useState(0)
@@ -104,7 +105,7 @@ function Shop() {
     <div className="shopContainer">
       <div className="topBackgroundImage"></div>
       <div className="header">
-        <h1>shop flowers & gifts</h1>
+        <h1>{t("shop.header2")}</h1>
       </div>
       <SortFilter />
       <div className="shopProducts">
@@ -139,7 +140,7 @@ function Shop() {
                   className="addToCart"
                   onClick={() => addToCart(item, 1)}
                 >
-                  add to cart
+                  {t("shop.addToCart")}
                 </button>
               </div>
             </div>
@@ -149,16 +150,16 @@ function Shop() {
         <div className="next-prev">
           <div className="prevContainer">
             <GrNext onClick={handleBtnPrev} className="prev" />
-            <p className="prevText">Back</p>
+            <p className="prevText">{t("shop.prevText")}</p>
           </div>
           <p>{page}</p>
           <div className="nextContainer">
-            <p className="nextText">Next</p>
+            <p className="nextText">{t("shop.nextText")}</p>
             <GrNext onClick={handleBtnNext} className="next" />
           </div>
         </div>
         <label>
-          Page: {page} of {productLength}
+          {t("shop.page")}: {page} of {productLength}
         </label>
       </div>
       {isModalOpen && (

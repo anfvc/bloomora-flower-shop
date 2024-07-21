@@ -11,12 +11,14 @@ import { GrDocumentConfig } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
 import Wishlist from "../wishlist/wishlist";
 import Invoice from "../invoice/Invoice";
+import { useTranslation } from "react-i18next";
 
 function UserPanel() {
   const { user } = useContext(UserContext);
   const [isEditing, setIsEditing] = useState(false);
   const [activeSection, setActiveSection] = useState("welcome");
   const navigate = useNavigate();
+  const {t} = useTranslation();
 
   const handleEditProfile = () => {
     setIsEditing(true);
@@ -31,14 +33,14 @@ function UserPanel() {
       <div className="sidebar">
         <FaUser className="userImage" />
         <button className="sidebarButton" onClick={handleEditProfile}>
-          <p>Edit Profile</p>
+          <p>{t("userPanel.edit")}</p>
           <FaUserEdit />
         </button>
         <button
           className="sidebarButton"
           onClick={() => setActiveSection("orders")}
         >
-          <p>My Orders</p>
+          <p>{t("userPanel.myOrders")}</p>
           <FaClipboardList />
         </button>
         <button
@@ -47,7 +49,7 @@ function UserPanel() {
         >
           {" "}
           {/* Set active section to invoices */}
-          <p>My Invoices</p>
+          <p>{t("userPanel.myInvoice")}</p>
           <FaFileInvoice />
         </button>
 
@@ -55,7 +57,7 @@ function UserPanel() {
           className="sidebarButton"
           onClick={() => setActiveSection("wishlist")}
         >
-          <p>Wishlist</p>
+          <p>{t("userPanel.wishList")}</p>
           <PiListHeartFill />
         </button>
 
@@ -65,7 +67,7 @@ function UserPanel() {
         </button> */}
         {user.role === "admin" && (
           <button className="sidebarButton" onClick={() => navigate("/admin")}>
-            <p>Admin Panel</p>
+            <p>{t("userPanel.adminPanel")}</p>
             <GrDocumentConfig />
           </button>
         )}
@@ -80,7 +82,7 @@ function UserPanel() {
               {activeSection === "welcome" && (
                 <div className="welcome">
                   <h1>
-                    Welcome,{" "}
+                    {t("userPanel.welcome")},{" "}
                     {user.user.firstName[0].toUpperCase() +
                       user.user.firstName.slice(1)}{" "}
                     {user.user.lastName[0].toUpperCase() +
