@@ -12,6 +12,28 @@
   transition: background-color 0.3s;
 }
 
+.language-switcher {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.language-switcher button {
+  background: none;
+  border: 1px solid #ffffff;
+  color: white;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.language-switcher button:hover {
+  background: #ffffff;
+  color: #fff;
+}
+
+
 .navbarContainer.scrolled {
   background-color: #fdfdfd;
 }
