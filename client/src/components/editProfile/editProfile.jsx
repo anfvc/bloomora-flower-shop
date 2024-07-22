@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import  { useState, useContext } from "react";
 import { UserContext } from "../../context/userContext";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"; 
 import "./editProfile.css";
@@ -7,12 +7,16 @@ function EditProfile({ closeEdit }) {
   
   const { user, setUser } = useContext(UserContext);
   const [formData, setFormData] = useState({
-    firstName: user.firstName || "",
-    lastName: user.lastName || "",
+    firstName:  "",
+    lastName:  "",
     password: "",
     confirmPassword: "",
-    invoiceAddress: user.invoiceAddress || "",
-    deliveryAddress: user.deliveryAddress || "",
+    street: "",
+    num: "",
+    zip: "",
+    city: "",
+    country: ""
+    /* deliveryAddress: user.deliveryAddress || "", */
   });
   const [showPassword, setShowPassword] = useState(false); 
   const [showConfirmPassword, setShowConfirmPassword] = useState(false); 
@@ -33,21 +37,63 @@ function EditProfile({ closeEdit }) {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-  const handleSaveProfile = (e) => {
+  const handleSaveProfile = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match");
       return;
     }
 
-    setUser({
-      ...user,
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      invoiceAddress: formData.invoiceAddress,
-      deliveryAddress: formData.deliveryAddress,
-    });
-    closeEdit();
+    try {
+      
+      const settings = {
+        method: "PATCH",
+        body: JSON.stringify({formData}),
+        headers: {
+          "Content-Type": "application/JSON"
+        },
+      
+      }
+        const response = await fetch(`http://localhost:5100/api/user/update/${user.user._id}`,
+        settings)
+
+        if(response.ok){
+          const updateUser = await response.json()
+          console.log(updateUser);
+
+          setUser({
+            ...user,
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            password: formData.password,
+            confirmPassword: formData.confirmPassword,
+            street: formData.street,
+            num: formData.num,
+            zip: formData.zip,
+            city: formData.city,
+            country: formData.country
+          });
+          alert("Your profile has been successfully edited")
+          closeEdit();
+          setFormData({
+            firstName:  "",
+            lastName:  "",
+            password: "",
+            confirmPassword: "",
+            street: "",
+            houseNum: "",
+            zip: "",
+            city: "",
+            country: ""
+            /* deliveryAddress: user.deliveryAddress || "", */
+          })
+        }else {
+          const { error } = await response.json();
+          throw new Error(error.message);
+        }
+    } catch (error) {
+      console.log(error.message);       
+    }
   };
 
   return (
@@ -102,14 +148,63 @@ function EditProfile({ closeEdit }) {
       </label>
       <label>
         Invoice Address:
+       
+      </label>
+      <label>
+        Street:
+        <input
+          type="text"
+          name="street"
+          value={formData.street}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        Num:
+        <input
+          type="text"
+          name="houseNum"
+          value={formData.houseNum}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        ZIP:
+        <input
+          type="text"
+          name="zip"
+          value={formData.zip}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        City:
+        <input
+          type="text"
+          name="city"
+          value={formData.city}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        Country:
+        <input
+          type="text"
+          name="country"
+          value={formData.country}
+          onChange={handleChange}
+        />
+      </label>
+      {/* <label>
+        Invoice Address:
         <input
           type="text"
           name="invoiceAddress"
           value={formData.invoiceAddress}
           onChange={handleChange}
         />
-      </label>
-      <label>
+      </label> */}
+      {/*  <label>
         Delivery Address:
         <input
           type="text"
@@ -117,7 +212,8 @@ function EditProfile({ closeEdit }) {
           value={formData.deliveryAddress}
           onChange={handleChange}
         />
-      </label>
+      </label> */}
+     
       <div className="save-cancel">
         <button type="submit" className="saveButton">
           Save

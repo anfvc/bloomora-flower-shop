@@ -27,6 +27,12 @@ export const validateRegisterInputs = [
     .withMessage(
       "Password must have min. 8 chars with at least 1 symbol, 1 uppercase, 1 lowercase and 1 number"
     ),
+    // submit password part
+    body("confirmPassword")
+    .notEmpty()
+    .withMessage("Please confirm password"),
+    
+    
 ];
 
 export const validateLoginInputs = [
@@ -37,6 +43,7 @@ export const validateLoginInputs = [
     .withMessage("Invalid email format."),
 
   body("password").notEmpty().withMessage("Password is required."),
+ 
 ];
 
 export function userValidationErrorHandling(req, res, next) {

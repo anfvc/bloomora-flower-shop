@@ -9,9 +9,12 @@ export const register = async (req, res) => {
   const isFirstAccount = await User.countDocuments() === 0
     req.body.role = isFirstAccount ? 'admin' : 'user';
 
+    if(req.body.password !==req.body.confirmPassword) throw new UnauthenticatedError("Invalid credentials");
 
   const hashedPassword = await hashPassword(req.body.password);
   req.body.password = hashedPassword;
+  const hashedConfirmPassword = await hashPassword(req.body.confirmPassword);
+  req.body.confirmPassword = hashedConfirmPassword;
   const user = await User.create(req.body);
   res.status(StatusCodes.CREATED).json({
     msg: `${user.firstName} ${user.lastName} has successfully registered.`,
@@ -51,9 +54,9 @@ export const logout = (req, res) => {
   res.status(StatusCodes.OK).json({ msg: "User logged out!" });
 };
 
-export const getUser = async (req, res)=>{
-  const foundUser = await User.findById(req.user.userId)
-  console.log("foundUser", foundUser);
-  res.json({user: foundUser})
-  // res.end()
-}
+// export const getUser = async (req, res)=>{
+//   const foundUser = await User.findById(req.user.userId)
+//    //console.log("foundUser", foundUser);
+//   res.json({user: foundUser})
+//   // res.end()
+// }
