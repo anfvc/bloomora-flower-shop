@@ -15,26 +15,26 @@ const UserProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    async function checkUserAuth() {
-      try {
-        const response = await fetch(
-          `http://localhost:5100/api/user/refreshuser`,
-          { credentials: "include" }
-        );
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data);
-          setIsLoggedIn(true);
-          setUser(data);
-        }
-      } catch (error) {
-        console.log(error.message);
-      }
-    }
     checkUserAuth();
   }, []);
 
-
+  async function checkUserAuth() {
+    try {
+      const response = await fetch(
+        `http://localhost:5100/api/user/refreshuser`,
+        { credentials: "include" }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        setIsLoggedIn(true);
+        setUser(data);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+  
   // filter part
   function handleFilter(e) {
     setFilter({ ...filter, category: e.target.value });
@@ -249,7 +249,8 @@ const UserProvider = ({ children }) => {
         handleFilter,
         addToCart,
         addToWishList,
-        removeFromCart
+        removeFromCart,
+        checkUserAuth
       }}
     >
       {children}

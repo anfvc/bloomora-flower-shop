@@ -1,28 +1,23 @@
-import  { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { UserContext } from "../../context/userContext";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"; 
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import "./editProfile.css";
 
 function EditProfile({ closeEdit }) {
-  
-  const { user, setUser } = useContext(UserContext);
-  const [formData, setFormData] = useState(/* {
-    firstName:  "",
-    lastName:  "",
-    password: "",
-    confirmPassword: "",
-    street: "",
-    num: "",
-    zip: "",
-    city: "",
-    country: ""
-    
-  } */
- user
- 
-  );
-  const [showPassword, setShowPassword] = useState(false); 
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false); 
+  const { user, setUser, checkUserAuth } = useContext(UserContext);
+  const [formData, setFormData] = useState({
+    firstName: user.user.firstName,
+    lastName: user.user.lastName,
+    password: user.user.password,
+    confirmPassword: user.user.confirmPassword,
+    street: user.user.street,
+    num: user.user.num,
+    zip: user.user.zip,
+    city: user.user.city,
+    country: user.user.country,
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,49 +43,49 @@ function EditProfile({ closeEdit }) {
     }
 
     try {
-      
       const settings = {
         method: "PATCH",
         body: JSON.stringify(formData),
         headers: {
-          "Content-Type": "application/JSON"
+          "Content-Type": "application/JSON",
         },
-      
+      };
+      const response = await fetch(
+        `http://localhost:5100/api/user/update/${user.user._id}`,
+        settings
+      );
+
+      if (response.ok) {
+        const updateUser = await response.json();
+        // console.log(updateUser);
+
+        setUser({
+          ...user,
+          firstName: updateUser.firstName,
+          lastName: updateUser.lastName,
+          password: updateUser.password,
+          confirmPassword: updateUser.confirmPassword,
+          street: updateUser.street,
+          num: updateUser.num,
+          zip: updateUser.zip,
+          city: updateUser.city,
+          country: updateUser.country,
+        });
+        
+        checkUserAuth();
+        alert("Your profile has been successfully edited");
+        closeEdit();
+        setFormData(user);
+      } else {
+        const { error } = await response.json();
+        throw new Error(error);
       }
-        const response = await fetch(`http://localhost:5100/api/user/update/${user.user._id}`,
-        settings)
-
-        if(response.ok){
-          const updateUser = await response.json()
-          console.log(updateUser);
-
-          setUser(/* {
-            ...user,
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            password: formData.password,
-            confirmPassword: formData.confirmPassword,
-            street: formData.street,
-            num: formData.num,
-            zip: formData.zip,
-            city: formData.city,
-            country: formData.country
-          } */
-         updateUser
-          );
-          alert("Your profile has been successfully edited")
-          closeEdit();
-          setFormData(user)
-        }else {
-          const { error } = await response.json();
-          throw new Error(error);
-        }
     } catch (error) {
-      console.log(error.message);       
+      console.log(error.message);
     }
   };
 
- console.log("formData", formData);
+  console.log("user",user);
 
   return (
     <form className="editProfileForm" onSubmit={handleSaveProfile}>
@@ -116,7 +111,7 @@ function EditProfile({ closeEdit }) {
       <label>
         Password:
         <input
-          type={showPassword ? "text" : "password"} 
+          type={showPassword ? "text" : "password"}
           name="password"
           value={formData.password}
           onChange={handleChange}
@@ -129,7 +124,7 @@ function EditProfile({ closeEdit }) {
       <label>
         Confirm Password:
         <input
-          type={showConfirmPassword ? "text" : "password"} 
+          type={showConfirmPassword ? "text" : "password"}
           name="confirmPassword"
           value={formData.confirmPassword}
           onChange={handleChange}
@@ -142,10 +137,7 @@ function EditProfile({ closeEdit }) {
           {showConfirmPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
         </span>
       </label>
-      <label>
-        Invoice Address:
-       
-      </label>
+      <label>Invoice Address:</label>
       <label>
         Street:
         <input
@@ -209,7 +201,7 @@ function EditProfile({ closeEdit }) {
           onChange={handleChange}
         />
       </label> */}
-     
+
       <div className="save-cancel">
         <button type="submit" className="saveButton">
           Save
