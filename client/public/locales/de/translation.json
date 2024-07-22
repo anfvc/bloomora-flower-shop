@@ -1,0 +1,162 @@
+{
+  "home": "Zuhause",
+  "landingSlider": {
+    "title1_1": "Online einkaufen oder unseren Laden besuchen",
+    "title2_1": "10 Station St Wentworth Falls",
+    "title1_2": "Bloomora unterstützt Sie in jedem besonderen Moment.",
+    "title2_2": "Schöne Blumen für jeden Anlass",
+    "title1_3": "Bloomora unterstützt Sie in jedem besonderen Moment.",
+    "title2_3": "Schöne Blumen für jeden Anlass"
+  },
+  "shop": {
+    "header1": "shop",
+    "header2": "Blumen & Geschenke einkaufen",
+    "addToCart": "In den Warenkorb",
+    "prevText": "zurück",
+    "nextText": "nächste",
+    "page": "Seite"
+  },
+  "sort": {
+    "header": "sortieren",
+    "category1": "Wählen Sie Ihre Option",
+    "category2": "alphabetisch, A-Z",
+    "category3": "alphabetisch, Z-A",
+    "category4": "Preis, hoch bis niedrig",
+    "category5": "Preis, niedrig bis hoch"
+  },
+  "filter": {
+    "header": "filtern",
+    "category1": "Wählen Sie Ihre Option",
+    "category2": "Dekor",
+    "category3": "Eustoma",
+    "category4": "Blumen zu Anlässen",
+    "category5": "Geschenke",
+    "category6": "Zimmerpflanzen",
+    "category7": "Pfingstrosen",
+    "category8": "Rosen"
+  },
+  "ourRoots": {
+    "header": "Unsere Wurzeln",
+    "description": "Melissa Feveyear ist die Visionärin hinter Terra Bella Flowers. Sie kombinierte ihre formale Ausbildung im Blumendesign (San Francisco und UK) mit ihrem Studium der Umweltwissenschaften/Gefahrenstoffmanagement, um einen nachhaltigen Blumenladen in einer historisch gesehen toxischen Branche zu schaffen. Indem sie ihre Blumen von Bauernmärkten und lokalen Züchtern bezog, erkannte sie, dass dieses Geschäftsmodell auf ihre Mitblumenhändler ausgeweitet werden musste. 2011 arbeitete sie mit mehreren lokalen Blumenbauern zusammen, um die Seattle Wholesale Growers Market Cooperative zu gründen, einen gemeinnützigen Marktplatz für NW-Floristen, um lokale und in den USA angebaute Blumen zu beziehen.",
+    "bio": "Erfahren Sie hier mehr über SWGM.",
+    "publications": " Melissa und ihre Arbeit in der nachhaltigen Blumenbewegung wurden in nationalen und internationalen Publikationen veröffentlicht, im Buch The 50 Mile Bouquet von Debra Prinzing gedruckt und bei NPR interviewt.",
+    "learnMore": "Um mehr über die nachhaltige Blumenbewegung zu erfahren, besuchen Sie bitte"
+  },
+  "weddingSlider": {
+    "subtitle": "Handgefertigt in den Blue Mountains",
+    "title": "Hochzeitsblumen & Sträuße",
+    "buttonText": "Hochzeitsangebote"
+  },
+  "weddingEvents": {
+    "header": "Veranstaltungen",
+    "flowersForYouTitle": "Blumen, die für Sie arbeiten",
+    "flowersForYouDescription1": "Mit unserer",
+    "experience": "19 JAHRE ERFAHRUNG",
+    "flowersForYouDescription2": "in den Bereichen Service und Gastgewerbe, Veranstaltungskoordination, Hochzeitsplanung und Blumendesign schaffen wir innovative, verspielte und elegante Designs, um Ihre Vision zum Leben zu erwecken.",
+    "whatWeOfferTitle": "Was wir anbieten",
+    "cocktailArrangements": "Cocktail-Arrangements",
+    "centerpieces": "Mittelstücke",
+    "statementPieces": "Statement-Stücke",
+    "floralInstallations": "Blumeninstallationen",
+    "plantInstallations": "Pflanzeninstallationen",
+    "corporateEvents": "Firmenveranstaltungen",
+    "dinnerParties": "Dinnerpartys",
+    "showers": "Feiern",
+    "rehearsals": "Proben",
+    "staging": "Bühnenbild",
+    "inquireAboutEvent": "Anfrage zur Veranstaltung",
+    "pastEventsTitle": "Vergangene Veranstaltungen"
+  },
+  "weddingProcess": {
+    "header": "Der Hochzeitsprozess",
+    "step": "Schritt",
+    "step1Description": "Füllen Sie das Formular aus, denken Sie darüber nach, wie Ihr Tag ablaufen soll, und verwenden Sie so viele visuelle Begriffe wie möglich. Wir werden Ihr Aufnahmeformular überprüfen und uns mit Ihnen in Verbindung setzen, um eine Beratung zu vereinbaren. Für eine vollständige Hochzeit mit über 100 Gästen beträgt unser Minimum $4800, um ein einzigartiges, schönes und elegantes Ereignis zu gewährleisten. A-la-carte-Dienstleistungen werden für Kunden angeboten, die eine kleinere, intimere Veranstaltung haben und nicht so viele Komponenten wie unsere Vollservice-Kunden benötigen; die Preise variieren.",
+    "weddingInquiry": "Hochzeitsanfrage",
+    "aLaCarteInquiry": "A la Carte Anfrage",
+    "step2Description": "Als nächstes treffen wir uns in unserem Studio und sprechen über Ihre Vision: Farben, Dekor, Stile, Blumen! Wir werden uns kennenlernen und uns inspirieren lassen. Sehen Sie sich unten einige unserer neuesten Arbeiten in unserer Galerie an, um sich für Ihren großen Tag inspirieren zu lassen.",
+    "weddingGallery": "Hochzeitsgalerie",
+    "step3Description": "Von dort aus beginnen wir den Vertragsprozess, indem wir Ihnen einen kuratierten Vorschlag mit detaillierten Posten und einer Moodboard zur Überprüfung senden.",
+    "step4Description": "Nach einigen Änderungen unterschreiben Sie unseren Vertrag und zahlen eine Anzahlung elektronisch. In den folgenden Monaten finalisieren wir alle Details und klären alle offenen Fragen per E-Mail und Treffen. Am Tag der Hochzeit liefern, installieren und reinigen wir, damit Sie sich auf die Zeit mit Ihren Gästen konzentrieren können: essen, trinken, lachen und tanzen!"
+  },
+  "wedding_gallery": "Hochzeitsgalerie",
+  "events": "Veranstaltungen",
+  "contact": {
+    "header": "Kontakt",
+    "shopHours": {
+      "title": "Öffnungszeiten",
+      "mondayFriday": "Montag-Freitag | 9-17 Uhr",
+      "saturday": "Samstag | 9-16 Uhr",
+      "sunday": "Sonntag | Geschlossen"
+    },
+    "daysOutOfService": {
+      "title": "Betriebsferien",
+      "dates": "Der Laden ist vom 4. bis 7. Juni geschlossen",
+      "message": "Genießen Sie die Festlichkeiten"
+    },
+    "contactOrder": {
+      "title": "Kontakt & Bestellung",
+      "emailLabel": "E-Mail",
+      "email": "hello@bloomora.com",
+      "addressLabel": "Adresse",
+      "address": "Schwarz Straße 123 76543 Berlin",
+      "phoneLabel": "Telefon",
+      "phone": "0123 4567890"
+    }
+  },
+  "contactForm": {
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "subject": "Betreff auswählen",
+    "message": "Nachricht",
+    "submit": "Absenden",
+    "placeholder": {
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "abcd@example.com",
+      "phone": "+49 123 4567890"
+    },
+    "subjectOptions": {
+      "default": "Betreff auswählen",
+      "bouquetOrder": "Blumenstrauß Bestellung",
+      "specialEventArrangements": "Spezielle Veranstaltungsanordnungen",
+      "deliveryInquiry": "Lieferanfrage",
+      "customFloralDesign": "Benutzerdefiniertes Blumendesign",
+      "storeFeedback": "Ladenrückmeldung",
+      "otherInquiries": "Andere Anfragen"
+    }
+  },
+  "search": {
+    "header": "Ich freue mich, Ihnen zu helfen, es zu finden!",
+    "placeholder": "Suche",
+    "emptyMessage": "Es gibt keinen Artikel!",
+    "noResults": "Produkt nicht gefunden!",
+    "addToCart": "In den Warenkorb"
+  },
+  "hello_user": "Hallo, {{name}}",
+  "profile": "Profil",
+  "logout": "Abmelden",
+  "sign_in": "Anmelden",
+  "register": "Registrieren",
+  "userPanel": {
+    "edit": "Bearbeiten",
+    "myOrders": "Bestellungen",
+    "myInvoice": "Rechnung",
+    "wishList": "Wunschliste",
+    "adminPanel": "Admin-Panel",
+    "welcome": "Willkommen"
+  },
+  "add_to_cart": "In den Warenkorb",
+  "total_to_pay": "Gesamt zu zahlen",
+  "go_to_checkout": "Zur Kasse gehen",
+  "paypal": "Paypal",
+  "order_subtotal": "Bestellsumme",
+  "shipping": "Versand",
+  "free": "Kostenlos",
+  "vat": "MwSt",
+  "included": "Inbegriffen",
+  "free_shipping_logged_in": "Kostenloser Versand für eingeloggte Benutzer",
+  "free_returns": "Kostenlose Rücksendung innerhalb von 30 Tagen",
+  "secure_checkout": "Sicherer Checkout"
+}

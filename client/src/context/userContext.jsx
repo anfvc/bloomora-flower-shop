@@ -23,7 +23,7 @@ const UserProvider = ({ children }) => {
         );
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
+          // console.log(data);
           setIsLoggedIn(true);
           setUser(data);
         }
@@ -33,6 +33,7 @@ const UserProvider = ({ children }) => {
     }
     checkUserAuth();
   }, []);
+  
 
   // filter part
   function handleFilter(e) {

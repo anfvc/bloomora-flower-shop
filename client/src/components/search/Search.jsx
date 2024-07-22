@@ -2,11 +2,13 @@ import React, { useContext, useState } from "react";
 import "./Search.css";
 import { CiSearch } from "react-icons/ci";
 import { UserContext } from "../../context/userContext.jsx";
+import { useTranslation } from "react-i18next";
 
 function Search() {
   const { searchProducts, filteredProducts } = useContext(UserContext);
   const [query, setQuery] = useState("");
   const [isSearchBarEmpty, setIsSearchBarEmpty] = useState(true);
+  const { t } = useTranslation();
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -22,12 +24,12 @@ function Search() {
       <div className="backgroundImage"></div>
       <div className="searchBox">
         <div className="header">
-          <h1>I’m so excited to help you find it!</h1>
+          <h1>{t("search.header")}</h1>
         </div>
         <div className="searchBar">
           <input
             type="text"
-            placeholder="Search"
+            placeholder={t("search.placeholder")}
             className="searchInput"
             value={query}
             onChange={handleInputChange}
@@ -36,9 +38,9 @@ function Search() {
         </div>
         <div className="searchResults">
           {isSearchBarEmpty ? (
-            <p className="emptyMessage">There is no item!</p>
+            <p className="emptyMessage">{t("search.emptyMessage")}</p>
           ) : hasNoResults ? (
-            <p className="emptyMessage">Product not found!</p>
+            <p className="emptyMessage">{t("search.emptyMessage")}</p>
           ) : (
             filteredProducts.map((product) => (
               <div className="productItem" key={product._id}>
@@ -54,7 +56,7 @@ function Search() {
                   <p>{product.name}</p>
                   <p>{product.price}€</p>
                 </div>
-                <button className="searchAddToCartBtn">add to cart</button>
+                <button className="searchAddToCartBtn">{t("search.addToCart")}</button>
               </div>
             ))
           )}

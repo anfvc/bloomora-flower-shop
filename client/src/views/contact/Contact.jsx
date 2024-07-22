@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Contact.css";
-import { useEffect } from "react";
 import ContactRegisterForm from "../../components/contactRegisterForm/ContactRegisterForm";
 import image1 from "../../images/contactImages/image1.jpg";
 import image2 from "../../images/contactImages/image3.jpg";
 import image3 from "../../images/contactImages/image4.jpg";
+import { useTranslation } from "react-i18next";
 
 function Contact() {
+  const { t } = useTranslation();
+
   useEffect(() => {
     const handleScroll = () => {
       const image1 = document.querySelector(".image1");
@@ -39,7 +41,7 @@ function Contact() {
       <div className="contactBackgroundImage"></div>
       <div className="contactInfos-image">
         <div className="header">
-          <h1>contact & delivery</h1>
+          <h1>{t("contact.header")}</h1>
         </div>
         <div className="contactInfo">
           <div className="image">
@@ -51,28 +53,28 @@ function Contact() {
           </div>
           <div className="info">
             <div className="shopHours">
-              <h2>shop hours</h2>
+              <h2>{t("contact.shopHours.title")}</h2>
               <ul>
-                <li>monday-friday | 9-5pm</li>
-                <li>saturday | 9-4pm</li>
-                <li>sunday | closed</li>
+                <li>{t("contact.shopHours.mondayFriday")}</li>
+                <li>{t("contact.shopHours.saturday")}</li>
+                <li>{t("contact.shopHours.sunday")}</li>
               </ul>
             </div>
             <div className="daysOutOfService">
-              <h2>days out of service</h2>
-              <p>Shop will be closed from the 4th to the 7th of June </p>
-              <p>enjoy the festivities</p>
+              <h2>{t("contact.daysOutOfService.title")}</h2>
+              <p>{t("contact.daysOutOfService.dates")}</p>
+              <p>{t("contact.daysOutOfService.message")}</p>
             </div>
             <div className="email-address-phone">
-              <h2>contact & order</h2>
+              <h2>{t("contact.contactOrder.title")}</h2>
               <p>
-                <span>email:</span>hello@bloomora.com
+                <span>{t("contact.contactOrder.emailLabel")}:</span>{t("contact.contactOrder.email")}
               </p>
               <p>
-                <span>address:</span>schwarz straße 123 76543 Berlin
+                <span>{t("contact.contactOrder.addressLabel")}:</span>{t("contact.contactOrder.address")}
               </p>
               <p>
-                <span>phone:</span>0123 4567890
+                <span>{t("contact.contactOrder.phoneLabel")}:</span>{t("contact.contactOrder.phone")}
               </p>
             </div>
           </div>
