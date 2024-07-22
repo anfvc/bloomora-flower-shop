@@ -1,14 +1,14 @@
-import  { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { UserContext } from "../../context/userContext";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"; 
+import { useNavigate } from "react-router-dom";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import "./editProfile.css";
 
 function EditProfile({ closeEdit }) {
-  
   const { user, setUser } = useContext(UserContext);
   const [formData, setFormData] = useState({
-    firstName:  "",
-    lastName:  "",
+    firstName: "",
+    lastName: "",
     password: "",
     confirmPassword: "",
     street: "",
@@ -18,8 +18,9 @@ function EditProfile({ closeEdit }) {
     country: ""
     /* deliveryAddress: user.deliveryAddress || "", */
   });
-  const [showPassword, setShowPassword] = useState(false); 
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,55 +46,57 @@ function EditProfile({ closeEdit }) {
     }
 
     try {
-      
       const settings = {
         method: "PATCH",
-        body: JSON.stringify({formData}),
+        body: JSON.stringify({ formData }),
         headers: {
           "Content-Type": "application/JSON"
         },
-      
       }
-        const response = await fetch(`http://localhost:5100/api/user/update/${user.user._id}`,
-        settings)
+      const response = await fetch(`http://localhost:5100/api/user/update/${user.user._id}`, settings)
 
-        if(response.ok){
-          const updateUser = await response.json()
-          console.log(updateUser);
+      if (response.ok) {
+        const updateUser = await response.json()
+        console.log(updateUser);
 
-          setUser({
-            ...user,
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            password: formData.password,
-            confirmPassword: formData.confirmPassword,
-            street: formData.street,
-            num: formData.num,
-            zip: formData.zip,
-            city: formData.city,
-            country: formData.country
-          });
-          alert("Your profile has been successfully edited")
-          closeEdit();
-          setFormData({
-            firstName:  "",
-            lastName:  "",
-            password: "",
-            confirmPassword: "",
-            street: "",
-            houseNum: "",
-            zip: "",
-            city: "",
-            country: ""
-            /* deliveryAddress: user.deliveryAddress || "", */
-          })
-        }else {
-          const { error } = await response.json();
-          throw new Error(error.message);
-        }
+        setUser({
+          ...user,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          password: formData.password,
+          confirmPassword: formData.confirmPassword,
+          street: formData.street,
+          num: formData.num,
+          zip: formData.zip,
+          city: formData.city,
+          country: formData.country
+        });
+        alert("Your profile has been successfully edited")
+        closeEdit();
+        setFormData({
+          firstName: "",
+          lastName: "",
+          password: "",
+          confirmPassword: "",
+          street: "",
+          houseNum: "",
+          zip: "",
+          city: "",
+          country: ""
+          /* deliveryAddress: user.deliveryAddress || "", */
+        })
+      } else {
+        const { error } = await response.json();
+        throw new Error(error.message);
+      }
     } catch (error) {
-      console.log(error.message);       
+      console.log(error.message);
     }
+  };
+
+  const handleCancel = () => {
+    closeEdit();
+    navigate('/userPanel'); // UserPanel ana ekranına yönlendir
   };
 
   return (
@@ -120,7 +123,7 @@ function EditProfile({ closeEdit }) {
       <label>
         Password:
         <input
-          type={showPassword ? "text" : "password"} 
+          type={showPassword ? "text" : "password"}
           name="password"
           value={formData.password}
           onChange={handleChange}
@@ -133,7 +136,7 @@ function EditProfile({ closeEdit }) {
       <label>
         Confirm Password:
         <input
-          type={showConfirmPassword ? "text" : "password"} 
+          type={showConfirmPassword ? "text" : "password"}
           name="confirmPassword"
           value={formData.confirmPassword}
           onChange={handleChange}
@@ -148,7 +151,6 @@ function EditProfile({ closeEdit }) {
       </label>
       <label>
         Invoice Address:
-       
       </label>
       <label>
         Street:
@@ -195,30 +197,12 @@ function EditProfile({ closeEdit }) {
           onChange={handleChange}
         />
       </label>
-      {/* <label>
-        Invoice Address:
-        <input
-          type="text"
-          name="invoiceAddress"
-          value={formData.invoiceAddress}
-          onChange={handleChange}
-        />
-      </label> */}
-      {/*  <label>
-        Delivery Address:
-        <input
-          type="text"
-          name="deliveryAddress"
-          value={formData.deliveryAddress}
-          onChange={handleChange}
-        />
-      </label> */}
      
       <div className="save-cancel">
         <button type="submit" className="saveButton">
           Save
         </button>
-        <button type="button" className="cancelButton" onClick={closeEdit}>
+        <button type="button" className="cancelButton" onClick={handleCancel} >
           Cancel
         </button>
       </div>

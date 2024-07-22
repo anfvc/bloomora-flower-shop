@@ -250,9 +250,14 @@
     justify-content: center;
   }
 
+  .invoiceProductImage {
+    display: flex;
+    align-items: flex-start;
+  }
+
   .invoiceBox {
     width: 70%;
-    height: 22rem;
+    height: 17rem;
   }
 
   .customModal {
@@ -283,7 +288,7 @@
 
   .invoiceBox {
     width: 70%;
-    height: 22rem;
+    height: 17rem;
   }
 
   .customModal {
@@ -303,7 +308,7 @@
 
   .invoiceBox {
     width: 70%;
-    height: 22rem;
+    height: 17rem;
   }
 
   .customModal {
@@ -323,7 +328,7 @@
 
   .invoiceBox {
     width: 80%;
-    height: 22rem;
+    height: 17rem;
   }
 
   .customModal {
@@ -343,7 +348,7 @@
 
   .invoiceBox {
     width: 95%;
-    height: 22rem;
+    height: 17rem;
   }
 
   .modalContent {
@@ -422,7 +427,7 @@
 
   .invoiceBox {
     width: 80%;
-    height: 25rem;
+    height: 27rem;
   }
 
   .invoiceBox .invoicePrice {
@@ -495,7 +500,7 @@
 
   .invoiceBox {
     width: 100%;
-    height: 25rem;
+    height: 27rem;
   }
 
   .invoiceBox .invoiceProduct {
@@ -531,7 +536,7 @@
 
   .invoiceBox {
     width: 100%;
-    height: 25rem;
+    height: 27rem;
   }
 
   .invoiceBox .invoiceProduct {

@@ -147,6 +147,7 @@
     "adminPanel": "Admin-Panel",
     "welcome": "Willkommen"
   },
+  "wishlist": "Wunschliste",
   "cart": {
     "header": "Warenkorb",
     "cartLength": "Ihr Warenkorb ist leer",
