@@ -23,9 +23,9 @@ function EditProfile({ closeEdit }) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-useEffect(() => {
- setFormData({...formData, address: userAddress})
-}, [userAddress])
+  useEffect(() => {
+    setFormData({ ...formData, address: userAddress });
+  }, [userAddress]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -95,9 +95,9 @@ useEffect(() => {
     }
   };
 
-  console.log("user", user);
-  console.log("address", userAddress);
-  console.log("formData", formData);
+  // console.log("user", user);
+  // console.log("address", userAddress);
+  // console.log("formData", formData);
 
   return (
     <form className="editProfileForm" onSubmit={handleSaveProfile}>
