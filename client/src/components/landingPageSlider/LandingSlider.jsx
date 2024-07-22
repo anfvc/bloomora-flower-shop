@@ -5,9 +5,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { landingSlider } from "../../data/landingPageSlider.js";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function LandingSlider() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const settings = {
     dots: true,
@@ -32,11 +34,11 @@ function LandingSlider() {
               <img src={item.image} alt="" />
             </div>
             <div className="infos-buttons">
-              <h2>{item.title1}</h2>
-              <h1>{item.title2}</h1>
+              <h2>{t(item.title1)}</h2>
+              <h1>{t(item.title2)}</h1>
               <div className="buttons">
-                <button onClick={() => navigate("/shop")}>Shop</button>
-                <button onClick={() => navigate("/contact")}>Contact</button>
+                <button onClick={() => navigate("/shop")}>{t("shop")}</button>
+                <button onClick={() => navigate("/contact")}>{t("contact.header")}</button>
               </div>
             </div>
           </div>
