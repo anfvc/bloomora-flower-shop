@@ -10,6 +10,7 @@ import cartRouter from "./routes/cartRouter.js";
 import wishListRouter from "./routes/wishListRouter.js";
 import { authenticateUser } from "./middleware/authMiddleware.js";
 import orderRouter from "./routes/orderRoute.js";
+import userRouter from "./routes/userRouter.js"
 
 await connection();
 
@@ -30,16 +31,13 @@ app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
 app.use("/images", express.static("uploads"));
 app.use("/api/wishlist", wishListRouter);
+app.use("/api/user", userRouter)
 
 app.use("*", (req, res) => {
   res.status(404).json({ msg: "not found" });
 });
 
-// cookies part
 
-// app.get("/api/protected", authenticateUser, (req, res)=> {
-//   res.send(`Yo ${req.user.firstName}`)
-// })
 
 const port = process.env.PORT || 5100;
 

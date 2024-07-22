@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import validator from "validator";
+import { addressSchema } from "./Address.js";
 
 const userSchema = new Schema(
   {
@@ -11,12 +11,22 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    address: addressSchema,
+    /* street: { type: String},
+    houseNum:{type: String},
+    zip: { type: String },
+    city: { type: String },
+    country: { type: String, }, */
     email: {
       type: String,
       required: true,
       unique: true,
     },
     password: {
+      type: String,
+      required: true,
+    },
+    confirmPassword: {
       type: String,
       required: true,
     },

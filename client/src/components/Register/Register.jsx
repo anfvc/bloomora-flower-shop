@@ -7,13 +7,15 @@ function Register({ openLogin, closeModals }) {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+ 
 
   const { setUser } = useContext(UserContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!firstName || !lastName || !email || !password) {
+    if (!firstName || !lastName || !email || !password || !confirmPassword) {
       alert("Missing credentials.");
       return;
     }
@@ -21,7 +23,7 @@ function Register({ openLogin, closeModals }) {
     try {
       const settings = {
         method: "POST",
-        body: JSON.stringify({ firstName, lastName, email, password }),
+        body: JSON.stringify({ firstName, lastName, email, password, confirmPassword }),
         headers: {
           "Content-Type": "application/JSON",
         },
@@ -42,10 +44,12 @@ function Register({ openLogin, closeModals }) {
         const { error } = await response.json();
         throw new Error(error.message);
       }
-    } catch {
-      alert("Please let me sleep.")
+    } catch (error){
+      alert(error.message)
     }
   };
+
+ 
 
   return (
     <div className="registerModal">
@@ -78,10 +82,20 @@ function Register({ openLogin, closeModals }) {
           />
           <label>Password</label>
           <input
-            type="password"
+            type= "password"
             value={password}
             placeholder="abcD&12345"
             onChange={(e) => setPassword(e.target.value)}
+            required
+            
+          />
+          
+            <label>Confirm password</label>
+          <input
+            type="password"
+            value={confirmPassword}
+            placeholder="abcD&12345"
+            onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
           <p>

@@ -53,6 +53,11 @@ function UserPanel() {
           <FaFileInvoice />
         </button>
 
+
+       {/* <button className="sidebarButton" onClick={() => setActiveSection("wishlist")}> */}
+
+        <button className="sidebarButton" onClick={() => navigate("/wishlist")}>
+
         <button
           className="sidebarButton"
           onClick={() => setActiveSection("wishlist")}
@@ -60,6 +65,7 @@ function UserPanel() {
           <p>{t("userPanel.wishList")}</p>
           <PiListHeartFill />
         </button>
+
 
         {/* <button className="sidebarButton" onClick={() => navigate("/wishlist")}>
           <p>Wishlist</p>
