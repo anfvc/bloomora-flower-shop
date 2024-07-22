@@ -57,21 +57,21 @@ function EditProfile({ closeEdit }) {
 
       if (response.ok) {
         const updateUser = await response.json();
-        // console.log(updateUser);
+        console.log("updateUser", updateUser.updatedUser);
 
         setUser({
           ...user,
-          firstName: updateUser.firstName,
-          lastName: updateUser.lastName,
-          password: updateUser.password,
-          confirmPassword: updateUser.confirmPassword,
-          street: updateUser.street,
-          num: updateUser.num,
-          zip: updateUser.zip,
-          city: updateUser.city,
-          country: updateUser.country,
+          firstName: updateUser.updatedUser.firstName,
+          lastName: updateUser.updatedUser.lastName,
+          password: updateUser.updatedUser.password,
+          confirmPassword: updateUser.updatedUser.confirmPassword,
+          street: updateUser.updatedUser.street,
+          num: updateUser.updatedUser.num,
+          zip: updateUser.updatedUser.zip,
+          city: updateUser.updatedUser.city,
+          country: updateUser.updatedUser.country,
         });
-        
+
         checkUserAuth();
         alert("Your profile has been successfully edited");
         closeEdit();

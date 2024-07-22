@@ -28,7 +28,7 @@ function UserPanel() {
     setIsEditing(false);
   };
 
-  console.log(user);
+  // console.log(user.user);
   if (user.user) { //Added this if condition
     return (
       <div className="userPanelContainer">
