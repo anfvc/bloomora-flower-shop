@@ -3,6 +3,7 @@ import "./OurRoots.css";
 import image4 from "../../images/ourRootsImage/image4.jpg";
 import image5 from "../../images/ourRootsImage/image5.jpg";
 import { useTranslation } from "react-i18next";
+import { NavLink } from "react-router-dom";
 
 function OurRoots() {
   const { t } = useTranslation();
@@ -37,14 +38,14 @@ function OurRoots() {
           <p>{t("ourRoots.description")}</p>
           <p>
             {t("ourRoots.bio")}{" "}
-            <a href="http://seattlewholesalegrowersmarket.com/">
+            <NavLink to="http://seattlewholesalegrowersmarket.com/">
               http://seattlewholesalegrowersmarket.com/
-            </a>
+            </NavLink>
             {t("ourRoots.publications")}
           </p>
           <p>
             {t("ourRoots.learnMore")}{" "}
-            <a href="https://slowflowers.com/">https://slowflowers.com/</a>
+            <NavLink to="https://slowflowers.com/">https://slowflowers.com/</NavLink>
           </p>
         </div>
         <div className="rootImages">
