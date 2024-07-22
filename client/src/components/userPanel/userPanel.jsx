@@ -28,7 +28,7 @@ function UserPanel() {
     setIsEditing(false);
   };
 
-  console.log(user);
+  // console.log(user.user);
   if (user.user) { //Added this if condition
     return (
       <div className="userPanelContainer">
@@ -92,9 +92,11 @@ function UserPanel() {
                   <div className="welcome">
                     <h1>
                       {t("userPanel.welcome")},{" "}
+
                       {user.user.firstName[0].toUpperCase() +
                         user.user.firstName.slice(1)}{" "}
-                      {user.user.lastName[0].toUpperCase() +
+
+                      {user.user.lastName && user.user.lastName[0].toUpperCase() +
                         user.user.lastName.slice(1)}
                     </h1>
                     <Wishlist />
