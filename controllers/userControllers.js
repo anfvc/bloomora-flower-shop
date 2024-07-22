@@ -22,7 +22,7 @@ try {
     // req.body.confirmPassword = hashedConfirmPassword;
 
     res.status(StatusCodes.OK).json({msg: 'update user', updatedUser})
-    
+
 } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: error.message });
 }
@@ -31,7 +31,7 @@ try {
 
 export const getUser = async (req, res)=>{
     const foundUser = await User.findById(req.user.userId)
-     //console.log("foundUser", foundUser);
+     console.log("foundUser", foundUser);
     res.json({user: foundUser})
     // res.end()
   }

@@ -18,12 +18,12 @@ const UserProvider = ({ children }) => {
     async function checkUserAuth() {
       try {
         const response = await fetch(
-          `http://localhost:5100/api/auth/refreshuser`,
+          `http://localhost:5100/api/user/refreshuser`,
           { credentials: "include" }
         );
         if (response.ok) {
           const data = await response.json();
-          // console.log(data);
+          console.log(data);
           setIsLoggedIn(true);
           setUser(data);
         }
@@ -33,7 +33,7 @@ const UserProvider = ({ children }) => {
     }
     checkUserAuth();
   }, []);
-  
+
 
   // filter part
   function handleFilter(e) {
