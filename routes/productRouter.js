@@ -18,7 +18,7 @@ const router = express.Router();
 
 
 router.use("/uploads", express.static("uploads"));
-router.post("/create", checkRole("admin"), upload.single("image"), createProduct);
+router.post("/create", /* checkRole("admin") */ upload.single("image"), createProduct);
 router.patch("/update/:id", checkRole("admin"), updateProduct);
 router.get("/show", showAllProductsOnPage);
 // router.get("/show", showAllFilteredProducts);

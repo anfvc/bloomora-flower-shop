@@ -28,6 +28,9 @@ function UserPanel() {
     setIsEditing(false);
   };
 
+
+
+  console.log(user);
   return (
     <div className="userPanelContainer">
       <div className="sidebar">
