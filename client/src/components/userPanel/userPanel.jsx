@@ -56,7 +56,7 @@ function UserPanel() {
 
        {/* <button className="sidebarButton" onClick={() => setActiveSection("wishlist")}> */}
 
-        <button className="sidebarButton" onClick={() => navigate("/wishlist")}>
+        {/* <button className="sidebarButton" onClick={() => navigate("/wishlist")}> */}
 
         <button
           className="sidebarButton"
