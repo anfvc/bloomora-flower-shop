@@ -1,18 +1,19 @@
 .invoiceContainer {
-  width: 100%;
+  width: calc(100vw - 25rem);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
   padding: 2rem;
 }
 
 .invoiceBox {
   width: 70%;
-  height: 17rem;
+  height: 18rem;
   display: flex;
   gap: 1rem;
   background-color: white;
+  border: 1px solid #44594c;
   border-radius: 7px;
   padding: 1rem;
   position: relative;
@@ -36,7 +37,23 @@
   height: 100%;
   display: flex;
   justify-content: flex-start;
+  /* align-items: center; */
   gap: 1rem;
+}
+
+.invoiceBox .invoiceProduct div:nth-child(2n) {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.invoiceBox .invoiceProduct div:nth-child(2n) p:nth-child(2n) {
+  text-transform: capitalize;
+}
+
+.invoiceProductImage {
+  display: flex;
+  align-items: center;
 }
 
 .invoiceBox .invoiceProduct h2 {
@@ -234,7 +251,7 @@
   }
 
   .invoiceBox {
-    width: 100%;
+    width: 70%;
     height: 22rem;
   }
 
@@ -265,7 +282,7 @@
   }
 
   .invoiceBox {
-    width: 100%;
+    width: 70%;
     height: 22rem;
   }
 
@@ -285,7 +302,7 @@
   }
 
   .invoiceBox {
-    width: 100%;
+    width: 70%;
     height: 22rem;
   }
 
@@ -305,7 +322,7 @@
   }
 
   .invoiceBox {
-    width: 100%;
+    width: 80%;
     height: 22rem;
   }
 
@@ -325,7 +342,7 @@
   }
 
   .invoiceBox {
-    width: 100%;
+    width: 95%;
     height: 22rem;
   }
 
@@ -393,9 +410,23 @@
     justify-content: center;
   }
 
+  .invoiceBox .invoiceProduct {
+    width: calc(100% - 5rem);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* align-items: center; */
+    gap: 1rem;
+  }
+
   .invoiceBox {
-    width: 40rem;
-    height: 22rem;
+    width: 80%;
+    height: 25rem;
+  }
+
+  .invoiceBox .invoicePrice {
+    width: 5rem;
   }
 
   .modalContent {
@@ -464,11 +495,16 @@
 
   .invoiceBox {
     width: 100%;
-    height: 22rem;
+    height: 25rem;
   }
 
   .invoiceBox .invoiceProduct {
     flex-direction: column;
+    justify-content: center;
+  }
+
+  .invoiceBox .invoicePrice {
+    width: 4rem;
   }
 
   .customModal {
@@ -495,11 +531,12 @@
 
   .invoiceBox {
     width: 100%;
-    height: 22rem;
+    height: 25rem;
   }
 
   .invoiceBox .invoiceProduct {
     flex-direction: column;
+    justify-content: center;
   }
 
   .customModal {

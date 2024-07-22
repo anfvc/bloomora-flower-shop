@@ -32,6 +32,7 @@ function UserPanel() {
   if (user.user) { //Added this if condition
     return (
       <div className="userPanelContainer">
+        <div className="userPanelBackground"></div>
         <div className="sidebar">
           <FaUser className="userImage" />
           <button className="sidebarButton" onClick={handleEditProfile}>
@@ -74,7 +75,7 @@ function UserPanel() {
           {user.user.role === "admin" && (
             <button
               className="sidebarButton"
-              onClick={() => navigate("/admin")}
+              onClick={() => setActiveSection("admin")}
             >
               <p>{t("userPanel.adminPanel")}</p>
               <GrDocumentConfig />
@@ -97,7 +98,7 @@ function UserPanel() {
                       {user.user.lastName[0].toUpperCase() +
                         user.user.lastName.slice(1)}
                     </h1>
-                    <Wishlist />
+                    
                   </div>
                 )}
                 {activeSection === "orders" && <div>Orders Component</div>}

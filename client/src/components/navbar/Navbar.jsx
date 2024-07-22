@@ -28,34 +28,34 @@ function Navbar() {
   const { t, i18n } = useTranslation();
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const userIcon = document.querySelector(
-      ".user-cart-search details summary"
-    );
-    userIcon.addEventListener("mouseover", openDetails);
-    userIcon.addEventListener("mouseout", closeDetails);
+  // useEffect(() => {
+  //   const userIcon = document.querySelector(
+  //     ".user-cart-search details summary"
+  //   );
+  //   userIcon.addEventListener("mouseover", openDetails);
+  //   userIcon.addEventListener("mouseout", closeDetails);
 
-    return () => {
-      userIcon.removeEventListener("mouseover", openDetails);
-      userIcon.removeEventListener("mouseout", closeDetails);
-    };
-  }, []);
+  //   return () => {
+  //     userIcon.removeEventListener("mouseover", openDetails);
+  //     userIcon.removeEventListener("mouseout", closeDetails);
+  //   };
+  // }, []);
 
-  const openDetails = () => {
-    document
-      .querySelector(".user-cart-search details")
-      .setAttribute("open", true);
-  };
+  // const openDetails = () => {
+  //   document
+  //     .querySelector(".user-cart-search details")
+  //     .setAttribute("open", true);
+  // };
 
-  const closeDetails = () => {
-    setTimeout(() => {
-      if (!document.querySelector(".user-cart-search details:hover")) {
-        document
-          .querySelector(".user-cart-search details")
-          .removeAttribute("open");
-      }
-    }, 500);
-  };
+  // const closeDetails = () => {
+  //   setTimeout(() => {
+  //     if (!document.querySelector(".user-cart-search details:hover")) {
+  //       document
+  //         .querySelector(".user-cart-search details")
+  //         .removeAttribute("open");
+  //     }
+  //   }, 500);
+  // };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -266,7 +266,7 @@ function Navbar() {
               </div>
             </NavLink>
             <div className="language-switcher">
-              <GrLanguage onClick={toggleLanguageMenu} />
+              <GrLanguage className="language" onClick={toggleLanguageMenu} />
               {languageMenuOpen && (
                 <div className="language-menu">
                   <button onClick={() => changeLanguage("en")}>EN</button>

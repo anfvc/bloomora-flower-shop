@@ -1,12 +1,12 @@
 .editProfileForm {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 3rem;
   padding: 4rem;
   background-color: white;
   border-radius: 10px;
-  width: 100%;
+  width: 90%;
   height: 100vh;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .editProfileForm label {
-  width: 70rem;
+  width: 80rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -59,7 +59,7 @@
 }
 
 .save-cancel {
-  width: 70rem;
+  width: 80rem;
   display: flex;
   justify-content: flex-end;
   gap: 2rem;
@@ -88,8 +88,8 @@
 
 .saveButton:hover,
 .cancelButton:hover {
-  color: rgb(18, 18, 18);
-  background-color: #ffffff;
+  color: white;
+  background-color: #6e8377;
 }
 
 @media screen and (max-width: 1024px) {
@@ -99,6 +99,7 @@
     align-items: center;
     gap: 2rem;
     width: 80%;
+    margin-bottom: 2rem;
   }
 
   .editProfileForm label {
@@ -137,8 +138,34 @@
     align-items: center;
     gap: 2rem;
     width: 100%;
-    padding: 15px;
-    padding-top: 6rem;
+  }
+
+  .editProfileForm label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .editProfileForm input {
+    width: 100%;
+  }
+
+  .passwordIcon {
+    position: absolute;
+    right: 3rem;
+    top: 72%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #011e00;
+  }
+
+  .save-cancel {
+    width: 100%;
+  }
+
+  .saveButton,
+  .cancelButton {
+    width: 100%;
   }
 }
 

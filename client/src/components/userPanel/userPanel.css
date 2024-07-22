@@ -1,21 +1,28 @@
 .userPanelContainer {
   display: flex;
   width: 100vw;
-  padding-top: 12rem;
+  position: relative;
+}
+
+.userPanelContainer .userPanelBackground {
+  width: 100%;
+  height: 12rem;
+  position: absolute;
+  top: 0;
+  left: 0;
   background-image: url("../../images/shop-images/background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: relative;
 }
 
-.userPanelContainer::before {
+.userPanelContainer .userPanelBackground::before {
   position: absolute;
   top: 0;
   left: 0;
   content: "";
-  background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(15px);
+  background-color: rgba(0, 0, 0, 0.4);
+  /* backdrop-filter: blur(15px); */
   width: 100%;
   height: 100%;
 }
@@ -104,17 +111,22 @@
 }
 
 .userDetails {
-  width: 100%;
+  margin-top: 12rem;
+  width: calc(100vw - 25rem);
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   flex-grow: 1;
-  background-color: #698474;
-  z-index: 1;
+  background-color: white;
+  z-index: -1;
   border-top: 1px solid #0c6409;
   border-right: 1px solid #0c6409;
   border-bottom: 1px solid #0c6409;
-  padding: 2rem;
+  /* padding: 0 2rem; */
   /* margin-left: 25rem; */
+  position: sticky;
+  top: 12rem;
 }
 
 .welcome {
