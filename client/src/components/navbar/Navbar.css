@@ -20,6 +20,24 @@
   padding: 1rem;
 }
 
+.language-switcher svg {
+  font-size: 2rem;
+  position: absolute;
+  top: 30%;
+  right: 0;
+  transform: translateY(-30%);
+  color: rgba(255, 255, 255, 0.814);
+  cursor: pointer;
+}
+
+.language-switcher .language-menu {
+  position: absolute;
+  top: 3rem;
+  right: -3.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
 .language-switcher button {
   background: none;
   border: 1px solid #ffffff;
@@ -32,6 +50,10 @@
 .language-switcher button:hover {
   background: #ffffff;
   color: #41664f;
+}
+
+.scrolled .language-switcher svg {
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .scrolled .language-switcher button {
@@ -164,7 +186,7 @@
   color: #ffffff;
   padding: 1.5rem 2rem;
   display: block;  
-  position: relative; /* Alt çizgi için konumlandırma */
+  position: relative; 
 }
 
 .links-icons .links .weddings-events .dropdownLinks .dropdown-li .dropdown-a:hover::before,
@@ -200,6 +222,7 @@
   display: flex;
   align-items: center;
   gap: 2rem;
+  position: relative;
 }
 
 .welcomeMessage {
@@ -338,6 +361,32 @@
     padding: 0 5rem;
   }
 
+  .language-switcher {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+  }
+  
+  .language-switcher svg {
+    font-size: 2rem;
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.814);
+    cursor: pointer;
+  }
+  
+  .language-switcher .language-menu {
+    position: static;
+    margin-top: 1rem;
+    /* top: 3rem;
+    left: 27.5rem; */
+    /* transform: translateX(-50%); */
+  }
+
   .links-icons .links,
   .links-icons .user-cart-search {
     display: none;
@@ -394,7 +443,7 @@
 
   .dropdownMenu ul {
     width: 100%;
-    /* height: 100%; */
+    height: 100%;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -443,15 +492,14 @@
 
   .dropdownMenu .dropdownUserCartBag {
     display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
     gap: 3rem;
     margin-top: 2rem;
     position: relative;
-    height: 13rem;
+    /* height: 13rem; */
     /* width: 100%; */
-  }
-
-  .dropdownMenu .dropdownUserCartBag li {
-    height: 20px;
   }
 
   .dropdownMenu .dropdownUserCartBag details {
@@ -460,18 +508,22 @@
   
   .dropdownMenu .dropdownUserCartBag details summary {
     list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .dropdownMenu .dropdownUserCartBag details .loginSignUp {
-    position: absolute;
-    left: 0;
-    top: 2.5rem;
+    position: static;
     width: max-content;
+    margin-top: 1rem;
     gap: 0;
     background-color: transparent;
     border-radius: 3px;
     list-style: none;
     z-index: 3;
+    display: flex;
+    flex-direction: row;
   }
   
   .dropdownMenu .dropdownUserCartBag details .loginSignUp .dd-li {
@@ -481,15 +533,13 @@
     font-size: 1.6rem;
     text-transform: capitalize;
     letter-spacing: .5px;
-    /* border-bottom: 1px solid #ffffff; */
-    border-radius: 1px;
     color: #ffffff;
     transition: all .3s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1.3rem;
-  }
+  }  
   
   .dropdownMenu .dropdownUserCartBag details .loginSignUp .dd-li:hover {
     background-color: #ffffff;

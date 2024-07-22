@@ -4,41 +4,44 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 function Footer() {
+  const { t } = useTranslation();
+
   return (
     <div className="footerContainer">
       <div className="footerBox">
         <div className="aboutUs">
-          <div className="header">our roots</div>
+          <div className="header">{t("footer.headerRoots")}</div>
           <div className="links">
-            <a href="">vision</a>
-            <a href="">careers</a>
-            <a href="">service terms</a>
-            <a href="">donate</a>
+            <a href="">{t("footer.links1")}</a>
+            <a href="">{t("footer.links2")}</a>
+            <a href="">{t("footer.links3")}</a>
+            <a href="">{t("footer.links4")}</a>
           </div>
         </div>
         <div className="myAccounts">
-          <div className="header">bloomora</div>
+          <div className="header">{t("footer.headerAccounts")}</div>
           <div className="links">
-            <a href="">sign in</a>
-            <a href="">gallery</a>
-            <a href="">view cart</a>
-            <a href="">my wishlist</a>
+            <a href="">{t("footer.links11")}</a>
+            <a href="">{t("footer.links12")}</a>
+            <a href="">{t("footer.links13")}</a>
+            <a href="">{t("footer.links14")}</a>
           </div>
         </div>
         <div className="helps">
-          <div className="header">Help</div>
+          <div className="header">{t("footer.headerHelp")}</div>
           <div className="links">
-            <a href="">help center</a>
-            <a href="">report a problem</a>
-            <a href="">view cart</a>
-            <a href="/contact">contact us</a>
+            <a href="">{t("footer.links21")}</a>
+            <a href="">{t("footer.links22")}</a>
+            <a href="">{t("footer.links23")}</a>
+            <a href="/contact">{t("footer.links24")}</a>
           </div>
         </div>
       </div>
       <div className="rightsAndReserved">
-        <p>© 2024 Bloomora. All rights reserved.</p>
+        <p>{t("footer.rightsReserved")}</p>
         <div className="socialPlatforms">
           <FaFacebookF className="platform" />
           <FaInstagram className="platform" />

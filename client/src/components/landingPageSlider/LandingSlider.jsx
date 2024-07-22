@@ -37,7 +37,7 @@ function LandingSlider() {
               <h2>{t(item.title1)}</h2>
               <h1>{t(item.title2)}</h1>
               <div className="buttons">
-                <button onClick={() => navigate("/shop")}>{t("shop")}</button>
+                <button onClick={() => navigate("/shop")}>{t("shop.header1")}</button>
                 <button onClick={() => navigate("/contact")}>{t("contact.header")}</button>
               </div>
             </div>

@@ -9,7 +9,7 @@
     "title2_3": "Beautiful flowers for every occasion"
   },
   "shop": {
-    "header1": "shop",
+    "header1": "Shop",
     "header2": "Shop Flower & Gifts",
     "addToCart": "Add to Cart",
     "prevText": "back",
@@ -48,7 +48,7 @@
     "buttonText": "Wedding Quotes"
   },
   "weddingEvents": {
-    "header": "Events",
+    "header": "Weddings & Events",
     "flowersForYouTitle": "Flowers that Work for You",
     "flowersForYouDescription1": "Using our",
     "experience": "19 YEARS OF EXPERIENCE",
@@ -68,7 +68,7 @@
     "pastEventsTitle": "Past Events"
   },
   "weddingProcess": {
-    "header": "The Wedding Process",
+    "header": "Wedding Process",
     "step": "Step",
     "step1Description": "Complete the form, think about how you want your day to unfold, and use as many visual terms as you can think of. We’ll look over your intake form and be in touch to schedule a consultation. For a full service 100+ guest count wedding, our minimum is $4800 in order to ensure a unique, lovely, and elegant event. A-la-carte services are offered for clients who are having a smaller, more intimate affair and who do not need as many components as our full-service clients; pricing varies.",
     "weddingInquiry": "Wedding Inquiry",
@@ -158,5 +158,23 @@
   "included": "Included",
   "free_shipping_logged_in": "Free Shipping for Logged-In Users",
   "free_returns": "Free Returns for 30 Days",
-  "secure_checkout": "Secure Checkout"
+  "secure_checkout": "Secure Checkout",
+  "footer" : {
+    "headerRoots": "our roots",
+    "links1": "vision",
+    "links2": "careers",
+    "links3": "service terms",
+    "links4": "donate",
+    "headerAccounts": "bloomora",
+    "links11": "sign in",
+    "links12": "gallery",
+    "links13": "view cart",
+    "links14": "my wishlist",
+    "headerHelp": "help",
+    "links21": "help center",
+    "links22": "report problem",
+    "links23": "view cart",
+    "links24": "contact us",
+    "rightsReserved": "© 2024 Bloomora. All rights reserved."
+  }
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import "./Navbar.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import logo from "../../images/logo/bloomoraV2.svg";
@@ -12,7 +13,7 @@ import { IoLogIn } from "react-icons/io5";
 import { MdPersonAdd } from "react-icons/md";
 import { FaSignOutAlt } from "react-icons/fa";
 import { AiFillEdit } from "react-icons/ai";
-import "./Navbar.css";
+import { GrLanguage } from "react-icons/gr";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import { UserContext } from "../../context/userContext";
@@ -74,7 +75,7 @@ function Navbar() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    document.body.classList.toggle("menu-open", !isMenuOpen);
+    // document.body.classList.toggle("menu-open", !isMenuOpen);
   };
 
   const openLogin = () => {
@@ -164,7 +165,7 @@ function Navbar() {
                   className={scrolled ? "scrolled" : ""}
                   onClick={scrollToTop}
                 >
-                  {t("weddings_events")}
+                  {t("weddingEvents.header")}
                   <ul className="dropdownLinks">
                     <li className="dropdown-li">
                       <NavLink
@@ -172,7 +173,7 @@ function Navbar() {
                         className="dropdown-a"
                         onClick={scrollToTop}
                       >
-                        {t("wedding_process")}
+                        {t("weddingProcess.header")}
                       </NavLink>
                     </li>
                     <li className="dropdown-li">
@@ -265,7 +266,7 @@ function Navbar() {
               </div>
             </NavLink>
             <div className="language-switcher">
-              <button onClick={toggleLanguageMenu}>Language</button>
+              <GrLanguage onClick={toggleLanguageMenu} />
               {languageMenuOpen && (
                 <div className="language-menu">
                   <button onClick={() => changeLanguage("en")}>EN</button>
@@ -289,7 +290,7 @@ function Navbar() {
         {isMenuOpen && (
           <div className="dropdownMenu">
             <div className="language-switcher">
-              <button onClick={toggleLanguageMenu}>Language</button>
+              <GrLanguage onClick={toggleLanguageMenu} />
               {languageMenuOpen && (
                 <div className="language-menu">
                   <button onClick={() => changeLanguage("en")}>EN</button>
@@ -319,7 +320,7 @@ function Navbar() {
                   }}
                   className={scrolled ? "scrolled" : ""}
                 >
-                  {t("shop")}
+                  {t("shop.header1")}
                 </NavLink>
               </li>
               <li>
@@ -343,7 +344,7 @@ function Navbar() {
                   }}
                   className={scrolled ? "scrolled" : ""}
                 >
-                  {t("weddings_events")}
+                  {t("weddingEvents.header")}
                 </NavLink>
               </li>
               <li>

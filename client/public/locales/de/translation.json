@@ -9,7 +9,7 @@
     "title2_3": "Schöne Blumen für jeden Anlass"
   },
   "shop": {
-    "header1": "shop",
+    "header1": "Shop",
     "header2": "Blumen & Geschenke einkaufen",
     "addToCart": "In den Warenkorb",
     "prevText": "zurück",
@@ -158,5 +158,23 @@
   "included": "Inbegriffen",
   "free_shipping_logged_in": "Kostenloser Versand für eingeloggte Benutzer",
   "free_returns": "Kostenlose Rücksendung innerhalb von 30 Tagen",
-  "secure_checkout": "Sicherer Checkout"
+  "secure_checkout": "Sicherer Checkout",
+  "footer": {
+    "headerRoots": "unsere Wurzeln",
+    "links1": "Vision",
+    "links2": "Karrieren",
+    "links3": "Servicebedingungen",
+    "links4": "Spenden",
+    "headerAccounts": "Bloomora",
+    "links11": "anmelden",
+    "links12": "Galerie",
+    "links13": "Warenkorb ansehen",
+    "links14": "meine Wunschliste",
+    "headerHelp": "Hilfe",
+    "links21": "Hilfezentrum",
+    "links22": "Problem melden",
+    "links23": "Warenkorb ansehen",
+    "links24": "Kontakt",
+    "rightsReserved": "© 2024 Bloomora. Alle Rechte vorbehalten."
+  }
 }
