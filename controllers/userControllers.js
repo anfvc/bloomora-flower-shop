@@ -19,7 +19,9 @@ export const updateUser = async (req, res) => {
     const hashedConfirmPassword = await hashPassword(obj.confirmPassword);
     obj.password = hashedPassword;
     obj.confirmPassword = hashedConfirmPassword;
-    const updatedUser = await User.findByIdAndUpdate(id, obj, { new: true });
+    const updatedUser = await User.findByIdAndUpdate(id, {
+        $set: obj
+    }, { new: true });
 
     console.log("updatedUser", updatedUser);
 

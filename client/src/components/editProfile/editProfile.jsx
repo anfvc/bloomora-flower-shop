@@ -1,23 +1,31 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/userContext";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import "./editProfile.css";
 
 function EditProfile({ closeEdit }) {
   const { user, setUser, checkUserAuth } = useContext(UserContext);
+  const [userAddress, setUserAddress] = useState({
+    street: user.user.address?.street,
+    houseNum: user.user.address?.houseNum,
+    zip: user.user.address?.zip,
+    city: user.user.address?.city,
+    country: user.user.address?.country,
+  });
   const [formData, setFormData] = useState({
     firstName: user.user.firstName,
     lastName: user.user.lastName,
-    password: user.user.password,
-    confirmPassword: user.user.confirmPassword,
-    street: user.user.street,
-    num: user.user.num,
-    zip: user.user.zip,
-    city: user.user.city,
-    country: user.user.country,
+    password: "",
+    confirmPassword: "",
+    address: userAddress,
   });
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  useEffect(() => {
+    setFormData({ ...formData, address: userAddress });
+  }, [userAddress]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -65,11 +73,13 @@ function EditProfile({ closeEdit }) {
           lastName: updateUser.updatedUser.lastName,
           password: updateUser.updatedUser.password,
           confirmPassword: updateUser.updatedUser.confirmPassword,
-          street: updateUser.updatedUser.street,
-          num: updateUser.updatedUser.num,
-          zip: updateUser.updatedUser.zip,
-          city: updateUser.updatedUser.city,
-          country: updateUser.updatedUser.country,
+          address: {
+            street: updateUser.updatedUser.street,
+            num: updateUser.updatedUser.num,
+            zip: updateUser.updatedUser.zip,
+            city: updateUser.updatedUser.city,
+            country: updateUser.updatedUser.country,
+          },
         });
 
         checkUserAuth();
@@ -85,7 +95,9 @@ function EditProfile({ closeEdit }) {
     }
   };
 
-  console.log("user",user);
+  // console.log("user", user);
+  // console.log("address", userAddress);
+  // console.log("formData", formData);
 
   return (
     <form className="editProfileForm" onSubmit={handleSaveProfile}>
@@ -126,7 +138,7 @@ function EditProfile({ closeEdit }) {
         <input
           type={showConfirmPassword ? "text" : "password"}
           name="confirmPassword"
-          value={formData.confirmPassword}
+          // value={formData.confirmPassword}
           onChange={handleChange}
           placeholder="Confirm New Password"
         />
@@ -143,8 +155,10 @@ function EditProfile({ closeEdit }) {
         <input
           type="text"
           name="street"
-          value={formData.street}
-          onChange={handleChange}
+          value={userAddress.street}
+          onChange={(e) => {
+            setUserAddress({ ...userAddress, street: e.target.value });
+          }}
         />
       </label>
       <label>
@@ -152,8 +166,10 @@ function EditProfile({ closeEdit }) {
         <input
           type="text"
           name="houseNum"
-          value={formData.houseNum}
-          onChange={handleChange}
+          value={userAddress.houseNum}
+          onChange={(e) => {
+            setUserAddress({ ...userAddress, houseNum: e.target.value });
+          }}
         />
       </label>
       <label>
@@ -161,8 +177,10 @@ function EditProfile({ closeEdit }) {
         <input
           type="text"
           name="zip"
-          value={formData.zip}
-          onChange={handleChange}
+          value={userAddress.zip}
+          onChange={(e) => {
+            setUserAddress({ ...userAddress, zip: e.target.value });
+          }}
         />
       </label>
       <label>
@@ -170,8 +188,10 @@ function EditProfile({ closeEdit }) {
         <input
           type="text"
           name="city"
-          value={formData.city}
-          onChange={handleChange}
+          value={userAddress.city}
+          onChange={(e) => {
+            setUserAddress({ ...userAddress, city: e.target.value });
+          }}
         />
       </label>
       <label>
@@ -179,8 +199,10 @@ function EditProfile({ closeEdit }) {
         <input
           type="text"
           name="country"
-          value={formData.country}
-          onChange={handleChange}
+          value={userAddress.country}
+          onChange={(e) => {
+            setUserAddress({ ...userAddress, country: e.target.value });
+          }}
         />
       </label>
       {/* <label>
