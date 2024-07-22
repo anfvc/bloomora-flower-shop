@@ -29,7 +29,7 @@ function UserPanel() {
   };
 
   console.log(user);
-  if (user.user) {
+  if (user.user) { //Added this if condition
     return (
       <div className="userPanelContainer">
         <div className="sidebar">
