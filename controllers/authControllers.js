@@ -15,6 +15,7 @@ export const register = async (req, res) => {
   req.body.password = hashedPassword;
   const hashedConfirmPassword = await hashPassword(req.body.confirmPassword);
   req.body.confirmPassword = hashedConfirmPassword;
+  
   const user = await User.create(req.body);
   res.status(StatusCodes.CREATED).json({
     msg: `${user.firstName} ${user.lastName} has successfully registered.`,

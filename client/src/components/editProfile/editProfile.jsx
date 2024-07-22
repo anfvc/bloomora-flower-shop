@@ -6,7 +6,7 @@ import "./editProfile.css";
 function EditProfile({ closeEdit }) {
   
   const { user, setUser } = useContext(UserContext);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState(/* {
     firstName:  "",
     lastName:  "",
     password: "",
@@ -16,8 +16,11 @@ function EditProfile({ closeEdit }) {
     zip: "",
     city: "",
     country: ""
-    /* deliveryAddress: user.deliveryAddress || "", */
-  });
+    
+  } */
+ user
+ 
+  );
   const [showPassword, setShowPassword] = useState(false); 
   const [showConfirmPassword, setShowConfirmPassword] = useState(false); 
 
@@ -48,7 +51,7 @@ function EditProfile({ closeEdit }) {
       
       const settings = {
         method: "PATCH",
-        body: JSON.stringify({formData}),
+        body: JSON.stringify(formData),
         headers: {
           "Content-Type": "application/JSON"
         },
@@ -61,7 +64,7 @@ function EditProfile({ closeEdit }) {
           const updateUser = await response.json()
           console.log(updateUser);
 
-          setUser({
+          setUser(/* {
             ...user,
             firstName: formData.firstName,
             lastName: formData.lastName,
@@ -72,29 +75,22 @@ function EditProfile({ closeEdit }) {
             zip: formData.zip,
             city: formData.city,
             country: formData.country
-          });
+          } */
+         updateUser
+          );
           alert("Your profile has been successfully edited")
           closeEdit();
-          setFormData({
-            firstName:  "",
-            lastName:  "",
-            password: "",
-            confirmPassword: "",
-            street: "",
-            houseNum: "",
-            zip: "",
-            city: "",
-            country: ""
-            /* deliveryAddress: user.deliveryAddress || "", */
-          })
+          setFormData(user)
         }else {
           const { error } = await response.json();
-          throw new Error(error.message);
+          throw new Error(error);
         }
     } catch (error) {
       console.log(error.message);       
     }
   };
+
+ console.log("formData", formData);
 
   return (
     <form className="editProfileForm" onSubmit={handleSaveProfile}>
