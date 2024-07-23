@@ -124,6 +124,15 @@
   transition: all .3s ease-in-out;
 }
 
+.we-box .step .bttns .inquiryBtn {
+  width: 48%;
+}
+
+.we-box .step .bttns .inquiryBtn button {
+  width: 100%;
+  height: 5rem;
+}
+
 .we-box .step .bttns button {
   width: 48%;
   height: 5rem;

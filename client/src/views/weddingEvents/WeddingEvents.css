@@ -38,7 +38,7 @@
 
 .weddingEventsContainer .header::before {
   content: "";
-  width: 10rem;
+  width: 20rem;
   height: 0.1rem;
   background-color: white;
   position: absolute;
@@ -60,7 +60,7 @@
 /* ------------Events------------- */
 
 .eventBoxContainer {
-  padding-top: 55rem;
+  padding-top: 50rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,7 +83,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  width: 70rem;
+  width: 60rem;
 }
 
 .eventBoxContainer .box1 .infoBox h2 {
@@ -146,7 +146,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  width: 70rem;
+  width: 60rem;
 }
 
 .eventBoxContainer .box2 .infoBox2 .offers{
@@ -216,7 +216,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  width: 70rem;
+  width: 60rem;
 }
 
 .eventBoxContainer .box3 .infoBox3 h2 {
@@ -364,5 +364,329 @@
 .pastEventsContainer .pastEventBox3 img {
   width: 40rem;
   border-radius: 3px;
+}
+
+@media screen and (max-width: 768px) {
+  .weddingEventsContainer .header h1 {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-family: "Merriweather", serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .eventBoxContainer .box1 .imageBox1 {
+    width: 45rem;
+    height: 30rem;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .eventBoxContainer .box1 .imageBox1 img {
+    width: 45rem;
+    height: 30rem;
+    border-radius: 5px;
+  }
+
+  .eventBoxContainer .box1 .infoBox {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 50rem;
+  }
+
+  .eventBoxContainer .box1 .infoBox h2 {
+    font-size: 2rem;
+  }
+  
+  .eventBoxContainer .box1 .infoBox p {
+    font-size: 1.7rem;
+  }
+
+  /* ----------------------------------- */
+
+  .eventBoxContainer .box2 .imageBox2 {
+    width: 45rem;
+    height: 30rem;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .eventBoxContainer .box2 .imageBox2 img {
+    width: 45rem;
+    height: 30rem;
+    border-radius: 5px;
+  }
+
+  .eventBoxContainer .box2 .infoBox2 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 50rem;
+  }
+
+  .eventBoxContainer .box2 .infoBox2 h2 {
+    font-size: 2rem;
+  }
+  
+  .eventBoxContainer .box2 .infoBox2 p {
+    font-size: 1.7rem;
+  }
+
+  /* ---------------------------------------- */
+
+  .eventBoxContainer .box3 .imageBox3 {
+    width: 45rem;
+    height: 30rem;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .eventBoxContainer .box3 .imageBox3 img {
+    width: 45rem;
+    height: 30rem;
+    border-radius: 5px;
+  }
+
+  .eventBoxContainer .box3 .infoBox3 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 50rem;
+  }
+
+  .eventBoxContainer .box3 .infoBox3 h2 {
+    font-size: 2rem;
+  }
+  
+  .eventBoxContainer .box3 .infoBox3 p {
+    font-size: 1.7rem;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .weddingEventsContainer .header h1 {
+    font-size: 3rem;
+  }
+
+  .eventBoxContainer .box1 .imageBox1 {
+    width: 35rem;
+    height: 30rem;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .eventBoxContainer .box1 .imageBox1 img {
+    width: 35rem;
+    height: 30rem;
+    border-radius: 5px;
+  }
+
+  .eventBoxContainer .box1 .infoBox {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 35rem;
+  }
+
+  .eventBoxContainer .box1 .infoBox h2 {
+    font-size: 1.6rem;
+  }
+  
+  .eventBoxContainer .box1 .infoBox p {
+    font-size: 1.5rem;
+  }
+
+  /* ----------------------------------- */
+
+  .eventBoxContainer .box2 .imageBox2 {
+    width: 35rem;
+    height: 30rem;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .eventBoxContainer .box2 .imageBox2 img {
+    width: 35rem;
+    height: 30rem;
+    border-radius: 5px;
+  }
+
+  .eventBoxContainer .box2 .infoBox2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    width: 35rem;
+  }
+
+  .eventBoxContainer .box2 .infoBox2 h2 {
+    font-size: 1.7rem;
+  }
+  
+  .eventBoxContainer .box2 .infoBox2 p {
+    font-size: 1.5rem;
+  }
+
+  .eventBoxContainer .box2 .infoBox2 .offers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .eventBoxContainer .box2 .infoBox2 .offers li {
+    font-size: 1.6rem;
+  }
+
+  /* ---------------------------------------- */
+
+  .eventBoxContainer .box3 .imageBox3 {
+    width: 35rem;
+    height: 30rem;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .eventBoxContainer .box3 .imageBox3 img {
+    width: 35rem;
+    height: 30rem;
+    border-radius: 5px;
+  }
+
+  .eventBoxContainer .box3 .infoBox3 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 35rem;
+  }
+
+  .eventBoxContainer .box3 .infoBox3 h2 {
+    font-size: 1.7rem;
+  }
+  
+  .eventBoxContainer .box3 .infoBox3 p {
+    font-size: 1.5rem;
+  }
+
+  .eventBoxContainer .box3 .infoBox3 .orderButtonBox button {
+    width: 25rem;
+    height: 4.5rem;
+    font-size: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .weddingEventsContainer .header h1 {
+    font-size: 2.7rem;
+  }
+
+  .eventBoxContainer .box1 .imageBox1 {
+    width: 35rem;
+    height: 30rem;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .eventBoxContainer .box1 .imageBox1 img {
+    width: 35rem;
+    height: 30rem;
+    border-radius: 5px;
+  }
+
+  .eventBoxContainer .box1 .infoBox {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 35rem;
+  }
+
+  .eventBoxContainer .box1 .infoBox h2 {
+    font-size: 1.6rem;
+  }
+  
+  .eventBoxContainer .box1 .infoBox p {
+    font-size: 1.5rem;
+  }
+
+  /* ----------------------------------- */
+
+  .eventBoxContainer .box2 .imageBox2 {
+    width: 35rem;
+    height: 30rem;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .eventBoxContainer .box2 .imageBox2 img {
+    width: 35rem;
+    height: 30rem;
+    border-radius: 5px;
+  }
+
+  .eventBoxContainer .box2 .infoBox2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    width: 35rem;
+  }
+
+  .eventBoxContainer .box2 .infoBox2 h2 {
+    font-size: 1.7rem;
+  }
+  
+  .eventBoxContainer .box2 .infoBox2 p {
+    font-size: 1.5rem;
+  }
+
+  .eventBoxContainer .box2 .infoBox2 .offers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .eventBoxContainer .box2 .infoBox2 .offers li {
+    font-size: 1.6rem;
+  }
+
+  /* ---------------------------------------- */
+
+  .eventBoxContainer .box3 .imageBox3 {
+    width: 35rem;
+    height: 30rem;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .eventBoxContainer .box3 .imageBox3 img {
+    width: 35rem;
+    height: 30rem;
+    border-radius: 5px;
+  }
+
+  .eventBoxContainer .box3 .infoBox3 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 35rem;
+  }
+
+  .eventBoxContainer .box3 .infoBox3 h2 {
+    font-size: 1.7rem;
+  }
+  
+  .eventBoxContainer .box3 .infoBox3 p {
+    font-size: 1.5rem;
+  }
+
+  .eventBoxContainer .box3 .infoBox3 .orderButtonBox button {
+    width: 25rem;
+    height: 4.5rem;
+    font-size: 1.25rem;
+  }
 }
 

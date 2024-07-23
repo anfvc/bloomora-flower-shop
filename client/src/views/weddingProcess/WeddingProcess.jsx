@@ -4,11 +4,12 @@ import image2 from "../../images/wedding/weddingProcess/image2.jpg";
 import image3 from "../../images/wedding/weddingProcess/image3.jpg";
 import image4 from "../../images/wedding/weddingProcess/image4.jpg";
 import image5 from "../../images/wedding/weddingProcess/image5.jpg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 function WeddingProcess() {
   const { t } = useTranslation();
+  const navigate = useNavigate()
 
   return (
     <div className="weddingProcessContainer">
@@ -26,7 +27,7 @@ function WeddingProcess() {
             </h1>
             <p>{t("weddingProcess.step1Description")}</p>
             <div className="bttns">
-              <button>{t("weddingProcess.weddingInquiry")}</button>
+              <NavLink className="inquiryBtn" to="/wedding-inquiry"><button>{t("weddingProcess.weddingInquiry")}</button></NavLink>
               <button>{t("weddingProcess.aLaCarteInquiry")}</button>
             </div>
           </div>

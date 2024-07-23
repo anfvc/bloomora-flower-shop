@@ -1,9 +1,13 @@
+
+import { UserContext } from "../../context/userContext";
+import { useNavigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/userContext";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import "./editProfile.css";
 
 function EditProfile({ closeEdit }) {
+
   const { user, setUser, checkUserAuth } = useContext(UserContext);
   const [userAddress, setUserAddress] = useState({
     street: user.user.address?.street,
@@ -18,11 +22,12 @@ function EditProfile({ closeEdit }) {
     address: userAddress,
   });
 
- 
+
 
   useEffect(() => {
     setFormData({ ...formData, address: userAddress });
   }, [userAddress]);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,7 +52,9 @@ function EditProfile({ closeEdit }) {
         headers: {
           "Content-Type": "application/JSON",
         },
-      };
+      }
+
+      
       const response = await fetch(
         `${import.meta.env.VITE_API}/user/update/${user.user._id}`,
         settings
@@ -83,7 +90,7 @@ function EditProfile({ closeEdit }) {
     }
   };
 
- 
+
   return (
     <form className="editProfileForm" onSubmit={handleSaveProfile}>
       <h1>Edit Profile</h1>
@@ -105,7 +112,6 @@ function EditProfile({ closeEdit }) {
           onChange={handleChange}
         />
       </label>
-      
       <label>Invoice Address:</label>
       <label>
         Street:
@@ -162,6 +168,7 @@ function EditProfile({ closeEdit }) {
           }}
         />
       </label>
+
       {/* <label>
         Invoice Address:
         <input
@@ -181,11 +188,12 @@ function EditProfile({ closeEdit }) {
         />
       </label> */}
 
+
       <div className="save-cancel">
         <button type="submit" className="saveButton">
           Save
         </button>
-        <button type="button" className="cancelButton" onClick={closeEdit}>
+        <button type="button" className="cancelButton" onClick={handleCancel} >
           Cancel
         </button>
       </div>

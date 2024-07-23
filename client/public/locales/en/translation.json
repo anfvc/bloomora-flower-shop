@@ -148,6 +148,26 @@
     "welcome": "Welcome"
     },
     "delete_user": "Delete user",
+  },
+  "wishlist": "Wishlist",
+  "cart": {
+    "header": "Cart",
+    "cartLength": "Your Cart Is Empty",
+    "quantity": "Quantity",
+    "price": "Price",
+    "subTotal": "Order Subtotal",
+    "shipping": "Shipping 'STANDARD'",
+    "free": "Free",
+    "vat": "Vat",
+    "included": "Included",
+    "totalToPay": "Total to Pay",
+    "checkout": "Go To Checkout",
+    "or": "or",
+    "paypal": "Paypal",
+    "freeShipping": "Free Shipping For Logged-In User",
+    "freeReturns": "Free Returns For 30 Days",
+    "secureCheckout": "Secure Checkout"
+  },
   "add_to_cart": "Add to Cart",
   "total_to_pay": "Total to Pay",
   "go_to_checkout": "Go to Checkout",
@@ -160,7 +180,7 @@
   "free_shipping_logged_in": "Free Shipping for Logged-In Users",
   "free_returns": "Free Returns for 30 Days",
   "secure_checkout": "Secure Checkout",
-  "footer" : {
+  "footer": {
     "headerRoots": "our roots",
     "links1": "vision",
     "links2": "careers",

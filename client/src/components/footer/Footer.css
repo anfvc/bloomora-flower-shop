@@ -5,8 +5,7 @@
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  padding: 3rem 0;
-  /* padding-top: 10rem; */
+  padding-bottom: 2rem;
 }
 
 .footerBox {
@@ -17,7 +16,7 @@
   align-items: center;
   gap: 10rem;
   padding-bottom: 5rem;
-  padding-top: 5rem;
+  padding-top: 4rem;
   border-bottom: 1px solid #1e1e1e;
   background-color: #698474;
   position: relative;

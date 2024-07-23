@@ -17,17 +17,15 @@
   gap: 1rem;
   justify-content: center;
   flex-direction: column;
-  padding: 1rem;
+  /* padding: 1rem; */
 }
 
 .language-switcher svg {
   font-size: 2rem;
-  position: absolute;
-  top: 30%;
-  right: 0;
-  transform: translateY(-30%);
   color: rgba(255, 255, 255, 0.814);
   cursor: pointer;
+  transform: translateY(-.2rem);
+  transition: color .3s, transform .3s;
 }
 
 .language-switcher .language-menu {
@@ -254,7 +252,7 @@
   z-index: 3;
 }
 
-.user-cart-search details .loginSignUp li {
+/* .user-cart-search details .loginSignUp li {
   padding: 12px 45px;
   cursor: pointer;
   font-size: 1.6rem;
@@ -276,11 +274,11 @@
 
 .user-cart-search details .loginSignUp li svg {
   font-size: 1.8rem;
-}
+} */
 
 .links-icons .user-cart-search .user,
 .search,
-.cart {
+.cart{
   font-size: 2rem;
   color: #e9ecf0;
   transition: color 0.3s, transform 0.3s;
@@ -325,7 +323,8 @@
 
 .links-icons .user-cart-search .user:hover,
 .search:hover,
-.cart:hover {
+.cart:hover,
+.language:hover {
   transform: scale(1.3);
   color: #e9ecf0;
   cursor: pointer;
@@ -354,6 +353,106 @@
 
 .dropdownMenu {
   display: none;
+}
+
+.user-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  top: 0; 
+  right: -30rem; 
+  padding-top: 20rem;
+  width: 25rem;
+  height: 100vh; 
+  background-color: rgba(105, 132, 116, 0.6); 
+  backdrop-filter: blur(20px);
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease;
+  z-index: 3;
+}
+
+.user-panel .close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+.user-panel.open {
+  right: 0;
+}
+
+.user-panel ul {
+  list-style-type: none;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.user-panel ul li {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 18rem;
+  height: 4.5rem;
+  font-size: 1.6rem;
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.user-panel ul li:hover {
+  background-color: white;
+  color: #41664f;
+}
+
+.user-panel ul li button {
+  width: 18rem;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border-radius: 5px;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+
+.user-panel ul li button:hover {
+  background-color: white;
+  color: #41664f;
+}
+
+
+.user-panel ul li .userPanel-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  /* font-size: 1.6rem; */
+}
+
+.user-panel.open ul li button {
+  width: 20rem;
+}
+
+.user-panel ul li svg {
+  margin-right: 0.5rem;
+  font-size: 2rem;
 }
 
 @media (max-width: 1024px) {

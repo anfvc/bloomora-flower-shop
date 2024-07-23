@@ -5,8 +5,10 @@ import { MdOutlineDelete } from "react-icons/md";
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { GiReturnArrow } from "react-icons/gi";
 import { RiSecurePaymentLine } from "react-icons/ri";
+import { useTranslation } from "react-i18next";
 
 function Cart() {
+  const { t } = useTranslation();
   const { user, removeFromCart } = useContext(UserContext);
   const [ isCartEmpty, setIsCartEmpty ] = useState(false);
   const [cart, setCart] = useState(
@@ -57,9 +59,9 @@ function Cart() {
     <div className="cart-container">
       <div className="background"></div>
       <div className="cartHeader">
-        <h1>cart</h1>
+        <h1>{t("cart.header")}</h1>
       </div>
-      {cart.length === 0 ? <p>your cart is empty</p> 
+      {cart.length === 0 ? <p>{t("cart.cartLength")}</p> 
       : <div className="itemsPaymentsContainer">
       <div className="itemsContainer">
         {!!cart.length > 0 &&
@@ -75,8 +77,8 @@ function Cart() {
               </div>
               <div className="info">
                 <p>{item.productName}</p>
-                <p>Quantity: <span>{item.quantity}</span></p>
-                <p>Price: <span>{item.productPrice} €</span></p>
+                <p>{t("cart.quantity")}: <span>{item.quantity}</span></p>
+                <p>{t("cart.price")}: <span>{item.productPrice} €</span></p>
               </div>
               <div className="incDecDelete">
                 <div className="incDec">
@@ -94,40 +96,40 @@ function Cart() {
       <div className="paymentContainer">
         <div className="shipment-subTotal-vat">
           <div className="subTotal">
-            <p>order subtotal :</p> <span>{total().toFixed(2)} €</span>
+            <p>{t("cart.subTotal")} :</p> <span>{total().toFixed(2)} €</span>
           </div>
           <div className="shipping">
-            <p>shipping "STANDARD" :</p>
-            <span>free</span>
+            <p>{t("cart.shipping")} :</p>
+            <span>{t("cart.free")}</span>
           </div>
           <div className="vat">
-            <p>vat :</p>
-            <span>included</span>
+            <p>{t("cart.vat")} :</p>
+            <span>{t("cart.included")}</span>
           </div>
         </div>
         <div className="totalPayment-Buttons">
           <div className="totalPayment">
-            <h2>Total to Pay:</h2>
+            <h2>{t("cart.totalToPay")}:</h2>
             <p>{total().toFixed(2)}€</p>
           </div>
           <div className="paymentButtons">
-            <button className="checkOut">go to checkout</button>
-            <p>or</p>
-            <button className="paypal">paypal</button>
+            <button className="checkOut">{t("cart.checkout")}</button>
+            <p>{t("cart.or")}</p>
+            <button className="paypal">{t("cart.paypal")}</button>
           </div>
         </div>
         <div className="secure-return-logged">
           <div className="logged">
             <LiaShippingFastSolid />
-            <p>free shipping for logged-in user</p>
+            <p>{t("cart.freeShipping")}</p>
           </div>
           <div className="return">
             <GiReturnArrow />
-            <p>free returns for 30 days</p>
+            <p>{t("cart.freeReturns")}</p>
           </div>
           <div className="secure">
             <RiSecurePaymentLine />
-            <p>secure checkout</p>
+            <p>{t("cart.secureCheckout")}</p>
           </div>
         </div>
       </div>

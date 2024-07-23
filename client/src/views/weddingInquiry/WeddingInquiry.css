@@ -1,0 +1,70 @@
+.weddingInquiryContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 45rem;
+  position: relative;
+}
+
+.weddingInquiryContainer .inquiryBackground {
+  position: absolute;
+  width: 100%;
+  height: 40rem;
+  top: 0;
+  left: 0;
+  background-image: url(../../images/wedding/wedingInquiry/image1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.weddingInquiryContainer .inquiryBackground::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.weddingInquiryContainer .header {
+  position: absolute;
+  top: 33rem;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+
+.weddingInquiryContainer .header::before {
+  content: "";
+  width: 35rem;
+  height: 0.1rem;
+  background-color: white;
+  position: absolute;
+  bottom: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.weddingInquiryContainer .header h1 {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-family: "Merriweather", serif;
+  font-size: 4.5rem;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------- */
+
+.weddingInquiryContainer .field {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}

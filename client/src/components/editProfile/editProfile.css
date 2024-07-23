@@ -2,26 +2,29 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 3rem;
-  padding: 4rem;
+  gap: 1rem;
+  /* padding: 4rem; */
+  padding-left: 2rem;
   background-color: white;
   border-radius: 10px;
-  width: 100%;
-  height: 100vh;
+  width: 90%;
+  /* height: 100vh; */
 }
 
 .editProfileForm h1 {
   margin-bottom: 20px;
-  color: white;
+  color: #6e8377;
   font-size: 3rem;
   font-weight: 500;
+  font-family: "Merriweather", serif;
   letter-spacing: 1px;
 }
 
 .editProfileForm label {
-  width: 70rem;
+  width: 55%;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
   font-size: 1.6rem;
@@ -32,7 +35,7 @@
 }
 
 .editProfileForm input {
-  width: 80%;
+  width: 100%;
   height: 4rem;
   padding-left: 1.5rem;
   border: none;
@@ -51,15 +54,15 @@
 
 .passwordIcon {
   position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: 2rem;
+  top: 60%;
+  /* transform: translateY(-40%); */
   cursor: pointer;
   color: #011e00;
 }
 
 .save-cancel {
-  width: 70rem;
+  width: 55%;
   display: flex;
   justify-content: flex-end;
   gap: 2rem;
@@ -88,17 +91,18 @@
 
 .saveButton:hover,
 .cancelButton:hover {
-  color: rgb(18, 18, 18);
-  background-color: #ffffff;
+  color: white;
+  background-color: #6e8377;
 }
 
 @media screen and (max-width: 1024px) {
   .editProfileForm {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 2rem;
     width: 80%;
+    margin-bottom: 2rem;
   }
 
   .editProfileForm label {
@@ -134,11 +138,37 @@
   .editProfileForm {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 2rem;
+    width: 80%;
+  }
+
+  .editProfileForm label {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    padding: 15px;
-    padding-top: 6rem;
+  }
+
+  .editProfileForm input {
+    width: 100%;
+  }
+
+  .passwordIcon {
+    position: absolute;
+    right: 3rem;
+    top: 72%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #011e00;
+  }
+
+  .save-cancel {
+    width: 100%;
+  }
+
+  .saveButton,
+  .cancelButton {
+    width: 100%;
   }
 }
 

@@ -72,7 +72,7 @@ function CreateProduct() {
 
   return (
     <div className="adminContainer">
-      <div className="sidebarAdmin">
+      {/* <div className="sidebarAdmin">
         <FaUser className="userImageAdmin" />
         <button className="sidebarButtonAdmin">
           <p>Edit Profile</p>
@@ -90,7 +90,7 @@ function CreateProduct() {
           <p>Wishlist</p>
           <PiListHeartFill />
         </button>
-      </div>
+      </div> */}
       <form onSubmit={handleSubmit}>
         <div className="formBox">
           <div className="adminHeader">

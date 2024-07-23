@@ -71,7 +71,9 @@ function Invoice() {
             <p>50 €</p>
           </div>
           <div className="invoiceProduct">
-            <img src={image1} alt="" />
+            <div className="invoiceProductImage">
+              <img src={image1} alt="" />
+            </div>
             <div>
               <h2>still open</h2>
               <p>seller: bloomora</p>
@@ -191,7 +193,9 @@ function Invoice() {
             </div>
             <div className="invoiceModalClose">
               <button onClick={closeModal}>Close</button>
-              <button onClick={() => downloadInvoice(selectedInvoice)}>Download</button>
+              <button onClick={() => downloadInvoice(selectedInvoice)}>
+                Download
+              </button>
             </div>
           </div>
         )}

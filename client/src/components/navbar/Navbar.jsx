@@ -14,6 +14,7 @@ import { MdPersonAdd } from "react-icons/md";
 import { FaSignOutAlt } from "react-icons/fa";
 import { AiFillEdit } from "react-icons/ai";
 import { GrLanguage } from "react-icons/gr";
+import { PiListHeartFill } from "react-icons/pi";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import { UserContext } from "../../context/userContext";
@@ -22,40 +23,12 @@ function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+  const [isUserPanelOpen, setIsUserPanelOpen] = useState(false); // Yeni state
   const { isLoggedIn, user, logout, isMenuOpen, setIsMenuOpen } =
     useContext(UserContext);
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const userIcon = document.querySelector(
-      ".user-cart-search details summary"
-    );
-    userIcon.addEventListener("mouseover", openDetails);
-    userIcon.addEventListener("mouseout", closeDetails);
-
-    return () => {
-      userIcon.removeEventListener("mouseover", openDetails);
-      userIcon.removeEventListener("mouseout", closeDetails);
-    };
-  }, []);
-
-  const openDetails = () => {
-    document
-      .querySelector(".user-cart-search details")
-      .setAttribute("open", true);
-  };
-
-  const closeDetails = () => {
-    setTimeout(() => {
-      if (!document.querySelector(".user-cart-search details:hover")) {
-        document
-          .querySelector(".user-cart-search details")
-          .removeAttribute("open");
-      }
-    }, 500);
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -75,7 +48,6 @@ function Navbar() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    // document.body.classList.toggle("menu-open", !isMenuOpen);
   };
 
   const openLogin = () => {
@@ -91,7 +63,7 @@ function Navbar() {
   const handleLogout = () => {
     logout();
     navigate("/");
-    document.querySelector("details[open]").removeAttribute("open");
+    closeDetailsMenu();
   };
 
   const closeModals = () => {
@@ -105,11 +77,27 @@ function Navbar() {
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
-    setLanguageMenuOpen(false); // Close the menu after selecting a language
+    setLanguageMenuOpen(false);
   };
 
   const toggleLanguageMenu = () => {
     setLanguageMenuOpen(!languageMenuOpen);
+  };
+
+  const closeDetailsMenu = () => {
+    const detailsElement = document.querySelector("details[open]");
+    if (detailsElement) {
+      detailsElement.removeAttribute("open");
+    }
+  };
+
+  const handleMenuItemClick = (callback) => {
+    closeDetailsMenu();
+    callback();
+  };
+
+  const toggleUserPanel = () => {
+    setIsUserPanelOpen(!isUserPanelOpen);
   };
 
   return (
@@ -136,7 +124,7 @@ function Navbar() {
                 <NavLink
                   to="/"
                   className={scrolled ? "scrolled" : ""}
-                  onClick={scrollToTop}
+                  onClick={() => handleMenuItemClick(scrollToTop)}
                 >
                   {t("home")}
                 </NavLink>
@@ -145,7 +133,7 @@ function Navbar() {
                 <NavLink
                   to="/shop"
                   className={scrolled ? "scrolled" : ""}
-                  onClick={scrollToTop}
+                  onClick={() => handleMenuItemClick(scrollToTop)}
                 >
                   {t("shop.header1")}
                 </NavLink>
@@ -154,7 +142,7 @@ function Navbar() {
                 <NavLink
                   to="/ourroots"
                   className={scrolled ? "scrolled" : ""}
-                  onClick={scrollToTop}
+                  onClick={() => handleMenuItemClick(scrollToTop)}
                 >
                   {t("ourRoots.header")}
                 </NavLink>
@@ -163,7 +151,7 @@ function Navbar() {
                 <NavLink
                   to="/weddings-events"
                   className={scrolled ? "scrolled" : ""}
-                  onClick={scrollToTop}
+                  onClick={() => handleMenuItemClick(scrollToTop)}
                 >
                   {t("weddingEvents.header")}
                   <ul className="dropdownLinks">
@@ -171,7 +159,7 @@ function Navbar() {
                       <NavLink
                         to="/wedding-process"
                         className="dropdown-a"
-                        onClick={scrollToTop}
+                        onClick={() => handleMenuItemClick(scrollToTop)}
                       >
                         {t("weddingProcess.header")}
                       </NavLink>
@@ -180,7 +168,7 @@ function Navbar() {
                       <NavLink
                         to="/wedding-gallery"
                         className="dropdown-a"
-                        onClick={scrollToTop}
+                        onClick={() => handleMenuItemClick(scrollToTop)}
                       >
                         {t("wedding_gallery")}
                       </NavLink>
@@ -189,7 +177,7 @@ function Navbar() {
                       <NavLink
                         to="/events"
                         className="dropdown-a"
-                        onClick={scrollToTop}
+                        onClick={() => handleMenuItemClick(scrollToTop)}
                       >
                         {t("events")}
                       </NavLink>
@@ -201,7 +189,7 @@ function Navbar() {
                 <NavLink
                   to="/contact"
                   className={scrolled ? "scrolled" : ""}
-                  onClick={scrollToTop}
+                  onClick={() => handleMenuItemClick(scrollToTop)}
                 >
                   {t("contact.header")}
                 </NavLink>
@@ -218,38 +206,10 @@ function Navbar() {
                 })}
               </p>
             )}
-            <details>
-              <summary>
-                <AiOutlineUser
-                  className={`user ${scrolled ? "scrolled-icon" : ""}`}
-                />
-              </summary>
-              <ul className="loginSignUp">
-                {isLoggedIn ? (
-                  <>
-                    <li onClick={() => navigate("/userPanel")}>
-                      <AiFillEdit />
-                      {t("profile")}
-                    </li>
-                    <li onClick={handleLogout}>
-                      <FaSignOutAlt />
-                      {t("logout")}
-                    </li>
-                  </>
-                ) : (
-                  <>
-                    <li onClick={openLogin}>
-                      <IoLogIn />
-                      {t("sign_in")}
-                    </li>
-                    <li onClick={openRegister}>
-                      <MdPersonAdd />
-                      {t("register")}
-                    </li>
-                  </>
-                )}
-              </ul>
-            </details>
+            <AiOutlineUser
+              className={`user ${scrolled ? "scrolled-icon" : ""}`}
+              onClick={toggleUserPanel}
+            />
             <NavLink to="/search">
               <FiSearch
                 className={`search ${scrolled ? "scrolled-icon" : ""}`}
@@ -266,7 +226,7 @@ function Navbar() {
               </div>
             </NavLink>
             <div className="language-switcher">
-              <GrLanguage onClick={toggleLanguageMenu} />
+              <GrLanguage className="language" onClick={toggleLanguageMenu} />
               {languageMenuOpen && (
                 <div className="language-menu">
                   <button onClick={() => changeLanguage("en")}>EN</button>
@@ -372,7 +332,9 @@ function Navbar() {
                         <>
                           <li
                             className="dd-li"
-                            onClick={() => navigate("/userPanel")}
+                            onClick={() =>
+                              handleMenuItemClick(() => navigate("/userPanel"))
+                            }
                           >
                             <AiFillEdit />
                             {t("profile")}
@@ -384,11 +346,17 @@ function Navbar() {
                         </>
                       ) : (
                         <>
-                          <li className="dd-li" onClick={openLogin}>
+                          <li
+                            className="dd-li"
+                            onClick={() => handleMenuItemClick(openLogin)}
+                          >
                             <IoLogIn />
                             {t("sign_in")}
                           </li>
-                          <li className="dd-li" onClick={openRegister}>
+                          <li
+                            className="dd-li"
+                            onClick={() => handleMenuItemClick(openRegister)}
+                          >
                             <MdPersonAdd />
                             {t("register")}
                           </li>
@@ -419,6 +387,89 @@ function Navbar() {
           </div>
         )}
       </div>
+
+      {/* Kullanıcı Paneli */}
+      <div className={`user-panel ${isUserPanelOpen ? "open" : ""}`}>
+        <button className="close-btn" onClick={toggleUserPanel}>
+          <AiOutlineClose />
+        </button>
+        <ul>
+          {isLoggedIn ? (
+            <>
+              <li
+                onClick={() => {
+                  handleMenuItemClick(() =>
+                    navigate("/userPanel?section=profile")
+                  );
+                  toggleUserPanel();
+                }}
+              >
+                <button>
+                  <AiFillEdit />
+                  {t("profile")}
+                </button>
+              </li>
+              <li
+                onClick={() => {
+                  handleMenuItemClick(() =>
+                    navigate("/userPanel?section=wishlist")
+                  );
+                  toggleUserPanel();
+                }}
+              >
+                <button>
+                  <PiListHeartFill />
+                  {t("wishlist")}
+                </button>
+              </li>
+              <li
+                onClick={() => {
+                  handleMenuItemClick(() => navigate("/cart"));
+                  toggleUserPanel();
+                }}
+              >
+                <button className="userPanel-cart">
+                  <PiShoppingBag />
+                  {t("cart.header")}
+                </button>
+              </li>
+              <li
+                onClick={() => {
+                  handleLogout();
+                  toggleUserPanel();
+                }}
+              >
+                <button className="userPanel-logout">
+                  <FaSignOutAlt  />
+                  {t("logout")}
+                </button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li
+                onClick={() => {
+                  handleMenuItemClick(openLogin);
+                  toggleUserPanel();
+                }}
+              >
+                <IoLogIn className="userPanel-signIn" />
+                {t("sign_in")}
+              </li>
+              <li
+                onClick={() => {
+                  handleMenuItemClick(openRegister);
+                  toggleUserPanel();
+                }}
+              >
+                <MdPersonAdd />
+                {t("register")}
+              </li>
+            </>
+          )}
+        </ul>
+      </div>
+
       {isLoginOpen && (
         <Login openRegister={openRegister} closeModals={closeModals} />
       )}
