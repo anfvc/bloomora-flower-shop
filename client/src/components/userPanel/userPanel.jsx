@@ -11,7 +11,7 @@ import { GrDocumentConfig } from "react-icons/gr";
 import { useNavigate, useLocation } from "react-router-dom";
 import Wishlist from "../wishlist/wishlist";
 import Invoice from "../invoice/Invoice";
-import CreateProduct from "../../views/Admin/CreateProduct"; // Import CreateProduct component
+import CreateProduct from "../../views/Admin/CreateProduct"; 
 import { useTranslation } from "react-i18next";
 
 function UserPanel() {
@@ -42,7 +42,7 @@ function UserPanel() {
 
 
   // console.log(user.user);
-  if (user.user) { //Added this if condition
+  if (user.user) { 
     return (
       <div className="userPanelContainer">
         <div className="userPanelBackground"></div>

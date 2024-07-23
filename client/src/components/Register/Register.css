@@ -45,9 +45,10 @@
 
 .registerContainer h2 {
   margin-bottom: 20px;
-  font-size: 5rem;
-  font-weight: 400;
-  letter-spacing: 1px;
+  font-size: 4rem;
+  font-weight: 300;
+  font-family: "Merriweather", serif;
+  letter-spacing: 2px;
   color: white;
   z-index: 111;
 }
@@ -59,8 +60,20 @@
   z-index: 111;
 }
 
+.registerContainer form .password, .confirmPass {
+  position: relative;
+}
+
+.registerContainer form .password span, .confirmPass span {
+  position: absolute;
+  top: 5.2rem;
+  right: 1rem;
+  color: rgb(118, 118, 118);
+}
+
 .registerContainer label {
   margin-top: 10px;
+  margin-bottom: 1rem;
   font-size: 1.6rem;
   font-family: "Roboto", sans-serif;
   display: flex;

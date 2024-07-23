@@ -3,18 +3,24 @@ import "./Navbar.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import logo from "../../images/logo/bloomoraV2.svg";
+import userPanelLogo from "../../images/logo/bloomoraV5.png";
 import scrolledLogo from "../../images/logo/bloomoraV3.svg";
 import { AiOutlineUser } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 import { PiShoppingBag } from "react-icons/pi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineCloseSquare } from "react-icons/ai";
 import { IoLogIn } from "react-icons/io5";
 import { MdPersonAdd } from "react-icons/md";
 import { FaSignOutAlt } from "react-icons/fa";
 import { AiFillEdit } from "react-icons/ai";
 import { GrLanguage } from "react-icons/gr";
 import { PiListHeartFill } from "react-icons/pi";
+import { FaFacebookSquare } from "react-icons/fa";
+import { FaSquareInstagram } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa6";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import { UserContext } from "../../context/userContext";
@@ -390,8 +396,11 @@ function Navbar() {
 
       {/* Kullanıcı Paneli */}
       <div className={`user-panel ${isUserPanelOpen ? "open" : ""}`}>
+        <div className="userPanelLogo">
+          <img src={userPanelLogo} alt="logo" />
+        </div>
         <button className="close-btn" onClick={toggleUserPanel}>
-          <AiOutlineClose />
+        <AiOutlineCloseSquare />
         </button>
         <ul>
           {isLoggedIn ? (
@@ -440,13 +449,16 @@ function Navbar() {
                 }}
               >
                 <button className="userPanel-logout">
-                  <FaSignOutAlt  />
+                  <FaSignOutAlt />
                   {t("logout")}
                 </button>
               </li>
             </>
           ) : (
             <>
+              {/* <div className="userPanelLogo2">
+              <img src={logo} alt="" />
+            </div> */}
               <li
                 onClick={() => {
                   handleMenuItemClick(openLogin);
@@ -454,7 +466,7 @@ function Navbar() {
                 }}
               >
                 <IoLogIn className="userPanel-signIn" />
-                {t("sign_in")}
+                {t("sign_in.header")}
               </li>
               <li
                 onClick={() => {
@@ -463,11 +475,17 @@ function Navbar() {
                 }}
               >
                 <MdPersonAdd />
-                {t("register")}
+                {t("register.header")}
               </li>
             </>
           )}
         </ul>
+        <div className="socialPlatforms">
+          <FaFacebookSquare />
+          <FaSquareInstagram />
+          <FaXTwitter />
+          <FaLinkedin />
+        </div>
       </div>
 
       {isLoginOpen && (

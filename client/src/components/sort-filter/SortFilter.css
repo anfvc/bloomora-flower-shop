@@ -29,8 +29,8 @@
   font-size: 1.6rem;
   font-weight: 400;
   text-transform: uppercase;
-  border-right: 1px solid rgba(0, 0, 0, 0.3);
-  border-left: 1px solid rgba(0, 0, 0, 0.3);
+  border-right: 1px solid rgba(71, 71, 71, 1);
+  border-left: 1px solid rgba(71, 71, 71, 1);
   cursor: pointer;
 }
 
@@ -52,7 +52,7 @@
   right: 11.3rem;
   border-radius: 1px;
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(71, 71, 71, 1);
 }
 
 .sort-filter .sort ul {
@@ -84,7 +84,7 @@
 
 .sort-filter .filter {
   padding: 0 4rem 0 2rem;
-  border-right: 1px solid rgba(0, 0, 0, 0.35);
+  border-right: 1px solid rgba(71, 71, 71, 1);
   height: 100%;
   display: flex;
   align-items: center;
@@ -94,31 +94,30 @@
 }
 
 .filter-panel {
-  /* padding-top: 12rem; */
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 30rem;
-  height: 80%;
-  margin-top: 15rem;
+  width: 100vw;
+  height: 10rem;
   background-color: rgba(255, 255, 255, 1);
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: -2px 5px 5px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
-  z-index: 4;
+  z-index: 1;
+  position: absolute;
+  top: 5.9rem;
+  left: 0;
 }
 
 @media (max-width: 1024px) {
   .filter-panel {
-    z-index: 1000;
+    z-index: 1;
   }
 }
 
 .filter-panel .filter-header {
   display: flex;
-  justify-content: flex-start;
-  padding: 1rem;
+  justify-content: flex-end;
+  padding-right: 4rem;
+  padding-top: 1rem;
 }
 
 .filter-panel .filter-header .close-icon {
@@ -129,50 +128,28 @@
 .filter-panel .filter-body {
   flex: 1;
   display: flex;
-  flex-direction: column;
-  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 
-.filter-panel .filter-body h2 {
-  margin-bottom: 1rem;
-}
-
-.filter-panel .filter-options {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.filter-panel .filter-options a {
-  font-size: 1.6rem;
-  color: black;
-  text-decoration: none;
+.filter-panel .filter-body .filter-item {
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: #56555A;
+  text-transform: capitalize;
   cursor: pointer;
+  transition: box-shadow 0.5s ease-in-out, color .5s ease-in-out;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0);
 }
 
-.filter-panel .filter-options a:hover {
-  text-decoration: underline;
+.filter-panel .filter-body .filter-item:hover {
+  box-shadow: inset 0 -1px 0 #363637;
+  color: #161616;
 }
 
-.filter-panel .price-range {
-  margin-top: 2rem;
-}
-
-.filter-panel .price-range label {
-  font-size: 1.6rem;
-}
-
-.filter-panel .price-range input[type="range"] {
-  width: 100%;
-}
-
-.filter-panel .price-inputs {
-  display: flex;
-  gap: 1rem;
-}
-
-.filter-panel .price-inputs input {
-  width: 48%;
-  padding: 0.5rem;
-  font-size: 1.2rem;
+.filter-panel .filter-body .filter-item.active {
+  /* color: #56555A; */
+  box-shadow: inset 0 -1px 0 #56555A;
+  font-weight: bold;
 }
