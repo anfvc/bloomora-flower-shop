@@ -147,6 +147,26 @@
     "adminPanel": "Admin-Panel",
     "welcome": "Willkommen"
   },
+  "wishlist": "Wunschliste",
+  "cart": {
+    "header": "Warenkorb",
+    "cartLength": "Ihr Warenkorb ist leer",
+    "quantity": "Menge",
+    "price": "Preis",
+    "subTotal": "Bestellsumme",
+    "shipping": "Versand 'STANDARD'",
+    "free": "Kostenlos",
+    "vat": "MwSt",
+    "included": "Inbegriffen",
+    "totalToPay": "Zu zahlender Betrag",
+    "checkout": "Zur Kasse gehen",
+    "or": "oder",
+    "paypal": "Paypal",
+    "freeShipping": "Kostenloser Versand für angemeldete Benutzer",
+    "freeReturns": "Kostenlose Rückgabe innerhalb von 30 Tagen",
+    "secureCheckout": "Sicherer Checkout"
+  },
+
   "add_to_cart": "In den Warenkorb",
   "total_to_pay": "Gesamt zu zahlen",
   "go_to_checkout": "Zur Kasse gehen",

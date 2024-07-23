@@ -15,6 +15,7 @@ import Footer from "./components/footer/Footer.jsx";
 import WeddingEvents from "./views/weddingEvents/WeddingEvents.jsx";
 import Cart from "./components/cart/Cart.jsx";
 import Wishlist from "./components/wishlist/wishlist.jsx";
+import WeddingInquiry from "./views/weddingInquiry/WeddingInquiry.jsx";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/weddings-events" element={<WeddingsEvents />} />
         <Route path="/wedding-process" element={<WeddingProcess />} />
         <Route path="/wedding-gallery" element={<WeddingGallery />} />
+        <Route path="/wedding-inquiry" element={<WeddingInquiry />} />
         <Route path="/events" element={<WeddingEvents />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<CreateProduct />} />

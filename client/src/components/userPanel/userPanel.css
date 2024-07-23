@@ -1,38 +1,47 @@
 .userPanelContainer {
   display: flex;
   width: 100vw;
-  padding-top: 12rem;
+  position: relative;
+}
+
+.userPanelContainer .userPanelBackground {
+  width: 100%;
+  height: 25rem;
+  position: absolute;
+  top: 0;
+  left: 0;
   background-image: url("../../images/shop-images/background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  position: relative;
 }
 
-.userPanelContainer::before {
+.userPanelContainer .userPanelBackground::before {
   position: absolute;
   top: 0;
   left: 0;
   content: "";
-  background-color: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(15px);
+  background-color: rgba(0, 0, 0, 0.4);
+  /* backdrop-filter: blur(15px); */
   width: 100%;
   height: 100%;
 }
 
 .sidebar {
   width: 25rem;
+  padding-top: 30rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  height: 100%;
   background-color: #ffffff;
-  border: 1px solid #0c6409;
+  /* border: 1px solid #0c6409; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  padding-top: 5rem;
-  z-index: 1;
-  position: sticky;
-  top: 12rem;
-  height: calc(100vh - 12rem);
+  /* padding: 20px; */
+  /* padding-top: 12rem; */
+  /* position: sticky;
+  top: 40rem; */
 }
 
 .userImage {
@@ -104,17 +113,18 @@
 }
 
 .userDetails {
-  width: 100%;
+  padding-top: 30rem;
+  padding-left: 2.5rem;
+  width: 60rem;
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
+  align-items: flex-start;
   flex-grow: 1;
-  background-color: #698474;
-  z-index: 1;
-  border-top: 1px solid #0c6409;
-  border-right: 1px solid #0c6409;
-  border-bottom: 1px solid #0c6409;
-  padding: 2rem;
-  /* margin-left: 25rem; */
+  background-color: white;
+  /* border-top: 1px solid #0c6409; */
+  border-left: 1px solid #698474;
+  /* border-bottom: 1px solid #0c6409; */
 }
 
 .welcome {
@@ -157,8 +167,8 @@
   }
 
   .userImage {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
   }
 
   .userDetails {
@@ -180,7 +190,7 @@
   .userDetails {
     width: calc(100vw - 10rem);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     /* margin-left: 10rem; */
   }
@@ -196,7 +206,7 @@
   .userDetails {
     width: calc(100vw - 10rem);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     /* margin-left: 10rem; */
   }
@@ -210,10 +220,15 @@
     height: calc(100vh - 12rem);
   }
 
+  .userImage {
+    width: 60px;
+    height: 60px;
+  }
+
   .userDetails {
     width: calc(100vw - 10rem);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     /* margin-left: 10rem; */
   }
