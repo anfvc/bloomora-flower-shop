@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useNavigate } from "react";
 import { UserContext } from "../../context/userContext";
 import { useTranslation } from "react-i18next";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -48,7 +48,7 @@ function Register({ openLogin, closeModals }) {
       };
 
       const response = await fetch(
-        `http://localhost:5100/api/auth/register`,
+        `${import.meta.env.VITE_API}/auth/register`,
         settings
       );
 
@@ -57,7 +57,9 @@ function Register({ openLogin, closeModals }) {
         console.log(userData);
         setUser(userData);
         closeModals();
+
         document.querySelector("details[open]").removeAttribute("open");
+
       } else {
         const { error } = await response.json();
         throw new Error(error.message);

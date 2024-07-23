@@ -44,7 +44,7 @@ function CreateProduct() {
       };
 
       const response = await fetch(
-        "http://localhost:5100/api/product/create",
+        `${import.meta.env.VITE_API}/product/create`,
         settings
       );
 

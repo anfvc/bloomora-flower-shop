@@ -165,6 +165,7 @@
     "adminPanel": "Admin-Panel",
     "welcome": "Willkommen"
   },
+  "delete_user": "User löschen ",
   "wishlist": "Wunschliste",
   "cart": {
     "header": "Warenkorb",
@@ -184,7 +185,6 @@
     "freeReturns": "Kostenlose Rückgabe innerhalb von 30 Tagen",
     "secureCheckout": "Sicherer Checkout"
   },
-
   "add_to_cart": "In den Warenkorb",
   "total_to_pay": "Gesamt zu zahlen",
   "go_to_checkout": "Zur Kasse gehen",

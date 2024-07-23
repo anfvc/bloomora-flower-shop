@@ -12,7 +12,7 @@ function Wishlist() {
     async function getWishList() {
       try {
         const response = await fetch(
-          `http://localhost:5100/api/wishlist/get/${user.user._id}`
+          `${import.meta.env.VITE_API}/wishlist/get/${user.user._id}`
         );
 
         if (response.ok) {

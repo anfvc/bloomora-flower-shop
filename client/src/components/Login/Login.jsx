@@ -33,7 +33,7 @@ function Login({ openRegister, closeModals }) {
       };
 
       const response = await fetch(
-        `http://localhost:5100/api/auth/login`,
+        `${import.meta.env.VITE_API}/auth/login`,
         settings
       );
 

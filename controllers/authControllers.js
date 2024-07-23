@@ -25,14 +25,15 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
+  console.log("user", user);
   const isValidUser =
     user && (await comparePassword(req.body.password, user.password));
-  if (!isValidUser) throw new UnauthenticatedError("Invalid credentials");
+    const hashedPassword = await hashPassword(req.body.password);
+    
+  if (!isValidUser) throw new UnauthenticatedError("Invalid login credentials");
 
   const token = createJWT({ userId: user._id, role: user.role });
-  //  const token = createJWT({ user });
-  // console.log("created token", token);
-
+ 
   const oneDay = 1000 * 60 * 60 * 24;
 
   res.cookie("token", token, {
@@ -46,18 +47,10 @@ console.log("login");
 };
 
 export const logout = (req, res) => {
-  // res.cookie("token", "logout", {
-  //   httpOnly: true,
-  //   expires: new Date(Date.now()),
-  //   });
+  
   res.clearCookie("token")
     console.log('logout');
   res.status(StatusCodes.OK).json({ msg: "User logged out!" });
 };
 
-// export const getUser = async (req, res)=>{
-//   const foundUser = await User.findById(req.user.userId)
-//    //console.log("foundUser", foundUser);
-//   res.json({user: foundUser})
-//   // res.end()
-// }
+
