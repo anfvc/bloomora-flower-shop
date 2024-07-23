@@ -1,26 +1,41 @@
-import { useState, useContext } from "react";
+
 import { UserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
+import { useState, useContext, useEffect } from "react";
+import { UserContext } from "../../context/userContext";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import "./editProfile.css";
 
 function EditProfile({ closeEdit }) {
-  const { user, setUser } = useContext(UserContext);
+
+  const { user, setUser, checkUserAuth } = useContext(UserContext);
+  const [userAddress, setUserAddress] = useState({
+    street: user.user.address?.street,
+    houseNum: user.user.address?.houseNum,
+    zip: user.user.address?.zip,
+    city: user.user.address?.city,
+    country: user.user.address?.country,
+  });
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    firstName: user.user.firstName,
+    lastName: user.user.lastName,
     password: "",
     confirmPassword: "",
-    street: "",
-    num: "",
-    zip: "",
-    city: "",
-    country: ""
-    /* deliveryAddress: user.deliveryAddress || "", */
+    address: userAddress,
   });
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
+
+
+//   const [showPassword, setShowPassword] = useState(false);
+//   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  useEffect(() => {
+    setFormData({ ...formData, address: userAddress });
+  }, [userAddress]);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -48,56 +63,100 @@ function EditProfile({ closeEdit }) {
     try {
       const settings = {
         method: "PATCH",
-        body: JSON.stringify({ formData }),
+
+//         body: JSON.stringify({ formData }),
+
+        body: JSON.stringify(formData),
+
         headers: {
-          "Content-Type": "application/JSON"
+          "Content-Type": "application/JSON",
         },
+
       }
-      const response = await fetch(`http://localhost:5100/api/user/update/${user.user._id}`, settings)
+//       const response = await fetch(`http://localhost:5100/api/user/update/${user.user._id}`, settings)
+
+//       if (response.ok) {
+//         const updateUser = await response.json()
+//         console.log(updateUser);
+
+//         setUser({
+//           ...user,
+//           firstName: formData.firstName,
+//           lastName: formData.lastName,
+//           password: formData.password,
+//           confirmPassword: formData.confirmPassword,
+//           street: formData.street,
+//           num: formData.num,
+//           zip: formData.zip,
+//           city: formData.city,
+//           country: formData.country
+//         });
+//         alert("Your profile has been successfully edited")
+//         closeEdit();
+//         setFormData({
+//           firstName: "",
+//           lastName: "",
+//           password: "",
+//           confirmPassword: "",
+//           street: "",
+//           houseNum: "",
+//           zip: "",
+//           city: "",
+//           country: ""
+//           /* deliveryAddress: user.deliveryAddress || "", */
+//         })
+//       } else {
+//         const { error } = await response.json();
+//         throw new Error(error.message);
+//       };
+      
+      const response = await fetch(
+        `http://localhost:5100/api/user/update/${user.user._id}`,
+        settings
+      );
 
       if (response.ok) {
-        const updateUser = await response.json()
-        console.log(updateUser);
+        const updateUser = await response.json();
+        console.log("updateUser", updateUser.updatedUser);
 
         setUser({
           ...user,
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          password: formData.password,
-          confirmPassword: formData.confirmPassword,
-          street: formData.street,
-          num: formData.num,
-          zip: formData.zip,
-          city: formData.city,
-          country: formData.country
+          firstName: updateUser.updatedUser.firstName,
+          lastName: updateUser.updatedUser.lastName,
+          password: updateUser.updatedUser.password,
+          confirmPassword: updateUser.updatedUser.confirmPassword,
+          address: {
+            street: updateUser.updatedUser.street,
+            num: updateUser.updatedUser.num,
+            zip: updateUser.updatedUser.zip,
+            city: updateUser.updatedUser.city,
+            country: updateUser.updatedUser.country,
+          },
         });
-        alert("Your profile has been successfully edited")
+
+        checkUserAuth();
+        alert("Your profile has been successfully edited");
         closeEdit();
-        setFormData({
-          firstName: "",
-          lastName: "",
-          password: "",
-          confirmPassword: "",
-          street: "",
-          houseNum: "",
-          zip: "",
-          city: "",
-          country: ""
-          /* deliveryAddress: user.deliveryAddress || "", */
-        })
+        setFormData(user);
       } else {
         const { error } = await response.json();
-        throw new Error(error.message);
+        throw new Error(error);
       }
     } catch (error) {
       console.log(error.message);
     }
   };
 
+
   const handleCancel = () => {
     closeEdit();
     navigate('/userPanel'); // UserPanel ana ekranına yönlendir
   };
+
+  // console.log("user", user);
+  // console.log("address", userAddress);
+  // console.log("formData", formData);
+
 
   return (
     <form className="editProfileForm" onSubmit={handleSaveProfile}>
@@ -138,7 +197,7 @@ function EditProfile({ closeEdit }) {
         <input
           type={showConfirmPassword ? "text" : "password"}
           name="confirmPassword"
-          value={formData.confirmPassword}
+          // value={formData.confirmPassword}
           onChange={handleChange}
           placeholder="Confirm New Password"
         />
@@ -149,16 +208,18 @@ function EditProfile({ closeEdit }) {
           {showConfirmPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
         </span>
       </label>
-      <label>
-        Invoice Address:
-      </label>
+
+      <label>Invoice Address:</label>
+
       <label>
         Street:
         <input
           type="text"
           name="street"
-          value={formData.street}
-          onChange={handleChange}
+          value={userAddress.street}
+          onChange={(e) => {
+            setUserAddress({ ...userAddress, street: e.target.value });
+          }}
         />
       </label>
       <label>
@@ -166,8 +227,10 @@ function EditProfile({ closeEdit }) {
         <input
           type="text"
           name="houseNum"
-          value={formData.houseNum}
-          onChange={handleChange}
+          value={userAddress.houseNum}
+          onChange={(e) => {
+            setUserAddress({ ...userAddress, houseNum: e.target.value });
+          }}
         />
       </label>
       <label>
@@ -175,8 +238,10 @@ function EditProfile({ closeEdit }) {
         <input
           type="text"
           name="zip"
-          value={formData.zip}
-          onChange={handleChange}
+          value={userAddress.zip}
+          onChange={(e) => {
+            setUserAddress({ ...userAddress, zip: e.target.value });
+          }}
         />
       </label>
       <label>
@@ -184,8 +249,10 @@ function EditProfile({ closeEdit }) {
         <input
           type="text"
           name="city"
-          value={formData.city}
-          onChange={handleChange}
+          value={userAddress.city}
+          onChange={(e) => {
+            setUserAddress({ ...userAddress, city: e.target.value });
+          }}
         />
       </label>
       <label>
@@ -193,11 +260,33 @@ function EditProfile({ closeEdit }) {
         <input
           type="text"
           name="country"
-          value={formData.country}
-          onChange={handleChange}
+          value={userAddress.country}
+          onChange={(e) => {
+            setUserAddress({ ...userAddress, country: e.target.value });
+          }}
         />
       </label>
-     
+
+      {/* <label>
+        Invoice Address:
+        <input
+          type="text"
+          name="invoiceAddress"
+          value={formData.invoiceAddress}
+          onChange={handleChange}
+        />
+      </label> */}
+      {/*  <label>
+        Delivery Address:
+        <input
+          type="text"
+          name="deliveryAddress"
+          value={formData.deliveryAddress}
+          onChange={handleChange}
+        />
+      </label> */}
+
+
       <div className="save-cancel">
         <button type="submit" className="saveButton">
           Save
