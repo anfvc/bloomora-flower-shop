@@ -19,18 +19,10 @@ function EditProfile({ closeEdit }) {
   const [formData, setFormData] = useState({
     firstName: user.user.firstName,
     lastName: user.user.lastName,
-    password: "",
-    confirmPassword: "",
     address: userAddress,
   });
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const navigate = useNavigate();
 
-
-//   const [showPassword, setShowPassword] = useState(false);
-//   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   useEffect(() => {
     setFormData({ ...formData, address: userAddress });
@@ -45,14 +37,7 @@ function EditProfile({ closeEdit }) {
     }));
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const toggleConfirmPasswordVisibility = () => {
-    setShowConfirmPassword(!showConfirmPassword);
-  };
-
+  
   const handleSaveProfile = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
@@ -63,55 +48,15 @@ function EditProfile({ closeEdit }) {
     try {
       const settings = {
         method: "PATCH",
-
-//         body: JSON.stringify({ formData }),
-
         body: JSON.stringify(formData),
-
         headers: {
           "Content-Type": "application/JSON",
         },
-
       }
-//       const response = await fetch(`http://localhost:5100/api/user/update/${user.user._id}`, settings)
 
-//       if (response.ok) {
-//         const updateUser = await response.json()
-//         console.log(updateUser);
-
-//         setUser({
-//           ...user,
-//           firstName: formData.firstName,
-//           lastName: formData.lastName,
-//           password: formData.password,
-//           confirmPassword: formData.confirmPassword,
-//           street: formData.street,
-//           num: formData.num,
-//           zip: formData.zip,
-//           city: formData.city,
-//           country: formData.country
-//         });
-//         alert("Your profile has been successfully edited")
-//         closeEdit();
-//         setFormData({
-//           firstName: "",
-//           lastName: "",
-//           password: "",
-//           confirmPassword: "",
-//           street: "",
-//           houseNum: "",
-//           zip: "",
-//           city: "",
-//           country: ""
-//           /* deliveryAddress: user.deliveryAddress || "", */
-//         })
-//       } else {
-//         const { error } = await response.json();
-//         throw new Error(error.message);
-//       };
       
       const response = await fetch(
-        `http://localhost:5100/api/user/update/${user.user._id}`,
+        `${import.meta.env.VITE_API}/user/update/${user.user._id}`,
         settings
       );
 
@@ -123,9 +68,7 @@ function EditProfile({ closeEdit }) {
           ...user,
           firstName: updateUser.updatedUser.firstName,
           lastName: updateUser.updatedUser.lastName,
-          password: updateUser.updatedUser.password,
-          confirmPassword: updateUser.updatedUser.confirmPassword,
-          address: {
+              address: {
             street: updateUser.updatedUser.street,
             num: updateUser.updatedUser.num,
             zip: updateUser.updatedUser.zip,
@@ -146,16 +89,6 @@ function EditProfile({ closeEdit }) {
       console.log(error.message);
     }
   };
-
-
-  const handleCancel = () => {
-    closeEdit();
-    navigate('/userPanel'); // UserPanel ana ekranına yönlendir
-  };
-
-  // console.log("user", user);
-  // console.log("address", userAddress);
-  // console.log("formData", formData);
 
 
   return (
@@ -179,38 +112,7 @@ function EditProfile({ closeEdit }) {
           onChange={handleChange}
         />
       </label>
-      <label>
-        Password:
-        <input
-          type={showPassword ? "text" : "password"}
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          placeholder="New Password"
-        />
-        <span onClick={togglePasswordVisibility} className="passwordIcon">
-          {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
-        </span>
-      </label>
-      <label>
-        Confirm Password:
-        <input
-          type={showConfirmPassword ? "text" : "password"}
-          name="confirmPassword"
-          // value={formData.confirmPassword}
-          onChange={handleChange}
-          placeholder="Confirm New Password"
-        />
-        <span
-          onClick={toggleConfirmPasswordVisibility}
-          className="passwordIcon"
-        >
-          {showConfirmPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
-        </span>
-      </label>
-
       <label>Invoice Address:</label>
-
       <label>
         Street:
         <input

@@ -20,7 +20,7 @@ function Cart() {
       async function getCart() {
         try {
           const response = await fetch(
-            `http://localhost:5100/api/cart/get/${user.user._id}`
+            `${import.meta.env.VITE_API}/cart/get/${user.user._id}`
           );
 
           if (response.ok) {

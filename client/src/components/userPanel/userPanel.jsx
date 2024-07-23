@@ -8,6 +8,7 @@ import { FaClipboardList } from "react-icons/fa6";
 import { FaFileInvoice } from "react-icons/fa";
 import { PiListHeartFill } from "react-icons/pi";
 import { GrDocumentConfig } from "react-icons/gr";
+import { TiUserDelete } from "react-icons/ti";
 import { useNavigate, useLocation } from "react-router-dom";
 import Wishlist from "../wishlist/wishlist";
 import Invoice from "../invoice/Invoice";
@@ -15,7 +16,7 @@ import CreateProduct from "../../views/Admin/CreateProduct"; // Import CreatePro
 import { useTranslation } from "react-i18next";
 
 function UserPanel() {
-  const { user } = useContext(UserContext);
+  const { user, setIsLoggedIn } = useContext(UserContext);
   const [isEditing, setIsEditing] = useState(false);
   const [activeSection, setActiveSection] = useState("welcome");
   const navigate = useNavigate();
@@ -39,6 +40,31 @@ function UserPanel() {
     setIsEditing(false);
     navigate("/userPanel");
   };
+
+
+  async function handleDeleteUser(){
+
+    if (confirm("Are you sure you want to delete your account?"))
+      try {
+        const settings = {
+          method: "DELETE"
+        }
+
+        const response = await fetch(
+          `${import.meta.env.VITE_API}/user/delete/${user.user._id}`,
+          settings
+        );
+        if(response.ok){
+          const {msg} = await response.json()
+          alert(msg)
+          setIsLoggedIn(false)
+          navigate("/")
+        }
+      
+      } catch (error){
+        alert(error.message)
+  }
+}
 
 
   // console.log(user.user);
@@ -73,7 +99,17 @@ function UserPanel() {
             <p>{t("userPanel.wishList")}</p>
             <PiListHeartFill />
           </button>
-          {user.user.role === "admin" && (
+          <button className="sidebarButton"
+          onClick={handleDeleteUser}>
+            <p>{t("delete_user")}</p>
+          <TiUserDelete />
+          </button>
+
+          {/* <button className="sidebarButton" onClick={() => navigate("/wishlist")}>
+            <p>Wishlist</p>
+            <PiListHeartFill />
+          </button> */}
+=          {user.user.role === "admin" && (
             <button
               className="sidebarButton"
               onClick={() => navigate("/userPanel?section=admin")}

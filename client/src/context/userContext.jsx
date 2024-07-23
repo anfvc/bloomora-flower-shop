@@ -21,7 +21,7 @@ const UserProvider = ({ children }) => {
   async function checkUserAuth() {
     try {
       const response = await fetch(
-        `http://localhost:5100/api/user/refreshuser`,
+        `${import.meta.env.VITE_API}/user/refreshuser`,
         { credentials: "include" }
       );
       if (response.ok) {
@@ -45,10 +45,10 @@ const UserProvider = ({ children }) => {
       try {
         let response;
         if (!filter.category) {
-          response = await fetch(`http://localhost:5100/api/product/show/all`);
+          response = await fetch(`${import.meta.env.VITE_API}/product/show/all`);
         } else
           response = await fetch(
-            `http://localhost:5100/api/product/show/filtered/all?category=${filter.category}`
+            `${import.meta.env.VITE_API}/product/show/filtered/all?category=${filter.category}`
           );
 
         if (response.ok) {
@@ -81,7 +81,7 @@ const UserProvider = ({ children }) => {
       };
 
       const response = await fetch(
-        `http://localhost:5100/api/cart/add/${user.user._id}`,
+        `${import.meta.env.VITE_API}/cart/add/${user.user._id}`,
         settings
       );
 
@@ -112,7 +112,7 @@ const UserProvider = ({ children }) => {
       };
 
       const response = await fetch(
-        `http://localhost:5100/api/cart/remove/${user.user._id}`,
+        `${import.meta.env.VITE_API}/cart/remove/${user.user._id}`,
         settings
       );
 
@@ -142,7 +142,7 @@ const UserProvider = ({ children }) => {
       };
 
       const response = await fetch(
-        `http://localhost:5100/api/wishlist/add/${user.user._id}`,
+        `${import.meta.env.VITE_API}/wishlist/add/${user.user._id}`,
         settings
       );
 
@@ -158,7 +158,7 @@ const UserProvider = ({ children }) => {
     }
   }
 
-  // Arama işlevi
+  
   const searchProducts = (query) => {
     if (!query) {
       setFilteredProducts([]);
@@ -209,7 +209,7 @@ const UserProvider = ({ children }) => {
         credentials: "include",
       };
       const response = await fetch(
-        `http://localhost:5100/api/auth/logout`,
+        `${import.meta.env.VITE_API}/auth/logout`,
         settings
       );
       if (response.ok) {
