@@ -35,13 +35,13 @@ function Shop() {
         let response;
         if (!filter.category) {
           response = await fetch(
-            `http://localhost:5100/api/product/show?page=${page}`
+            `${import.meta.env.VITE_API}/product/show?page=${page}`
           );
         } else {
           setPage((prev) => (prev > productLength ? 1 : page));
           // setPage(page)
           response = await fetch(
-            `http://localhost:5100/api/product/show/filtered?page=${page}&category=${filter.category}`
+            `${import.meta.env.VITE_API}/product/show/filtered?page=${page}&category=${filter.category}`
           );
         }
 

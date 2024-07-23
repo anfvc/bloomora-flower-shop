@@ -147,6 +147,7 @@
     "adminPanel": "Admin-Panel",
     "welcome": "Willkommen"
   },
+  "delete_user": "User löschen ",
   "add_to_cart": "In den Warenkorb",
   "total_to_pay": "Gesamt zu zahlen",
   "go_to_checkout": "Zur Kasse gehen",

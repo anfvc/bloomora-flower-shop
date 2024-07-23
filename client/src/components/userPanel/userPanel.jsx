@@ -9,12 +9,13 @@ import { FaFileInvoice } from "react-icons/fa";
 import { PiListHeartFill } from "react-icons/pi";
 import { GrDocumentConfig } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
+import { TiUserDelete } from "react-icons/ti";
 import Wishlist from "../wishlist/wishlist";
 import Invoice from "../invoice/Invoice";
 import { useTranslation } from "react-i18next";
 
 function UserPanel() {
-  const { user } = useContext(UserContext);
+  const { user, setIsLoggedIn } = useContext(UserContext);
   const [isEditing, setIsEditing] = useState(false);
   const [activeSection, setActiveSection] = useState("welcome");
   const navigate = useNavigate();
@@ -27,6 +28,30 @@ function UserPanel() {
   const closeEdit = () => {
     setIsEditing(false);
   };
+
+  async function handleDeleteUser(){
+
+    if (confirm("Are you sure you want to delete your account?"))
+      try {
+        const settings = {
+          method: "DELETE"
+        }
+
+        const response = await fetch(
+          `${import.meta.env.VITE_API}/user/delete/${user.user._id}`,
+          settings
+        );
+        if(response.ok){
+          const {msg} = await response.json()
+          alert(msg)
+          setIsLoggedIn(false)
+          navigate("/")
+        }
+      
+      } catch (error){
+        alert(error.message)
+  }
+}
 
   // console.log(user.user);
   if (user.user) { //Added this if condition
@@ -65,6 +90,11 @@ function UserPanel() {
           >
             <p>{t("userPanel.wishList")}</p>
             <PiListHeartFill />
+          </button>
+          <button className="sidebarButton"
+          onClick={handleDeleteUser}>
+            <p>{t("delete_user")}</p>
+          <TiUserDelete />
           </button>
 
           {/* <button className="sidebarButton" onClick={() => navigate("/wishlist")}>

@@ -146,7 +146,8 @@
     "wishList": "Wishlist",
     "adminPanel": "Admin Panel",
     "welcome": "Welcome"
-  },
+    },
+    "delete_user": "Delete user",
   "add_to_cart": "Add to Cart",
   "total_to_pay": "Total to Pay",
   "go_to_checkout": "Go to Checkout",

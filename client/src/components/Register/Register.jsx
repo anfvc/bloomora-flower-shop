@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useNavigate } from "react";
 import { UserContext } from "../../context/userContext";
 import "./Register.css";
 
@@ -11,7 +11,7 @@ function Register({ openLogin, closeModals }) {
  
 
   const { setUser } = useContext(UserContext);
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -30,7 +30,7 @@ function Register({ openLogin, closeModals }) {
       };
 
       const response = await fetch(
-        `http://localhost:5100/api/auth/register`,
+        `${import.meta.env.VITE_API}/auth/register`,
         settings
       );
 
@@ -39,7 +39,8 @@ function Register({ openLogin, closeModals }) {
         console.log(userData);
         setUser(userData);
         closeModals();
-        document.querySelector('details[open]').removeAttribute('open'); 
+        document.querySelector('details[open]').removeAttribute('open');
+      
       } else {
         const { error } = await response.json();
         throw new Error(error.message);
