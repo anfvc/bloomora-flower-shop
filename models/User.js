@@ -30,6 +30,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    stripeCustomerId: {
+      type: String,
+      unique: true,
+    },
     cart: {
       type: [
         {

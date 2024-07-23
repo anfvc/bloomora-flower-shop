@@ -1,11 +1,16 @@
+<<<<<<< HEAD
 
 import { useNavigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
+=======
+import { useState, useContext } from "react";
+>>>>>>> 05a5708 (created stripe checkout sessions)
 import { UserContext } from "../../context/userContext";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import "./editProfile.css";
 
 function EditProfile({ closeEdit }) {
+<<<<<<< HEAD
 
   const { user, setUser, checkUserAuth } = useContext(UserContext);
   const [userAddress, setUserAddress] = useState({
@@ -27,6 +32,23 @@ function EditProfile({ closeEdit }) {
     setFormData({ ...formData, address: userAddress });
   }, [userAddress]);
 
+=======
+  const { user, setUser } = useContext(UserContext);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    password: "",
+    confirmPassword: "",
+    street: "",
+    num: "",
+    zip: "",
+    city: "",
+    country: "",
+    /* deliveryAddress: user.deliveryAddress || "", */
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+>>>>>>> 05a5708 (created stripe checkout sessions)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,6 +69,7 @@ function EditProfile({ closeEdit }) {
     try {
       const settings = {
         method: "PATCH",
+<<<<<<< HEAD
         body: JSON.stringify(formData),
         headers: {
           "Content-Type": "application/JSON",
@@ -84,6 +107,52 @@ function EditProfile({ closeEdit }) {
         const { error } = await response.json();
         throw new Error(error);
       }
+=======
+        body: JSON.stringify({ formData }),
+        headers: {
+          "Content-Type": "application/JSON",
+        },
+      };
+      const response = await fetch(
+        `http://localhost:5100/api/user/update/${user.user._id}`,
+        settings
+      );
+
+      if (response.ok) {
+        const updateUser = await response.json();
+        console.log(updateUser);
+
+        setUser({
+          ...user,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          password: formData.password,
+          confirmPassword: formData.confirmPassword,
+          street: formData.street,
+          num: formData.num,
+          zip: formData.zip,
+          city: formData.city,
+          country: formData.country,
+        });
+        alert("Your profile has been successfully edited");
+        closeEdit();
+        setFormData({
+          firstName: "",
+          lastName: "",
+          password: "",
+          confirmPassword: "",
+          street: "",
+          houseNum: "",
+          zip: "",
+          city: "",
+          country: "",
+          /* deliveryAddress: user.deliveryAddress || "", */
+        });
+      } else {
+        const { error } = await response.json();
+        throw new Error(error.message);
+      }
+>>>>>>> 05a5708 (created stripe checkout sessions)
     } catch (error) {
       console.log(error.message);
     }
@@ -111,6 +180,38 @@ function EditProfile({ closeEdit }) {
           onChange={handleChange}
         />
       </label>
+<<<<<<< HEAD
+=======
+      <label>
+        Password:
+        <input
+          type={showPassword ? "text" : "password"}
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          placeholder="New Password"
+        />
+        <span onClick={togglePasswordVisibility} className="passwordIcon">
+          {showPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+        </span>
+      </label>
+      <label>
+        Confirm Password:
+        <input
+          type={showConfirmPassword ? "text" : "password"}
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+          placeholder="Confirm New Password"
+        />
+        <span
+          onClick={toggleConfirmPasswordVisibility}
+          className="passwordIcon"
+        >
+          {showConfirmPassword ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}
+        </span>
+      </label>
+>>>>>>> 05a5708 (created stripe checkout sessions)
       <label>Invoice Address:</label>
       <label>
         Street:
@@ -187,7 +288,10 @@ function EditProfile({ closeEdit }) {
         />
       </label> */}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 05a5708 (created stripe checkout sessions)
       <div className="save-cancel">
         <button type="submit" className="saveButton">
           Save
