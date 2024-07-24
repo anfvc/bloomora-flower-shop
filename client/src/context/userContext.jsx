@@ -14,7 +14,7 @@ const UserProvider = ({ children }) => {
     category: "",
   });
   const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem("cart")) || []
+    user.cart || [] //*This returns the current cart of the logged in user. Value that is stored in Backend
   );
 
   useEffect(() => {

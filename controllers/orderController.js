@@ -14,13 +14,11 @@ export async function createStripeCheckoutSession(req, res) {
   const user = await User.findById(userId);
   const stripeUserId = user.stripeCustomerId || createUserInStripe(user);
 
-  console.log(user);
-
   const checkoutParams = {
     customer: stripeUserId,
     line_items: await transformCheckoutProductsToLineItems(checkoutProducts),
     mode: "payment",
-    success_url: `https://google.com`,
+    success_url: `https://google.com?products=${JSON.stringify(checkoutProducts)}`,
     cancel_url: `https://google.com`,
   };
   const session = await stripe.checkout.sessions.create(checkoutParams);
