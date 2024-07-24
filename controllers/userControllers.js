@@ -12,6 +12,7 @@ export const updateUser = async (req, res) => {
     }
     
 
+<<<<<<< HEAD
     const updatedUser = await User.findByIdAndUpdate(id, {
         $set: obj
     }, { new: true });
@@ -22,6 +23,28 @@ export const updateUser = async (req, res) => {
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
       .json({ message: error.message });
+=======
+     if(req.body.password !==req.body.confirmPassword) throw new UnauthenticatedError("Invalid credentials");
+
+    const hashedPassword = await hashPassword(req.body.password);
+    req.body.password = hashedPassword;
+    const hashedConfirmPassword = await hashPassword(req.body.confirmPassword);
+    req.body.confirmPassword = hashedConfirmPassword;
+
+    res.status(StatusCodes.OK).json({msg: 'update user', updatedUser})
+
+} catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: error.message });
+}
+
+}
+
+export const getUser = async (req, res)=>{
+    const foundUser = await User.findById(req.user.userId)
+     console.log("foundUser", foundUser);
+    res.json({user: foundUser})
+    // res.end()
+>>>>>>> 05a5708 (created stripe checkout sessions)
   }
 };
 

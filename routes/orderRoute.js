@@ -1,12 +1,13 @@
 import express from "express"
-import { placeOrder } from "../controllers/orderController.js"
+import { createStripeCheckoutSession } from "../controllers/orderController.js"
 
 //!We should use the authMiddleware
 
 const router = express.Router();
 
-router.post("/place", placeOrder)
+router.post("/createStripeCheckoutSession", createStripeCheckoutSession)
+// router.post("/createStripeCheckoutSession/:id", createStripeCheckoutSession)
+
 
 export default router;
-
 
