@@ -29,7 +29,7 @@ const UserProvider = ({ children }) => {
       );
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setIsLoggedIn(true);
         setUser(data);
       }
@@ -143,7 +143,9 @@ const UserProvider = ({ children }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ productId: itemId }), // Burada parantez hatası düzeltilmiş
+
+        body: JSON.stringify({ productId: itemId }),
+
       };
 
       const response = await fetch(
