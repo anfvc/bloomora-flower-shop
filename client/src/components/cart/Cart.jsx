@@ -42,7 +42,7 @@ function Cart() {
       }
     }
     getCart();
-  }, [user.user._id]);
+  }, [user.user?._id]);
 
   //* Calculating total of cart:
   function total() {
@@ -51,10 +51,6 @@ function Cart() {
       0
     );
   }
-
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
 
   const updateQuantity = async (itemId, quantity) => {
     try {
@@ -106,7 +102,7 @@ function Cart() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        checkoutProducts: [{ id: "668e53e0f270736740ccfdc8", quantity: 3 }],
+        checkoutProducts: cart.map(product => ({ id: product.productId?._id, quantity: product.quantity })),
         userId: user.user._id,
       }),
     });
