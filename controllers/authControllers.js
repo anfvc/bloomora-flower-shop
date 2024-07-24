@@ -25,7 +25,7 @@ export const register = async (req, res) => {
 
 export const login = async (req, res) => {
   const user = await User.findOne({ email: req.body.email });
-  console.log("user", user);
+  // console.log("user", user);
   const isValidUser =
     user && (await comparePassword(req.body.password, user.password));
     const hashedPassword = await hashPassword(req.body.password);

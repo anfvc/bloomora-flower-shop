@@ -42,7 +42,7 @@ function Cart() {
       }
     }
     getCart();
-  }, [user.user._id]);
+  }, [user.user?._id, user.cart]);
 
   //* Calculating total of cart:
   function total() {
@@ -52,13 +52,11 @@ function Cart() {
     );
   }
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+ 
 
   const updateQuantity = async (itemId, quantity) => {
     try {
-      const response = await fetch(`http://localhost:5100/api/cart/update/${user.user._id}`, {
+      const response = await fetch(`${import.meta.env.VITE_API}/cart/update/${user.user._id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -136,7 +134,7 @@ function Cart() {
                         -
                       </button>
                     </div>
-                    <div className="delete" onClick={() => handleDelete(item._id)}>
+                    <div className="delete" onClick={()=> handleDelete(item)}> //!!!
                       <MdOutlineDelete className="dlt" />
                     </div>
                   </div>

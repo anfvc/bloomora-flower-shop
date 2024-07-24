@@ -50,13 +50,36 @@ export async function addToWishList(req, res) {
     }
 
     await user.save();
-    //* Janna we do not need to populate anymore as we're already adding the product properties on line 38
-    // await user.populate({
-    //     path: "wishlist.productId",
-    //     select: "name image price"
-    // })
+   
     res.status(StatusCodes.CREATED).json(user.wishlist);
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error.message);
   }
+}
+
+export async function deleteFromWishlist(req, res){
+  const { productId } = req.body;
+  const { userId } = req.params;
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" });
+    }
+
+    const deletedProduct = await user.wishlist.find(item => item.productId.equals(productId));
+
+    if (!deletedProduct) {
+      res.status(StatusCodes.NOT_FOUND).json({ msg: "Product not found" });
+    }else {
+      user.wishlist = user.wishlist.filter(
+        (item) => !item.productId.equals(productId)
+      );
+    }
+
+    await user.save()
+
+    res.status(StatusCodes.OK).json({msg: `${deletedProduct.name} was successfully deleted`})
+} catch (error) {
+  res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error.message);
+}
 }
