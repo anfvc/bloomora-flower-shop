@@ -2,14 +2,15 @@ import { useState, useContext } from "react";
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import icons
 import "./Login.css";
 import { UserContext } from "../../context/userContext";
+import { useTranslation } from "react-i18next";
 
 function Login({ openRegister, closeModals }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // New state
+  const [showPassword, setShowPassword] = useState(false); 
   const { setUser, setIsLoggedIn } = useContext(UserContext);
-
-  const togglePasswordVisibility = () => { // New function
+  const { t, i18n } = useTranslation();
+  const togglePasswordVisibility = () => { 
     setShowPassword(!showPassword);
   };
 
@@ -55,9 +56,9 @@ function Login({ openRegister, closeModals }) {
   return (
     <div className="loginModal">
       <div className="loginContainer">
-        <h2>Login</h2>
+        <h2>{t("sign_in.header")}</h2>
         <form onSubmit={handleSubmit}>
-          <label>Email</label>
+          <label>{t("sign_in.email")}</label>
           <input
             type="email"
             value={email}
@@ -65,7 +66,7 @@ function Login({ openRegister, closeModals }) {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <label>Password</label>
+          <label>{t("sign_in.password")}</label>
           <div className="passwordContainer">
             <input
               type={showPassword ? "text" : "password"} 
@@ -82,17 +83,17 @@ function Login({ openRegister, closeModals }) {
             </span>
           </div>
           <p>
-            If you don't have an account,{" "}
+            {t("sign_in.noAccount")},{" "}
             <a href="#" className="loginToRegister" onClick={openRegister}>
-              Register
+              {t("sign_in.register")}
             </a>
           </p>
           <button type="submit" className="loginButton">
-            Login
+            {t("sign_in.noAccountLogin")}
           </button>
         </form>
         <button className="closeLoginButton" onClick={closeModals}>
-          X
+          {t("sign_in.close")}
         </button>
       </div>
     </div>

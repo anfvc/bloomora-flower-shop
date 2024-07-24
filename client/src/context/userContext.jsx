@@ -13,6 +13,9 @@ const UserProvider = ({ children }) => {
   const [filter, setFilter] = useState({
     category: "",
   });
+  const [cart, setCart] = useState(
+    JSON.parse(localStorage.getItem("cart")) || []
+  );
 
   useEffect(() => {
     checkUserAuth();
@@ -99,13 +102,47 @@ const UserProvider = ({ children }) => {
     }
   }
 
-  async function removeFromCart(product) {
+  // async function removeFromCart(product) {
+  //   try {
+  //     const settings = {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/JSON",
+  //       },
+  //       body: JSON.stringify({
+  //         productId: product._id
+  //       }),
+  //     };
+
+  //     const response = await fetch(
+  //       `http://localhost:5100/api/cart/remove/${user.user._id}`,
+  //       settings
+  //     );
+
+  //     if (response.ok) {
+  //       const newCart = await response.json();
+  //       console.log(newCart);
+  //       setUser({ ...user, cart: newCart });
+  //     } else {
+  //       const { error } = await response.json();
+  //       throw new Error(error.message);
+  //     }
+  //   } catch (error) {
+  //     console.log("Error adding product to cart.");
+  //   }
+  // }
+
+    const handleDelete = async (itemId) => {
     try {
-      const settings = {
+      const response = await fetch(`http://localhost:5100/api/cart/remove/${user.user._id}`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/JSON",
+          "Content-Type": "application/json",
         },
+
+//         body: JSON.stringify({ productId: itemId }),
+//       });
+
         body: JSON.stringify({
           productId: product._id
         }),
@@ -116,18 +153,18 @@ const UserProvider = ({ children }) => {
         settings
       );
 
+
       if (response.ok) {
-        const newCart = await response.json();
-        console.log(newCart);
-        setUser({ ...user, cart: newCart });
+        const updatedCart = await response.json();
+        setCart(updatedCart);
       } else {
         const { error } = await response.json();
         throw new Error(error.message);
       }
     } catch (error) {
-      console.log("Error adding product to cart.");
+      console.log(error.message);
     }
-  }
+  };
 
   async function addToWishList(product) {
     try {
@@ -249,7 +286,10 @@ const UserProvider = ({ children }) => {
         handleFilter,
         addToCart,
         addToWishList,
-        removeFromCart,
+        // removeFromCart,
+        cart,
+        setCart,
+        handleDelete,
         checkUserAuth
       }}
     >

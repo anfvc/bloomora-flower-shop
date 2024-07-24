@@ -137,8 +137,26 @@
   "hello_user": "Hallo, {{name}}",
   "profile": "Profil",
   "logout": "Abmelden",
-  "sign_in": "Anmelden",
-  "register": "Registrieren",
+  "sign_in": {
+    "header": "Anmelden",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "noAccount": "Wenn Sie kein Konto haben",
+    "register": "Registrieren",
+    "noAccountLogin": "Einloggen",
+    "close": "X"
+  },
+  "register": {
+    "header": "Registrieren",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "confirmPass": "Passwort bestätigen",
+    "alreadyAcc": "Haben Sie bereits ein Konto?",
+    "alreadyAccLogin": "Einloggen",
+    "close": "X"
+  },
   "userPanel": {
     "edit": "Bearbeiten",
     "myOrders": "Bestellungen",

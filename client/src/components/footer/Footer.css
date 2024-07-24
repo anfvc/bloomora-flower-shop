@@ -18,7 +18,7 @@
   padding-bottom: 5rem;
   padding-top: 4rem;
   border-bottom: 1px solid #1e1e1e;
-  background-color: #698474;
+  background-color: #6a6a6a;
   position: relative;
 }
 
@@ -45,19 +45,33 @@
 }
 
 .footerBox .header {
+  padding-bottom: .5rem;
+  margin-bottom: .5rem;
   font-size: 2.5rem;
   font-weight: 500;
   font-family: "Prata", serif;
   text-transform: capitalize;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   color: #ffffff;
+  position: relative;
+}
+
+.footerBox .header::before {
+  content: "";
+  width: 30%;
+  height: .1rem;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
 }
 
 .footerBox .links {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: .8rem;
   font-size: 1.5rem;
   text-transform: uppercase;
 }
@@ -65,13 +79,14 @@
 .footerBox .links a {
   text-decoration: none;
   color: #ffffffc7;
-  font-weight: 500;
-  letter-spacing: 1px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  transition: all .3s ease-in-out;
 }
 
 .footerBox .links a:hover {
-  scale: 1.1;
-  color: #1e1e1e;
+  scale: 1.2;
+  color: white;
 }
 
 .rightsAndReserved {

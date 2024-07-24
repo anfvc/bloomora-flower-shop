@@ -168,11 +168,11 @@
   font-family: "Merriweather", serif;
   letter-spacing: 1.5px;
   font-weight: 400;
-  color: #698474;;
+  color: #6A6A6A;
 }
 
 .shopContainer .productsBox .info p:nth-child(2) {
-  color: #698474;;
+  color: #6A6A6A;
   font-size: 2.5rem;
   /* font-family: "Merriweather", serif; */
   letter-spacing: 1.5px;
@@ -207,12 +207,12 @@
 .pagebtn .prevContainer .prevText {
   font-size: 1.3rem;
   letter-spacing: .5px;
-  color: #698474;
+  color: #6A6A6A;
 }
 
 .pagebtn .next-prev .prev {
   font-size: 3rem;
-  color: #698474;
+  color: #6A6A6A;
   transform: rotate(180deg);
   cursor: pointer;
 }
@@ -225,18 +225,18 @@
 .pagebtn .nextContainer .nextText {
   font-size: 1.3rem;
   letter-spacing: .5px;
-  color: #698474;
+  color: #6A6A6A;
 }
 
 .pagebtn .next-prev .next {
   font-size: 3rem;
-  color: #698474;
+  color: #6A6A6A;
   cursor: pointer;
 }
 
 .pagebtn .next-prev p {
   font-size: 2.5rem;
-  color: #698474;
+  color: #6A6A6A;
 }
 
 .pagebtn label {

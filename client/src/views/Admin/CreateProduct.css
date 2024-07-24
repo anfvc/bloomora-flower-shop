@@ -150,9 +150,9 @@
   font-size: 1.3rem;
   letter-spacing: 0.5px;
   cursor: pointer;
-  background-color: #011e00;
+  background-color: #698474;
   color: #ffffff;
-  border: 1px solid #011e00;
+  border: none;
   border-radius: 4px;
   transition: background-color 0.3s, color 0.3s;
 }
@@ -265,7 +265,7 @@
 .createProductButton {
   width: 46rem;
   height: 4rem;
-  border: 1px solid #011e00;
+  border: 1px solid #698474;
   border-radius: 5px;
   background-color: transparent;
   font-size: 1.6rem;
@@ -277,7 +277,7 @@
 }
 
 .createProductButton:hover {
-  background-color: #011e00;
+  background-color: #556f5f;
   color: white;
 }
 
