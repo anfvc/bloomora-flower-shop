@@ -14,7 +14,7 @@ const UserProvider = ({ children }) => {
     category: "",
   });
   const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem("cart")) || []
+    user.cart || [] //*This returns the current cart of the logged in user. Value that is stored in Backend
   );
 
   useEffect(() => {
@@ -143,7 +143,9 @@ const UserProvider = ({ children }) => {
         headers: {
           "Content-Type": "application/json",
         },
+
         body: JSON.stringify({ productId: itemId }),
+
       };
 
       const response = await fetch(

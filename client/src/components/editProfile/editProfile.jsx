@@ -35,7 +35,7 @@ function EditProfile({ closeEdit }) {
     }));
   };
 
-  
+
   const handleSaveProfile = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
@@ -52,7 +52,7 @@ function EditProfile({ closeEdit }) {
         },
       }
 
-      
+
       const response = await fetch(
         `${import.meta.env.VITE_API}/user/update/${user.user._id}`,
         settings
@@ -186,12 +186,13 @@ function EditProfile({ closeEdit }) {
         />
       </label> */}
 
-
       <div className="save-cancel">
         <button type="submit" className="saveButton">
           Save
         </button>
+
         <button type="button" className="cancelButton" onClick={handleChange} >
+
           Cancel
         </button>
       </div>
