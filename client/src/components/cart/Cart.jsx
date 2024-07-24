@@ -100,7 +100,7 @@ function Cart() {
 
 
   async function createStripeCheckoutSession() {
-    const response = await fetch("http://localhost:5100/api/order/createStripeCheckoutSession", {
+    const response = await fetch(`${import.meta.env.VITE_API}/order/createStripeCheckoutSession`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -114,6 +114,23 @@ function Cart() {
     const body = await response.json();
     window.location.replace(body.url);
   }
+
+  // async function createStripeCheckoutSession() {
+  //   const response = await fetch(`${import.meta.env.VITE_API}/order/createStripeCheckoutSession`, {
+  //     method: "POST",
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       checkoutProducts: cart.map(product => ({id: product._id, quantity: product.quantity})),
+  //       userId: user.user._id,
+  //     }),
+  //   });
+
+  //   const body = await response.json();
+  //   if (body.url) window.location.replace(body.url);
+
+  // }
 
   return (
     <div className="cart-container">

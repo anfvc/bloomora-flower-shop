@@ -6,6 +6,8 @@ import { createStripeCheckoutSession } from "../controllers/orderController.js"
 const router = express.Router();
 
 router.post("/createStripeCheckoutSession", createStripeCheckoutSession)
+// router.post("/createStripeCheckoutSession/:id", createStripeCheckoutSession)
+
 
 export default router;
 
