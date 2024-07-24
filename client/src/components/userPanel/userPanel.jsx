@@ -41,7 +41,6 @@ function UserPanel() {
     navigate("/userPanel");
   };
 
-<<<<<<< HEAD
 
   async function handleDeleteUser(){
 
@@ -70,11 +69,6 @@ function UserPanel() {
 
   // console.log(user.user);
   if (user.user) { 
-=======
-  console.log(user);
-  if (user.user) {
-    //Added this if condition
->>>>>>> 05a5708 (created stripe checkout sessions)
     return (
       <div className="userPanelContainer">
         <div className="userPanelBackground"></div>
@@ -143,10 +137,6 @@ function UserPanel() {
                       {user.user.lastName && user.user.lastName[0].toUpperCase() +
                         user.user.lastName.slice(1)}
                     </h1>
-<<<<<<< HEAD
-=======
-                    {/* <Wishlist /> */}
->>>>>>> 05a5708 (created stripe checkout sessions)
                   </div>
                 )}
                 {activeSection === "orders" && <div>Orders Component</div>}
