@@ -42,7 +42,8 @@ function Cart() {
       }
     }
     getCart();
-  }, [user.user?._id, user.cart]);
+  }, [user.user?._id]);
+
 
   //* Calculating total of cart:
   function total() {
@@ -52,7 +53,6 @@ function Cart() {
     );
   }
 
- 
 
   const updateQuantity = async (itemId, quantity) => {
     try {
@@ -97,6 +97,38 @@ function Cart() {
   };
 
 
+  async function createStripeCheckoutSession() {
+    const response = await fetch(`${import.meta.env.VITE_API}/order/createStripeCheckoutSession`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        checkoutProducts: cart.map(product => ({ id: product.productId?._id, quantity: product.quantity })),
+        userId: user.user._id,
+      }),
+    });
+
+    const body = await response.json();
+    window.location.replace(body.url);
+  }
+
+  // async function createStripeCheckoutSession() {
+  //   const response = await fetch(`${import.meta.env.VITE_API}/order/createStripeCheckoutSession`, {
+  //     method: "POST",
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       checkoutProducts: cart.map(product => ({id: product._id, quantity: product.quantity})),
+  //       userId: user.user._id,
+  //     }),
+  //   });
+
+  //   const body = await response.json();
+  //   if (body.url) window.location.replace(body.url);
+
+  // }
 
   return (
     <div className="cart-container">
@@ -161,7 +193,7 @@ function Cart() {
                 <p>{total().toFixed(2)}€</p>
               </div>
               <div className="paymentButtons">
-                <button className="checkOut">{t("cart.checkout")}</button>
+                <button className="checkOut" onClick={createStripeCheckoutSession}>{t("cart.checkout")}</button>
                 <p>{t("cart.or")}</p>
                 <button className="paypal">{t("cart.paypal")}</button>
               </div>

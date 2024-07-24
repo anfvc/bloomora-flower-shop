@@ -17,14 +17,6 @@ function Shop() {
     new Array(sortedProducts.length).fill(false)
   );
   const { t } = useTranslation();
-
-  // const [allProd, setAllProd] = useState([])
-  // const [totalPages, setTotalPages] = useState(0)
-  // const [likedItems, setLikedItems] = useState(
-  //   new Array(/* sortedProducts */list.length).fill(false)
-  // );
-
-  // const [newList, setNewList] = useState([]);
   const productLength = Math.ceil(sortedProducts.length / 10);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
