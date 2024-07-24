@@ -164,9 +164,8 @@
     "wishList": "Wishlist",
     "adminPanel": "Admin Panel",
     "welcome": "Welcome"
-    },
-    "delete_user": "Delete user",
   },
+  "delete_user": "Delete user",
   "wishlist": "Wishlist",
   "cart": {
     "header": "Cart",
