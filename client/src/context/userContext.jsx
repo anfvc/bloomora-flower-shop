@@ -29,7 +29,7 @@ const UserProvider = ({ children }) => {
       );
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setIsLoggedIn(true);
         setUser(data);
       }
@@ -37,7 +37,7 @@ const UserProvider = ({ children }) => {
       console.log(error.message);
     }
   }
-  
+
   // filter part
   function handleFilter(e) {
     setFilter({ ...filter, category: e.target.value });
@@ -48,10 +48,14 @@ const UserProvider = ({ children }) => {
       try {
         let response;
         if (!filter.category) {
-          response = await fetch(`${import.meta.env.VITE_API}/product/show/all`);
+          response = await fetch(
+            `${import.meta.env.VITE_API}/product/show/all`
+          );
         } else
           response = await fetch(
-            `${import.meta.env.VITE_API}/product/show/filtered/all?category=${filter.category}`
+            `${import.meta.env.VITE_API}/product/show/filtered/all?category=${
+              filter.category
+            }`
           );
 
         if (response.ok) {
@@ -92,7 +96,7 @@ const UserProvider = ({ children }) => {
         const newCart = await response.json();
         console.log(newCart);
         setUser({ ...user, cart: newCart });
-        alert("Item added to the cart.")
+        alert("Item added to the cart.");
       } else {
         const { error } = await response.json();
         throw new Error(error.message);
@@ -132,27 +136,20 @@ const UserProvider = ({ children }) => {
   //   }
   // }
 
-    const handleDelete = async (itemId) => {
+  const handleDelete = async (itemId) => {
     try {
-      const response = await fetch(`http://localhost:5100/api/cart/remove/${user.user._id}`, {
+      const settings = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-
-//         body: JSON.stringify({ productId: itemId }),
-//       });
-
-        body: JSON.stringify({
-          productId: product._id
-        }),
+        body: JSON.stringify({ productId: itemId }),
       };
 
       const response = await fetch(
         `${import.meta.env.VITE_API}/cart/remove/${user.user._id}`,
         settings
       );
-
 
       if (response.ok) {
         const updatedCart = await response.json();
@@ -195,7 +192,6 @@ const UserProvider = ({ children }) => {
     }
   }
 
-  
   const searchProducts = (query) => {
     if (!query) {
       setFilteredProducts([]);
@@ -290,7 +286,7 @@ const UserProvider = ({ children }) => {
         cart,
         setCart,
         handleDelete,
-        checkUserAuth
+        checkUserAuth,
       }}
     >
       {children}
