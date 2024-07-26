@@ -4,8 +4,8 @@ import cloudinary from "../middleware/cloudinary.js";
 import fs from "fs";
 
 export async function createProduct(req, res) {
-  console.log("File Received", req.file);
-  console.log("Body Data", req.body);
+  // console.log("File Received", req.file);
+  // console.log("Body Data", req.body);
 
   // let imageFile = `${req.file.filename}`;
 

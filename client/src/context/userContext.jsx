@@ -10,6 +10,7 @@ const UserProvider = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [list, setList] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [wishList, setWishList] = useState([]);
   const [filter, setFilter] = useState({
     category: "",
   });
@@ -136,32 +137,35 @@ const UserProvider = ({ children }) => {
   //   }
   // }
 
-  const handleDelete = async (itemId) => {
+
+  
+
+  const handleDelete = async (item) => {
     try {
       const settings = {
-        method: "POST",
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json",
         },
-
-        body: JSON.stringify({ productId: itemId }),
+         body: JSON.stringify({productId: item.productId._id}), 
 
       };
-
       const response = await fetch(
         `${import.meta.env.VITE_API}/cart/remove/${user.user._id}`,
         settings
       );
 
       if (response.ok) {
-        const updatedCart = await response.json();
-        setCart(updatedCart);
+        const updatedUser = await response.json();
+        console.log(updatedUser);
+        setCart(updatedUser.cart);
       } else {
-        const { error } = await response.json();
-        throw new Error(error.message);
+        const { message } = await response.json();
+        throw new Error(message);
       }
     } catch (error) {
       console.log(error.message);
+     
     }
   };
 
@@ -185,6 +189,7 @@ const UserProvider = ({ children }) => {
       if (response.ok) {
         const updatedWishlist = await response.json();
         console.log(updatedWishlist);
+        setWishList(updatedWishlist)
       } else {
         const { error } = await response.json();
         throw new Error(error.message);
@@ -284,7 +289,8 @@ const UserProvider = ({ children }) => {
         handleFilter,
         addToCart,
         addToWishList,
-        // removeFromCart,
+        wishList,
+        setWishList,
         cart,
         setCart,
         handleDelete,

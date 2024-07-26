@@ -3,10 +3,8 @@ import "./wishlist.css";
 import { UserContext } from "../../context/userContext";
 
 function Wishlist() {
-  const { user, addToCart } = useContext(UserContext);
-  const [wishList, setWishList] = useState(
-    JSON.parse(localStorage.getItem("wishlist")) || []
-  );
+  const { user, addToCart, wishList, setWishList } = useContext(UserContext);
+ 
 
   useEffect(() => {
     async function getWishList() {
@@ -30,12 +28,12 @@ function Wishlist() {
     getWishList();
   }, [user.user._id]);
 
-  useEffect(() => {
-    const savedWishlist = localStorage.setItem(
-      "wishlist",
-      JSON.stringify(wishList)
-    );
-  }, [wishList]);
+  // useEffect(() => {
+  //   const savedWishlist = localStorage.setItem(
+  //     "wishlist",
+  //     JSON.stringify(wishList)
+  //   );
+  // }, [wishList]);
 
   return (
     <>

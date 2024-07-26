@@ -18,7 +18,7 @@ export async function getCartData(req, res) {
         message: `User does not exist.`,
       });
     }
-    console.log("This is the user cart from getCart(): ", user.cart);
+    // console.log("This is the user cart from getCart(): ", user.cart);
     res.status(StatusCodes.OK).json(user.cart); //Give me the cart of that user
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
@@ -90,21 +90,19 @@ export async function removeFromCart(req, res) {
         .json({ message: "User not found." });
     }
 
-    const itemInCart = user.cart.findIndex((item) =>
-      item.productId.equals(productId)
-    );
-
-    if (itemInCart !== 1) {
-      user.cart.splice(itemInCart, 1);
+    const deleteFromCart = user.cart.find(item => item.productId.toString() === productId)
+  
+    if (!deleteFromCart) {
+      res.status(StatusCodes.NOT_FOUND).json({ message: "Product not found" });
     } else {
-      return res.status(StatusCodes.NOT_FOUND).json({
-        message: "Product not found.",
-      });
+      user.cart = user.cart.filter(
+        (item) => !item.productId.equals(productId)
+      );
     }
 
-    await user.save();
-
-    res.status(StatusCodes.OK).json(user.cart);
+    await user.save()
+   
+    res.status(StatusCodes.OK).json(user );
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       message: "Internal Server Error",
