@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar.jsx";
@@ -18,9 +19,19 @@ import Wishlist from "./components/wishlist/wishlist.jsx";
 import WeddingInquiry from "./views/weddingInquiry/WeddingInquiry.jsx";
 
 function App() {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const toggleTheme = () => {
+    setIsChecked(!isChecked);
+    document.documentElement.setAttribute(
+      "data-theme",
+      isChecked ? "light" : "dark"
+    );
+  };
+
   return (
-    <>
-      <Navbar />
+    <div className="App" data-theme={isChecked ? "dark" : "light"}>
+      <Navbar toggleTheme={toggleTheme} isChecked={isChecked} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ourroots" element={<OurRoots />} />
@@ -38,7 +49,7 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 }
 

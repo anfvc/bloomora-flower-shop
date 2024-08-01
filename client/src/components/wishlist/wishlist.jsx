@@ -3,10 +3,8 @@ import "./wishlist.css";
 import { UserContext } from "../../context/userContext";
 
 function Wishlist() {
-  const { user, addToCart } = useContext(UserContext);
-  const [wishList, setWishList] = useState(
-    JSON.parse(localStorage.getItem("wishlist")) || []
-  );
+  const { user, addToCart, wishList, setWishList, setUser } = useContext(UserContext);
+ 
 
   useEffect(() => {
     async function getWishList() {
@@ -18,7 +16,7 @@ function Wishlist() {
         if (response.ok) {
           const data = await response.json();
           setWishList(data);
-          console.log(`wishlist, ${data}`);
+          // console.log(`wishlist, ${data}`);
         } else {
           const { error } = await response.json();
           throw new Error(error.message);
@@ -28,14 +26,41 @@ function Wishlist() {
       }
     }
     getWishList();
-  }, [user.user._id]);
+  }, [user.user?._id, user.user.wishlist]);
 
-  useEffect(() => {
-    const savedWishlist = localStorage.setItem(
-      "wishlist",
-      JSON.stringify(wishList)
-    );
-  }, [wishList]);
+
+  const handleDelete = async(item)=>{
+    try {
+      const settings = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+         body: JSON.stringify({productId: item.productId._id}), 
+
+      };
+      const response = await fetch(
+        `${import.meta.env.VITE_API}/wishlist/delete/${user.user._id}`,
+        settings
+      );
+
+      if (response.ok) {
+        const updatedUser = await response.json();
+        console.log(updatedUser);
+        setUser(updatedUser)
+        setWishList(updatedUser.user.wishList);
+
+      } else {
+        const { message } = await response.json();
+        throw new Error(message);
+      }
+    } catch (error) {
+      console.log(error.message);
+     
+    }
+  }
+
+ 
 
   return (
     <>
@@ -46,7 +71,9 @@ function Wishlist() {
         <div className="wishListBox">
           {!!wishList.length &&
             wishList.map((item) => (
+
               <div className="productsBox" key={item._id}>
+                <div className="delete" onClick={handleDelete}><p>X</p></div>
                 <div className="imageBox">
                   <img src={item.image} alt="" width={100} height={100} />
                   <button
@@ -60,7 +87,10 @@ function Wishlist() {
                   <p>{item.name}</p>
                   <p>{item.price} €</p>
                 </div>
+                
               </div>
+
+             
             ))}
         </div>
       </div>

@@ -12,7 +12,7 @@ import { TiUserDelete } from "react-icons/ti";
 import { useNavigate, useLocation } from "react-router-dom";
 import Wishlist from "../wishlist/wishlist";
 import Invoice from "../invoice/Invoice";
-import CreateProduct from "../../views/Admin/CreateProduct"; 
+import CreateProduct from "../../views/Admin/CreateProduct";
 import { useTranslation } from "react-i18next";
 
 function UserPanel() {
@@ -41,34 +41,30 @@ function UserPanel() {
     navigate("/userPanel");
   };
 
-
-  async function handleDeleteUser(){
-
+  async function handleDeleteUser() {
     if (confirm("Are you sure you want to delete your account?"))
       try {
         const settings = {
-          method: "DELETE"
-        }
+          method: "DELETE",
+        };
 
         const response = await fetch(
           `${import.meta.env.VITE_API}/user/delete/${user.user._id}`,
           settings
         );
-        if(response.ok){
-          const {msg} = await response.json()
-          alert(msg)
-          setIsLoggedIn(false)
-          navigate("/")
+        if (response.ok) {
+          const { msg } = await response.json();
+          alert(msg);
+          setIsLoggedIn(false);
+          navigate("/");
         }
-      
-      } catch (error){
-        alert(error.message)
+      } catch (error) {
+        alert(error.message);
+      }
   }
-}
-
 
   // console.log(user.user);
-  if (user.user) { 
+  if (user.user) {
     return (
       <div className="userPanelContainer">
         <div className="userPanelBackground"></div>
@@ -99,17 +95,16 @@ function UserPanel() {
             <p>{t("userPanel.wishList")}</p>
             <PiListHeartFill />
           </button>
-          <button className="sidebarButton"
-          onClick={handleDeleteUser}>
+          <button className="sidebarButton" onClick={handleDeleteUser}>
             <p>{t("delete_user")}</p>
-          <TiUserDelete />
+            <TiUserDelete />
           </button>
 
           {/* <button className="sidebarButton" onClick={() => navigate("/wishlist")}>
             <p>Wishlist</p>
             <PiListHeartFill />
           </button> */}
-=          {user.user.role === "admin" && (
+          {user.user.role === "admin" && (
             <button
               className="sidebarButton"
               onClick={() => navigate("/userPanel?section=admin")}
@@ -130,19 +125,19 @@ function UserPanel() {
                   <div className="welcome">
                     <h1>
                       {t("userPanel.welcome")},{" "}
-
                       {user.user.firstName[0].toUpperCase() +
                         user.user.firstName.slice(1)}{" "}
-
-                      {user.user.lastName && user.user.lastName[0].toUpperCase() +
-                        user.user.lastName.slice(1)}
+                      {user.user.lastName &&
+                        user.user.lastName[0].toUpperCase() +
+                          user.user.lastName.slice(1)}
                     </h1>
                   </div>
                 )}
                 {activeSection === "orders" && <div>Orders Component</div>}
                 {activeSection === "invoices" && <Invoice />}
                 {activeSection === "wishlist" && <Wishlist />}
-                {activeSection === "admin" && <CreateProduct />} {/* Admin panel için CreateProduct bileşeni */}
+                {activeSection === "admin" && <CreateProduct />}{" "}
+                {/* Admin panel için CreateProduct bileşeni */}
               </div>
             </>
           )}

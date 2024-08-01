@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/userContext";
@@ -191,7 +190,9 @@ function EditProfile({ closeEdit }) {
         <button type="submit" className="saveButton">
           Save
         </button>
-        <button type="button" className="cancelButton" /* onClick={handleCancel} */ >
+
+        <button type="button" className="cancelButton" onClick={handleChange} >
+
           Cancel
         </button>
       </div>

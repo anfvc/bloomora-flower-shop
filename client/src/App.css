@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+:root {
+  font-family: "Merriweather", serif;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 62.5%;
+  --background-color: #f6f6f6;
+  --primary-text-color: #0a0a0a;
+  --foreground-color: #283452;
+  --secondary-text-color: #567aff;
+  --toggle-bg: #567aff;
+}
+
+[data-theme="dark"] {
+  --background-color: #0a0a0a;
+  --foreground-color: #567aff;
+  --primary-text-color: #f6fff6;
+  --secondary-text-color: #0a0a0a;
+  --toggle-bg: #283452;
+}
+
+.App {
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+  transition: background-color 0.5s, color 0.5s;
+}

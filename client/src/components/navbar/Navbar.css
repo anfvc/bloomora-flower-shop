@@ -12,6 +12,106 @@
   transition: background-color 0.3s;
 }
 
+/* Tema anahtarına stili ekle */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 33px;
+  height: 18px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  transition: 0.4s;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 4px;
+  bottom: 3px;
+  background-color: #ff5678;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #ff5678;
+}
+
+input:checked + .slider:before {
+  transform: translateX(14px);
+  background-color: white;
+}
+
+@keyframes slide-in-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 10rem;
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  cursor: pointer;
+}
+
+.theme-toggle .dark-icon {
+  animation: slide-in-up 0.5s forwards;
+}
+
+.theme-toggle .light-icon {
+  animation: slide-in-down 0.5s forwards;
+}
+
+.theme-toggle svg {
+  font-size: 2.5rem;
+  color: white;
+}
+
+.scrolled .theme-toggle svg {
+  color: black;
+}
+
+
+
+/* ------------------Language Switcher-------------------- */
+
 .language-switcher {
   display: flex;
   gap: 1rem;
@@ -300,7 +400,7 @@
 
 .links-icons .user-cart-search .user,
 .search,
-.cart {
+.cart, .wish {
   font-size: 2rem;
   color: #e9ecf0;
   transition: color 0.3s, transform 0.3s;
@@ -334,7 +434,7 @@
 
 .links-icons .user-cart-search .user.scrolled-icon,
 .search.scrolled-icon,
-.cart.scrolled-icon {
+.cart.scrolled-icon, .wish.scrolled-icon {
   color: #151515;
 }
 
@@ -345,6 +445,7 @@
 .links-icons .user-cart-search .user:hover,
 .search:hover,
 .cart:hover,
+.wish:hover,
 .language:hover {
   transform: scale(1.3);
   color: #e9ecf0;
@@ -522,6 +623,12 @@
 @media (max-width: 1024px) {
   .navbarContainer {
     padding: 0 5rem;
+  }
+
+  .theme-toggle {
+    position: absolute;
+    top: 4.5rem;
+    right: 10rem;
   }
 
   .language-switcher {

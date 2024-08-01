@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  padding-bottom: 5rem;
 }
 
 .wishListHeader {
@@ -26,7 +27,7 @@
   font-size: 3rem;
   font-weight: 400;
   letter-spacing: 2px;
-  color: #698474;
+  color: #6A6A6A;
 }
 
 .wishlist-container .wishListBox {
@@ -38,12 +39,31 @@
 .wishlist-container .wishListBox .productsBox {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  align-items: center;
+  gap: 1rem;
   background-color: white;
-  border: 1px solid #698474;
+  /* border: 1px solid #6A6A6A; */
   border-radius: 3px;
   padding: 2rem;
+  }
+
+.delete{
+  align-self: flex-end;
+  width: 15px;
+  height: 15px;
+  }
+
+ .delete p{
+  font-size: 20px;
+ }
+
+ .delete :hover{
+  cursor: pointer;
+ }
+=======
+  padding: 1rem;
 }
+
 
 .wishlist-container .wishListBox .productsBox .imageBox {
   display: flex;
@@ -55,6 +75,7 @@
   content: "";
   width: 100%;
   height: 100%;
+  border-radius: 50%;
   position: absolute;
   top: 0;
   background-color: rgba(0, 0, 0, 0.3);
@@ -72,28 +93,29 @@
 .wishlist-container .wishListBox .productsBox .imageBox img {
   width: 25rem;
   height: 25rem;
-  border-radius: 3px;
+  border-radius: 50%;
 }
 
 .wishlist-container .wishListBox .productsBox .imageBox .addToCart {
-  width: 60%;
+  width: 40%;
   height: 3rem;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border: none;
-  border-radius: 3px;
+  border-radius: 4px;
   background-color: white;
-  color: #698474;
-  text-transform: uppercase;
+  color: #6A6A6A;
+  font-size: 1.4rem;
+  text-transform: capitalize;
   cursor: pointer;
   transition: all .2s ease-in-out;
   opacity: 0;
 }
 
 .wishlist-container .wishListBox .productsBox .imageBox .addToCart:hover {
-  background-color: #698474;
+  background-color: #b83050;
   color: white;
 }
 
@@ -101,19 +123,37 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: .5rem;
 }
 
 .wishlist-container .wishListBox .productsBox .info p:first-child {
   font-size: 2.2rem;
   font-family: "Merriweather", serif;
   letter-spacing: 1px;
-  color: #698474;
+  color: #383838;
 }
 
 .wishlist-container .wishListBox .productsBox .info p:nth-child(2n) {
   font-size: 2rem;
-  color: #698474;
+  color: #6A6A6A;
+}
+
+.wishlist-container .wishListBox .productsBox .deleteButton button {
+  width: 10rem;
+  height: 2.5rem;
+  color: #850d29;
+  border: 1px solid #850d29;
+  border-radius: 3px;
+  background-color: transparent;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.wishlist-container .wishListBox .productsBox .deleteButton button:hover {
+  background-color: #850d29;
+  border: #850d29;
+  color: white;
 }
 
 @media screen and (max-width: 768px) {

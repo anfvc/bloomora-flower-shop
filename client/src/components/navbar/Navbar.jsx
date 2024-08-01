@@ -5,31 +5,37 @@ import { useTranslation } from "react-i18next";
 import logo from "../../images/logo/bloomoraV2.svg";
 import userPanelLogo from "../../images/logo/bloomoraV5.png";
 import scrolledLogo from "../../images/logo/bloomoraV3.svg";
-import { AiOutlineUser } from "react-icons/ai";
+import { MdOutlineLightMode } from "react-icons/md";
+import { CiDark } from "react-icons/ci";
+import {
+  AiOutlineUser,
+  AiOutlineCloseSquare,
+  AiFillEdit,
+  AiOutlineClose,
+} from "react-icons/ai";
+import {
+  FaSquareInstagram,
+  FaXTwitter,
+  FaLinkedin,
+  FaHeart,
+} from "react-icons/fa6";
+import { FaFacebookSquare, FaSignOutAlt } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
 import { PiShoppingBag } from "react-icons/pi";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { AiOutlineClose } from "react-icons/ai";
-import { AiOutlineCloseSquare } from "react-icons/ai";
 import { IoLogIn } from "react-icons/io5";
 import { MdPersonAdd } from "react-icons/md";
-import { FaSignOutAlt } from "react-icons/fa";
-import { AiFillEdit } from "react-icons/ai";
 import { GrLanguage } from "react-icons/gr";
 import { PiListHeartFill } from "react-icons/pi";
-import { FaFacebookSquare } from "react-icons/fa";
-import { FaSquareInstagram } from "react-icons/fa6";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaLinkedin } from "react-icons/fa6";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import { UserContext } from "../../context/userContext";
 
-function Navbar() {
+function Navbar({ toggleTheme, isChecked }) {
   const [scrolled, setScrolled] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
-  const [isUserPanelOpen, setIsUserPanelOpen] = useState(false); // Yeni state
+  const [isUserPanelOpen, setIsUserPanelOpen] = useState(false);
   const { isLoggedIn, user, logout, isMenuOpen, setIsMenuOpen } =
     useContext(UserContext);
   const navigate = useNavigate();
@@ -231,6 +237,22 @@ function Navbar() {
                 )}
               </div>
             </NavLink>
+            <NavLink
+              className="nav-wishlist"
+              to="#"
+              onClick={(e) => {
+                e.preventDefault(); // Varsayılan bağlantı davranışını engeller
+                handleMenuItemClick(() =>
+                  navigate("/userPanel?section=wishlist")
+                );
+              }}
+            >
+              <div className="nav-wishIcon">
+                <FaHeart
+                  className={`wish ${scrolled ? "scrolled-icon" : ""}`}
+                />
+              </div>
+            </NavLink>
             <div className="language-switcher">
               <GrLanguage className="language" onClick={toggleLanguageMenu} />
               {languageMenuOpen && (
@@ -251,6 +273,13 @@ function Navbar() {
                 className={`burger ${scrolled ? "scrolled-icon" : ""}`}
               />
             )}
+          </div>
+          <div className="theme-toggle">
+            <label className="switch">
+              <input type="checkbox" checked={isChecked} onChange={toggleTheme} />
+              <span className="slider round"></span>
+            </label>
+            {isChecked ? <CiDark className="dark-icon" />  : <MdOutlineLightMode className="light-icon" />}
           </div>
         </div>
         {isMenuOpen && (
@@ -400,7 +429,7 @@ function Navbar() {
           <img src={userPanelLogo} alt="logo" />
         </div>
         <button className="close-btn" onClick={toggleUserPanel}>
-        <AiOutlineCloseSquare />
+          <AiOutlineCloseSquare />
         </button>
         <ul>
           {isLoggedIn ? (
