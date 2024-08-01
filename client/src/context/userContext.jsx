@@ -1,5 +1,6 @@
 import React, { useState, createContext, useEffect } from "react";
 
+import { useAlert } from "./alertContext";
 export const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
@@ -16,6 +17,8 @@ const UserProvider = ({ children }) => {
   const [cart, setCart] = useState(
     user.cart || [] //*This returns the current cart of the logged in user. Value that is stored in Backend
   );
+
+  const { showAlert } = useAlert();
 
   useEffect(() => {
     checkUserAuth();
@@ -96,7 +99,7 @@ const UserProvider = ({ children }) => {
         const newCart = await response.json();
         console.log(newCart);
         setUser({ ...user, cart: newCart });
-        alert("Item added to the cart.");
+        showAlert(`${product.name} has been added to the cart.`, "success");
       } else {
         const { error } = await response.json();
         throw new Error(error.message);
@@ -183,6 +186,10 @@ const UserProvider = ({ children }) => {
       if (response.ok) {
         const updatedWishlist = await response.json();
         console.log(updatedWishlist);
+        showAlert(
+          `${product.name} has been added to your wishlist.`,
+          "success"
+        );
       } else {
         const { error } = await response.json();
         throw new Error(error.message);
@@ -249,7 +256,8 @@ const UserProvider = ({ children }) => {
         const data = await response.json();
         setUser(data);
         setIsLoggedIn(false);
-        console.log(user);
+        showAlert(`You have logged out!`);
+        console.log(data);
       }
     } catch (error) {
       console.log(error.message);

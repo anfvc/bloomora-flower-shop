@@ -17,7 +17,6 @@ import Cart from "./components/cart/Cart.jsx";
 import Wishlist from "./components/wishlist/wishlist.jsx";
 import WeddingInquiry from "./views/weddingInquiry/WeddingInquiry.jsx";
 
-
 function App() {
   return (
     <>
@@ -34,9 +33,9 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<CreateProduct />} />
         <Route path="/userPanel" element={<UserPanel />} />
-        <Route path="/search" element={<Search />}/>
-        <Route path="/cart" element={<Cart />}/>
-        <Route path="/wishlist" element={<Wishlist />}/>
+        <Route path="/search" element={<Search />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/wishlist" element={<Wishlist />} />
       </Routes>
       <Footer />
     </>

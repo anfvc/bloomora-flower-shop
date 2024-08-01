@@ -18,11 +18,12 @@ export async function createStripeCheckoutSession(req, res) {
     customer: stripeUserId,
     line_items: await transformCheckoutProductsToLineItems(checkoutProducts),
     mode: "payment",
-    success_url: `https://google.com?products=${JSON.stringify(checkoutProducts)}`,
-    cancel_url: `https://google.com`,
+    success_url: `https://google.com?products=${JSON.stringify(
+      checkoutProducts
+    )}`,
+    cancel_url: `http://localhost:5173/cart`,
   };
   const session = await stripe.checkout.sessions.create(checkoutParams);
-
 
   res.status(200).json({ url: session.url });
 }
@@ -87,39 +88,3 @@ async function populateStripe() {
       } catch (e) {}
     });
 }
-
-// async function createRemainingProductToStripe() {
-//   const product = {
-//     _id: {
-//       $oid: "668e6fc5153dff7eec8b323b",
-//     },
-//     name: "Roses Memory Lane",
-//     description:
-//       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean mattis interdum vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce facilisis lorem dui, eu volutpat ex faucibus vel.",
-//     price: 75.9,
-//     image:
-//       "https://res.cloudinary.com/dytfuzksa/image/upload/v1720610756/duwymkjkfyrglxzzhmyo.jpg",
-//     category: "Flowers on Ocassion",
-//     subcategory: "St. Valentine's Day",
-//   };
-
-//   try {
-//     const stripeProduct = await stripe.products.create({
-//       id: product._id.$oid,
-//       name: product.name,
-//       description: product.description,
-//       images: [product.image],
-//     });
-
-//     const stripePrice = await stripe.prices.create({
-//       product: stripeProduct.id,
-//       unit_amount: product.price * 100,
-//       currency: "eur",
-//     });
-
-//     console.log("Created:", stripeProduct);
-//     console.log("Created price:", stripePrice);
-//   } catch (error) {
-//     console.log("Error Creating Product");
-//   }
-// }
