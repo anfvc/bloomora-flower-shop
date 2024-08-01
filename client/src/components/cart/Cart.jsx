@@ -11,6 +11,14 @@ function Cart() {
   const { t } = useTranslation();
   const { user, cart, setCart, handleDelete } = useContext(UserContext);
 
+
+  //   useEffect(() => {
+  //     async function getCart() {
+  //       try {
+  //         const response = await fetch(
+  //           `http://localhost:5100/api/cart/get/${user.user._id}`
+  //         );
+
   useEffect(() => {
     async function getCart() {
       try {
@@ -35,7 +43,6 @@ function Cart() {
   }, [user.user?._id, user.user.cart]);
 
 
-
   //* Calculating total of cart:
   function total() {
     return cart.reduce(
@@ -48,16 +55,18 @@ function Cart() {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-
   const updateQuantity = async (itemId, quantity) => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API}/cart/update/${user.user._id}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ productId: itemId, quantity }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API}/cart/update/${user.user._id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ productId: itemId, quantity }),
+        }
+      );
 
       if (response.ok) {
         const updatedCart = await response.json();
@@ -160,7 +169,10 @@ function Cart() {
                         -
                       </button>
                     </div>
-                    <div className="delete" onClick={()=> handleDelete(item)}> 
+                    <div className="delete" onClick={() => handleDelete(item)}>
+                      {" "}
+//                     <div className="delete" onClick={()=> handleDelete(item)}> 
+
                       <MdOutlineDelete className="dlt" />
                     </div>
                   </div>
