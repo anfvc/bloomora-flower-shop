@@ -71,6 +71,7 @@ function Wishlist() {
         <div className="wishListBox">
           {!!wishList.length &&
             wishList.map((item) => (
+
               <div className="productsBox" key={item._id}>
                 <div className="delete" onClick={handleDelete}><p>X</p></div>
                 <div className="imageBox">
@@ -88,6 +89,8 @@ function Wishlist() {
                 </div>
                 
               </div>
+
+             
             ))}
         </div>
       </div>
