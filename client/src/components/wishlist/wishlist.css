@@ -44,23 +44,8 @@
   background-color: white;
   /* border: 1px solid #6A6A6A; */
   border-radius: 3px;
-  padding: 2rem;
-  }
-
-.delete{
-  align-self: flex-end;
-  width: 15px;
-  height: 15px;
-  }
-
- .delete p{
-  font-size: 20px;
- }
-
- .delete :hover{
-  cursor: pointer;
- }
-
+  padding: 1rem;
+}
 
 .wishlist-container .wishListBox .productsBox .imageBox {
   display: flex;
