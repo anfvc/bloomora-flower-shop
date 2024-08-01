@@ -43,7 +43,21 @@
   border: 1px solid #698474;
   border-radius: 3px;
   padding: 2rem;
-}
+  }
+
+.delete{
+  align-self: flex-end;
+  width: 15px;
+  height: 15px;
+  }
+
+ .delete p{
+  font-size: 20px;
+ }
+
+ .delete :hover{
+  cursor: pointer;
+ }
 
 .wishlist-container .wishListBox .productsBox .imageBox {
   display: flex;
