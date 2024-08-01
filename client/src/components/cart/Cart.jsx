@@ -13,13 +13,6 @@ function Cart() {
 
 
 
-//   useEffect(() => {
-//     async function getCart() {
-//       try {
-//         const response = await fetch(
-//           `http://localhost:5100/api/cart/get/${user.user._id}`
-//         );
-
   useEffect(
     () => {
       async function getCart() {
@@ -42,7 +35,9 @@ function Cart() {
       }
     }
     getCart();
-  }, [user.user._id]);
+
+  }, [user.user?._id, user.user.cart]);
+
 
 
   //* Calculating total of cart:
@@ -138,7 +133,7 @@ function Cart() {
                         -
                       </button>
                     </div>
-                    <div className="delete" onClick={()=> handleDelete(item)}> //!!!
+                    <div className="delete" onClick={()=> handleDelete(item)}> 
                       <MdOutlineDelete className="dlt" />
                     </div>
                   </div>

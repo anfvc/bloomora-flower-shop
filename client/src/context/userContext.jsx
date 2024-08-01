@@ -95,7 +95,7 @@ const UserProvider = ({ children }) => {
 
       if (response.ok) {
         const newCart = await response.json();
-        console.log(newCart);
+        // console.log(newCart);
         setUser({ ...user, cart: newCart });
         alert("Item added to the cart.");
       } else {
@@ -107,39 +107,7 @@ const UserProvider = ({ children }) => {
     }
   }
 
-  // async function removeFromCart(product) {
-  //   try {
-  //     const settings = {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/JSON",
-  //       },
-  //       body: JSON.stringify({
-  //         productId: product._id
-  //       }),
-  //     };
-
-  //     const response = await fetch(
-  //       `http://localhost:5100/api/cart/remove/${user.user._id}`,
-  //       settings
-  //     );
-
-  //     if (response.ok) {
-  //       const newCart = await response.json();
-  //       console.log(newCart);
-  //       setUser({ ...user, cart: newCart });
-  //     } else {
-  //       const { error } = await response.json();
-  //       throw new Error(error.message);
-  //     }
-  //   } catch (error) {
-  //     console.log("Error adding product to cart.");
-  //   }
-  // }
-
-
   
-
   const handleDelete = async (item) => {
     try {
       const settings = {
@@ -157,8 +125,10 @@ const UserProvider = ({ children }) => {
 
       if (response.ok) {
         const updatedUser = await response.json();
-        console.log(updatedUser);
-        setCart(updatedUser.cart);
+        // console.log(updatedUser);
+        setUser(updatedUser)
+        setCart(updatedUser.user.cart);
+
       } else {
         const { message } = await response.json();
         throw new Error(message);
