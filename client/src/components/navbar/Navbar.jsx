@@ -5,6 +5,8 @@ import { useTranslation } from "react-i18next";
 import logo from "../../images/logo/bloomoraV2.svg";
 import userPanelLogo from "../../images/logo/bloomoraV5.png";
 import scrolledLogo from "../../images/logo/bloomoraV3.svg";
+import { MdOutlineLightMode } from "react-icons/md";
+import { CiDark } from "react-icons/ci";
 import {
   AiOutlineUser,
   AiOutlineCloseSquare,
@@ -29,7 +31,7 @@ import Login from "../Login/Login";
 import Register from "../Register/Register";
 import { UserContext } from "../../context/userContext";
 
-function Navbar() {
+function Navbar({ toggleTheme, isChecked }) {
   const [scrolled, setScrolled] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
@@ -246,7 +248,9 @@ function Navbar() {
               }}
             >
               <div className="nav-wishIcon">
-                <FaHeart className={`wish ${scrolled ? "scrolled-icon" : ""}`} />
+                <FaHeart
+                  className={`wish ${scrolled ? "scrolled-icon" : ""}`}
+                />
               </div>
             </NavLink>
             <div className="language-switcher">
@@ -269,6 +273,13 @@ function Navbar() {
                 className={`burger ${scrolled ? "scrolled-icon" : ""}`}
               />
             )}
+          </div>
+          <div className="theme-toggle">
+            <label className="switch">
+              <input type="checkbox" checked={isChecked} onChange={toggleTheme} />
+              <span className="slider round"></span>
+            </label>
+            {isChecked ? <CiDark className="dark-icon" />  : <MdOutlineLightMode className="light-icon" />}
           </div>
         </div>
         {isMenuOpen && (

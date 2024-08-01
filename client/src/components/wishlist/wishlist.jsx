@@ -44,21 +44,27 @@ function Wishlist() {
         <div className="wishListBox">
           {!!wishList.length &&
             wishList.map((item) => (
-              <div className="productsBox" key={item._id}>
-                <div className="imageBox">
-                  <img src={item.image} alt="" width={100} height={100} />
-                  <button
-                    className="addToCart"
-                    onClick={() => addToCart(item, 1)}
-                  >
-                    add to cart
-                  </button>
+              <>
+                <div className="productsBox" key={item._id}>
+                  <div className="imageBox">
+                    <img src={item.image} alt="" width={100} height={100} />
+                    <button
+                      className="addToCart"
+                      onClick={() => addToCart(item, 1)}
+                    >
+                      add to cart
+                    </button>
+                  </div>
+                  <div className="info">
+                    <p>{item.name}</p>
+                    <p>{item.price} €</p>
+                  </div>
+
+                  <div className="deleteButton">
+                    <button>delete</button>
+                  </div>
                 </div>
-                <div className="info">
-                  <p>{item.name}</p>
-                  <p>{item.price} €</p>
-                </div>
-              </div>
+              </>
             ))}
         </div>
       </div>
