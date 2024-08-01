@@ -11,23 +11,19 @@ function Cart() {
   const { t } = useTranslation();
   const { user, cart, setCart, handleDelete } = useContext(UserContext);
 
+  //   useEffect(() => {
+  //     async function getCart() {
+  //       try {
+  //         const response = await fetch(
+  //           `http://localhost:5100/api/cart/get/${user.user._id}`
+  //         );
 
-
-//   useEffect(() => {
-//     async function getCart() {
-//       try {
-//         const response = await fetch(
-//           `http://localhost:5100/api/cart/get/${user.user._id}`
-//         );
-
-  useEffect(
-    () => {
-      async function getCart() {
-        try {
-          const response = await fetch(
-            `${import.meta.env.VITE_API}/cart/get/${user.user._id}`
-          );
-
+  useEffect(() => {
+    async function getCart() {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API}/cart/get/${user.user._id}`
+        );
 
         if (response.ok) {
           const data = await response.json();
@@ -44,7 +40,6 @@ function Cart() {
     getCart();
   }, [user.user._id]);
 
-
   //* Calculating total of cart:
   function total() {
     return cart.reduce(
@@ -57,16 +52,18 @@ function Cart() {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-
   const updateQuantity = async (itemId, quantity) => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API}/cart/update/${user.user._id}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ productId: itemId, quantity }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API}/cart/update/${user.user._id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ productId: itemId, quantity }),
+        }
+      );
 
       if (response.ok) {
         const updatedCart = await response.json();
@@ -100,7 +97,27 @@ function Cart() {
     updateQuantity(itemId, item.quantity);
   };
 
+  async function createStripeCheckoutSession() {
+    const response = await fetch(
+      `${import.meta.env.VITE_API}/order/createStripeCheckoutSession`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          checkoutProducts: cart.map((product) => ({
+            id: product.productId?._id,
+            quantity: product.quantity,
+          })),
+          userId: user.user._id,
+        }),
+      }
+    );
 
+    const body = await response.json();
+    window.location.replace(body.url);
+  }
 
   return (
     <div className="cart-container">
@@ -117,7 +134,12 @@ function Cart() {
               cart.map((item) => (
                 <div className="productsBox" key={item._id}>
                   <div className="imageBox">
-                    <img src={item.productImage} alt="" width={100} height={100} />
+                    <img
+                      src={item.productImage}
+                      alt=""
+                      width={100}
+                      height={100}
+                    />
                   </div>
                   <div className="info">
                     <p>{item.productName}</p>
@@ -130,15 +152,23 @@ function Cart() {
                   </div>
                   <div className="incDecDelete">
                     <div className="incDec">
-                      <button className="inc" onClick={() => increaseQuantity(item._id)}>
+                      <button
+                        className="inc"
+                        onClick={() => increaseQuantity(item._id)}
+                      >
                         +
                       </button>
                       <p>{item.quantity}</p>
-                      <button className="dec" onClick={() => decreaseQuantity(item._id)}>
+                      <button
+                        className="dec"
+                        onClick={() => decreaseQuantity(item._id)}
+                      >
                         -
                       </button>
                     </div>
-                    <div className="delete" onClick={()=> handleDelete(item)}> //!!!
+                    <div className="delete" onClick={() => handleDelete(item)}>
+                      {" "}
+                      //!!!
                       <MdOutlineDelete className="dlt" />
                     </div>
                   </div>
@@ -148,7 +178,8 @@ function Cart() {
           <div className="paymentContainer">
             <div className="shipment-subTotal-vat">
               <div className="subTotal">
-                <p>{t("cart.subTotal")} :</p> <span>{total().toFixed(2)} €</span>
+                <p>{t("cart.subTotal")} :</p>{" "}
+                <span>{total().toFixed(2)} €</span>
               </div>
               <div className="shipping">
                 <p>{t("cart.shipping")} :</p>
@@ -165,7 +196,12 @@ function Cart() {
                 <p>{total().toFixed(2)}€</p>
               </div>
               <div className="paymentButtons">
-                <button className="checkOut">{t("cart.checkout")}</button>
+                <button
+                  className="checkOut"
+                  onClick={createStripeCheckoutSession}
+                >
+                  {t("cart.checkout")}
+                </button>
                 <p>{t("cart.or")}</p>
                 <button className="paypal">{t("cart.paypal")}</button>
               </div>
