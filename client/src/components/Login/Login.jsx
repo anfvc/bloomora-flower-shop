@@ -1,16 +1,18 @@
 import { useState, useContext } from "react";
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import icons
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import icons
 import "./Login.css";
 import { UserContext } from "../../context/userContext";
 import { useTranslation } from "react-i18next";
+import { useAlert } from "../../context/alertContext";
 
 function Login({ openRegister, closeModals }) {
+  const { showAlert } = useAlert();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
   const { setUser, setIsLoggedIn } = useContext(UserContext);
   const { t, i18n } = useTranslation();
-  const togglePasswordVisibility = () => { 
+  const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
@@ -18,7 +20,7 @@ function Login({ openRegister, closeModals }) {
     e.preventDefault();
 
     if (!email || !password) {
-      alert("Missing credentials");
+      showAlert("Missing Credentials", "warning");
       return;
     }
 
@@ -29,7 +31,7 @@ function Login({ openRegister, closeModals }) {
         headers: {
           "Content-Type": "application/JSON",
         },
-        credentials: "include"
+        credentials: "include",
       };
 
       const response = await fetch(
@@ -42,6 +44,7 @@ function Login({ openRegister, closeModals }) {
         console.log(userData);
         setUser(userData);
         setIsLoggedIn(true);
+        showAlert(`${userData.msg}`, "success");
         closeModals();
         document.querySelector("details[open]").removeAttribute("open");
       } else {
@@ -49,7 +52,7 @@ function Login({ openRegister, closeModals }) {
         throw new Error(error.message);
       }
     } catch (error) {
-      console.log(error.message); 
+      console.log(error.message);
     }
   };
 
@@ -64,22 +67,20 @@ function Login({ openRegister, closeModals }) {
             value={email}
             placeholder="abcd@example.com"
             onChange={(e) => setEmail(e.target.value)}
-            required
           />
           <label>{t("sign_in.password")}</label>
           <div className="passwordContainer">
             <input
-              type={showPassword ? "text" : "password"} 
+              type={showPassword ? "text" : "password"}
               value={password}
               placeholder="abcD&12345"
               onChange={(e) => setPassword(e.target.value)}
-              required
             />
             <span
               className="togglePasswordIcon"
               onClick={togglePasswordVisibility}
             >
-              {showPassword ? <FaEyeSlash /> : <FaEye />} 
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
           </div>
           <p>

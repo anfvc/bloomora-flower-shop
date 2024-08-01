@@ -60,16 +60,17 @@ export async function addToWishList(req, res) {
 export async function deleteFromWishlist(req, res){
   const { productId } = req.body;
   const { userId } = req.params;
+
   try {
     const user = await User.findById(userId);
     if (!user) {
       res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" });
     }
 
-    const deletedProduct = await user.wishlist.find(item => item.productId.equals(productId));
+    const deletedProduct =  user.wishlist.find(item => item.productId.toString() === productId);
 
     if (!deletedProduct) {
-      res.status(StatusCodes.NOT_FOUND).json({ msg: "Product not found" });
+      res.status(StatusCodes.NOT_FOUND).json({ message: "Product not found" });
     }else {
       user.wishlist = user.wishlist.filter(
         (item) => !item.productId.equals(productId)
@@ -78,8 +79,8 @@ export async function deleteFromWishlist(req, res){
 
     await user.save()
 
-    res.status(StatusCodes.OK).json({msg: `${deletedProduct.name} was successfully deleted`})
-} catch (error) {
-  res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error.message);
+    res.status(StatusCodes.OK).json({user:user})
+   } catch (error) {
+  res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({message: "Internal Server Error"});
 }
 }

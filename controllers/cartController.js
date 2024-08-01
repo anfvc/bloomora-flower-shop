@@ -78,6 +78,7 @@ export async function addToCart(req, res) {
   }
 }
 
+
 export async function removeFromCart(req, res) {
   const { userId } = req.params;
   const { productId } = req.body;
@@ -91,18 +92,18 @@ export async function removeFromCart(req, res) {
     }
 
     const deleteFromCart = user.cart.find(item => item.productId.toString() === productId)
-  
+  console.log("deletefromCart", deleteFromCart);
     if (!deleteFromCart) {
       res.status(StatusCodes.NOT_FOUND).json({ message: "Product not found" });
-    } else {
+    } 
       user.cart = user.cart.filter(
         (item) => !item.productId.equals(productId)
       );
-    }
+    
 
     await user.save()
-   
-    res.status(StatusCodes.OK).json(user );
+    console.log("user's cart", user.cart.length);
+    res.status(StatusCodes.OK).json({user: user} );
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       message: "Internal Server Error",

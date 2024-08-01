@@ -11,6 +11,7 @@ function Cart() {
   const { t } = useTranslation();
   const { user, cart, setCart, handleDelete } = useContext(UserContext);
 
+
   //   useEffect(() => {
   //     async function getCart() {
   //       try {
@@ -38,7 +39,9 @@ function Cart() {
       }
     }
     getCart();
-  }, [user.user._id]);
+
+  }, [user.user?._id, user.user.cart]);
+
 
   //* Calculating total of cart:
   function total() {
@@ -168,7 +171,8 @@ function Cart() {
                     </div>
                     <div className="delete" onClick={() => handleDelete(item)}>
                       {" "}
-                      //!!!
+//                     <div className="delete" onClick={()=> handleDelete(item)}> 
+
                       <MdOutlineDelete className="dlt" />
                     </div>
                   </div>
