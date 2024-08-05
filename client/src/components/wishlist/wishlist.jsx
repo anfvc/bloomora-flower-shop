@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import "./wishlist.css";
 import { UserContext } from "../../context/userContext";
 
@@ -36,7 +36,7 @@ function Wishlist() {
         headers: {
           "Content-Type": "application/json",
         },
-         body: JSON.stringify({productId: item.productId._id}), 
+          body: JSON.stringify({productId: item.productId._id}), 
 
       };
       const response = await fetch(
@@ -46,9 +46,9 @@ function Wishlist() {
 
       if (response.ok) {
         const updatedUser = await response.json();
-        console.log(updatedUser);
         setUser(updatedUser)
         setWishList(updatedUser.user.wishList);
+        console.log(updatedUser);
 
       } else {
         const { message } = await response.json();
@@ -73,7 +73,7 @@ function Wishlist() {
             wishList.map((item) => (
 
               <div className="productsBox" key={item._id}>
-                <div className="delete" onClick={handleDelete}><p>X</p></div>
+                <div className="delete" onClick={()=>handleDelete(item)}><p>X</p></div>
                 <div className="imageBox">
                   <img src={item.image} alt="" width={100} height={100} />
                   <button
