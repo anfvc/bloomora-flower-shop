@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 
 function Cart() {
   const { t } = useTranslation();
-  const { user, cart, setCart, handleDelete } = useContext(UserContext);
+  const { user, setUser, cart, setCart, handleDelete } = useContext(UserContext);
 
   useEffect(() => {
     async function getCart() {
@@ -31,8 +31,7 @@ function Cart() {
       }
     }
     getCart();
-
-  }, [user.user?._id, user.user.cart]);
+  }, [user.user?._id, user.user?.cart]);
 
 
 
@@ -44,24 +43,26 @@ function Cart() {
     );
   }
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+  // useEffect(() => {
+  //   localStorage.setItem("cart", JSON.stringify(cart));
+  // }, [cart]);
 
 
-  const updateQuantity = async (itemId, quantity) => {
+  const increaseQuantity = async (item) => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API}/cart/update/${user.user._id}`, {
+      const response = await fetch(`${import.meta.env.VITE_API}/cart/increase/${user.user._id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ productId: itemId, quantity }),
+        body: JSON.stringify({ productId: item.productId._id /* itemId, quantity */ }),
       });
 
       if (response.ok) {
-        const updatedCart = await response.json();
-        setCart(updatedCart);
+        const updatedUser = await response.json();
+        setUser(updatedUser)
+        setCart(updatedUser.user.cart);
+        console.log(updatedUser);
       } else {
         const { error } = await response.json();
         throw new Error(error.message);
@@ -71,25 +72,25 @@ function Cart() {
     }
   };
 
-  const increaseQuantity = (itemId) => {
-    const updatedCart = cart.map((item) =>
-      item._id === itemId ? { ...item, quantity: item.quantity + 1 } : item
-    );
-    setCart(updatedCart);
-    const item = updatedCart.find((item) => item._id === itemId);
-    updateQuantity(itemId, item.quantity);
-  };
+  // const increaseQuantity = (itemId) => {
+  //   const updatedCart = cart.map((item) =>
+  //     item._id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+  //   );
+  //   setCart(updatedCart);
+  //   const item = updatedCart.find((item) => item._id === itemId);
+  //   updateQuantity(itemId, item.quantity);
+  // };
 
-  const decreaseQuantity = (itemId) => {
-    const updatedCart = cart.map((item) =>
-      item._id === itemId && item.quantity > 1
-        ? { ...item, quantity: item.quantity - 1 }
-        : item
-    );
-    setCart(updatedCart);
-    const item = updatedCart.find((item) => item._id === itemId);
-    updateQuantity(itemId, item.quantity);
-  };
+  // const decreaseQuantity = (itemId) => {
+  //   const updatedCart = cart.map((item) =>
+  //     item._id === itemId && item.quantity > 1
+  //       ? { ...item, quantity: item.quantity - 1 }
+  //       : item
+  //   );
+  //   setCart(updatedCart);
+  //   const item = updatedCart.find((item) => item._id === itemId);
+  //   updateQuantity(itemId, item.quantity);
+  // };
 
   async function createStripeCheckoutSession() {
     const response = await fetch(
@@ -148,19 +149,19 @@ function Cart() {
                     <div className="incDec">
                       <button
                         className="inc"
-                        onClick={() => increaseQuantity(item._id)}
+                        onClick={() => increaseQuantity(item)}
                       >
                         +
                       </button>
                       <p>{item.quantity}</p>
                       <button
                         className="dec"
-                        onClick={() => decreaseQuantity(item._id)}
+                        onClick={() => /* decreaseQuantity(item._id) */""}
                       >
                         -
                       </button>
                     </div>
-                    <div className="delete" onClick={()=> handleDelete(item)}> 
+                    <div className="delete" onClick={()=> handleDelete(item)}>
                       <MdOutlineDelete className="dlt" />
                     </div>
                   </div>
