@@ -12,6 +12,14 @@ function Cart() {
   const { user, setUser, cart, setCart, handleDelete } =
     useContext(UserContext);
 
+
+  //   useEffect(() => {
+  //     async function getCart() {
+  //       try {
+  //         const response = await fetch(
+  //           `http://localhost:5100/api/cart/get/${user.user._id}`
+  //         );
+
   useEffect(() => {
     async function getCart() {
       try {
