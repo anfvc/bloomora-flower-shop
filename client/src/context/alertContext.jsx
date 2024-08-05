@@ -26,7 +26,7 @@ export function AlertProvider({ children }) {
         open={alertOpen}
         autoHideDuration={4000}
         onClose={handleCloseAlert}
-        anchorOrigin={{ vertical: "bottom", horizontal: "left" }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
         <MuiAlert
           onClose={handleCloseAlert}
