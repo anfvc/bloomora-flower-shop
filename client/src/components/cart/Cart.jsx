@@ -169,9 +169,9 @@ function Cart() {
                         -
                       </button>
                     </div>
-                    <div className="delete" onClick={() => handleDelete(item)}>
+                    
                       {" "}
-//                     <div className="delete" onClick={()=> handleDelete(item)}> 
+                     <div className="delete" onClick={()=> handleDelete(item)}> 
 
                       <MdOutlineDelete className="dlt" />
                     </div>
