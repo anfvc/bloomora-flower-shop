@@ -78,7 +78,6 @@ export async function addToCart(req, res) {
   }
 }
 
-
 export async function removeFromCart(req, res) {
   const { userId } = req.params;
   const { productId } = req.body;
@@ -91,19 +90,86 @@ export async function removeFromCart(req, res) {
         .json({ message: "User not found." });
     }
 
-    const deleteFromCart = user.cart.find(item => item.productId.toString() === productId)
-  console.log("deletefromCart", deleteFromCart);
+    const deleteFromCart = user.cart.find(
+      (item) => item.productId.toString() === productId
+    );
+    console.log("deletefromCart", deleteFromCart);
     if (!deleteFromCart) {
       res.status(StatusCodes.NOT_FOUND).json({ message: "Product not found" });
-    } 
-      user.cart = user.cart.filter(
-        (item) => !item.productId.equals(productId)
-      );
-    
+    }
+    user.cart = user.cart.filter((item) => !item.productId.equals(productId));
 
-    await user.save()
+    await user.save();
     console.log("user's cart", user.cart.length);
-    res.status(StatusCodes.OK).json({user: user} );
+    res.status(StatusCodes.OK).json({ user: user });
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      message: "Internal Server Error",
+    });
+  }
+}
+
+export async function increaseQuantityCart(req, res) {
+  const { userId } = req.params;
+  const { productId } = req.body;
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return res
+        .status(StatusCodes.NOT_FOUND)
+        .json({ message: "User not found." });
+    }
+
+    const isProductInCart = user.cart.find(
+      (item) => item.productId.toString() === productId
+    );
+
+    if (isProductInCart) {
+      isProductInCart.quantity++;
+    } else {
+      res.status(StatusCodes.NOT_FOUND).json({ message: "Product not found" });
+    }
+
+    await user.save();
+
+    res.status(StatusCodes.OK).json({ user: user });
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      message: "Internal Server Error",
+    });
+  }
+}
+
+export async function decreaseQuantityCart(req, res) {
+  const { userId } = req.params;
+  const { productId } = req.body;
+
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      return res
+        .status(StatusCodes.NOT_FOUND)
+        .json({ message: "User not found." });
+    }
+
+    const isProductInCart = user.cart.find(
+      (item) => item.productId.toString() === productId
+    );
+
+    if (isProductInCart) {
+      if (isProductInCart.quantity > 1) {
+        isProductInCart.quantity -= 1;
+      } else if (isProductInCart.quantity < 1) {
+        isProductInCart.quantity === 1;
+      }
+    } else {
+      res.status(StatusCodes.NOT_FOUND).json({ message: "Product not found" });
+    }
+
+    await user.save();
+
+    res.status(StatusCodes.OK).json({ user: user });
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       message: "Internal Server Error",
