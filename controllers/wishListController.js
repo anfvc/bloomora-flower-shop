@@ -50,14 +50,14 @@ export async function addToWishList(req, res) {
     }
 
     await user.save();
-   
+
     res.status(StatusCodes.CREATED).json(user.wishlist);
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error.message);
   }
 }
 
-export async function deleteFromWishlist(req, res){
+export async function deleteFromWishlist(req, res) {
   const { productId } = req.body;
   const { userId } = req.params;
 
@@ -67,20 +67,24 @@ export async function deleteFromWishlist(req, res){
       res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" });
     }
 
-    const deletedProduct =  user.wishlist.find(item => item.productId.toString() === productId);
+    const deletedProduct = user.wishlist.find(
+      (item) => item.productId.toString() === productId
+    );
 
     if (!deletedProduct) {
       res.status(StatusCodes.NOT_FOUND).json({ message: "Product not found" });
-    }else {
+    } else {
       user.wishlist = user.wishlist.filter(
-        (item) => !item.productId.equals(productId)
+        (item) => item.productId.toString() !== productId
       );
     }
 
-    await user.save()
+    await user.save();
 
-    res.status(StatusCodes.OK).json({user:user})
-   } catch (error) {
-  res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({message: "Internal Server Error"});
-}
+    res.status(StatusCodes.OK).json({ user: user });
+  } catch (error) {
+    res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({ message: "Internal Server Error" });
+  }
 }

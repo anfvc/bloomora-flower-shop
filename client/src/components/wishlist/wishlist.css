@@ -54,6 +54,21 @@
   /* padding: 1rem; */
 }
 
+.delete{
+  align-self: flex-end;
+  width: 15px;
+  height: 15px;
+  }
+
+ .delete p{
+  font-size: 20px;
+ }
+
+ .delete :hover{
+  cursor: pointer;
+ }
+
+
 .wishlist-container .wishListBox .productsBox .imageBox {
   display: flex;
   flex-direction: column;
