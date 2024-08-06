@@ -87,7 +87,10 @@
 }
 
 .roots .index {
-  width: 70rem;
+  display: flex;
+  flex-direction: column;
+  /* text-align: center; */
+  width: 65rem;
   /* padding: 10px; */
 }
 
@@ -100,7 +103,7 @@
 }
 
 .roots .index a {
-  color: rgba(0, 0, 0, 0.7);
+  color: #759a84;
   text-decoration: none;
   font-weight: 500;
 }
