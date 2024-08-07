@@ -5,29 +5,19 @@ const orderSchema = new Schema({
     type: String,
     required: true,
   },
-  items: {
-    type: [],
-    required: true,
-  },
-  amount: {
-    type: Number,
-    required: true,
-  },
-  address: {
-    type: Object,
-    required: true,
-  },
+  orderItems: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "OrderItem",
+    },
+  ],
   status: {
     type: String,
-    default: "Order Processing.",
+    default: "pending",
   },
   date: {
     type: Date,
     default: Date.now(),
-  },
-  payment: {
-    type: Boolean,
-    default: false,
   },
 });
 
