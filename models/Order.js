@@ -20,6 +20,10 @@ const orderSchema = new Schema(
       type: Date,
       default: Date.now(),
     },
+    deliveryAddress: {
+      type: String,
+      required: true,
+    },
   },
   {
     versionKey: false,

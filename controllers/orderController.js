@@ -69,21 +69,38 @@ async function createUserInStripe(user) {
   return stripeCustomer.id;
 }
 
-export async function createOrder(req, res) {
-  const { checkoutProducts, userId } = req.body;
+export async function getAllOrders(req, res) {
+  const { userId } = req.params;
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" });
+    }
 
-  const orderItems = await Promise.all(checkoutProducts.map(async (checkoutProduct) => {
-    const { id, quantity } = checkoutProduct;
-    return await OrderItem.create({
-      quantity,
-      product: { _id: new mongoose.Types.ObjectId(id) }
-    });
-  }));
+    res.status(StatusCodes.OK).json(user.orders);
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error.message);
+  }
+}
+
+export async function createOrder(req, res) {
+  const { checkoutProducts, userId, deliveryAddress } = req.body;
+
+  const orderItems = await Promise.all(
+    checkoutProducts.map(async (checkoutProduct) => {
+      const { id, quantity } = checkoutProduct;
+      return await OrderItem.create({
+        quantity,
+        product: { _id: new mongoose.ObjectId(id) },
+      });
+    })
+  );
 
   const order = await Order.create({
     userId,
     orderItems,
     status: "paid",
+    deliveryAddress,
     date: Date.now(),
   });
 
