@@ -6,6 +6,7 @@
   justify-content: center;
   gap: 2rem;
   padding-bottom: 2rem;
+  background-color: #353535;
 }
 
 .footerBox {
@@ -17,8 +18,8 @@
   gap: 10rem;
   padding-bottom: 5rem;
   padding-top: 4rem;
-  border-bottom: 1px solid #1e1e1e;
-  background-color: #6a6a6a;
+  border-bottom: 1px solid #5f5f5f;
+  /* background-color: #698474; */
   position: relative;
 }
 
@@ -52,7 +53,7 @@
   font-family: "Prata", serif;
   text-transform: capitalize;
   letter-spacing: 2px;
-  color: #ffffff;
+  color: white;
   position: relative;
 }
 
@@ -78,7 +79,7 @@
 
 .footerBox .links a {
   text-decoration: none;
-  color: #ffffffc7;
+  color: white;
   font-weight: 400;
   letter-spacing: 2px;
   transition: all .3s ease-in-out;
@@ -100,6 +101,7 @@
 .rightsAndReserved p {
   font-size: 1.5rem;
   letter-spacing: 1px;
+  color: white;
 }
 
 .rightsAndReserved .socialPlatforms {
@@ -110,7 +112,7 @@
 
 .rightsAndReserved .socialPlatforms .platform {
   font-size: 1.55rem;
-  color: #353535;
+  color: #ffffff;
   cursor: pointer;
 }
 

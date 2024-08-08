@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import icons
+import { FaEye, FaEyeSlash } from "react-icons/fa"; 
 import "./Login.css";
 import { UserContext } from "../../context/userContext";
 import { useTranslation } from "react-i18next";

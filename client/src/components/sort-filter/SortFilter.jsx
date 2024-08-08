@@ -19,7 +19,6 @@ function SortFilter() {
   } = useContext(UserContext);
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  // const [priceRange, setPriceRange] = useState([0, 1000]);
   const { t } = useTranslation();
 
   function handleSortChange(sortOption) {
@@ -42,19 +41,16 @@ function SortFilter() {
     setIsSortOpen(false);
   }
 
-  // const handlePriceChange = (e) => {
-  //   const { value, name } = e.target;
-  //   if (name === "minPrice") {
-  //     setPriceRange([Math.max(0, value), priceRange[1]]);
-  //   } else {
-  //     setPriceRange([priceRange[0], Math.min(1000, value)]);
-  //   }
-  // };
+  function handleFilterButtonClick() {
+    setIsFilterOpen(!isFilterOpen);
+    setIsSortOpen(false); 
+    setIsMenuOpen(false);
+  }
 
-  // const handleRangeChange = (e) => {
-  //   const value = e.target.value.split(",").map(Number);
-  //   setPriceRange(value);
-  // };
+  function handleSortButtonClick() {
+    setIsSortOpen(!isSortOpen);
+    setIsFilterOpen(false); 
+  }
 
   const categories = [
     { value: "Decor", label: t("filter.category2") },
@@ -68,11 +64,11 @@ function SortFilter() {
 
   return (
     <div className="sort-filter">
-      <div className="sortButton" onClick={() => setIsSortOpen(!isSortOpen)}>
+      <div className="sortButton" onClick={handleSortButtonClick}>
         <p>{t("sort.header")}</p>
         <RiArrowDownWideLine className="sortIcon" />
       </div>
-      {isSortOpen && (
+      {/* {isSortOpen && (
         <div className="sort">
           <ul>
             <li onClick={() => handleSortChange("az")}>{t("sort.az")}</li>
@@ -85,14 +81,8 @@ function SortFilter() {
             </li>
           </ul>
         </div>
-      )}
-      <div
-        className="filter"
-        onClick={() => {
-          setIsFilterOpen(true);
-          setIsMenuOpen(false);
-        }}
-      >
+      )} */}
+      <div className="filter" onClick={handleFilterButtonClick}>
         <p>{t("filter.header")}</p>
       </div>
       {isFilterOpen && (

@@ -68,6 +68,9 @@ function UserPanel() {
     return (
       <div className="userPanelContainer">
         <div className="userPanelBackground"></div>
+        <div className="userPanelHeader">
+          <h1>user panel</h1>
+        </div>
         <div className="sidebar">
           <FaUser className="userImage" />
           <button className="sidebarButton" onClick={handleEditProfile}>

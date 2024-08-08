@@ -7,12 +7,7 @@ import userPanelLogo from "../../images/logo/bloomoraV5.png";
 import scrolledLogo from "../../images/logo/bloomoraV3.svg";
 import { MdOutlineLightMode } from "react-icons/md";
 import { CiDark } from "react-icons/ci";
-import {
-  AiOutlineUser,
-  AiOutlineCloseSquare,
-  AiFillEdit,
-  AiOutlineClose,
-} from "react-icons/ai";
+import { AiOutlineUser, AiFillEdit, AiOutlineClose } from "react-icons/ai";
 import {
   FaSquareInstagram,
   FaXTwitter,
@@ -27,6 +22,8 @@ import { IoLogIn } from "react-icons/io5";
 import { MdPersonAdd } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
 import { PiListHeartFill } from "react-icons/pi";
+import { TbArrowBarRight } from "react-icons/tb";
+
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import { UserContext } from "../../context/userContext";
@@ -241,7 +238,7 @@ function Navbar({ toggleTheme, isChecked }) {
               className="nav-wishlist"
               to="#"
               onClick={(e) => {
-                e.preventDefault(); // Varsayılan bağlantı davranışını engeller
+                e.preventDefault();
                 handleMenuItemClick(() =>
                   navigate("/userPanel?section=wishlist")
                 );
@@ -276,10 +273,21 @@ function Navbar({ toggleTheme, isChecked }) {
           </div>
           <div className="theme-toggle">
             <label className="switch">
-              <input type="checkbox" checked={isChecked} onChange={toggleTheme} />
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={toggleTheme}
+              />
               <span className="slider round"></span>
             </label>
-            {isChecked ? <CiDark className="dark-icon" />  : <MdOutlineLightMode className="light-icon" />}
+            {isChecked ? (
+              <CiDark className="dark-icon" onClick={toggleTheme} />
+            ) : (
+              <MdOutlineLightMode
+                className="light-icon"
+                onClick={toggleTheme}
+              />
+            )}
           </div>
         </div>
         {isMenuOpen && (
@@ -429,7 +437,7 @@ function Navbar({ toggleTheme, isChecked }) {
           <img src={userPanelLogo} alt="logo" />
         </div>
         <button className="close-btn" onClick={toggleUserPanel}>
-          <AiOutlineCloseSquare />
+          <TbArrowBarRight />
         </button>
         <ul>
           {isLoggedIn ? (

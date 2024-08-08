@@ -39,8 +39,8 @@
   height: 5rem;
   border-radius: 3px;
   border: none;
-  background-color: white;
-  border: 1px solid rgb(11, 11, 11);
+  background-color: #698474;
+  border: 1px solid #698474;
   font-size: 1.5rem;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -49,14 +49,14 @@
   position: relative;
   z-index: 1;
   transition: color 0.3s ease-in-out;
-  -webkit-box-shadow: 6px 6px 7px -3px rgba(102, 102, 102, 1);
+  /* -webkit-box-shadow: 6px 6px 7px -3px rgba(102, 102, 102, 1);
   -moz-box-shadow: 6px 6px 7px -3px rgba(102, 102, 102, 1);
-  box-shadow: 5px 5px 7px -3px rgb(173, 173, 173);
+  box-shadow: 5px 5px 7px -3px rgb(173, 173, 173); */
 }
 
 .weddingInfo button a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .weddingInfo button::before {
@@ -66,7 +66,8 @@
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: rgb(11, 11, 11);
+  background-color: #385242;
+  border: #385242;
   z-index: -1;
   transition: transform 0.3s ease-in-out;
   transform: scaleX(0);

@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  background-color: white;
 }
 
 .searchContainer .backgroundImage {
@@ -31,8 +32,8 @@
 }
 
 .searchContainer .searchBox {
-  padding-top: 50rem;
-  padding-bottom: 10rem;
+  padding-top: 55rem;
+  padding-bottom: 15rem;
   width: 100%;
   height: 100%;
   display: flex;
@@ -132,7 +133,7 @@
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  border-bottom: 1px solid #eee;
+  /* border-bottom: 1px solid #eee; */
   border-radius: 3px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   position: relative;

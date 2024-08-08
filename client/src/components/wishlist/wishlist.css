@@ -1,12 +1,18 @@
 .wishlist-container {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
   padding-bottom: 5rem;
+  padding-top: 2rem;
 }
 
 .wishListHeader {
-  width: 15rem;
+  width: 100%;
+  padding-left: 2rem;
+  display: flex;
+  justify-content: flex-start;
   position: relative;
 }
 
@@ -32,8 +38,9 @@
 
 .wishlist-container .wishListBox {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 4rem;
 }
 
 .wishlist-container .wishListBox .productsBox {
@@ -41,11 +48,11 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  background-color: white;
+  background-color: transparent;
   /* border: 1px solid #6A6A6A; */
   border-radius: 3px;
-  padding: 2rem;
-  }
+  /* padding: 1rem; */
+}
 
 .delete{
   align-self: flex-end;
@@ -60,7 +67,6 @@
  .delete :hover{
   cursor: pointer;
  }
-
 
 
 .wishlist-container .wishListBox .productsBox .imageBox {
@@ -89,8 +95,8 @@
 }
 
 .wishlist-container .wishListBox .productsBox .imageBox img {
-  width: 25rem;
-  height: 25rem;
+  width: 20rem;
+  height: 20rem;
   border-radius: 50%;
 }
 
@@ -157,5 +163,6 @@
 @media screen and (max-width: 768px) {
   .wishlist-container .wishListBox {
     justify-content: center;
+    align-items: center;
   }
 }

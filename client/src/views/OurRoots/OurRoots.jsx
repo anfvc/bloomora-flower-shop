@@ -41,11 +41,13 @@ function OurRoots() {
             <NavLink to="http://seattlewholesalegrowersmarket.com/">
               http://seattlewholesalegrowersmarket.com/
             </NavLink>
-            {t("ourRoots.publications")}
+            <p>{t("ourRoots.publications")}</p>
           </p>
           <p>
             {t("ourRoots.learnMore")}{" "}
-            <NavLink to="https://slowflowers.com/">https://slowflowers.com/</NavLink>
+            <NavLink to="https://slowflowers.com/">
+              https://slowflowers.com/
+            </NavLink>
           </p>
         </div>
         <div className="rootImages">

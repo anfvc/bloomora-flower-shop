@@ -38,7 +38,7 @@
   "ourRoots": {
     "header": "Our Roots",
     "description": "Melissa Feveyear is the visionary behind Terra Bella Flowers. She combined her formal floral design training (San Francisco and UK) with her education in Environmental Studies/Hazardous Waste Management to create a sustainable flower shop in what has historically been a toxic industry. Sourcing her flowers from farmers markets and local growers, she realized that this business model needed to be expanded to her fellow florists. In 2011 she collaborated with several local flower farmers to create the Seattle Wholesale Growers Market Cooperative, a non-profit marketplace for NW florists to source local and US grown flowers.",
-    "bio": "Learn more about SWGM here.",
+    "bio": "Learn more about SWGM here: ",
     "publications": " Melissa and her work in the sustainable flower movement has been published in national and international publications, printed in The 50 Mile Bouquet by Debra Prinzing and interviewed on NPR.",
     "learnMore": "To Learn more about the sustainable floral movement please visit"
   },
@@ -164,8 +164,8 @@
     "wishList": "Wishlist",
     "adminPanel": "Admin Panel",
     "welcome": "Welcome"
-    },
-    "delete_user": "Delete user",
+  },
+  "delete_user": "Delete user",
   "wishlist": "Wishlist",
   "cart": {
     "header": "Cart",

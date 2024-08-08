@@ -40,7 +40,7 @@ function WeddingProcess() {
             </h1>
             <p>{t("weddingProcess.step2Description")}</p>
             <div className="bttns">
-              <button><NavLink to="/wedding-gallery">{t("weddingProcess.weddingGallery")}</NavLink></button>
+              <button className="weddingGalleryBtn"><NavLink to="/wedding-gallery">{t("weddingProcess.weddingGallery")}</NavLink></button>
             </div>
           </div>
           <img src={image3} alt="image3" />

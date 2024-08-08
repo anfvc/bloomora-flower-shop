@@ -1,0 +1,45 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 11;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  background: #23b55e;
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  box-shadow: -6px -6px 5px rgba(248, 248, 248, 0.1), 6px 6px 5px rgba(248, 248, 248, 0.1);
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 300;
+  color: white;
+  text-transform: capitalize;
+  position: relative;
+}
+
+.modal .icon {
+  font-size: 9rem;
+  color: #ffffff;
+}
+
+.modal-backdrop p {
+  font-size: 3.5rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-top: 2rem;
+  color: #23b55e;
+}
