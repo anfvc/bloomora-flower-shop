@@ -1,35 +1,34 @@
 import { Schema, model } from "mongoose";
 
-const orderSchema = new Schema({
-  userId: {
-    type: String,
-    required: true,
+const orderSchema = new Schema(
+  {
+    userId: {
+      type: String,
+      required: true,
+    },
+    orderItems: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "OrderItem",
+      },
+    ],
+    status: {
+      type: String,
+      default: "pending",
+    },
+    date: {
+      type: Date,
+      default: Date.now(),
+    },
+    deliveryAddress: {
+      type: String,
+      required: true,
+    },
   },
-  items: {
-    type: [],
-    required: true,
-  },
-  amount: {
-    type: Number,
-    required: true,
-  },
-  address: {
-    type: Object,
-    required: true,
-  },
-  status: {
-    type: String,
-    default: "Order Processing.",
-  },
-  date: {
-    type: Date,
-    default: Date.now(),
-  },
-  payment: {
-    type: Boolean,
-    default: false,
-  },
-});
+  {
+    versionKey: false,
+  }
+);
 
 const Order = model("Order", orderSchema);
 

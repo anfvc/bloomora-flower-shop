@@ -2,6 +2,9 @@ import { StatusCodes } from "http-status-codes";
 import Order from "../models/Order.js";
 import User from "../models/User.js";
 import Stripe from "stripe";
+import Product from "../models/Product.js";
+import mongoose from "mongoose";
+import OrderItem from "../models/OrderItem.js";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -18,7 +21,7 @@ export async function createStripeCheckoutSession(req, res) {
     customer: stripeUserId,
     line_items: await transformCheckoutProductsToLineItems(checkoutProducts),
     mode: "payment",
-    success_url: `https://google.com?products=${JSON.stringify(
+    success_url: `http://localhost:5173/success=${JSON.stringify(
       checkoutProducts
     )}`,
     cancel_url: `http://localhost:5173/cart`,
@@ -66,25 +69,40 @@ async function createUserInStripe(user) {
   return stripeCustomer.id;
 }
 
-async function populateStripe() {
-  products
-    .sort(() => 0.5 - Math.random())
-    .forEach(async (product, index) => {
-      if (index % 20 === 0) {
-        await new Promise((r) => setTimeout(r, 2000));
-      }
+export async function getAllOrders(req, res) {
+  const { userId } = req.params;
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" });
+    }
 
-      try {
-        await stripe.products.create({
-          name: product.name,
-          description: product.description,
-          id: product._id.$oid,
-          images: [product.image],
-          default_price_data: {
-            currency: "eur",
-            unit_amount: product.price * 100,
-          },
-        });
-      } catch (e) {}
-    });
+    res.status(StatusCodes.OK).json(user.orders);
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error.message);
+  }
+}
+
+export async function createOrder(req, res) {
+  const { checkoutProducts, userId, deliveryAddress } = req.body;
+
+  const orderItems = await Promise.all(
+    checkoutProducts.map(async (checkoutProduct) => {
+      const { id, quantity } = checkoutProduct;
+      return await OrderItem.create({
+        quantity,
+        product: { _id: new mongoose.ObjectId(id) },
+      });
+    })
+  );
+
+  const order = await Order.create({
+    userId,
+    orderItems,
+    status: "paid",
+    deliveryAddress,
+    date: Date.now(),
+  });
+
+  res.status(200).json({ order });
 }
