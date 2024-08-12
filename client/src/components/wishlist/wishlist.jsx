@@ -36,10 +36,7 @@ function Wishlist() {
           "Content-Type": "application/json",
         },
 
-        body: JSON.stringify({ productId: item.productId._id }),
-
-        /*body: JSON.stringify({ productId: item.productId }),*/
-
+        body: JSON.stringify({ productId: item.productId }),
       };
       const response = await fetch(
         `${import.meta.env.VITE_API}/wishlist/delete/${user.user._id}`,
@@ -56,7 +53,6 @@ function Wishlist() {
         /*setUser(updatedUser);
         setWishList(updatedUser.user.wishList);
         console.log(updatedUser);*/
-
       } else {
         const { message } = await response.json();
         throw new Error(message);
@@ -76,11 +72,11 @@ function Wishlist() {
           {!!wishList?.length &&
             wishList.map((item) => (
               <div className="productsBox" key={item._id}>
-
-                /*<div className="delete" onClick={() => handleDelete(item)}>
+                /*
+                <div className="delete" onClick={() => handleDelete(item)}>
                   <p>X</p>
-                </div>*/
-
+                </div>
+                */
                 <div className="imageBox">
                   <img src={item.image} alt="" width={100} height={100} />
                   <button
@@ -94,12 +90,9 @@ function Wishlist() {
                   <p>{item.name}</p>
                   <p>{item.price} €</p>
                 </div>
-
-
                 <div className="deleteButton" onClick={handleDelete}>
                   <button>Delete</button>
                 </div>
-
               </div>
             ))}
         </div>
