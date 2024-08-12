@@ -9,15 +9,7 @@ import { useTranslation } from "react-i18next";
 
 function Cart() {
   const { t } = useTranslation();
-  const { user, setUser, cart, setCart, handleDelete } =
-    useContext(UserContext);
-
-  //   useEffect(() => {
-  //     async function getCart() {
-  //       try {
-  //         const response = await fetch(
-  //           `http://localhost:5100/api/cart/get/${user.user._id}`
-  //         );
+  const { user, setUser, cart, setCart, handleDelete } = useContext(UserContext);
 
   useEffect(() => {
     async function getCart() {
@@ -39,9 +31,7 @@ function Cart() {
       }
     }
     getCart();
-
   }, [user.user?._id, user.user?.cart]);
-
 
   //* Calculating total of cart:
   function total() {
@@ -111,7 +101,9 @@ function Cart() {
 
   async function createStripeCheckoutSession() {
     const response = await fetch(
-      `${import.meta.env.VITE_API}/order/createStripeCheckoutSession`,
+      `${import.meta.env.VITE_API}/order/createStripeCheckoutSession/${
+        user.user._id
+      }`,
       {
         method: "POST",
         headers: {
@@ -122,7 +114,6 @@ function Cart() {
             id: product.productId?._id,
             quantity: product.quantity,
           })),
-          userId: user.user._id,
         }),
       }
     );
@@ -179,7 +170,6 @@ function Cart() {
                       </button>
                     </div>
                     <div className="delete" onClick={() => handleDelete(item)}>
-
                       <MdOutlineDelete className="dlt" />
                     </div>
                   </div>

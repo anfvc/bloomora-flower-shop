@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import { addressSchema } from "./Address.js";
+import { orderSchema } from "./Order.js";
 
 const userSchema = new Schema(
   {
@@ -12,11 +13,6 @@ const userSchema = new Schema(
       required: true,
     },
     address: addressSchema,
-    /* street: { type: String},
-    houseNum:{type: String},
-    zip: { type: String },
-    city: { type: String },
-    country: { type: String, }, */
     email: {
       type: String,
       required: true,
@@ -91,6 +87,8 @@ const userSchema = new Schema(
       ],
       default: [],
     },
+    // orders: [orderSchema],
+    orders: [{ type: Schema.Types.ObjectId, ref: "Order" }],
     role: {
       type: String,
       required: true,
