@@ -11,9 +11,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 export async function createStripeCheckoutSession(req, res) {
   // checkoutProducts should be an array of objects
   // [ { id: id of product, quantity: quantity of said product in the checkout basket } ]
-  const { checkoutProducts, userId } = req.body;
-  // const { userId } = req.params;
-  // const { checkoutProducts } = req.body;
+  const { userId } = req.params;
+  const { checkoutProducts } = req.body;
   const user = await User.findById(userId);
   const stripeUserId = user.stripeCustomerId || createUserInStripe(user);
 
@@ -21,7 +20,7 @@ export async function createStripeCheckoutSession(req, res) {
     customer: stripeUserId,
     line_items: await transformCheckoutProductsToLineItems(checkoutProducts),
     mode: "payment",
-    success_url: `http://localhost:5173/success=${JSON.stringify(
+    success_url: `http://localhost:5173/success?checkoutProducts=${JSON.stringify(
       checkoutProducts
     )}`,
     cancel_url: `http://localhost:5173/cart`,
@@ -72,37 +71,54 @@ async function createUserInStripe(user) {
 export async function getAllOrders(req, res) {
   const { userId } = req.params;
   try {
-    const user = await User.findById(userId);
-    if (!user) {
-      res.status(StatusCodes.NOT_FOUND).json({ msg: "User not found" });
+    const orders = await Order.find({ userId: new mongoose.Types.ObjectId(userId) }).populate({
+      path: "orderItems",
+      populate: {
+        path: "product",
+        select: "name price image",
+      },
+    });
+    // const user = await User.findById(userId)
+    if (!orders) {
+      res.status(StatusCodes.NOT_FOUND).json({ msg: "User does not exist." });
     }
 
-    res.status(StatusCodes.OK).json(user.orders);
+    res.status(StatusCodes.OK).json(orders);
   } catch (error) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error.message);
   }
 }
 
 export async function createOrder(req, res) {
-  const { checkoutProducts, userId, deliveryAddress } = req.body;
+  // const { checkoutProducts, userId, deliveryAddress } = req.body;
+  const { checkoutProducts } = req.body;
+  const { userId } = req.params;
 
   const orderItems = await Promise.all(
     checkoutProducts.map(async (checkoutProduct) => {
       const { id, quantity } = checkoutProduct;
       return await OrderItem.create({
         quantity,
-        product: { _id: new mongoose.ObjectId(id) },
+        product: { _id: new mongoose.Types.ObjectId(id) },
       });
     })
   );
 
   const order = await Order.create({
-    userId,
+    userId: { _id: new mongoose.Types.ObjectId(userId) },
     orderItems,
     status: "paid",
-    deliveryAddress,
+    // deliveryAddress: "Random",
     date: Date.now(),
   });
+
+
+  await User.findByIdAndUpdate(
+    userId,
+    { $push: { orders: order._id } },
+    { new: true }
+  );
+
 
   res.status(200).json({ order });
 }

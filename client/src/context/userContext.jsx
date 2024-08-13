@@ -18,6 +18,7 @@ const UserProvider = ({ children }) => {
   const [cart, setCart] = useState(
     user.cart || [] //*This returns the current cart of the logged in user. Value that is stored in Backend
   );
+  const [orders, setOrders] = useState(user.orders || [])
 
   const { showAlert } = useAlert();
 
@@ -110,7 +111,7 @@ const UserProvider = ({ children }) => {
     }
   }
 
-  
+
   const handleDelete = async (item) => {
     try {
       const settings = {
@@ -118,7 +119,7 @@ const UserProvider = ({ children }) => {
         headers: {
           "Content-Type": "application/json",
         },
-         body: JSON.stringify({productId: item.productId._id}), 
+         body: JSON.stringify({productId: item.productId._id}),
 
       };
       const response = await fetch(
@@ -138,7 +139,7 @@ const UserProvider = ({ children }) => {
       }
     } catch (error) {
       console.log(error.message);
-     
+
     }
   };
 
@@ -268,6 +269,8 @@ const UserProvider = ({ children }) => {
         setCart,
         handleDelete,
         checkUserAuth,
+        orders,
+        setOrders
       }}
     >
       {children}

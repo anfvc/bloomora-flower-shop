@@ -13,6 +13,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Wishlist from "../wishlist/wishlist";
 import Invoice from "../invoice/Invoice";
 import CreateProduct from "../../views/Admin/CreateProduct";
+import MyOrders from "../MyOrders/MyOrders";
 import { useTranslation } from "react-i18next";
 
 function UserPanel() {
@@ -136,7 +137,7 @@ function UserPanel() {
                     </h1>
                   </div>
                 )}
-                {activeSection === "orders" && <div>Orders Component</div>}
+                {activeSection === "orders" && <MyOrders/>}
                 {activeSection === "invoices" && <Invoice />}
                 {activeSection === "wishlist" && <Wishlist />}
                 {activeSection === "admin" && <CreateProduct />}{" "}

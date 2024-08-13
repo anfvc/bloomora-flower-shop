@@ -12,13 +12,6 @@ function Cart() {
   const { user, setUser, cart, setCart, handleDelete } =
     useContext(UserContext);
 
-  //   useEffect(() => {
-  //     async function getCart() {
-  //       try {
-  //         const response = await fetch(
-  //           `http://localhost:5100/api/cart/get/${user.user._id}`
-  //         );
-
   useEffect(() => {
     async function getCart() {
       try {
@@ -39,9 +32,7 @@ function Cart() {
       }
     }
     getCart();
-
   }, [user.user?._id, user.user?.cart]);
-
 
   //* Calculating total of cart:
   function total() {
@@ -110,25 +101,58 @@ function Cart() {
   };
 
   async function createStripeCheckoutSession() {
-    const response = await fetch(
-      `${import.meta.env.VITE_API}/order/createStripeCheckoutSession`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          checkoutProducts: cart.map((product) => ({
-            id: product.productId?._id,
-            quantity: product.quantity,
-          })),
-          userId: user.user._id,
-        }),
-      }
-    );
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API}/order/createStripeCheckoutSession/${
+          user.user._id
+        }`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            checkoutProducts: cart.map((product) => ({
+              id: product.productId?._id,
+              quantity: product.quantity,
+            })),
+          }),
+        }
+      );
 
-    const body = await response.json();
-    window.location.replace(body.url);
+      const body = await response.json();
+      if (body.url) {
+        await clearCart();
+        window.location.replace(body.url);
+      } else {
+        console.error("Failed to create Stripe Checkout Session.");
+      }
+    } catch (error) {
+      console.log("Error in checkout process.", error);
+    }
+  }
+
+  async function clearCart() {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API}/cart/clear/${user.user._id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/JSON",
+          },
+        }
+      );
+
+      if (response.ok) {
+        setCart([]);
+      } else {
+        const { error } = await response.json();
+        throw new Error(error.message);
+      }
+    } catch (error) {
+      console.log("Error clearing cart.");
+    }
   }
 
   return (
@@ -179,7 +203,6 @@ function Cart() {
                       </button>
                     </div>
                     <div className="delete" onClick={() => handleDelete(item)}>
-
                       <MdOutlineDelete className="dlt" />
                     </div>
                   </div>

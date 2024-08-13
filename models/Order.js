@@ -1,10 +1,12 @@
 import { Schema, model } from "mongoose";
+import { addressSchema } from "./Address.js";
 
-const orderSchema = new Schema(
+export const orderSchema = new Schema(
   {
     userId: {
-      type: String,
+      type: Schema.Types.ObjectId,
       required: true,
+      ref: "User",
     },
     orderItems: [
       {
@@ -20,10 +22,7 @@ const orderSchema = new Schema(
       type: Date,
       default: Date.now(),
     },
-    deliveryAddress: {
-      type: String,
-      required: true,
-    },
+    deliveryAddress: addressSchema,
   },
   {
     versionKey: false,

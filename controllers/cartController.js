@@ -176,3 +176,24 @@ export async function decreaseQuantityCart(req, res) {
     });
   }
 }
+
+export async function clearCart(req, res) {
+  const { userId } = req.params;
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(StatusCodes.NOT_FOUND).json({ message: "User not found." });
+    }
+
+    user.cart = [] //* Here, we are emptying the cart.
+    await user.save(); //* Saving the change
+
+    res.status(StatusCodes.OK).json({ message: "Cart cleared successfully." });
+    console.log("Cart cleared successfully.");
+  } catch (error) {
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      message: "Internal Server Error",
+    });
+  }
+}
