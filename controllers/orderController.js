@@ -5,6 +5,7 @@ import Stripe from "stripe";
 import Product from "../models/Product.js";
 import mongoose from "mongoose";
 import OrderItem from "../models/OrderItem.js";
+import validator from "validator";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -14,7 +15,13 @@ export async function createStripeCheckoutSession(req, res) {
   const { userId } = req.params;
   const { checkoutProducts } = req.body;
   const user = await User.findById(userId);
-  const stripeUserId = user.stripeCustomerId || createUserInStripe(user);
+  // const stripeUserId = user.stripeCustomerId || createUserInStripe(user);
+
+  let stripeUserId = user.stripeCustomerId;
+
+  if (validator.isUUID(stripeUserId)) {
+    stripeUserId = await createUserInStripe(user);
+  }
 
   const checkoutParams = {
     customer: stripeUserId,
@@ -71,7 +78,9 @@ async function createUserInStripe(user) {
 export async function getAllOrders(req, res) {
   const { userId } = req.params;
   try {
-    const orders = await Order.find({ userId: new mongoose.Types.ObjectId(userId) }).populate({
+    const orders = await Order.find({
+      userId: new mongoose.Types.ObjectId(userId),
+    }).populate({
       path: "orderItems",
       populate: {
         path: "product",
@@ -112,13 +121,11 @@ export async function createOrder(req, res) {
     date: Date.now(),
   });
 
-
   await User.findByIdAndUpdate(
     userId,
     { $push: { orders: order._id } },
     { new: true }
   );
-
 
   res.status(200).json({ order });
 }
