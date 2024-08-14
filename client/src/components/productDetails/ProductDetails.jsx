@@ -84,9 +84,9 @@ function ProductDetails({ product, onClose }) {
             </div>
           </div>
         </div>
-        <div className="recommendedProducts">
+        {/* <div className="recommendedProducts">
           <h3>Recommended Products</h3>
-        </div>
+        </div> */}
       </div>
     </div>
   );

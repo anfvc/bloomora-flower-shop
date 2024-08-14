@@ -72,11 +72,6 @@ function Wishlist() {
           {!!wishList?.length &&
             wishList.map((item) => (
               <div className="productsBox" key={item._id}>
-                /*
-                <div className="delete" onClick={() => handleDelete(item)}>
-                  <p>X</p>
-                </div>
-                */
                 <div className="imageBox">
                   <img src={item.image} alt="" width={100} height={100} />
                   <button
@@ -91,7 +86,7 @@ function Wishlist() {
                   <p>{item.price} €</p>
                 </div>
                 <div className="deleteButton" onClick={handleDelete}>
-                  <button>Delete</button>
+                  <button onClick={() => handleDelete(item)}>Delete</button>
                 </div>
               </div>
             ))}
