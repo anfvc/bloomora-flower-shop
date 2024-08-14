@@ -33,23 +33,25 @@ function App() {
   return (
     <div className="App" data-theme={isChecked ? "dark" : "light"}>
       <Navbar toggleTheme={toggleTheme} isChecked={isChecked} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/ourroots" element={<OurRoots />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/weddings-events" element={<WeddingsEvents />} />
-        <Route path="/wedding-process" element={<WeddingProcess />} />
-        <Route path="/wedding-gallery" element={<WeddingGallery />} />
-        <Route path="/wedding-inquiry" element={<WeddingInquiry />} />
-        <Route path="/events" element={<WeddingEvents />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/admin" element={<CreateProduct />} />
-        <Route path="/userPanel" element={<UserPanel />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/success" element={<SuccessPage />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/ourroots" element={<OurRoots />} />
+          <Route path="/shop" element={<Shop />} />
+          <Route path="/weddings-events" element={<WeddingsEvents />} />
+          <Route path="/wedding-process" element={<WeddingProcess />} />
+          <Route path="/wedding-gallery" element={<WeddingGallery />} />
+          <Route path="/wedding-inquiry" element={<WeddingInquiry />} />
+          <Route path="/events" element={<WeddingEvents />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/admin" element={<CreateProduct />} />
+          <Route path="/userPanel" element={<UserPanel />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/success" element={<SuccessPage />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+        </Routes>
+      </main>
       <Footer />
     </div>
   );

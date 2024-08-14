@@ -39,8 +39,8 @@
   height: 5rem;
   border-radius: 3px;
   border: none;
-  background-color: #698474;
-  border: 1px solid #698474;
+  background-color: #b83050;
+  border: transparent;
   font-size: 1.5rem;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -66,7 +66,7 @@
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: #385242;
+  background-color: #87142f;
   border: #385242;
   z-index: -1;
   transition: transform 0.3s ease-in-out;

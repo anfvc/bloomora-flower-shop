@@ -394,14 +394,14 @@ function Navbar({ toggleTheme, isChecked }) {
                             onClick={() => handleMenuItemClick(openLogin)}
                           >
                             <IoLogIn />
-                            {t("sign_in")}
+                            {t("sign_in.header")}
                           </li>
                           <li
                             className="dd-li"
                             onClick={() => handleMenuItemClick(openRegister)}
                           >
                             <MdPersonAdd />
-                            {t("register")}
+                            {t("register.header")}
                           </li>
                         </>
                       )}

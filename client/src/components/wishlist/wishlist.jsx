@@ -85,7 +85,6 @@ function Wishlist() {
                   <p>{item.name}</p>
                   <p>{item.price} €</p>
                 </div>
-                <div
                   className="deleteButton"
                   onClick={() => handleDelete(item)}
                 >
