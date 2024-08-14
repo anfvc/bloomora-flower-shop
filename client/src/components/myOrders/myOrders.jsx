@@ -35,9 +35,6 @@ function MyOrders() {
     );
   }
 
-  console.log(orders);
-  console.log(user);
-
   return (
     <>
       <div className="wishlist-container">
@@ -49,6 +46,15 @@ function MyOrders() {
                   <h2>Order Number {order._id}</h2>
                   <p>Order Status: {order.status}</p>
                   <p>Order Placed: {new Date(order.date).toLocaleString()}</p>
+                  <h5>Delivery Address</h5>
+                  <p>
+                    Street: {order.deliveryAddress.street}{" "}
+                    {order.deliveryAddress.houseNum}
+                  </p>
+
+                  <p>PLZ: {order.deliveryAddress.zip}</p>
+                  <p>City: {order.deliveryAddress.city}</p>
+
                   <p>Total: {total(order)}€</p>
                   <div>
                     {order.orderItems.map((item) => {

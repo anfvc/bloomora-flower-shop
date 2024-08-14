@@ -1,8 +1,9 @@
 import express from "express";
 import {
-  createOrder,
+  // createOrder,
   createStripeCheckoutSession,
   getAllOrders,
+  saveDeliveryAddress
 } from "../controllers/orderController.js";
 
 //!We should use the authMiddleware
@@ -10,10 +11,11 @@ import {
 const router = express.Router();
 
 router.post(
-  "/createStripeCheckoutSession/:userId",
+  "/createStripeCheckoutSession/:userId/:orderId",
   createStripeCheckoutSession
 );
 router.get("/all/:userId", getAllOrders);
-router.post("/createOrder/:userId", createOrder);
+// router.post("/createOrder/:userId", createOrder);
+router.post("/address/:userId", saveDeliveryAddress)
 
 export default router;

@@ -5,7 +5,6 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import "./editProfile.css";
 
 function EditProfile({ closeEdit }) {
-
   const { user, setUser, checkUserAuth } = useContext(UserContext);
   const [userAddress, setUserAddress] = useState({
     street: user.user.address?.street,
@@ -20,12 +19,9 @@ function EditProfile({ closeEdit }) {
     address: userAddress,
   });
 
-
-
   useEffect(() => {
     setFormData({ ...formData, address: userAddress });
   }, [userAddress]);
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,7 +30,6 @@ function EditProfile({ closeEdit }) {
       [name]: value,
     }));
   };
-
 
   const handleSaveProfile = async (e) => {
     e.preventDefault();
@@ -50,8 +45,7 @@ function EditProfile({ closeEdit }) {
         headers: {
           "Content-Type": "application/JSON",
         },
-      }
-
+      };
 
       const response = await fetch(
         `${import.meta.env.VITE_API}/user/update/${user.user._id}`,
@@ -66,7 +60,7 @@ function EditProfile({ closeEdit }) {
           ...user,
           firstName: updateUser.updatedUser.firstName,
           lastName: updateUser.updatedUser.lastName,
-              address: {
+          address: {
             street: updateUser.updatedUser.street,
             num: updateUser.updatedUser.num,
             zip: updateUser.updatedUser.zip,
@@ -87,7 +81,6 @@ function EditProfile({ closeEdit }) {
       console.log(error.message);
     }
   };
-
 
   return (
     <form className="editProfileForm" onSubmit={handleSaveProfile}>
@@ -167,32 +160,12 @@ function EditProfile({ closeEdit }) {
         />
       </label>
 
-      {/* <label>
-        Invoice Address:
-        <input
-          type="text"
-          name="invoiceAddress"
-          value={formData.invoiceAddress}
-          onChange={handleChange}
-        />
-      </label> */}
-      {/*  <label>
-        Delivery Address:
-        <input
-          type="text"
-          name="deliveryAddress"
-          value={formData.deliveryAddress}
-          onChange={handleChange}
-        />
-      </label> */}
-
       <div className="save-cancel">
         <button type="submit" className="saveButton">
           Save
         </button>
 
-        <button type="button" className="cancelButton" onClick={handleChange} >
-
+        <button type="button" className="cancelButton" onClick={handleChange}>
           Cancel
         </button>
       </div>

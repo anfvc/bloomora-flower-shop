@@ -22,7 +22,15 @@ export const orderSchema = new Schema(
       type: Date,
       default: Date.now(),
     },
-    deliveryAddress: addressSchema,
+    deliveryAddress: {
+      firstName: { type: String },
+      lastName: { type: String },
+      street: { type: String },
+      houseNum: { type: String },
+      zip: { type: String },
+      city: { type: String },
+      country: { type: String },
+    },
   },
   {
     versionKey: false,
