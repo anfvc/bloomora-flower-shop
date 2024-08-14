@@ -7,16 +7,16 @@ export const validateRegisterInputs = [
   body("lastName").notEmpty().withMessage("Last name is required."),
   body("email")
     .notEmpty()
-    .withMessage("Email is required.")
+    .withMessage("Email is Required.")
     .isEmail()
-    .withMessage("Invalid email format.")
+    .withMessage("Invalid Email format.")
     .custom(async (email) => {
       const userExists = await User.findOne({ email });
       if (userExists) throw new BadRequestError("Email already exists.");
     }),
   body("password")
     .notEmpty()
-    .withMessage("Password is required.")
+    .withMessage("Password is Required.")
     .isStrongPassword({
       minLength: 8,
       minLowercase: 1,
@@ -31,8 +31,8 @@ export const validateRegisterInputs = [
     body("confirmPassword")
     .notEmpty()
     .withMessage("Please confirm password"),
-    
-    
+
+
 ];
 
 export const validateLoginInputs = [
@@ -40,10 +40,10 @@ export const validateLoginInputs = [
     .notEmpty()
     .withMessage("Email is required.")
     .isEmail()
-    .withMessage("Invalid email format."),
+    .withMessage("Invalid Email Format."),
 
-  body("password").notEmpty().withMessage("Password is required."),
- 
+  body("password").notEmpty().withMessage("Password is Required."),
+
 ];
 
 export function userValidationErrorHandling(req, res, next) {
