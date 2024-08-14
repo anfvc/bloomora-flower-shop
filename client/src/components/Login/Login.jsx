@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { FaEye, FaEyeSlash } from "react-icons/fa"; 
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./Login.css";
 import { UserContext } from "../../context/userContext";
 import { useTranslation } from "react-i18next";
@@ -48,8 +48,8 @@ function Login({ openRegister, closeModals }) {
         closeModals();
         document.querySelector("details[open]").removeAttribute("open");
       } else {
-        const { error } = await response.json();
-        throw new Error(error.message);
+        const error = await response.json();
+        showAlert(error.msg, "warning");
       }
     } catch (error) {
       console.log(error.message);
@@ -63,7 +63,7 @@ function Login({ openRegister, closeModals }) {
         <form onSubmit={handleSubmit}>
           <label>{t("sign_in.email")}</label>
           <input
-            type="email"
+            type="text"
             value={email}
             placeholder="abcd@example.com"
             onChange={(e) => setEmail(e.target.value)}

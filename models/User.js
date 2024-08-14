@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 import { addressSchema } from "./Address.js";
-import { orderSchema } from "./Order.js";
+import { v4 as uuidv4 } from "uuid";
 
 const userSchema = new Schema(
   {
@@ -28,6 +28,7 @@ const userSchema = new Schema(
     },
     stripeCustomerId: {
       type: String,
+      default: uuidv4(), //adding uuid
       unique: true,
     },
     cart: {

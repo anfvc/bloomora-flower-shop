@@ -3,6 +3,7 @@ import { UserContext } from "../../context/userContext";
 import { useTranslation } from "react-i18next";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./Register.css";
+import { useAlert } from "../../context/alertContext";
 
 function Register({ openLogin, closeModals }) {
   const [firstName, setFirstName] = useState("");
@@ -14,7 +15,7 @@ function Register({ openLogin, closeModals }) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const { t, i18n } = useTranslation();
-
+  const { showAlert } = useAlert();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -28,7 +29,8 @@ function Register({ openLogin, closeModals }) {
     e.preventDefault();
 
     if (!firstName || !lastName || !email || !password || !confirmPassword) {
-      alert("Missing credentials.");
+      // alert("Missing credentials.");
+      showAlert("Missing Credentials. Please check", "warning");
       return;
     }
 
@@ -57,15 +59,16 @@ function Register({ openLogin, closeModals }) {
         console.log(userData);
         setUser(userData);
         closeModals();
+        showAlert("Registration successful. Please login to shop!.", "success");
 
         document.querySelector("details[open]").removeAttribute("open");
-
       } else {
-        const { error } = await response.json();
-        throw new Error(error.message);
+        const error = await response.json();
+        console.log(error.msg);
+        showAlert(error.msg, "warning");
       }
     } catch (error) {
-      alert(error.message);
+      console.log(error.message);
     }
   };
 
@@ -81,7 +84,6 @@ function Register({ openLogin, closeModals }) {
               value={firstName}
               placeholder="Name"
               onChange={(e) => setFirstName(e.target.value)}
-              required
             />
           </div>
           <div className="lastName">
@@ -91,17 +93,15 @@ function Register({ openLogin, closeModals }) {
               value={lastName}
               placeholder="Last Name"
               onChange={(e) => setLastName(e.target.value)}
-              required
             />
           </div>
           <div className="email">
             <label>{t("register.email")}</label>
             <input
-              type="email"
+              type="text"
               value={email}
               placeholder="abcd@example.com"
               onChange={(e) => setEmail(e.target.value)}
-              required
             />
           </div>
           <div className="password">
@@ -111,7 +111,6 @@ function Register({ openLogin, closeModals }) {
               value={password}
               placeholder="abcD&12345"
               onChange={(e) => setPassword(e.target.value)}
-              required
             />
             <span
               className="togglePasswordIcon"
@@ -128,7 +127,6 @@ function Register({ openLogin, closeModals }) {
               value={confirmPassword}
               placeholder="abcD&12345"
               onChange={(e) => setConfirmPassword(e.target.value)}
-              required
             />
             <span
               className="togglePasswordIcon"
