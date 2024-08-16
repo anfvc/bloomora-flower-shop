@@ -99,6 +99,10 @@
   },
   "wedding_gallery": "Wedding Gallery",
   "events": "Events",
+  "weddingInquiry": {
+    "header1": "Wedding Inquiry",
+    "header2": ""
+  },
   "contact": {
     "header": "Contact",
     "shopHours": {

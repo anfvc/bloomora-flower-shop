@@ -3,7 +3,9 @@ import { UserContext } from "../../context/userContext";
 import "./editProfile.css";
 import { useAlert } from "../../context/alertContext";
 
+
 function EditProfile() {
+
   const { user, setUser, checkUserAuth } = useContext(UserContext);
   const { showAlert } = useAlert();
  
@@ -23,7 +25,6 @@ function EditProfile() {
   useEffect(() => {
     setFormData({ ...formData, address: userAddress });
   }, [userAddress]);
-
 
 
   const handleChange = (e) => {
@@ -163,7 +164,9 @@ function EditProfile() {
           Save
         </button>
 
+
         {/* <button type="button" className="cancelButton" onClick={handleChange}>
+
           Cancel
         </button> */}
       </div>

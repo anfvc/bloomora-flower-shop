@@ -3,6 +3,7 @@ import "./OurRoots.css";
 import P1 from "../../images/ourRootsImage/P1.png";
 import P2 from "../../images/ourRootsImage/P2.png";
 import P3 from "../../images/ourRootsImage/P3.png";
+import Logo from "../../images/logo/bloomoraV6.png";
 import { useTranslation } from "react-i18next";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
@@ -27,6 +28,45 @@ function OurRoots() {
         <h1>{t("ourRoots.header")}</h1>
       </div>
       <div className="roots">
+        <div className="rootImages">
+        <div className="image2">
+            <img src={P2} alt="image2" className="image2" />
+            <div className="socialContacts">
+              <NavLink className="socialIcon">
+                <FaLinkedin />
+              </NavLink>
+              <NavLink className="socialIcon">
+                <FaGithub />
+              </NavLink>
+            </div>
+          </div>
+          <div className="image3">
+            <img src={P3} alt="image3" className="image3" />
+            <div className="socialContacts">
+              <NavLink className="socialIcon">
+                <FaLinkedin />
+              </NavLink>
+              <NavLink className="socialIcon">
+                <FaGithub />
+              </NavLink>
+            </div>
+          </div>
+          <div className="image1">
+            <img src={P1} alt="image1" className="image1" />
+            <div className="socialContacts">
+              <NavLink
+                to="#"
+                onClick={handleNavLinkClick}
+                className="socialIcon"
+              >
+                <FaLinkedin />
+              </NavLink>
+              <NavLink className="socialIcon">
+                <FaGithub />
+              </NavLink>
+            </div>
+          </div>
+        </div>
         <div className="index">
           <p>{t("ourRoots.whoWeAre")}</p>
           <p>{t("ourRoots.description")}</p>
@@ -54,45 +94,6 @@ function OurRoots() {
           <p>{t("ourRoots.joinOurTeam")}</p>
           <p>{t("ourRoots.join")}</p>
           <p>{t("ourRoots.aphorism")}</p>
-        </div>
-        <div className="rootImages">
-          <div className="image1">
-            <img src={P1} alt="image1" className="image1" />
-            <div className="socialContacts">
-              <NavLink
-                to="#"
-                onClick={handleNavLinkClick}
-                className="socialIcon"
-              >
-                <FaLinkedin />
-              </NavLink>
-              <NavLink className="socialIcon">
-                <FaGithub />
-              </NavLink>
-            </div>
-          </div>
-          <div className="image2">
-            <img src={P2} alt="image2" className="image2" />
-            <div className="socialContacts">
-              <NavLink className="socialIcon">
-                <FaLinkedin />
-              </NavLink>
-              <NavLink className="socialIcon">
-                <FaGithub />
-              </NavLink>
-            </div>
-          </div>
-          <div className="image3">
-            <img src={P3} alt="image3" className="image3" />
-            <div className="socialContacts">
-              <NavLink className="socialIcon">
-                <FaLinkedin />
-              </NavLink>
-              <NavLink className="socialIcon">
-                <FaGithub />
-              </NavLink>
-            </div>
-          </div>
         </div>
       </div>
     </div>

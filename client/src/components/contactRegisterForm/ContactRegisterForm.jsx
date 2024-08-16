@@ -8,7 +8,7 @@ import { validationSchema } from "../contactValidationForm/ContactValidationForm
 function ContactRegisterForm() {
   const { t } = useTranslation();
 
-  const { values, errors, handleChange, handleSubmit } = useFormik({
+  const { values, errors, handleChange } = useFormik({
     initialValues: {
       firstName: "",
       lastName: "",
@@ -17,8 +17,22 @@ function ContactRegisterForm() {
       subject: "",
       message: "",
     },
-    validationSchema: validationSchema
+    validationSchema: validationSchema,
   });
+
+  const handleSubmit = async (values) => {
+    try {
+      await fetch("https://formspree.io/f/mgejprbd", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+    } catch (error) {
+      console.error("Form gönderimi sırasında hata:", error);
+    }
+  };
 
   const firstNameId = useId();
   const lastNameId = useId();
@@ -29,53 +43,61 @@ function ContactRegisterForm() {
 
   return (
     <div className="contactRegisterFormContainer">
-      <form onSubmit={handleSubmit}>
+      <form
+        action="https://formspree.io/f/mgejprbd"
+        method="POST"
+        onSubmit={handleSubmit}
+      >
         <div className="firstName-lastName">
           <div className="firstName">
-            <label htmlFor={firstNameId}>{t('contactForm.firstName')}</label>
+            <label htmlFor={firstNameId}>{t("contactForm.firstName")}</label>
             <input
               name="firstName"
               type="text"
               id={firstNameId}
               value={values.firstName}
-              placeholder={t('contactForm.placeholder.firstName')}
+              placeholder={t("contactForm.placeholder.firstName")}
               onChange={handleChange}
             />
-            {errors.firstName && <p className="inputValidation">{errors.firstName}</p>}
+            {errors.firstName && (
+              <p className="inputValidation">{errors.firstName}</p>
+            )}
           </div>
           <div className="lastName">
-            <label htmlFor={lastNameId}>{t('contactForm.lastName')}</label>
+            <label htmlFor={lastNameId}>{t("contactForm.lastName")}</label>
             <input
               name="lastName"
               type="text"
               id={lastNameId}
               value={values.lastName}
-              placeholder={t('contactForm.placeholder.lastName')}
+              placeholder={t("contactForm.placeholder.lastName")}
               onChange={handleChange}
             />
-            {errors.lastName && <p className="inputValidation">{errors.lastName}</p>}
+            {errors.lastName && (
+              <p className="inputValidation">{errors.lastName}</p>
+            )}
           </div>
         </div>
         <div className="email-phone">
           <div className="email">
-            <label htmlFor={emailId}>{t('contactForm.email')}</label>
+            <label htmlFor={emailId}>{t("contactForm.email")}</label>
             <input
               name="email"
               type="text"
               id={emailId}
-              placeholder={t('contactForm.placeholder.email')}
+              placeholder={t("contactForm.placeholder.email")}
               value={values.email}
               onChange={handleChange}
             />
             {errors.email && <p className="inputValidation">{errors.email}</p>}
           </div>
           <div className="phone">
-            <label htmlFor={phoneId}>{t('contactForm.phone')}</label>
+            <label htmlFor={phoneId}>{t("contactForm.phone")}</label>
             <input
               name="phone"
               type="text"
               id={phoneId}
-              placeholder={t('contactForm.placeholder.phone')}
+              placeholder={t("contactForm.placeholder.phone")}
               value={values.phone}
               onChange={handleChange}
             />
@@ -83,25 +105,45 @@ function ContactRegisterForm() {
           </div>
         </div>
         <div className="subject">
-          <label htmlFor={subjectId}>{t('contactForm.subject')}</label>
+          <label htmlFor={subjectId}>{t("contactForm.subject")}</label>
           <select
             name="subject"
             id={subjectId}
             value={values.subject}
             onChange={handleChange}
           >
-            <option value="" label={t('contactForm.subjectOptions.default')} />
-            <option value="Bouquet Order" label={t('contactForm.subjectOptions.bouquetOrder')} />
-            <option value="Special Event Arrangements" label={t('contactForm.subjectOptions.specialEventArrangements')} />
-            <option value="Delivery Inquiry" label={t('contactForm.subjectOptions.deliveryInquiry')} />
-            <option value="Custom Floral Design" label={t('contactForm.subjectOptions.customFloralDesign')} />
-            <option value="Store Feedback" label={t('contactForm.subjectOptions.storeFeedback')} />
-            <option value="Other Inquiries" label={t('contactForm.subjectOptions.otherInquiries')} />
+            <option value="" label={t("contactForm.subjectOptions.default")} />
+            <option
+              value="Bouquet Order"
+              label={t("contactForm.subjectOptions.bouquetOrder")}
+            />
+            <option
+              value="Special Event Arrangements"
+              label={t("contactForm.subjectOptions.specialEventArrangements")}
+            />
+            <option
+              value="Delivery Inquiry"
+              label={t("contactForm.subjectOptions.deliveryInquiry")}
+            />
+            <option
+              value="Custom Floral Design"
+              label={t("contactForm.subjectOptions.customFloralDesign")}
+            />
+            <option
+              value="Store Feedback"
+              label={t("contactForm.subjectOptions.storeFeedback")}
+            />
+            <option
+              value="Other Inquiries"
+              label={t("contactForm.subjectOptions.otherInquiries")}
+            />
           </select>
-          {errors.subject && <p className="inputValidation">{errors.subject}</p>}
+          {errors.subject && (
+            <p className="inputValidation">{errors.subject}</p>
+          )}
         </div>
         <div className="message">
-          <label htmlFor={messageId}>{t('contactForm.message')}</label>
+          <label htmlFor={messageId}>{t("contactForm.message")}</label>
           <textarea
             name="message"
             id={messageId}
@@ -110,10 +152,12 @@ function ContactRegisterForm() {
             cols="30"
             rows="10"
           ></textarea>
-          {errors.message && <p className="inputValidation">{errors.message}</p>}
+          {errors.message && (
+            <p className="inputValidation">{errors.message}</p>
+          )}
         </div>
         <div className="submitButton">
-          <button type="submit">{t('contactForm.submit')}</button>
+          <button type="submit">{t("contactForm.submit")}</button>
         </div>
       </form>
     </div>
