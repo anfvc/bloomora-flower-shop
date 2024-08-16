@@ -89,6 +89,8 @@ const UserProvider = ({ children }) => {
           const data = await response.json();
           setSortedProducts(data);
           setOriginalProducts(data);
+          // console.log(data);
+          
         } else {
           const { error } = await response.json();
           throw new Error(error.message);
@@ -201,33 +203,33 @@ const UserProvider = ({ children }) => {
     setFilteredProducts(filtered);
   };
 
-  const sortAlphabeticallyAZ = () => {
-    const sorted = [...sortedProducts].sort((a, b) =>
-      a.name.localeCompare(b.name)
-    );
-    setSortedProducts(sorted);
-  };
+  // const sortAlphabeticallyAZ = () => {
+  //   const sorted = [...sortedProducts].sort((a, b) =>
+  //     a.name.localeCompare(b.name)
+  //   );
+  //   setSortedProducts(sorted);
+  // };
 
-  const sortAlphabeticallyZA = () => {
-    const sorted = [...sortedProducts].sort((a, b) =>
-      b.name.localeCompare(a.name)
-    );
-    setSortedProducts(sorted);
-  };
+  // const sortAlphabeticallyZA = () => {
+  //   const sorted = [...sortedProducts].sort((a, b) =>
+  //     b.name.localeCompare(a.name)
+  //   );
+  //   setSortedProducts(sorted);
+  // };
 
-  const sortByPriceLowToHigh = () => {
-    const sorted = [...sortedProducts].sort(
-      (a, b) => parseFloat(a.price) - parseFloat(b.price)
-    );
-    setSortedProducts(sorted);
-  };
+  // const sortByPriceLowToHigh = () => {
+  //   const sorted = [...sortedProducts].sort(
+  //     (a, b) => parseFloat(a.price) - parseFloat(b.price)
+  //   );
+  //   setSortedProducts(sorted);
+  // };
 
-  const sortByPriceHighToLow = () => {
-    const sorted = [...sortedProducts].sort(
-      (a, b) => parseFloat(b.price) - parseFloat(a.price)
-    );
-    setSortedProducts(sorted);
-  };
+  // const sortByPriceHighToLow = () => {
+  //   const sorted = [...sortedProducts].sort(
+  //     (a, b) => parseFloat(b.price) - parseFloat(a.price)
+  //   );
+  //   setSortedProducts(sorted);
+  // };
 
   const resetSorting = () => {
     setSortedProducts(originalProducts);
@@ -264,10 +266,10 @@ const UserProvider = ({ children }) => {
         setIsLoggedIn,
         logout,
         sortedProducts,
-        sortAlphabeticallyAZ,
-        sortAlphabeticallyZA,
-        sortByPriceLowToHigh,
-        sortByPriceHighToLow,
+        // sortAlphabeticallyAZ,
+        // sortAlphabeticallyZA,
+        // sortByPriceLowToHigh,
+        // sortByPriceHighToLow,
         resetSorting,
         setIsMenuOpen,
         isMenuOpen,
@@ -280,7 +282,7 @@ const UserProvider = ({ children }) => {
         setFilter,
         handleFilter,
         addToCart,
-        addToWishList,
+         addToWishList,
         wishList,
         setWishList,
         cart,
@@ -293,6 +295,7 @@ const UserProvider = ({ children }) => {
         setDeliveryAddress,
         orderId,
         setOrderId,
+
       }}
     >
       {children}

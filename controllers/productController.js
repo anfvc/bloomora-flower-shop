@@ -4,15 +4,7 @@ import cloudinary from "../middleware/cloudinary.js";
 import fs from "fs";
 
 export async function createProduct(req, res) {
-  // console.log("File Received", req.file);
-  // console.log("Body Data", req.body);
-
-  // let imageFile = `${req.file.filename}`;
-
-  // const timestamp = Math.round((new Date()).getTime()/1000)
-
-  // const signature = cloudinary.utils.api_sign_request({timestamp: timestamp}, cloudinary.config().process.env.CLOUD_API_SECRET)
-
+  
   const { name, description, price, category, subcategory, createdBy } =
     req.body;
 
