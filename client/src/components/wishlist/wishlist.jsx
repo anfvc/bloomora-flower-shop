@@ -85,12 +85,12 @@ function Wishlist() {
                   <p>{item.name}</p>
                   <p>{item.price} €</p>
                 </div>
-                
-                 
-                
-                  <button  className="deleteButton"
-                  onClick={() => handleDelete(item)}>Delete</button>
-              
+                <div
+                  className="deleteButton"
+                  onClick={() => handleDelete(item)}
+                >
+                  <button>Delete</button>
+                </div>
               </div>
             ))}
         </div>

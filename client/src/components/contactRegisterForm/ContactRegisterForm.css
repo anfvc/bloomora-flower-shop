@@ -25,7 +25,7 @@
   height: 4rem;
   padding-left: 1rem;
   border-radius: 3px;
-  border: 1px solid #698474;
+  border: 1px solid #3b3b3b;
   /* outline: 1px solid #698474; */
 }
 
@@ -35,7 +35,7 @@
 }
 
 .contactRegisterFormContainer input::placeholder {
-  color: #698474;
+  color: #3b3b3b;
   letter-spacing: .5px;
 }
 
@@ -71,15 +71,15 @@
   font-size: 1.4rem;
   letter-spacing: .5px;
   border-radius: 3px;
-  border: 1px solid #698474;
-  color: #698474;
+  border: 1px solid #3b3b3b;
+  color: #3b3b3b;
   padding-left: 1rem;
 }
 
 .contactRegisterFormContainer .subject select option {
   border-radius: 3px;
   font-size: 1.6rem;
-  color: #698474;
+  color: #3b3b3b;
 }
 
 .contactRegisterFormContainer .message {
@@ -91,6 +91,7 @@
 
 .contactRegisterFormContainer .message textarea {
   resize: none;
+  padding: 1rem;
 }
 
 .contactRegisterFormContainer form .submitButton {
@@ -106,7 +107,7 @@
   text-transform: uppercase;
   border: none;
   border-radius: 4px;
-  background-color: #698474;
+  background-color: #4b4b4b;
   color: white;
   cursor: pointer;
   position: relative;
@@ -114,7 +115,7 @@
 }
 
 .contactRegisterFormContainer form .submitButton button:hover {
-  background-color: #043a1a;
+  background-color: #303030;
 }
 
 @media (max-width: 912px) {

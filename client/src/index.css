@@ -229,3 +229,23 @@ main {
 .we-box .step .bttns .weddingGalleryBtn {
   background-color: var(--primary-text-color);
 }
+
+
+[data-theme="dark"] .roots .index .offer p {
+  color: var(--primary-text-color);
+}
+
+/* -------------- Form Dark and Light Mode Styles -------------- */
+
+
+[data-theme="dark"] form .box .textField label, form .box .textField-preferred legend,form .box .textField-wedding legend, form .box .textField-wedding fieldset .formControl label, form .box .textField-hear label  {
+  color: var(--primary-text-color);
+}
+
+[data-theme="dark"] form .submitButton .button {
+  background-color: #567aff;
+}
+
+[data-theme="dark"] form .submitButton .button:hover {
+  background-color: #3a55b7;
+}

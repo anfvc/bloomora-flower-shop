@@ -7,38 +7,42 @@ import "./SuccessPage.css";
 
 const SuccessPage = () => {
   const navigate = useNavigate();
-  const [showSuccess, setShowSuccess] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const { user, checkUserAuth, setOrders, orders } = useContext(UserContext);
+  const {
+    user,
+    setOrders,
+    orders,
+    deliveryAddress,
+    setDeliveryAddress,
+  } = useContext(UserContext);
   const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
-    async function createOrder() {
-      const checkoutProducts = JSON.parse(searchParams.get("checkoutProducts"));
+    // async function createOrder() {
+    //   const checkoutProducts = JSON.parse(searchParams.get("checkoutProducts"));
 
-      const response = await fetch(
-        `${import.meta.env.VITE_API}/order/createOrder/${user.user._id}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ checkoutProducts }),
-        }
-      );
+    //   const response = await fetch(
+    //     `${import.meta.env.VITE_API}/order/createOrder/${user.user._id}`,
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({ checkoutProducts }),
+    //     }
+    //   );
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        setOrders([...orders, data.order]);
-        console.log(user);
-      }
-      // await new Promise((resolve) => setTimeout(resolve, 5000));
-    }
+    //   if (response.ok) {
+    //     const data = await response.json();
+    //     console.log("Data from Success Page: ", data);
+    //     setOrders([...orders, data.order]);
+    //   }
+    //   // await new Promise((resolve) => setTimeout(resolve, 5000));
+    // }
 
-    if (user.user?._id) {
-      createOrder();
-    }
+    // if (user.user?._id) {
+    //   createOrder();
+    // }
 
     const timer = setTimeout(() => {
       if (!isClicked) {
@@ -59,7 +63,8 @@ const SuccessPage = () => {
     navigate("/userPanel?section=orders");
   }
 
-  console.log(user);
+  // console.log(user);
+  // console.log(orders);
 
   return (
     <div className="successContainer">
