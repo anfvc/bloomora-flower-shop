@@ -21,25 +21,25 @@ function SortFilter() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const { t } = useTranslation();
 
-  function handleSortChange(sortOption) {
-    switch (sortOption) {
-      case "az":
-        sortAlphabeticallyAZ();
-        break;
-      case "za":
-        sortAlphabeticallyZA();
-        break;
-      case "priceLowToHigh":
-        sortByPriceLowToHigh();
-        break;
-      case "priceHighToLow":
-        sortByPriceHighToLow();
-        break;
-      default:
-        resetSorting();
-    }
-    setIsSortOpen(false);
-  }
+  // function handleSortChange(sortOption) {
+  //   switch (sortOption) {
+  //     case "az":
+  //       sortAlphabeticallyAZ();
+  //       break;
+  //     case "za":
+  //       sortAlphabeticallyZA();
+  //       break;
+  //     case "priceLowToHigh":
+  //       sortByPriceLowToHigh();
+  //       break;
+  //     case "priceHighToLow":
+  //       sortByPriceHighToLow();
+  //       break;
+  //     default:
+  //       resetSorting();
+  //   }
+  //   setIsSortOpen(false);
+  // }
 
   function handleFilterButtonClick() {
     setIsFilterOpen(!isFilterOpen);
@@ -47,10 +47,10 @@ function SortFilter() {
     setIsMenuOpen(false);
   }
 
-  function handleSortButtonClick() {
-    setIsSortOpen(!isSortOpen);
-    setIsFilterOpen(false); 
-  }
+  // function handleSortButtonClick() {
+  //   setIsSortOpen(!isSortOpen);
+  //   setIsFilterOpen(false); 
+  // }
 
   const categories = [
     { value: "Decor", label: t("filter.category2") },
@@ -64,10 +64,10 @@ function SortFilter() {
 
   return (
     <div className="sort-filter">
-      <div className="sortButton" onClick={handleSortButtonClick}>
+      {/* <div className="sortButton" onClick={handleSortButtonClick}>
         <p>{t("sort.header")}</p>
         <RiArrowDownWideLine className="sortIcon" />
-      </div>
+      </div> */}
       {/* {isSortOpen && (
         <div className="sort">
           <ul>

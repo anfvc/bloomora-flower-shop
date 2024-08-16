@@ -1,12 +1,12 @@
-import { useNavigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/userContext";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import "./editProfile.css";
+import { useAlert } from "../../context/alertContext";
 
-function EditProfile({ closeEdit }) {
-
+function EditProfile() {
   const { user, setUser, checkUserAuth } = useContext(UserContext);
+  const { showAlert } = useAlert();
+ 
   const [userAddress, setUserAddress] = useState({
     street: user.user.address?.street,
     houseNum: user.user.address?.houseNum,
@@ -20,11 +20,10 @@ function EditProfile({ closeEdit }) {
     address: userAddress,
   });
 
-
-
   useEffect(() => {
     setFormData({ ...formData, address: userAddress });
   }, [userAddress]);
+
 
 
   const handleChange = (e) => {
@@ -35,13 +34,8 @@ function EditProfile({ closeEdit }) {
     }));
   };
 
-
   const handleSaveProfile = async (e) => {
     e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match");
-      return;
-    }
 
     try {
       const settings = {
@@ -50,8 +44,7 @@ function EditProfile({ closeEdit }) {
         headers: {
           "Content-Type": "application/JSON",
         },
-      }
-
+      };
 
       const response = await fetch(
         `${import.meta.env.VITE_API}/user/update/${user.user._id}`,
@@ -66,7 +59,7 @@ function EditProfile({ closeEdit }) {
           ...user,
           firstName: updateUser.updatedUser.firstName,
           lastName: updateUser.updatedUser.lastName,
-              address: {
+          address: {
             street: updateUser.updatedUser.street,
             num: updateUser.updatedUser.num,
             zip: updateUser.updatedUser.zip,
@@ -76,8 +69,7 @@ function EditProfile({ closeEdit }) {
         });
 
         checkUserAuth();
-        alert("Your profile has been successfully edited");
-        closeEdit();
+        showAlert("Your profile has been successfully edited");
         setFormData(user);
       } else {
         const { error } = await response.json();
@@ -87,7 +79,6 @@ function EditProfile({ closeEdit }) {
       console.log(error.message);
     }
   };
-
 
   return (
     <form className="editProfileForm" onSubmit={handleSaveProfile}>
@@ -167,34 +158,14 @@ function EditProfile({ closeEdit }) {
         />
       </label>
 
-      {/* <label>
-        Invoice Address:
-        <input
-          type="text"
-          name="invoiceAddress"
-          value={formData.invoiceAddress}
-          onChange={handleChange}
-        />
-      </label> */}
-      {/*  <label>
-        Delivery Address:
-        <input
-          type="text"
-          name="deliveryAddress"
-          value={formData.deliveryAddress}
-          onChange={handleChange}
-        />
-      </label> */}
-
       <div className="save-cancel">
         <button type="submit" className="saveButton">
           Save
         </button>
 
-        <button type="button" className="cancelButton" onClick={handleChange} >
-
+        {/* <button type="button" className="cancelButton" onClick={handleChange}>
           Cancel
-        </button>
+        </button> */}
       </div>
     </form>
   );

@@ -205,6 +205,7 @@
     "secureCheckout": "Secure Checkout"
   },
   "add_to_cart": "Add to Cart",
+  "delete": "Delete",
   "total_to_pay": "Total to Pay",
   "go_to_checkout": "Go to Checkout",
   "paypal": "Paypal",

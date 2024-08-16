@@ -6,11 +6,22 @@ import { LiaShippingFastSolid } from "react-icons/lia";
 import { GiReturnArrow } from "react-icons/gi";
 import { RiSecurePaymentLine } from "react-icons/ri";
 import { useTranslation } from "react-i18next";
+import { useAlert } from "../../context/alertContext";
 
 function Cart() {
   const { t } = useTranslation();
-  const { user, setUser, cart, setCart, handleDelete } =
-    useContext(UserContext);
+  const {
+    user,
+    setUser,
+    cart,
+    setCart,
+    handleDelete,
+    deliveryAddress,
+    setDeliveryAddress,
+    orderId,
+    setOrderId,
+  } = useContext(UserContext);
+  const { showAlert } = useAlert();
 
   useEffect(() => {
     async function getCart() {
@@ -101,11 +112,14 @@ function Cart() {
   };
 
   async function createStripeCheckoutSession() {
+    if(deliveryAddress){
+      showAlert("Please fill up Delivery address", "warning")
+    }
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API}/order/createStripeCheckoutSession/${
           user.user._id
-        }`,
+        }/${orderId}`, //adding order._id
         {
           method: "POST",
           headers: {
@@ -154,6 +168,57 @@ function Cart() {
       console.log("Error clearing cart.");
     }
   }
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDeliveryAddress((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  async function saveDeliveryAddress() {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API}/order/address/${user.user._id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/JSON",
+          },
+          body: JSON.stringify({ deliveryAddress }),
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        setOrderId(data.orderId);
+        console.log(data);
+      } else {
+        console.log("We couldn't save the deliveryAddress");
+      }
+    } catch (error) {
+      console.log("Error in saving the delivery address.", error);
+    }
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    // setDeliveryAddress(deliveryAddress);
+    await saveDeliveryAddress();
+    setDeliveryAddress({
+      firstName: "",
+      lastName: "",
+      street: "",
+      houseNum: "",
+      zip: "",
+      city: "",
+      country: "",
+    });
+    showAlert("Delivery Address saved successfully.", "success");
+  }
+
+  console.log("Delivery Address sent from Cart line 180:", deliveryAddress);
 
   return (
     <div className="cart-container">
@@ -224,6 +289,76 @@ function Cart() {
                 <span>{t("cart.included")}</span>
               </div>
             </div>
+            <form className="deliveryAddress-form" onSubmit={handleSubmit}>
+              <h1>Delivery Address</h1>
+              <label>
+                First Name:
+                <input
+                  type="text"
+                  name="firstName"
+                  value={deliveryAddress.firstName}
+                  onChange={handleChange}
+                />
+              </label>
+              <label>
+                Last Name:
+                <input
+                  type="text"
+                  name="lastName"
+                  value={deliveryAddress.lastName}
+                  onChange={handleChange}
+                />
+              </label>
+              <label>
+                Street:
+                <input
+                  type="text"
+                  name="street"
+                  value={deliveryAddress.street}
+                  onChange={handleChange}
+                />
+              </label>
+              <label>
+                Num:
+                <input
+                  type="text"
+                  name="houseNum"
+                  value={deliveryAddress.houseNum}
+                  onChange={handleChange}
+                />
+              </label>
+              <label>
+                ZIP:
+                <input
+                  type="text"
+                  name="zip"
+                  value={deliveryAddress.zip}
+                  onChange={handleChange}
+                />
+              </label>
+              <label>
+                City:
+                <input
+                  type="text"
+                  name="city"
+                  value={deliveryAddress.city}
+                  onChange={handleChange}
+                />
+              </label>
+              <label>
+                Country:
+                <input
+                  type="text"
+                  name="country"
+                  value={deliveryAddress.country}
+                  onChange={handleChange}
+                />
+              </label>
+              <button>Save Address</button>
+            </form>
+
+            {/* button to save the deliveryAddress */}
+
             <div className="totalPayment-Buttons">
               <div className="totalPayment">
                 <h2>{t("cart.totalToPay")}:</h2>
@@ -236,8 +371,8 @@ function Cart() {
                 >
                   {t("cart.checkout")}
                 </button>
-                <p>{t("cart.or")}</p>
-                <button className="paypal">{t("cart.paypal")}</button>
+                {/* <p>{t("cart.or")}</p> */}
+                {/* <button className="paypal">{t("cart.paypal")}</button> */}
               </div>
             </div>
             <div className="secure-return-logged">
@@ -245,10 +380,10 @@ function Cart() {
                 <LiaShippingFastSolid />
                 <p>{t("cart.freeShipping")}</p>
               </div>
-              <div className="return">
+              {/* <div className="return">
                 <GiReturnArrow />
                 <p>{t("cart.freeReturns")}</p>
-              </div>
+              </div> */}
               <div className="secure">
                 <RiSecurePaymentLine />
                 <p>{t("cart.secureCheckout")}</p>

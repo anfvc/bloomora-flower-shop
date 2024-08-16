@@ -12,7 +12,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 export async function createStripeCheckoutSession(req, res) {
   // checkoutProducts should be an array of objects
   // [ { id: id of product, quantity: quantity of said product in the checkout basket } ]
-  const { userId } = req.params;
+  const { userId, orderId /* adding orderId */ } = req.params;
   const { checkoutProducts } = req.body;
   const user = await User.findById(userId);
   // const stripeUserId = user.stripeCustomerId || createUserInStripe(user);
@@ -33,6 +33,30 @@ export async function createStripeCheckoutSession(req, res) {
     cancel_url: `http://localhost:5173/cart`,
   };
   const session = await stripe.checkout.sessions.create(checkoutParams);
+
+  //* Trying this part:
+
+  const orderItems = await Promise.all(
+    checkoutProducts.map(async (checkoutProduct) => {
+      const { id, quantity } = checkoutProduct;
+      return await OrderItem.create({
+        quantity,
+        product: { _id: new mongoose.Types.ObjectId(id) },
+      });
+    })
+  );
+
+  await Order.findByIdAndUpdate(
+    orderId,
+    { orderItems, status: "Paid" },
+    { new: true }
+  );
+
+  // await User.findByIdAndUpdate(
+  //   userId,
+  //   { $push: { orders: order._id } },
+  //   { new: true }
+  // );
 
   res.status(200).json({ url: session.url });
 }
@@ -89,7 +113,9 @@ export async function getAllOrders(req, res) {
     });
     // const user = await User.findById(userId)
     if (!orders) {
-      res.status(StatusCodes.NOT_FOUND).json({ msg: "User does not exist." });
+      res
+        .status(StatusCodes.NOT_FOUND)
+        .json({ msg: "You have no existing orders." });
     }
 
     res.status(StatusCodes.OK).json(orders);
@@ -98,34 +124,53 @@ export async function getAllOrders(req, res) {
   }
 }
 
-export async function createOrder(req, res) {
-  // const { checkoutProducts, userId, deliveryAddress } = req.body;
-  const { checkoutProducts } = req.body;
+// export async function createOrder(req, res) {
+//   // const { checkoutProducts, userId, deliveryAddress } = req.body;
+//   const { checkoutProducts } = req.body;
+//   const { userId } = req.params;
+
+//   const orderItems = await Promise.all(
+//     checkoutProducts.map(async (checkoutProduct) => {
+//       const { id, quantity } = checkoutProduct;
+//       return await OrderItem.create({
+//         quantity,
+//         product: { _id: new mongoose.Types.ObjectId(id) },
+//       });
+//     })
+//   );
+
+//   const order = await Order.create({
+//     userId: { _id: new mongoose.Types.ObjectId(userId) },
+//     orderItems,
+//     status: "paid",
+//     // deliveryAddress
+//     date: Date.now(),
+//   });
+
+//   await User.findByIdAndUpdate(
+//     userId,
+//     { $push: { orders: order._id } },
+//     { new: true }
+//   );
+
+//   res.status(200).json({ order });
+// }
+
+export async function saveDeliveryAddress(req, res) {
   const { userId } = req.params;
+  const { deliveryAddress } = req.body;
 
-  const orderItems = await Promise.all(
-    checkoutProducts.map(async (checkoutProduct) => {
-      const { id, quantity } = checkoutProduct;
-      return await OrderItem.create({
-        quantity,
-        product: { _id: new mongoose.Types.ObjectId(id) },
-      });
-    })
-  );
+  try {
+    const user = await User.findById(userId);
+    if (!user) {
+      res.status(StatusCodes.NOT_FOUND).json({ msg: "User does not exist." });
+    }
 
-  const order = await Order.create({
-    userId: { _id: new mongoose.Types.ObjectId(userId) },
-    orderItems,
-    status: "paid",
-    // deliveryAddress: "Random",
-    date: Date.now(),
-  });
+    const order = await Order.create({
+      userId: user._id,
+      deliveryAddress,
+    });
 
-  await User.findByIdAndUpdate(
-    userId,
-    { $push: { orders: order._id } },
-    { new: true }
-  );
-
-  res.status(200).json({ order });
+    res.status(StatusCodes.OK).json({ orderId: order._id });
+  } catch (error) {}
 }

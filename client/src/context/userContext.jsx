@@ -18,7 +18,29 @@ const UserProvider = ({ children }) => {
   const [cart, setCart] = useState(
     user.cart || [] //*This returns the current cart of the logged in user. Value that is stored in Backend
   );
-  const [orders, setOrders] = useState(user.orders || [])
+  const [orders, setOrders] = useState(user.orders || []);
+
+  // const [deliveryAddress, setDeliveryAddress] = useState({
+  //   firstName: orders.deliveryAddress?.firstName,
+  //   lastName: orders.deliveryAddress?.lastName,
+  //   street: orders.deliveryAddress?.street,
+  //   houseNum: orders.deliveryAddress?.houseNum,
+  //   zip: orders.deliveryAddress?.zip,
+  //   city: orders.deliveryAddress?.city,
+  //   country: orders.deliveryAddress?.country,
+  // });
+
+  const [deliveryAddress, setDeliveryAddress] = useState({
+    firstName: "",
+    lastName: "",
+    street: "",
+    houseNum: "",
+    zip: "",
+    city: "",
+    country: "",
+  });
+
+  const [orderId, setOrderId] = useState(null);
 
   const { showAlert } = useAlert();
 
@@ -67,6 +89,8 @@ const UserProvider = ({ children }) => {
           const data = await response.json();
           setSortedProducts(data);
           setOriginalProducts(data);
+          // console.log(data);
+          
         } else {
           const { error } = await response.json();
           throw new Error(error.message);
@@ -111,7 +135,6 @@ const UserProvider = ({ children }) => {
     }
   }
 
-
   const handleDelete = async (item) => {
     try {
       const settings = {
@@ -119,8 +142,7 @@ const UserProvider = ({ children }) => {
         headers: {
           "Content-Type": "application/json",
         },
-         body: JSON.stringify({productId: item.productId._id}),
-
+        body: JSON.stringify({ productId: item.productId._id }),
       };
       const response = await fetch(
         `${import.meta.env.VITE_API}/cart/remove/${user.user._id}`,
@@ -130,16 +152,14 @@ const UserProvider = ({ children }) => {
       if (response.ok) {
         const updatedUser = await response.json();
         // console.log(updatedUser);
-        setUser(updatedUser)
+        setUser(updatedUser);
         setCart(updatedUser.user.cart);
-
       } else {
         const { message } = await response.json();
         throw new Error(message);
       }
     } catch (error) {
       console.log(error.message);
-
     }
   };
 
@@ -183,33 +203,33 @@ const UserProvider = ({ children }) => {
     setFilteredProducts(filtered);
   };
 
-  const sortAlphabeticallyAZ = () => {
-    const sorted = [...sortedProducts].sort((a, b) =>
-      a.name.localeCompare(b.name)
-    );
-    setSortedProducts(sorted);
-  };
+  // const sortAlphabeticallyAZ = () => {
+  //   const sorted = [...sortedProducts].sort((a, b) =>
+  //     a.name.localeCompare(b.name)
+  //   );
+  //   setSortedProducts(sorted);
+  // };
 
-  const sortAlphabeticallyZA = () => {
-    const sorted = [...sortedProducts].sort((a, b) =>
-      b.name.localeCompare(a.name)
-    );
-    setSortedProducts(sorted);
-  };
+  // const sortAlphabeticallyZA = () => {
+  //   const sorted = [...sortedProducts].sort((a, b) =>
+  //     b.name.localeCompare(a.name)
+  //   );
+  //   setSortedProducts(sorted);
+  // };
 
-  const sortByPriceLowToHigh = () => {
-    const sorted = [...sortedProducts].sort(
-      (a, b) => parseFloat(a.price) - parseFloat(b.price)
-    );
-    setSortedProducts(sorted);
-  };
+  // const sortByPriceLowToHigh = () => {
+  //   const sorted = [...sortedProducts].sort(
+  //     (a, b) => parseFloat(a.price) - parseFloat(b.price)
+  //   );
+  //   setSortedProducts(sorted);
+  // };
 
-  const sortByPriceHighToLow = () => {
-    const sorted = [...sortedProducts].sort(
-      (a, b) => parseFloat(b.price) - parseFloat(a.price)
-    );
-    setSortedProducts(sorted);
-  };
+  // const sortByPriceHighToLow = () => {
+  //   const sorted = [...sortedProducts].sort(
+  //     (a, b) => parseFloat(b.price) - parseFloat(a.price)
+  //   );
+  //   setSortedProducts(sorted);
+  // };
 
   const resetSorting = () => {
     setSortedProducts(originalProducts);
@@ -246,10 +266,10 @@ const UserProvider = ({ children }) => {
         setIsLoggedIn,
         logout,
         sortedProducts,
-        sortAlphabeticallyAZ,
-        sortAlphabeticallyZA,
-        sortByPriceLowToHigh,
-        sortByPriceHighToLow,
+        // sortAlphabeticallyAZ,
+        // sortAlphabeticallyZA,
+        // sortByPriceLowToHigh,
+        // sortByPriceHighToLow,
         resetSorting,
         setIsMenuOpen,
         isMenuOpen,
@@ -262,7 +282,7 @@ const UserProvider = ({ children }) => {
         setFilter,
         handleFilter,
         addToCart,
-        addToWishList,
+         addToWishList,
         wishList,
         setWishList,
         cart,
@@ -270,7 +290,12 @@ const UserProvider = ({ children }) => {
         handleDelete,
         checkUserAuth,
         orders,
-        setOrders
+        setOrders,
+        deliveryAddress,
+        setDeliveryAddress,
+        orderId,
+        setOrderId,
+        
       }}
     >
       {children}
