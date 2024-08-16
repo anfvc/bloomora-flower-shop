@@ -112,6 +112,9 @@ function Cart() {
   };
 
   async function createStripeCheckoutSession() {
+    if(deliveryAddress){
+      showAlert("Please fill up Delivery address", "warning")
+    }
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API}/order/createStripeCheckoutSession/${

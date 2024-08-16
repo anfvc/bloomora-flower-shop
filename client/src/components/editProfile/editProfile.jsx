@@ -1,11 +1,14 @@
-import { useNavigate } from "react-router-dom";
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/userContext";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import "./editProfile.css";
+import { useAlert } from "../../context/alertContext";
 
-function EditProfile({ closeEdit }) {
+
+function EditProfile() {
+
   const { user, setUser, checkUserAuth } = useContext(UserContext);
+  const { showAlert } = useAlert();
+ 
   const [userAddress, setUserAddress] = useState({
     street: user.user.address?.street,
     houseNum: user.user.address?.houseNum,
@@ -23,6 +26,7 @@ function EditProfile({ closeEdit }) {
     setFormData({ ...formData, address: userAddress });
   }, [userAddress]);
 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -33,10 +37,6 @@ function EditProfile({ closeEdit }) {
 
   const handleSaveProfile = async (e) => {
     e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match");
-      return;
-    }
 
     try {
       const settings = {
@@ -70,8 +70,7 @@ function EditProfile({ closeEdit }) {
         });
 
         checkUserAuth();
-        alert("Your profile has been successfully edited");
-        closeEdit();
+        showAlert("Your profile has been successfully edited");
         setFormData(user);
       } else {
         const { error } = await response.json();
@@ -165,9 +164,11 @@ function EditProfile({ closeEdit }) {
           Save
         </button>
 
-        <button type="button" className="cancelButton" onClick={handleChange}>
+
+        {/* <button type="button" className="cancelButton" onClick={handleChange}>
+
           Cancel
-        </button>
+        </button> */}
       </div>
     </form>
   );

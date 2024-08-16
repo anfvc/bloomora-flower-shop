@@ -40,6 +40,9 @@ function Shop() {
         if (response.ok) {
           const data = await response.json();
           setList(data);
+          // console.log(data);
+          
+
         } else {
           const { error } = await response.json();
           throw new Error(error.message);
