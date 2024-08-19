@@ -13,9 +13,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Wishlist from "../wishlist/wishlist";
 import Invoice from "../invoice/Invoice";
 import CreateProduct from "../../views/Admin/CreateProduct";
-import MyOrders from "../MyOrders/MyOrders";
+import MyOrders from "../MyOrder/MyOrders";
 import { useTranslation } from "react-i18next";
-
 
 function UserPanel() {
   const { user, setIsLoggedIn } = useContext(UserContext);
@@ -25,7 +24,6 @@ function UserPanel() {
   const location = useLocation();
   const { t } = useTranslation();
 
-
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const section = queryParams.get("section");
@@ -33,7 +31,7 @@ function UserPanel() {
     if (section) {
       setActiveSection(section);
     }
- }, [location]);
+  }, [location]);
 
   const handleEditProfile = () => {
     setIsEditing(true);
@@ -46,7 +44,6 @@ function UserPanel() {
   };
 
   async function handleDeleteUser() {
-
     if (confirm("Are you sure you want to delete your account?"))
       try {
         const settings = {
@@ -84,21 +81,30 @@ function UserPanel() {
           </button>
           <button
             className="sidebarButton"
-            onClick={() => { setIsEditing(false); navigate("/userPanel?section=orders")}}
+            onClick={() => {
+              setIsEditing(false);
+              navigate("/userPanel?section=orders");
+            }}
           >
             <p>{t("userPanel.MyOrders")}</p>
             <FaClipboardList />
           </button>
           <button
             className="sidebarButton"
-            onClick={() => { setIsEditing(false); navigate("/userPanel?section=invoices")}}
+            onClick={() => {
+              setIsEditing(false);
+              navigate("/userPanel?section=invoices");
+            }}
           >
             <p>{t("userPanel.myInvoice")}</p>
             <FaFileInvoice />
           </button>
           <button
             className="sidebarButton"
-            onClick={() => { setIsEditing(false); navigate("/userPanel?section=wishlist")}}
+            onClick={() => {
+              setIsEditing(false);
+              navigate("/userPanel?section=wishlist");
+            }}
           >
             <p>{t("userPanel.wishList")}</p>
             <PiListHeartFill />
@@ -141,7 +147,7 @@ function UserPanel() {
                     </h1>
                   </div>
                 )}
-                {activeSection === "orders" && <MyOrders/>}
+                {activeSection === "orders" && <MyOrders />}
                 {activeSection === "invoices" && <Invoice />}
                 {activeSection === "wishlist" && <Wishlist />}
                 {activeSection === "admin" && <CreateProduct />}{" "}
