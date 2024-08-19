@@ -13,7 +13,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Wishlist from "../wishlist/wishlist";
 import Invoice from "../invoice/Invoice";
 import CreateProduct from "../../views/Admin/CreateProduct";
-import MyOrders from "../myOrders/myOrders";
+import MyOrders from "../MyOrders/MyOrders";
 import { useTranslation } from "react-i18next";
 
 
@@ -86,7 +86,7 @@ function UserPanel() {
             className="sidebarButton"
             onClick={() => { setIsEditing(false); navigate("/userPanel?section=orders")}}
           >
-            <p>{t("userPanel.myOrders")}</p>
+            <p>{t("userPanel.MyOrders")}</p>
             <FaClipboardList />
           </button>
           <button
