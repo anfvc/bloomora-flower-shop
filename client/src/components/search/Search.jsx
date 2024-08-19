@@ -5,7 +5,7 @@ import { UserContext } from "../../context/userContext.jsx";
 import { useTranslation } from "react-i18next";
 
 function Search() {
-  const { searchProducts, filteredProducts } = useContext(UserContext);
+  const { searchProducts, filteredProducts, addToCart } = useContext(UserContext);
   const [query, setQuery] = useState("");
   const [isSearchBarEmpty, setIsSearchBarEmpty] = useState(true);
   const { t } = useTranslation();
@@ -56,7 +56,7 @@ function Search() {
                   <p>{product.name}</p>
                   <p>{product.price}€</p>
                 </div>
-                <button className="searchAddToCartBtn">{t("search.addToCart")}</button>
+                <button className="searchAddToCartBtn" onClick={()=> addToCart(product, 1)}>{t("search.addToCart")}</button>
               </div>
             ))
           )}
