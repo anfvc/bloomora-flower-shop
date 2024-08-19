@@ -6,7 +6,7 @@
   justify-content: center;
   gap: 2rem;
   padding-bottom: 2rem;
-  background-color: #0A0A0A;
+  background-color: #698474;
 }
 
 .footerBox {
@@ -39,7 +39,7 @@
 .discover,
 .myAccounts,
 .helps {
-  width: 20rem;
+  width: 22rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,6 +56,7 @@
   letter-spacing: 2px;
   color: white;
   position: relative;
+  text-align: center;
 }
 
 .footerBox .header::before {

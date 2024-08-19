@@ -1,5 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Cart.css";
+import Modal from "../Modal/Modal";
 import { UserContext } from "../../context/userContext";
 import { MdOutlineDelete } from "react-icons/md";
 import { LiaShippingFastSolid } from "react-icons/lia";
@@ -23,6 +24,8 @@ function Cart() {
   } = useContext(UserContext);
   const { showAlert } = useAlert();
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
     async function getCart() {
       try {
@@ -32,7 +35,6 @@ function Cart() {
 
         if (response.ok) {
           const data = await response.json();
-          console.table(data);
           setCart(data);
         } else {
           const { error } = await response.json();
@@ -45,7 +47,6 @@ function Cart() {
     getCart();
   }, [user.user?._id, user.user?.cart]);
 
-  //* Calculating total of cart:
   function total() {
     return cart.reduce(
       (acc, current) => acc + current.productPrice * current.quantity,
@@ -63,7 +64,7 @@ function Cart() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            productId: item.productId._id /* itemId, quantity */,
+            productId: item.productId._id,
           }),
         }
       );
@@ -72,7 +73,6 @@ function Cart() {
         const updatedUser = await response.json();
         setUser(updatedUser);
         setCart(updatedUser.user.cart);
-        console.log(updatedUser);
       } else {
         const { error } = await response.json();
         throw new Error(error.message);
@@ -101,7 +101,6 @@ function Cart() {
         const updatedUser = await response.json();
         setUser(updatedUser);
         setCart(updatedUser.user.cart);
-        console.log(updatedUser);
       } else {
         const { error } = await response.json();
         throw new Error(error.message);
@@ -134,15 +133,16 @@ function Cart() {
         }
       );
 
-      const body = await response.json();
-      if (body.url) {
-        await clearCart();
-        window.location.replace(body.url);
-      } else {
-        console.error("Failed to create Stripe Checkout Session.");
+        const body = await response.json();
+        if (body.url) {
+          await clearCart();
+          window.location.replace(body.url);
+        } else {
+          console.error("Failed to create Stripe Checkout Session.");
+        }
+      } catch (error) {
+        console.log("Error in checkout process.", error);
       }
-    } catch (error) {
-      console.log("Error in checkout process.", error);
     }
   }
 
@@ -193,7 +193,6 @@ function Cart() {
       if (response.ok) {
         const data = await response.json();
         setOrderId(data.orderId);
-        console.log(data);
       } else {
         console.log("We couldn't save the deliveryAddress");
       }
@@ -204,7 +203,6 @@ function Cart() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    // setDeliveryAddress(deliveryAddress);
     await saveDeliveryAddress();
     setDeliveryAddress({
       firstName: "",
@@ -216,9 +214,8 @@ function Cart() {
       country: "",
     });
     showAlert("Delivery Address saved successfully.", "success");
+    setIsModalOpen(false);
   }
-
-  console.log("Delivery Address sent from Cart line 180:", deliveryAddress);
 
   return (
     <div className="cart-container">
@@ -267,7 +264,10 @@ function Cart() {
                         -
                       </button>
                     </div>
-                    <div className="delete" onClick={() => handleDelete(item)}>
+                    <div
+                      className="delete-payment"
+                      onClick={() => handleDelete(item)}
+                    >
                       <MdOutlineDelete className="dlt" />
                     </div>
                   </div>
@@ -289,81 +289,91 @@ function Cart() {
                 <span>{t("cart.included")}</span>
               </div>
             </div>
-            <form className="deliveryAddress-form" onSubmit={handleSubmit}>
-              <h1>Delivery Address</h1>
-              <label>
-                First Name:
-                <input
-                  type="text"
-                  name="firstName"
-                  value={deliveryAddress.firstName}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                Last Name:
-                <input
-                  type="text"
-                  name="lastName"
-                  value={deliveryAddress.lastName}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                Street:
-                <input
-                  type="text"
-                  name="street"
-                  value={deliveryAddress.street}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                Num:
-                <input
-                  type="text"
-                  name="houseNum"
-                  value={deliveryAddress.houseNum}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                ZIP:
-                <input
-                  type="text"
-                  name="zip"
-                  value={deliveryAddress.zip}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                City:
-                <input
-                  type="text"
-                  name="city"
-                  value={deliveryAddress.city}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                Country:
-                <input
-                  type="text"
-                  name="country"
-                  value={deliveryAddress.country}
-                  onChange={handleChange}
-                />
-              </label>
-              <button>Save Address</button>
-            </form>
-
-            {/* button to save the deliveryAddress */}
 
             <div className="totalPayment-Buttons">
-              <div className="totalPayment">
-                <h2>{t("cart.totalToPay")}:</h2>
-                <p>{total().toFixed(2)}€</p>
+              {/* Button to open the modal */}
+              <div className="deliveryAddressOpenModalButton">
+                <button
+                  className="openModalButton"
+                  onClick={() => setIsModalOpen(true)}
+                >
+                  Enter Delivery Address
+                </button>
               </div>
+
+              {/* Modal for delivery address */}
+              <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                <form className="deliveryAddress-form" onSubmit={handleSubmit}>
+                  <h1>Delivery Address</h1>
+                  <label>
+                    First Name:
+                    <input
+                      type="text"
+                      name="firstName"
+                      value={deliveryAddress.firstName}
+                      onChange={handleChange}
+                    />
+                  </label>
+                  <label>
+                    Last Name:
+                    <input
+                      type="text"
+                      name="lastName"
+                      value={deliveryAddress.lastName}
+                      onChange={handleChange}
+                    />
+                  </label>
+                  <label>
+                    Street:
+                    <input
+                      type="text"
+                      name="street"
+                      value={deliveryAddress.street}
+                      onChange={handleChange}
+                    />
+                  </label>
+                  <label>
+                    Num:
+                    <input
+                      type="text"
+                      name="houseNum"
+                      value={deliveryAddress.houseNum}
+                      onChange={handleChange}
+                    />
+                  </label>
+                  <label>
+                    ZIP:
+                    <input
+                      type="text"
+                      name="zip"
+                      value={deliveryAddress.zip}
+                      onChange={handleChange}
+                    />
+                  </label>
+                  <label>
+                    City:
+                    <input
+                      type="text"
+                      name="city"
+                      value={deliveryAddress.city}
+                      onChange={handleChange}
+                    />
+                  </label>
+                  <label>
+                    Country:
+                    <input
+                      type="text"
+                      name="country"
+                      value={deliveryAddress.country}
+                      onChange={handleChange}
+                    />
+                  </label>
+                  <div className="deliveryAddressBtn">
+                    <button type="submit">Save Address</button>
+                  </div>
+                </form>
+              </Modal>
+
               <div className="paymentButtons">
                 <button
                   className="checkOut"
@@ -371,8 +381,11 @@ function Cart() {
                 >
                   {t("cart.checkout")}
                 </button>
-                {/* <p>{t("cart.or")}</p> */}
-                {/* <button className="paypal">{t("cart.paypal")}</button> */}
+              </div>
+
+              <div className="totalPayment">
+                <h2>{t("cart.totalToPay")}:</h2>
+                <p>{total().toFixed(2)}€</p>
               </div>
             </div>
             <div className="secure-return-logged">
@@ -380,10 +393,10 @@ function Cart() {
                 <LiaShippingFastSolid />
                 <p>{t("cart.freeShipping")}</p>
               </div>
-              {/* <div className="return">
+              <div className="return">
                 <GiReturnArrow />
                 <p>{t("cart.freeReturns")}</p>
-              </div> */}
+              </div>
               <div className="secure">
                 <RiSecurePaymentLine />
                 <p>{t("cart.secureCheckout")}</p>

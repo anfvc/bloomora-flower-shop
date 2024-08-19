@@ -256,6 +256,7 @@ function Navbar({ toggleTheme, isChecked }) {
                 <div className="language-menu">
                   <button onClick={() => changeLanguage("en")}>EN</button>
                   <button onClick={() => changeLanguage("de")}>DE</button>
+                  <button onClick={() => changeLanguage("it")}>IT</button>
                 </div>
               )}
             </div>

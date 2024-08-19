@@ -1,0 +1,251 @@
+{
+  "home": "Home",
+  "landingSlider": {
+    "title1_1": "Acquista online o visita il nostro negozio",
+    "title2_1": "10 Station St Wentworth Falls",
+    "title1_2": "Bloomora è lì per supportarti in ogni momento speciale.",
+    "title2_2": "Fiori bellissimi per ogni occasione",
+    "title1_3": "Bloomora è lì per supportarti in ogni momento speciale.",
+    "title2_3": "Fiori bellissimi per ogni occasione"
+  },
+  "mostPopular": {
+    "header": "Prodotti più popolari",
+    "seeAll": "Vedi tutti i prodotti"
+  },
+  "support": {
+    "header1": "CONSEGNA RAPIDA DEI PRODOTTI, CLICCA E RITIRA",
+    "header2": "FIORI FRESCHI & COLTIVATORI LOCALI",
+    "header3": "PAGA I FIORI CON AFTERPAY",
+    "header4": "ASSISTENZA CLIENTI 24/7"
+  },
+  "shop": {
+    "header1": "Negozio",
+    "header2": "Acquista Fiori e Regali",
+    "addToCart": "Aggiungi al carrello",
+    "prevText": "indietro",
+    "nextText": "avanti",
+    "page": "Pagina"
+  },
+  "sort": {
+    "header": "Ordina",
+    "category1": "Seleziona un'opzione",
+    "category2": "Alfabetico, A-Z",
+    "category3": "Alfabetico, Z-A",
+    "category4": "Prezzo, dal più alto al più basso",
+    "category5": "Prezzo, dal più basso al più alto"
+  },
+  "filter": {
+    "header": "Filtra",
+    "category1": "Seleziona un'opzione",
+    "category2": "Decorazione",
+    "category3": "Eustoma",
+    "category4": "Fiori per Occasioni",
+    "category5": "Regali",
+    "category6": "Piante da interno",
+    "category7": "Peonie",
+    "category8": "Rose"
+  },
+  "ourRoots": {
+    "header": "Le nostre radici",
+    "whoWeAre": "Chi siamo",
+    "description": "Benvenuto a Bloomora, la tua destinazione principale per creazioni floreali squisite. A Bloomora, crediamo che i fiori siano più che semplici decorazioni: sono espressioni di amore, gioia e bellezza che danno vita ai momenti.",
+    "ourStory": "La nostra storia",
+    "story": "Bloomora è nata da una passione per la floricoltura e dal desiderio di diffondere felicità attraverso i doni più belli della natura. I nostri fondatori, appassionati di design floreale da tutta la vita, hanno immaginato uno spazio dove la creatività fiorisce e ogni bouquet racconta una storia. Dalla nostra nascita, ci dedichiamo a creare straordinari arrangiamenti floreali che lasciano un'impressione duratura.",
+    "whatWeOffer": "Cosa offriamo",
+    "offer1": "Che si tratti di un compleanno, un anniversario, un matrimonio o semplicemente perché, creiamo ogni bouquet per soddisfare le tue esigenze e i tuoi gusti unici.",
+    "offerHeader1": "Composizioni floreali personalizzate:",
+    "offer2": "Trasforma i tuoi eventi speciali con i nostri design floreali su misura, da piccoli incontri a grandi celebrazioni.",
+    "offerHeader2": "Decorazione di eventi:",
+    "offer3": "La nostra collezione evolve con le stagioni, offrendo fiori freschi e vibranti che riflettono la bellezza naturale di ogni periodo dell'anno.",
+    "offerHeader3": "Selezioni stagionali:",
+    "offer4": "Oltre ai bouquet, offriamo una varietà di piante in vaso e regali da giardino per portare il verde nella tua casa o ufficio.",
+    "offerHeader4": "Regali di piante e giardino:",
+    "ourPhilosophy": "La nostra filosofia",
+    "philosophy": "A Bloomora, ci impegniamo per la sostenibilità e il supporto ai coltivatori locali. Selezioniamo i nostri fiori da fattorie eco-sostenibili e scegliamo ogni stelo a mano per garantire la massima qualità. I nostri design sono una fusione di eleganza tradizionale e stile moderno, realizzati con meticolosa attenzione ai dettagli.",
+    "meetTheTeam": "Incontra il team",
+    "ourTeam": "Il nostro talentuoso team di fioristi combina arte e una profonda comprensione della botanica floreale. Ogni membro porta un tocco unico a Bloomora, unito da un amore condiviso per la creazione di esperienze floreali straordinarie. Siamo orgogliosi del nostro servizio personalizzato e ci impegniamo a far sentire ogni cliente speciale.",
+    "joinOurTeam": "Unisciti al nostro team",
+    "join": "Ti invitiamo a esplorare la bellezza e la gioia che i fiori possono portare. Visita il nostro negozio, naviga nel nostro sito web o connettiti con noi sui social media per rimanere aggiornato sulle nostre ultime creazioni e consigli floreali. Lascia che Bloomora sia parte dei tuoi momenti più preziosi, rendendoli ancora più memorabili con i nostri bellissimi fiori. Grazie per aver scelto Bloomora. Non vediamo l'ora di crescere con te!",
+    "aphorism": "Bloomora – Dove ogni fiore racconta una storia",
+    "bio": "Scopri di più su SWGM qui:",
+    "publications": " Melissa e il suo lavoro nel movimento dei fiori sostenibili sono stati pubblicati in riviste nazionali e internazionali, stampati in The 50 Mile Bouquet di Debra Prinzing e intervistati su NPR.",
+    "learnMore": "Per saperne di più sul movimento floreale sostenibile visita"
+  },
+  "weddingSlider": {
+    "subtitle": "Fatto a mano nelle Blue Mountains",
+    "title": "Fiori e bouquet per matrimoni",
+    "buttonText": "Preventivi per matrimoni"
+  },
+  "weddingEvents": {
+    "header": "Matrimoni & Eventi",
+    "flowersForYouTitle": "Fiori che funzionano per te",
+    "flowersForYouDescription1": "Utilizzando la nostra",
+    "experience": "ESPERIENZA DI 19 ANNI",
+    "flowersForYouDescription2": "nei settori dei servizi e dell'ospitalità, coordinazione dei luoghi, pianificazione dei matrimoni e design floreale, creiamo design innovativi, stravaganti ed eleganti per dare vita alla tua visione.",
+    "whatWeOfferTitle": "Cosa offriamo",
+    "cocktailArrangements": "Allestimenti per cocktail",
+    "centerpieces": "Centrotavola",
+    "statementPieces": "Pezzi di dichiarazione",
+    "floralInstallations": "Installazioni floreali",
+    "plantInstallations": "Installazioni di piante",
+    "corporateEvents": "Eventi aziendali",
+    "dinnerParties": "Cene",
+    "showers": "Feste",
+    "rehearsals": "Prove",
+    "staging": "Allestimenti",
+    "inquireAboutEvent": "Richiedi informazioni sull'evento",
+    "pastEventsTitle": "Eventi passati"
+  },
+  "weddingProcess": {
+    "header": "Processo di matrimonio",
+    "step": "Passo",
+    "step1Description": "Completa il modulo, pensa a come vuoi che si svolga la tua giornata e usa quanti più termini visivi puoi. Esamineremo il tuo modulo di ingresso e ti contatteremo per programmare una consulenza. Per un matrimonio completo con più di 100 ospiti, il nostro minimo è di 4800 € per garantire un evento unico, bello ed elegante. I servizi à la carte sono offerti per i clienti che organizzano un evento più piccolo e intimo e che non hanno bisogno di tanti componenti come i nostri clienti full-service; i prezzi variano.",
+    "weddingInquiry": "Richiesta di matrimonio",
+    "aLaCarteInquiry": "Richiesta à la carte",
+    "step2Description": "Successivamente, ci incontreremo nel nostro studio e parleremo di tutta la tua visione: colori, decorazioni, stili, fiori! Ci conosceremo e guarderemo ispirazioni. Guarda alcuni dei nostri lavori recenti nella nostra galleria qui sotto per ispirarti per il tuo grande giorno.",
+    "weddingGallery": "Galleria di matrimoni",
+    "step3Description": "Da lì inizieremo il processo contrattuale inviandoti una proposta curata completa di elementi dettagliati e una mood board per la tua revisione.",
+    "step4Description": "Dopo alcune modifiche, firmerai il nostro contratto e pagherai un acconto elettronicamente. Nei mesi successivi, finalizzeremo tutti i dettagli e risolveremo eventuali questioni tramite email e incontri. Il giorno stesso, consegneremo, installeremo e puliremo in modo che tu possa concentrarti sul tempo trascorso con i tuoi ospiti: mangiare, bere, ridere e ballare!"
+  },
+  "wedding_gallery": "Galleria di matrimoni",
+  "events": "Eventi",
+  "weddingInquiry": {
+    "header1": "Richiesta di matrimonio",
+    "header2": ""
+  },
+  "contact": {
+    "header": "Contatto",
+    "shopHours": {
+      "title": "Orari del negozio",
+      "mondayFriday": "Lunedì-Venerdì | 9-17",
+      "saturday": "Sabato | 9-16",
+      "sunday": "Domenica | Chiuso"
+    },
+    "daysOutOfService": {
+      "title": "Giorni di chiusura",
+      "dates": "Il negozio sarà chiuso dal 4 al 7 giugno",
+      "message": "Goditi i festeggiamenti"
+    },
+    "contactOrder": {
+      "title": "Contatto & Ordine",
+      "emailLabel": "Email",
+      "email": "hello@bloomora.com",
+      "addressLabel": "Indirizzo",
+      "address": "Schwarz Straße 123 76543 Berlino",
+      "phoneLabel": "Telefono",
+      "phone": "0123 4567890"
+    }
+  },
+  "contactForm": {
+    "firstName": "Nome",
+    "lastName": "Cognome",
+    "email": "Email",
+    "phone": "Telefono",
+    "subject": "Seleziona argomento",
+    "message": "Messaggio",
+    "submit": "Invia",
+    "placeholder": {
+      "firstName": "Nome",
+      "lastName": "Cognome",
+      "email": "abcd@example.com",
+      "phone": "+49 123 4567890"
+    },
+    "subjectOptions": {
+      "default": "Seleziona il tuo argomento",
+      "bouquetOrder": "Ordine di bouquet",
+      "specialEventArrangements": "Allestimenti per eventi speciali",
+      "deliveryInquiry": "Richiesta di consegna",
+      "customFloralDesign": "Design floreale personalizzato",
+      "storeFeedback": "Feedback sul negozio",
+      "otherInquiries": "Altre richieste"
+    }
+  },
+  "search": {
+    "header": "Sono così entusiasta di aiutarti a trovarlo!",
+    "placeholder": "Cerca",
+    "emptyMessage": "Non ci sono articoli!",
+    "noResults": "Prodotto non trovato!",
+    "addToCart": "Aggiungi al carrello"
+  },
+  "hello_user": "Ciao, {{name}}",
+  "profile": "Profilo",
+  "logout": "Disconnettersi",
+  "sign_in": {
+    "header": "Accedi",
+    "email": "Email",
+    "password": "Password",
+    "noAccount": "Se non hai un account",
+    "register": "Registrati",
+    "noAccountLogin": "Accedi",
+    "close": "X"
+  },
+  "register": {
+    "header": "Registrati",
+    "firstName": "Nome",
+    "lastName": "Cognome",
+    "email": "Email",
+    "password": "Password",
+    "confirmPass": "Conferma password",
+    "alreadyAcc": "Hai già un account?",
+    "alreadyAccLogin": "Accedi",
+    "close": "X"
+  },
+  "userPanel": {
+    "edit": "Modifica",
+    "myOrders": "Ordini",
+    "myInvoice": "Fattura",
+    "wishList": "Lista dei desideri",
+    "adminPanel": "Pannello di amministrazione",
+    "welcome": "Benvenuto"
+  },
+  "delete_user": "Elimina utente",
+  "wishlist": "Lista dei desideri",
+  "cart": {
+    "header": "Carrello",
+    "cartLength": "Il tuo carrello è vuoto",
+    "quantity": "Quantità",
+    "price": "Prezzo",
+    "subTotal": "Totale ordine",
+    "shipping": "Spedizione 'STANDARD'",
+    "free": "Gratuito",
+    "vat": "IVA",
+    "included": "Incluso",
+    "totalToPay": "Totale da pagare",
+    "checkout": "Vai al checkout",
+    "or": "o",
+    "paypal": "Paypal",
+    "freeShipping": "Spedizione gratuita per gli utenti connessi",
+    "freeReturns": "Resi gratuiti per 30 giorni",
+    "secureCheckout": "Pagamento sicuro"
+  },
+  "add_to_cart": "Aggiungi al carrello",
+  "total_to_pay": "Totale da pagare",
+  "go_to_checkout": "Vai al checkout",
+  "paypal": "Paypal",
+  "order_subtotal": "Totale ordine",
+  "shipping": "Spedizione",
+  "free": "Gratuito",
+  "vat": "IVA",
+  "included": "Incluso",
+  "free_shipping_logged_in": "Spedizione gratuita per utenti connessi",
+  "free_returns": "Resi gratuiti per 30 giorni",
+  "secure_checkout": "Pagamento sicuro",
+  "footer": {
+    "headerRoots": "le nostre radici",
+    "links1": "visione",
+    "links2": "carriere",
+    "links3": "termini di servizio",
+    "links4": "dona",
+    "headerAccounts": "bloomora",
+    "links11": "accedi",
+    "links12": "galleria",
+    "links13": "visualizza carrello",
+    "links14": "la mia lista dei desideri",
+    "headerHelp": "aiuto",
+    "links21": "centro assistenza",
+    "links22": "segnala un problema",
+    "links23": "visualizza carrello",
+    "links24": "contattaci",
+    "rightsReserved": "© 2024 Bloomora. Tutti i diritti riservati."
+  }
+}

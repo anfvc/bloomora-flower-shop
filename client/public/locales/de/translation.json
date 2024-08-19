@@ -8,6 +8,16 @@
     "title1_3": "Bloomora unterstützt Sie in jedem besonderen Moment.",
     "title2_3": "Schöne Blumen für jeden Anlass"
   },
+  "mostPopular": {
+    "header": "Beliebteste Produkte",
+    "seeAll": "Alle Produkte ansehen"
+  },
+  "support": {
+    "header1": "SCHNELLE PRODUKTLIEFERUNG, CLICK & COLLECT",
+    "header2": "FRISCHE BLUMEN & LOKALE GÄRTNER",
+    "header3": "ZAHLEN SIE FÜR BLUMEN MIT AFTERPAY",
+    "header4": "24/7 KUNDENBETREUUNG"
+  },
   "shop": {
     "header1": "Shop",
     "header2": "Blumen & Geschenke einkaufen",

@@ -107,7 +107,7 @@
   text-transform: uppercase;
   border: none;
   border-radius: 4px;
-  background-color: #4b4b4b;
+  background-color: #698474;
   color: white;
   cursor: pointer;
   position: relative;
@@ -115,7 +115,7 @@
 }
 
 .contactRegisterFormContainer form .submitButton button:hover {
-  background-color: #303030;
+  background-color: #506b5b;
 }
 
 @media (max-width: 912px) {

@@ -249,3 +249,18 @@ main {
 [data-theme="dark"] form .submitButton .button:hover {
   background-color: #3a55b7;
 }
+
+/* -------------Most Popular Products-------------- */
+
+[data-theme="dark"] .mostPopularContainer .popularHeader::before {
+  background-color: var(--primary-text-color);
+}
+
+/* ----------------Support---------------------------- */
+
+[data-theme="dark"] .support-container {
+  background-color: var(--background-color);
+  border-top: 1px solid var(--primary-text-color);
+  border-bottom: 1px solid var(--primary-text-color);
+  margin-bottom: 5rem;
+}
