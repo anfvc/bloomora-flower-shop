@@ -10,11 +10,16 @@ import cartRouter from "./routes/cartRouter.js";
 import wishListRouter from "./routes/wishListRouter.js";
 import { authenticateUser } from "./middleware/authMiddleware.js";
 import orderRouter from "./routes/orderRoute.js";
-import userRouter from "./routes/userRouter.js"
+import userRouter from "./routes/userRouter.js";
+import { fileURLToPath } from "url";
+import path from "path";
 
 await connection();
 
 const app = express();
+
+const __filename = fileURLToPath(import.meta.url); // absolute path to the current file
+const __dirname = path.dirname(__filename); // directory name of the current file
 
 app.use(
   cors({
@@ -24,20 +29,23 @@ app.use(
 );
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "client/dist"))); //? specify the path for our frontend (current directory + path we want to get in) // deploy-starter/frontend/dist
 
 app.use("/api/auth", authRouter);
 app.use("/api/product", productRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);
-app.use("/images", express.static("uploads"));
+// app.use("/images", express.static("uploads"));
 app.use("/api/wishlist", wishListRouter);
-app.use("/api/user", userRouter)
+app.use("/api/user", userRouter);
 
-app.use("*", (req, res) => {
-  res.status(404).json({ msg: "not found" });
+// app.use("*", (req, res) => {
+//   res.status(404).json({ msg: "not found" });
+// });
+
+app.get("*", (req, res) => {
+  res.sendFile(__dirname + "/client/dist");
 });
-
-
 
 const port = process.env.PORT || 5100;
 
