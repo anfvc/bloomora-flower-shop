@@ -22,10 +22,11 @@ const __filename = fileURLToPath(import.meta.url); // absolute path to the curre
 const __dirname = path.dirname(__filename); // directory name of the current file
 
 app.use(
-  cors({
-    credentials: true,
-    origin: ["http://localhost:5173", "http://localhost:5174"],
-  })
+  cors()
+  //{
+  //     credentials: true,
+  //     origin: ["http://localhost:5173", "http://localhost:5174"],
+  //   }
 );
 app.use(cookieParser());
 app.use(express.json());
