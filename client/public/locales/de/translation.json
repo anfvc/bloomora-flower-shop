@@ -215,6 +215,7 @@
     "secureCheckout": "Sicherer Checkout"
   },
   "add_to_cart": "In den Warenkorb",
+  "delete": "Löschen",
   "total_to_pay": "Gesamt zu zahlen",
   "go_to_checkout": "Zur Kasse gehen",
   "paypal": "Paypal",

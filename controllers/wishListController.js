@@ -42,6 +42,7 @@ export async function addToWishList(req, res) {
         name: product.name,
         price: product.price,
         image: product.image,
+       
       });
     } else {
       user.wishlist = user.wishlist.filter(

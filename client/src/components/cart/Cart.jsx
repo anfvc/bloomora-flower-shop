@@ -111,27 +111,27 @@ function Cart() {
   };
 
   async function createStripeCheckoutSession() {
-    if (!deliveryAddress) {
-      showAlert("Please fill up Delivery address", "warning");
-    } else {
-      try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API}/order/createStripeCheckoutSession/${
-            user.user._id
-          }/${orderId}`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              checkoutProducts: cart.map((product) => ({
-                id: product.productId?._id,
-                quantity: product.quantity,
-              })),
-            }),
-          }
-        );
+    if(deliveryAddress){
+      showAlert("Please fill up Delivery address", "warning")
+    }
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API}/order/createStripeCheckoutSession/${
+          user.user._id
+        }/${orderId}`, //adding order._id
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            checkoutProducts: cart.map((product) => ({
+              id: product.productId?._id,
+              quantity: product.quantity,
+            })),
+          }),
+        }
+      );
 
         const body = await response.json();
         if (body.url) {
