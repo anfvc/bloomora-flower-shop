@@ -86,7 +86,7 @@ function UserPanel() {
               navigate("/userPanel?section=orders");
             }}
           >
-            <p>{t("userPanel.MyOrders")}</p>
+            <p>{t("userPanel.myOrders")}</p>
             <FaClipboardList />
           </button>
           <button

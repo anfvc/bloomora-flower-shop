@@ -8,41 +8,35 @@ import "./SuccessPage.css";
 const SuccessPage = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const {
-    user,
-    setOrders,
-    orders,
-    deliveryAddress,
-    setDeliveryAddress,
-  } = useContext(UserContext);
+  const { user, setOrders, orders, deliveryAddress, setDeliveryAddress } =
+    useContext(UserContext);
   const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
-    // async function createOrder() {
-    //   const checkoutProducts = JSON.parse(searchParams.get("checkoutProducts"));
+    async function clearCart() {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API}/cart/clear/${user.user._id}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/JSON",
+            },
+          }
+        );
 
-    //   const response = await fetch(
-    //     `${import.meta.env.VITE_API}/order/createOrder/${user.user._id}`,
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify({ checkoutProducts }),
-    //     }
-    //   );
+        if (response.ok) {
+          setCart([]);
+        } else {
+          const { error } = await response.json();
+          throw new Error(error.message);
+        }
+      } catch (error) {
+        console.log("Error clearing cart.");
+      }
+    }
 
-    //   if (response.ok) {
-    //     const data = await response.json();
-    //     console.log("Data from Success Page: ", data);
-    //     setOrders([...orders, data.order]);
-    //   }
-    //   // await new Promise((resolve) => setTimeout(resolve, 5000));
-    // }
-
-    // if (user.user?._id) {
-    //   createOrder();
-    // }
+    clearCart();
 
     const timer = setTimeout(() => {
       if (!isClicked) {
