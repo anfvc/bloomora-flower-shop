@@ -6,13 +6,12 @@ import MostPopularProducts from "../../components/MostPopularProducts/MostPopula
 import Support from "../../components/support/support";
 
 function Home() {
-
   return (
     <div className="homeContainer">
       <LandingSlider />
       <WeddingSlider />
       <Support />
-      <MostPopularProducts/>
+      <MostPopularProducts />
     </div>
   );
 }

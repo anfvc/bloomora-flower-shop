@@ -61,15 +61,17 @@ function Login({ openRegister, closeModals }) {
       <div className="loginContainer">
         <h2>{t("sign_in.header")}</h2>
         <form onSubmit={handleSubmit}>
-          <label>{t("sign_in.email")}</label>
-          <input
-            type="text"
-            value={email}
-            placeholder="abcd@example.com"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <label>{t("sign_in.password")}</label>
+          <div className="emailContainer">
+            <label>{t("sign_in.email")}</label>
+            <input
+              type="text"
+              value={email}
+              placeholder="abcd@example.com"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
           <div className="passwordContainer">
+            <label>{t("sign_in.password")}</label>
             <input
               type={showPassword ? "text" : "password"}
               value={password}
@@ -80,7 +82,7 @@ function Login({ openRegister, closeModals }) {
               className="togglePasswordIcon"
               onClick={togglePasswordVisibility}
             >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
             </span>
           </div>
           <p>
