@@ -27,10 +27,10 @@ export async function createStripeCheckoutSession(req, res) {
     customer: stripeUserId,
     line_items: await transformCheckoutProductsToLineItems(checkoutProducts),
     mode: "payment",
-    success_url: `https://final-project-jran.onrender.com/success?checkoutProducts=${JSON.stringify(
+    success_url: `${process.env.STRIPE_URL}/success?checkoutProducts=${JSON.stringify(
       checkoutProducts
     )}`, //! http://localhost:5173/success to run on local
-    cancel_url: `https://final-project-jran.onrender.com/cart`/* `http://localhost:5173/cart to run on local */,
+    cancel_url: `${process.env.STRIPE_URL}/cart`/* `http://localhost:5173/cart to run on local */,
   };
   const session = await stripe.checkout.sessions.create(checkoutParams);
 
