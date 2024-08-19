@@ -13,7 +13,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Wishlist from "../wishlist/wishlist";
 import Invoice from "../invoice/Invoice";
 import CreateProduct from "../../views/Admin/CreateProduct";
-import MyOrders from "../MyOrders/MyOrders";
+import MyOrders from "../myOrders/myOrders";
 import { useTranslation } from "react-i18next";
 
 
@@ -46,7 +46,7 @@ function UserPanel() {
   };
 
   async function handleDeleteUser() {
-    
+
     if (confirm("Are you sure you want to delete your account?"))
       try {
         const settings = {
