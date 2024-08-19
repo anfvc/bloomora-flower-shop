@@ -135,7 +135,7 @@ function Cart() {
 
         const body = await response.json();
         if (body.url) {
-          await clearCart();
+          // await clearCart();
           window.location.replace(body.url);
         } else {
           console.error("Failed to create Stripe Checkout Session.");
@@ -145,28 +145,28 @@ function Cart() {
       }
     }
 
-  async function clearCart() {
-    try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API}/cart/clear/${user.user._id}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/JSON",
-          },
-        }
-      );
+  // async function clearCart() {
+  //   try {
+  //     const response = await fetch(
+  //       `${import.meta.env.VITE_API}/cart/clear/${user.user._id}`,
+  //       {
+  //         method: "DELETE",
+  //         headers: {
+  //           "Content-Type": "application/JSON",
+  //         },
+  //       }
+  //     );
 
-      if (response.ok) {
-        setCart([]);
-      } else {
-        const { error } = await response.json();
-        throw new Error(error.message);
-      }
-    } catch (error) {
-      console.log("Error clearing cart.");
-    }
-  }
+  //     if (response.ok) {
+  //       setCart([]);
+  //     } else {
+  //       const { error } = await response.json();
+  //       throw new Error(error.message);
+  //     }
+  //   } catch (error) {
+  //     console.log("Error clearing cart.");
+  //   }
+  // }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
