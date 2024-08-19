@@ -144,7 +144,6 @@ function Cart() {
         console.log("Error in checkout process.", error);
       }
     }
-  }
 
   async function clearCart() {
     try {
