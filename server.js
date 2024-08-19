@@ -21,12 +21,13 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url); // absolute path to the current file
 const __dirname = path.dirname(__filename); // directory name of the current file
 
-// app.use(
-//   cors({
-//     credentials: true,
-//     origin: ["http://localhost:5173", "http://localhost:5174"],
-//   })
-// );
+app.use(
+  cors()
+  //{
+  //     credentials: true,
+  //     origin: ["http://localhost:5173", "http://localhost:5174"],
+  //   }
+);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "client/dist"))); //? specify the path for our frontend (current directory + path we want to get in) // deploy-starter/frontend/dist
