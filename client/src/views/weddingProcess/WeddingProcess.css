@@ -9,7 +9,7 @@
 
 .weddingProcessContainer .backgroundImage {
   width: 100%;
-  height: 40rem; 
+  height: 40rem;
   position: absolute;
   top: 0;
   left: 0;
@@ -26,7 +26,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.1); 
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .weddingProcessContainer .header {
@@ -34,7 +34,7 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 30rem; 
+  top: 30rem;
   left: 0;
   width: 100%;
 }
@@ -108,7 +108,7 @@
   font-size: 1.8rem;
   font-weight: 300;
   line-height: 2.7rem;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
 }
 
 .we-box .step .bttns {
@@ -121,7 +121,7 @@
 .we-box .step .bttns a {
   color: black;
   text-decoration: none;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .we-box .step .bttns .inquiryBtn {
@@ -157,8 +157,8 @@
 }
 
 .we-box .step .bttns .inquiryBtn button:hover::before,
-.we-box .step .bttns .inquiryBtn button:focus::before{
-  transition: transform .3s ease-in-out;
+.we-box .step .bttns .inquiryBtn button:focus::before {
+  transition: transform 0.3s ease-in-out;
   transform: scale(1);
 }
 
@@ -200,8 +200,182 @@
 }
 
 .we-box .step .bttns button:hover::before,
-.we-box .step .bttns button:focus::before{
-  transition: transform .3s ease-in-out;
+.we-box .step .bttns button:focus::before {
+  transition: transform 0.3s ease-in-out;
   transform: scale(1);
 }
 
+@media screen and (max-width: 768px) {
+  .we-boxContainer {
+    gap: 6rem;
+  }
+
+  .weddingProcessContainer .header h1 {
+    font-size: 4rem;
+  }
+
+  .we-box {
+    gap: 4rem;
+  }
+
+  .we-box img {
+    width: 45rem;
+  }
+
+  .we-box .step {
+    width: 45rem;
+    gap: 1.5rem;
+  }
+
+  .we-box .step h1 {
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .we-box .step span {
+    font-size: 3.4rem;
+    vertical-align: middle;
+  }
+  
+  .we-box .step p {
+    font-size: 1.8rem;
+  }
+
+  .we-box .step .bttns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .we-boxContainer {
+    gap: 6rem;
+  }
+
+  .weddingProcessContainer .header::before {
+    width: 20rem;
+  }
+
+  .weddingProcessContainer .header h1 {
+    font-size: 3rem;
+  }
+
+  .we-box {
+    gap: 4rem;
+  }
+
+  .we-box img {
+    width:35rem;
+  }
+
+  .we-box .step {
+    width: 35rem;
+    gap: 1.5rem;
+  }
+
+  .we-box .step h1 {
+    font-size: 2.5rem;
+  }
+  
+  .we-box .step span {
+    font-size: 3rem;
+  }
+  
+  .we-box .step p {
+    font-size: 1.6rem;
+  }
+
+  .we-box .step .bttns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .we-box .step .bttns button {
+    font-size: 1.35rem;
+    width: 60%;
+  }
+
+  .we-box .step .bttns .inquiryBtn {
+    width: 60%;
+  }
+  
+  .we-box .step .bttns .inquiryBtn button {
+    width: 100%;
+    height: 5rem;
+    background-color: rgb(38, 38, 38);
+    color: white;
+    font-size: 1.45rem;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .we-boxContainer {
+    gap: 4rem;
+  }
+
+  .weddingProcessContainer .header::before {
+    width: 17rem;
+  }
+
+  .weddingProcessContainer .header h1 {
+    font-size: 2.5rem;
+  }
+
+  .we-box {
+    gap: 4rem;
+  }
+
+  .we-box img {
+    width:30rem;
+  }
+
+  .we-box .step {
+    width: 30rem;
+    gap: 1.5rem;
+  }
+
+  .we-box .step h1 {
+    font-size: 2.5rem;
+  }
+  
+  .we-box .step span {
+    font-size: 3rem;
+  }
+  
+  .we-box .step p {
+    font-size: 1.6rem;
+  }
+
+  .we-box .step .bttns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .we-box .step .bttns button {
+    font-size: 1.35rem;
+    width: 75%;
+  }
+
+  .we-box .step .bttns .inquiryBtn {
+    width: 75%;
+  }
+  
+  .we-box .step .bttns .inquiryBtn button {
+    width: 100%;
+    height: 5rem;
+    background-color: rgb(38, 38, 38);
+    color: white;
+    font-size: 1.45rem;
+  }
+}

@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 
 function WeddingProcess() {
   const { t } = useTranslation();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="weddingProcessContainer">
@@ -27,7 +27,9 @@ function WeddingProcess() {
             </h1>
             <p>{t("weddingProcess.step1Description")}</p>
             <div className="bttns">
-              <NavLink className="inquiryBtn" to="/wedding-inquiry"><button>{t("weddingProcess.weddingInquiry")}</button></NavLink>
+              <NavLink className="inquiryBtn" to="/wedding-inquiry">
+                <button>{t("weddingProcess.weddingInquiry")}</button>
+              </NavLink>
               <button>{t("weddingProcess.aLaCarteInquiry")}</button>
             </div>
           </div>
@@ -40,7 +42,11 @@ function WeddingProcess() {
             </h1>
             <p>{t("weddingProcess.step2Description")}</p>
             <div className="bttns">
-              <button className="weddingGalleryBtn"><NavLink to="/wedding-gallery">{t("weddingProcess.weddingGallery")}</NavLink></button>
+              <button className="weddingGalleryBtn">
+                <NavLink to="/wedding-gallery">
+                  {t("weddingProcess.weddingGallery")}
+                </NavLink>
+              </button>
             </div>
           </div>
           <img src={image3} alt="image3" />
