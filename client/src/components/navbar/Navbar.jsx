@@ -23,6 +23,7 @@ import { MdPersonAdd } from "react-icons/md";
 import { GrLanguage } from "react-icons/gr";
 import { PiListHeartFill } from "react-icons/pi";
 import { TbArrowBarRight } from "react-icons/tb";
+import { BsFillBoxSeamFill } from "react-icons/bs";
 
 import Login from "../Login/Login";
 import Register from "../Register/Register";
@@ -478,7 +479,10 @@ function Navbar({ toggleTheme, isChecked }) {
                   toggleUserPanel();
                 }}
               >
-                <button>{t("userPanel.myOrders")}</button>
+                <button>
+                  <BsFillBoxSeamFill />
+                  {t("userPanel.myOrders")}
+                </button>
               </li>
               <li
                 onClick={() => {
