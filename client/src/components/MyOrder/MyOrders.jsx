@@ -35,12 +35,14 @@ function MyOrders() {
     );
   }
 
+  const filteredOrders = orders?.filter((order) => order.status !== "pending");
+
   return (
     <>
       <div className="wishlist-container">
         <div className="wishListBox">
-          {!!orders?.length &&
-            orders.map((order) => (
+          {!!filteredOrders?.length &&
+            filteredOrders.map((order) => (
               <div className="productsBox" key={order._id}>
                 <div className="info">
                   <h2>Order Number {order._id}</h2>

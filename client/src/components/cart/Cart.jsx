@@ -111,9 +111,6 @@ function Cart() {
   };
 
   async function createStripeCheckoutSession() {
-    if(deliveryAddress){
-      showAlert("Please fill up Delivery address", "warning")
-    }
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API}/order/createStripeCheckoutSession/${
@@ -133,40 +130,17 @@ function Cart() {
         }
       );
 
-        const body = await response.json();
-        if (body.url) {
-          // await clearCart();
-          window.location.replace(body.url);
-        } else {
-          console.error("Failed to create Stripe Checkout Session.");
-        }
-      } catch (error) {
-        console.log("Error in checkout process.", error);
+      const body = await response.json();
+      if (body.url) {
+        // await clearCart();
+        window.location.replace(body.url);
+      } else {
+        console.error("Failed to create Stripe Checkout Session.");
       }
+    } catch (error) {
+      console.log("Error in checkout process.", error);
     }
-
-  // async function clearCart() {
-  //   try {
-  //     const response = await fetch(
-  //       `${import.meta.env.VITE_API}/cart/clear/${user.user._id}`,
-  //       {
-  //         method: "DELETE",
-  //         headers: {
-  //           "Content-Type": "application/JSON",
-  //         },
-  //       }
-  //     );
-
-  //     if (response.ok) {
-  //       setCart([]);
-  //     } else {
-  //       const { error } = await response.json();
-  //       throw new Error(error.message);
-  //     }
-  //   } catch (error) {
-  //     console.log("Error clearing cart.");
-  //   }
-  // }
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -202,18 +176,27 @@ function Cart() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await saveDeliveryAddress();
-    setDeliveryAddress({
-      firstName: "",
-      lastName: "",
-      street: "",
-      houseNum: "",
-      zip: "",
-      city: "",
-      country: "",
-    });
-    showAlert("Delivery Address saved successfully.", "success");
-    setIsModalOpen(false);
+
+    const isEmpty = Object.values(deliveryAddress).some(
+      (field) => field === ""
+    );
+
+    if (isEmpty) {
+      showAlert("Please provide your delivery address to continue.", "info");
+    } else {
+      await saveDeliveryAddress();
+      setDeliveryAddress({
+        firstName: "",
+        lastName: "",
+        street: "",
+        houseNum: "",
+        zip: "",
+        city: "",
+        country: "",
+      });
+      showAlert("Delivery Address saved successfully.", "success");
+      setIsModalOpen(false);
+    }
   }
 
   return (
