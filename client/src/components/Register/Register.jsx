@@ -116,7 +116,7 @@ function Register({ openLogin, closeModals }) {
               className="togglePasswordIcon"
               onClick={togglePasswordVisibility}
             >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
             </span>
           </div>
 
@@ -132,7 +132,7 @@ function Register({ openLogin, closeModals }) {
               className="togglePasswordIcon"
               onClick={toggleConfirmPasswordVisibility}
             >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
             </span>
           </div>
           <p>
