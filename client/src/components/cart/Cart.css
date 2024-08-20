@@ -1,7 +1,9 @@
 .cart-container {
   width: 100vw;
+  min-height: 65vh;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   font-family: "Roboto", sans-serif;
   position: relative;
@@ -121,6 +123,7 @@
   font-family: "Roboto Condensed", sans-serif;
   font-size: 1.8rem;
   font-weight: 400;
+  color: #698474;
 }
 
 .cart-container .itemsContainer .productsBox .info p:first-child {
@@ -232,6 +235,7 @@
   font-weight: 300;
   font-weight: 400;
   text-transform: capitalize;
+  color: black;
 }
 
 /* ---------------------------------Delivery Address---------------------------------- */

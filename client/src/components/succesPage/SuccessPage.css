@@ -9,6 +9,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
   z-index: 11;
 }
 
@@ -28,7 +29,8 @@
   font-weight: 300;
   color: white;
   text-transform: capitalize;
-  position: relative;
+  position: absolute;
+  top: 30rem;
 }
 
 .modal .icon {
@@ -41,5 +43,46 @@
   font-weight: 400;
   letter-spacing: 2px;
   margin-top: 2rem;
+  margin-bottom: 2rem;
   color: #23b55e;
+}
+
+span {
+  color: #23b55e;
+  font-size: 2rem;
+}
+.modal-backdrop p:nth-child(5) {
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: black;
+  margin: 0;
+}
+
+.modal-backdrop .goToOrders {
+  position: relative;
+}
+
+.modal-backdrop .goToOrders .goToOrdersIcon {
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: white;
+}
+
+.modal-backdrop button {
+  width: 20rem;
+  height: 4rem;
+  background-color: #23b55e;
+  color: white;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  border-radius: 5px;
+  border: 1px solid #23b55e;
+  text-align: left;
+  padding-left: 2rem;
+  cursor: pointer;
 }

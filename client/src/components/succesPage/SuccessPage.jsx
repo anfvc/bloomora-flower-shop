@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { UserContext } from "../../context/userContext";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { BsArrowRightShort } from "react-icons/bs";
 import { MdDone } from "react-icons/md";
 import "./SuccessPage.css";
 
@@ -67,11 +68,12 @@ const SuccessPage = () => {
           <MdDone className="icon show" />
         </div>
         <p>Payment Successful!</p>
-        <p>
-          If you don't want to go to your orders, you will be shortly redirected
-          to the homepage!
-        </p>
-        <button onClick={handleButtonClick}>Go to your Orders</button>
+        <div className="goToOrders">
+          <BsArrowRightShort className="goToOrdersIcon" />
+          <button onClick={handleButtonClick}>Go to your Orders</button>
+        </div>
+        <span>or</span>
+        <p>You will be automatically redirected to the home page</p>
       </div>
     </div>
   );
