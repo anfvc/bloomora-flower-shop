@@ -53,6 +53,7 @@ function SortFilter() {
   // }
 
   const categories = [
+    { value: "", label: t("filter.all") },
     { value: "Decor", label: t("filter.category2") },
     { value: "Eustoma", label: t("filter.category3") },
     { value: "Flowers on Ocassion", label: t("filter.category4") },
