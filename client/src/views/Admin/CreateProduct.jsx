@@ -7,6 +7,7 @@ import {
   FaUserEdit,
 } from "react-icons/fa";
 import { PiListHeartFill } from "react-icons/pi";
+import { useAlert } from "../../context/alertContext";
 
 function CreateProduct() {
   const [data, setData] = useState({
@@ -16,6 +17,7 @@ function CreateProduct() {
     subcategory: "",
     description: "",
   });
+  const { showAlert } = useAlert();
 
   const imageInput = useRef(null);
 
@@ -51,7 +53,7 @@ function CreateProduct() {
       if (response.ok) {
         const newData = await response.json();
         console.log(newData);
-        alert(newData.msg);
+        showAlert(newData.msg, "success");
         setData({
           price: 0,
           name: "",
