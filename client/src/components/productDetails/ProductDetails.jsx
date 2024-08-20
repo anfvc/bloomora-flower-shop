@@ -18,12 +18,9 @@ function ProductDetails({ product, onClose }) {
 
   function increase() {
     setProductCount((prevCount) => {
-      if (prevCount < 10) {
-        const newCount = prevCount + 1;
-        setTotalPrice(newCount * product.price);
-        return newCount;
-      }
-      return prevCount;
+      const newCount = prevCount + 1;
+      setTotalPrice(newCount * product.price);
+      return newCount;
     });
   }
 
@@ -45,7 +42,7 @@ function ProductDetails({ product, onClose }) {
 
   return (
     <div className="modalBackdrop" onClick={onClose}>
-      <div className="modalContent" onClick={(e) => e.stopPropagation()}>
+      <div className="productDetailsModalContent" onClick={(e) => e.stopPropagation()}>
         <button className="closeButton" onClick={onClose}>
           <AiFillCloseCircle />
         </button>

@@ -126,7 +126,7 @@
   text-transform: uppercase;
   border-radius: 3px;
   border: none;
-  z-index: 2;
+  z-index: 1;
   border: none;
   background-color: transparent;
   color: white;
@@ -136,7 +136,7 @@
 }
 
 .shopContainer .productsBox .addToCart:hover {
-  background-color: white;
+  background-color: #698474;
   color: black;
 }
 

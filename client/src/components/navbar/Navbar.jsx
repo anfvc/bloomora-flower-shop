@@ -16,7 +16,7 @@ import {
 } from "react-icons/fa6";
 import { FaFacebookSquare, FaSignOutAlt } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
-import { PiShoppingBag } from "react-icons/pi";
+import { RiShoppingBag3Fill } from "react-icons/ri";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoLogIn } from "react-icons/io5";
 import { MdPersonAdd } from "react-icons/md";
@@ -224,16 +224,6 @@ function Navbar({ toggleTheme, isChecked }) {
                 className={`search ${scrolled ? "scrolled-icon" : ""}`}
               />
             </NavLink>
-            <NavLink to="/cart">
-              <div className="cart-icon">
-                <PiShoppingBag
-                  className={`cart ${scrolled ? "scrolled-icon" : ""}`}
-                />
-                {user.cart?.length > 0 && (
-                  <span className="cart-count">{user.cart.length}</span>
-                )}
-              </div>
-            </NavLink>
             <NavLink
               className="nav-wishlist"
               to="#"
@@ -248,6 +238,16 @@ function Navbar({ toggleTheme, isChecked }) {
                 <FaHeart
                   className={`wish ${scrolled ? "scrolled-icon" : ""}`}
                 />
+              </div>
+            </NavLink>
+            <NavLink to="/cart">
+              <div className="cart-icon">
+                <RiShoppingBag3Fill
+                  className={`cart ${scrolled ? "scrolled-icon" : ""}`}
+                />
+                {user.cart?.length > 0 && (
+                  <span className="cart-count">{user.cart.length}</span>
+                )}
               </div>
             </NavLink>
             <div className="language-switcher">
@@ -419,7 +419,7 @@ function Navbar({ toggleTheme, isChecked }) {
                 <li>
                   <NavLink to="/cart">
                     <div className="cart-icon">
-                      <PiShoppingBag className="cart" />
+                      <RiShoppingBag3Fill className="cart" />
                       {user.cart?.length > 0 && (
                         <span className="cart-count">{user.cart.length}</span>
                       )}
@@ -469,6 +469,17 @@ function Navbar({ toggleTheme, isChecked }) {
                   {t("wishlist")}
                 </button>
               </li>
+              {/* Orders */}
+              <li
+                onClick={() => {
+                  handleMenuItemClick(() =>
+                    navigate("/userPanel?section=orders")
+                  );
+                  toggleUserPanel();
+                }}
+              >
+                <button>{t("userPanel.myOrders")}</button>
+              </li>
               <li
                 onClick={() => {
                   handleMenuItemClick(() => navigate("/cart"));
@@ -476,7 +487,7 @@ function Navbar({ toggleTheme, isChecked }) {
                 }}
               >
                 <button className="userPanel-cart">
-                  <PiShoppingBag />
+                  <RiShoppingBag3Fill />
                   {t("cart.header")}
                 </button>
               </li>
@@ -494,9 +505,6 @@ function Navbar({ toggleTheme, isChecked }) {
             </>
           ) : (
             <>
-              {/* <div className="userPanelLogo2">
-              <img src={logo} alt="" />
-            </div> */}
               <li
                 onClick={() => {
                   handleMenuItemClick(openLogin);

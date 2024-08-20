@@ -223,6 +223,7 @@
   text-transform: capitalize;
   font-weight: 400;
   margin-right: 1rem;
+  color: black;
 }
 
 @media (max-width: 1024px) {

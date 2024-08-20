@@ -104,6 +104,12 @@
   text-align: end;
 }
 
+.eventBoxContainer .box1 .infoBox p span {
+  color: black;
+  font-size: 1.9rem;
+  text-transform: lowercase;
+}
+
 .eventBoxContainer .box1 .imageBox1 img {
   width: 60rem;
   height: 35rem;
@@ -235,6 +241,12 @@
   letter-spacing: 1px;
   line-height: 3rem;
   text-align: end;
+}
+
+.eventBoxContainer .box3 .infoBox3 p span {
+  color: black;
+  font-size: 1.9rem;
+  text-transform: lowercase;
 }
 
 .eventBoxContainer .box3 .infoBox3 .orderButtonBox {
