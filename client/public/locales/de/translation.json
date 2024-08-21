@@ -36,6 +36,7 @@
   },
   "filter": {
     "header": "filtern",
+    "all": "Alle",
     "category1": "Wählen Sie Ihre Option",
     "category2": "Dekor",
     "category3": "Eustoma",
