@@ -233,17 +233,17 @@ function Cart() {
                   <div className="incDecDelete">
                     <div className="incDec">
                       <button
-                        className="inc"
-                        onClick={() => increaseQuantity(item)}
-                      >
-                        +
-                      </button>
-                      <p>{item.quantity}</p>
-                      <button
                         className="dec"
                         onClick={() => decreaseQuantity(item)}
                       >
                         -
+                      </button>
+                      <p>{item.quantity}</p>
+                      <button
+                        className="inc"
+                        onClick={() => increaseQuantity(item)}
+                      >
+                        +
                       </button>
                     </div>
                     <div
