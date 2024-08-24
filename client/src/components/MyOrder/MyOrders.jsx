@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./MyOrders.css";
 import { useContext } from "react";
 import { UserContext } from "../../context/userContext";
+import { useTranslation } from "react-i18next";
 
 function MyOrders() {
   const { user, orders, setOrders } = useContext(UserContext);
+  const { t } = useTranslation();
 
   useEffect(() => {
     async function getOrders() {
@@ -37,39 +39,63 @@ function MyOrders() {
 
   return (
     <>
-      <div className="wishlist-container">
-        <div className="wishListBox">
+      <div className="order-container">
+        <div className="orderHeader">
+          <h1>{t("userPanel.myOrders.header")}</h1>
+        </div>
+        <div className="orderBox">
           {!!orders?.length &&
             orders.map((order) => (
               <div className="productsBox" key={order._id}>
                 <div className="info">
-                  <h2>Order Number {order._id}</h2>
-                  <p>Order Status: {order.status}</p>
-                  <p>Order Placed: {new Date(order.date).toLocaleString()}</p>
-                  <h5>Delivery Address</h5>
-                  <p>
-                    Street: {order.deliveryAddress.street}{" "}
-                    {order.deliveryAddress.houseNum}
-                  </p>
-
-                  <p>PLZ: {order.deliveryAddress.zip}</p>
-                  <p>City: {order.deliveryAddress.city}</p>
-
-                  <p>Total: {total(order)}€</p>
-                  <div>
+                  <div className="image-info">
                     {order.orderItems.map((item) => {
                       return (
-                        <div key={item._id}>
+                        <div className="productInfo" key={item._id}>
                           <img
                             src={item.product.image}
                             alt={item.product.name}
                           />
-                          <p>Ordered Products: {item.product.name}</p>
-                          <p>Product Price: {item.product.price}€</p>
-                          <p>Product Quantity: {item.quantity}</p>
+                          <p>
+                            <span>{t("userPanel.myOrders.orderedProducts")}</span> {item.product.name}
+                          </p>
+                          <p>
+                            <span>{t("userPanel.myOrders.productPrice")}</span> {item.product.price}€
+                          </p>
+                          <p>
+                            <span>{t("userPanel.myOrders.productQuantity")}</span> {item.quantity}
+                          </p>
                         </div>
                       );
                     })}
+                  </div>
+                  <div className="orderInfos">
+                    <h2>
+                      <span>{t("userPanel.myOrders.orderNumber")}</span> {order._id}
+                    </h2>
+                    <p>
+                      <span>{t("userPanel.myOrders.orderStatus")}</span> {order.status}
+                    </p>
+                    <p>
+                      <span>{t("userPanel.myOrders.orderPlaced")}</span>{" "}
+                      {new Date(order.date).toLocaleString()}
+                    </p>
+
+                    <h5>{t("userPanel.myOrders.deliveryAddress")}</h5>
+                    <p>
+                      <span>{t("userPanel.myOrders.street")}</span> {order.deliveryAddress.street}{" "}
+                      {order.deliveryAddress.houseNum}
+                    </p>
+                    <p>
+                      <span>{t("userPanel.myOrders.plz")}</span> {order.deliveryAddress.zip}
+                    </p>
+                    <p>
+                      <span>{t("userPanel.myOrders.city")}</span> {order.deliveryAddress.city}
+                    </p>
+
+                    <p>
+                      <span>{t("userPanel.myOrders.total")}</span> {total(order)}€
+                    </p>
                   </div>
                 </div>
               </div>

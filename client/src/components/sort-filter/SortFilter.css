@@ -96,7 +96,7 @@
 
 .filter-panel {
   width: 100vw;
-  height: 10rem;
+  height: 12rem;
   background-color: rgba(255, 255, 255, 1);
   box-shadow: -2px 5px 5px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease-in-out;
@@ -131,6 +131,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
   gap: 2rem;
 }
 

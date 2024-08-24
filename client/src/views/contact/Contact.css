@@ -204,15 +204,16 @@
   position: relative;
 }
 
-.email-address-phone h2::before {
+/* .email-address-phone h2::before {
   content: "";
-  width: 40rem;
+  width: 20rem;
   height: 0.1rem;
   background-color: black;
   position: absolute;
   bottom: -0.3rem;
-  left: 0;
-}
+  left: 50%;
+  transform: translateX(-50%);
+} */
 
 .email-address-phone p {
   font-size: 2rem;
@@ -231,18 +232,122 @@
     justify-content: center;
     flex-wrap: wrap;
   }
+
+  .contactInfo .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 6rem;
+  }
+
+  .contactInfo .info .shopHours {
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .contactInfo .info .shopHours h2 {
+    font-size: 4rem;
+  }
+
+  .contactInfo .info .shopHours ul {
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .contactInfo .info .shopHours ul li {
+    font-size: 3rem;
+  }
+
+  .contactInfo .info .daysOutOfService {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .contactInfo .info .daysOutOfService h2 {
+    font-size: 4rem;
+    letter-spacing: 1px;
+  }
+
+  .contactInfo .info .daysOutOfService p:nth-child(2n) {
+    text-align: center;
+    font-size: 3rem;
+  }
+
+  .contactInfo .info .daysOutOfService p:nth-child(3n) {
+    font-size: 3.5rem;
+  }
+
+  .contactInfo .info .daysOutOfService p:nth-child(3n)::before {
+    width: 100%;
+  }
+
+  .email-address-phone {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .email-address-phone h2 {
+    font-size: 4rem;
+  }
+
+  .email-address-phone p {
+    font-size: 3rem;
+  }
+
+  .email-address-phone span {
+    font-size: 3rem;
+  }
+
+  .email-address-phone h2::before {
+    width: 29rem;
+  }
 }
 
 @media (max-width: 768px) {
+  .contactInfo {
+    margin-top: 0;
+  }
   .contactInfo .image .sideImages {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 1rem;
   }
+
+  .contactInfo .image1 {
+    width: 30rem;
+  }
   
   .contactInfo .image .sideImages img {
-    width: 38.5rem;
+    width: 30rem;
+  }
+}
+
+@media (max-width: 820px) {
+  .contactInfo {
+    margin-top: 0;
+  }
+  .contactInfo .image .sideImages {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .contactInfo .image1 {
+    width: 30rem;
+  }
+  
+  .contactInfo .image .sideImages img {
+    width: 30rem;
   }
 }
 
@@ -256,8 +361,12 @@
     gap: 2rem;
   }
 
+  .contactInfo .image1 {
+    width: 30rem;
+  }
+  
   .contactInfo .image .sideImages img {
-    width: 38rem;
+    width: 30rem;
   }
 
   .contactInfo .image .sideImages {
@@ -285,7 +394,7 @@
   }
 
   .contactInfo .info .shopHours h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .contactInfo .info .shopHours ul {
@@ -293,6 +402,10 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+
+  .contactInfo .info .shopHours ul li {
+    font-size: 1.7rem;
   }
 
   .contactInfo .info .daysOutOfService {
@@ -305,12 +418,13 @@
   }
 
   .contactInfo .info .daysOutOfService h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     letter-spacing: 1px;
   }
 
   .contactInfo .info .daysOutOfService p:nth-child(2n) {
     text-align: center;
+    font-size: 1.6rem;
   }
 
   .contactInfo .info .daysOutOfService p:nth-child(3n)::before {
@@ -321,6 +435,14 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+  }
+
+  .email-address-phone h2 {
+    font-size: 2.5rem;
+  }
+
+  .email-address-phone p {
+    font-size: 1.6rem;
   }
 
   .email-address-phone h2::before {
@@ -338,8 +460,12 @@
     gap: 2rem;
   }
 
+  .contactInfo .image1 {
+    width: 30rem;
+  }
+  
   .contactInfo .image .sideImages img {
-    width: 38rem;
+    width: 30rem;
   }
 
   .contactInfo .image .sideImages {
@@ -367,7 +493,7 @@
   }
 
   .contactInfo .info .shopHours h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .contactInfo .info .shopHours ul {
@@ -375,6 +501,10 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+
+  .contactInfo .info .shopHours ul li {
+    font-size: 1.7rem;
   }
 
   .contactInfo .info .daysOutOfService {
@@ -387,12 +517,13 @@
   }
 
   .contactInfo .info .daysOutOfService h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     letter-spacing: 1px;
   }
 
   .contactInfo .info .daysOutOfService p:nth-child(2n) {
     text-align: center;
+    font-size: 1.6rem;
   }
 
   .contactInfo .info .daysOutOfService p:nth-child(3n)::before {
@@ -403,6 +534,14 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+  }
+
+  .email-address-phone h2 {
+    font-size: 2.5rem;
+  }
+
+  .email-address-phone p {
+    font-size: 1.6rem;
   }
 
   .email-address-phone h2::before {
@@ -417,22 +556,22 @@
 
   .contactInfo .image {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
   }
 
+  .contactInfo .image1 {
+    width: 30rem;
+  }
+  
   .contactInfo .image .sideImages img {
-    width: 36rem;
+    width: 30rem;
   }
 
   .contactInfo .image .sideImages {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 1.5rem;
-  }
-
-  .contactInfo .image .sideImages img {
-    width: 38rem;
+    gap: 2rem;
   }
 
   .contactInfo {
@@ -453,7 +592,7 @@
   }
 
   .contactInfo .info .shopHours h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .contactInfo .info .shopHours ul {
@@ -461,6 +600,10 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+
+  .contactInfo .info .shopHours ul li {
+    font-size: 1.7rem;
   }
 
   .contactInfo .info .daysOutOfService {
@@ -473,12 +616,13 @@
   }
 
   .contactInfo .info .daysOutOfService h2 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     letter-spacing: 1px;
   }
 
   .contactInfo .info .daysOutOfService p:nth-child(2n) {
     text-align: center;
+    font-size: 1.6rem;
   }
 
   .contactInfo .info .daysOutOfService p:nth-child(3n)::before {
@@ -491,7 +635,118 @@
     justify-content: center;
   }
 
+  .email-address-phone h2 {
+    font-size: 2.5rem;
+  }
+
+  .email-address-phone p {
+    font-size: 1.6rem;
+  }
+
   .email-address-phone h2::before {
     width: 29rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .contactInfos-image .header h1 {
+    text-align: center;
+  }
+
+  .contactInfo .image {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .contactInfo .image1 {
+    width: 30rem;
+  }
+  
+  .contactInfo .image .sideImages img {
+    width: 30rem;
+  }
+
+  .contactInfo .image .sideImages {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .contactInfo {
+    margin-top: 3rem;
+  }
+
+  .contactInfo .info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 6rem;
+  }
+
+  .contactInfo .info .shopHours {
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .contactInfo .info .shopHours h2 {
+    font-size: 2.5rem;
+  }
+
+  .contactInfo .info .shopHours ul {
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .contactInfo .info .shopHours ul li {
+    font-size: 1.7rem;
+  }
+
+  .contactInfo .info .daysOutOfService {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .contactInfo .info .daysOutOfService h2 {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+
+  .contactInfo .info .daysOutOfService p:nth-child(2n) {
+    text-align: center;
+    font-size: 1.6rem;
+  }
+
+  .contactInfo .info .daysOutOfService p:nth-child(3n)::before {
+    width: 100%;
+  }
+
+  .email-address-phone {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .email-address-phone h2 {
+    font-size: 2.5rem;
+  }
+
+  .email-address-phone p {
+    font-size: 1.6rem;
+  }
+
+  .email-address-phone span {
+    font-size: 1.6rem;
+  }
+
+  .email-address-phone h2::before {
+    opacity: 0;
   }
 }

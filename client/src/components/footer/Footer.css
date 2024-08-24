@@ -54,7 +54,7 @@
   font-family: "Prata", serif;
   text-transform: capitalize;
   letter-spacing: 2px;
-  color: white;
+  color: var(--background-color);
   position: relative;
   text-align: center;
 }
@@ -145,9 +145,38 @@
   }
 }
 
-@media screen and (max-width: 375px) {
+@media (max-width: 768px) {
   .footerBox {
-    gap: 3rem;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3rem;
+    padding-left: 0;
+  }
+
+  .rightsAndReserved {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+  }
+
+  .rightsAndReserved p {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+  }
+
+  .rightsAndReserved .socialPlatforms .platform {
+    font-size: 1.5rem;
+    color: var(--background-color);
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .footerBox {
+    gap: 2rem;
     justify-content: center;
   }
 
@@ -155,10 +184,64 @@
   .discover,
   .myAccounts,
   .helps {
-    width: 10rem;
+    width: 15rem;
+    height: 15rem;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.5rem;
+  }
+
+  .footerBox .header {
+    font-size: 2rem;
+    font-weight: 500;
+    font-family: "Prata", serif;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    color: var(--background-color);
+  }
+
+  .footerBox .links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .rightsAndReserved .socialPlatforms {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .rightsAndReserved .socialPlatforms .platform {
+    font-size: 1.3rem;
+    color: var(--background-color);
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .footerBox {
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .aboutUs,
+  .discover,
+  .myAccounts,
+  .helps {
+    width: 15rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     gap: 1.5rem;
   }
 
@@ -174,9 +257,12 @@
   .footerBox .links {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 0.2rem;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     text-transform: uppercase;
+    text-align: center;
   }
 
   .rightsAndReserved .socialPlatforms {
@@ -187,7 +273,7 @@
 
   .rightsAndReserved .socialPlatforms .platform {
     font-size: 1.3rem;
-    color: #353535;
+    color: var(--background-color);
     cursor: pointer;
   }
 }

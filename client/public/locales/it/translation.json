@@ -26,6 +26,12 @@
     "nextText": "avanti",
     "page": "Pagina"
   },
+  "productDetails": {
+    "addToCart": "Aggiungi al carrello",
+    "vat": "IVA inclusa più",
+    "deliveryFee": "Spese di consegna",
+    "total": "Totale"
+  },
   "sort": {
     "header": "Ordina",
     "category1": "Seleziona un'opzione",
@@ -193,7 +199,20 @@
   },
   "userPanel": {
     "edit": "Modifica",
-    "myOrders": "Ordini",
+    "myOrders": {
+      "header": "Ordini",
+      "orderedProducts": "Prodotti ordinati:",
+      "productPrice": "Prezzo del prodotto:",
+      "productQuantity": "Quantità del prodotto:",
+      "orderNumber": "Numero d'ordine:",
+      "orderStatus": "Stato dell'ordine:",
+      "orderPlaced": "Data dell'ordine:",
+      "deliveryAddress": "Indirizzo di consegna",
+      "street": "Via:",
+      "plz": "CAP:",
+      "city": "Città:",
+      "total": "Totale:"
+    },
     "myInvoice": "Fattura",
     "wishList": "Lista dei desideri",
     "adminPanel": "Pannello di amministrazione",

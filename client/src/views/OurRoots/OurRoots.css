@@ -84,7 +84,6 @@
   justify-content: center;
   /* flex-wrap: wrap-reverse; */
   gap: 3rem;
-
 }
 
 .roots .index {
@@ -100,7 +99,7 @@
   display: flex;
   justify-content: center;
   padding: 1rem 0;
-  background-color: #0A0A0A;
+  background-color: #0a0a0a;
 }
 
 .roots .logo img {
@@ -123,7 +122,7 @@
 .roots .index .offer span {
   font-size: 1.8rem;
   font-weight: 400;
-  color: #0A0A0A;
+  color: #0a0a0a;
 }
 
 .roots .index p:last-child {
@@ -163,8 +162,9 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 4rem;
   flex-wrap: wrap;
+  gap: 4rem;
+  margin-top: 3rem;
 }
 
 .rootImages img {
@@ -178,11 +178,15 @@
 }
 
 .roots .image1 img {
+  height: 42.5rem;
+}
+
+.roots .image2 img {
   height: 41.5rem;
 }
 
 .roots .image3 img {
-  height: 41.5rem;
+  height: 42rem;
 }
 
 .rootImages .image1,
@@ -219,7 +223,7 @@
   background-color: hsla(69, 9%, 68%, 0.7);
 }
 
-.rootImages .socialContacts  {
+.rootImages .socialContacts {
   font-size: 2.7rem;
   color: white;
   position: absolute;
@@ -228,7 +232,7 @@
   bottom: 1rem;
   right: 1rem;
   border-bottom: 1px solid white;
-  padding-bottom: .5rem;
+  padding-bottom: 0.5rem;
   z-index: 1;
 }
 
@@ -254,47 +258,484 @@
   }
 
   .rootImages img {
-    width: 20rem;
+    width: 27rem;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 853px) {
+  .ourRootsContainer {
+    padding-top: 33rem;
+    padding-bottom: 5rem;
+  }
+
+  .ourRootsContainer .backgroundImage {
+    height: 30rem;
+  }
+
+  .ourRootsContainer .header {
+    top: 20rem;
+  }
+
+  .ourRootsContainer .header::before {
+    width: 15rem;
+  }
+
+  .ourRootsContainer .header h1 {
+    font-size: 4.5rem;
+  }
+  
+  .roots .index {
+    margin-top: 2rem;
+  }
+
+  .roots .index p:nth-child(1),
+  .roots .index p:nth-child(3),
+  .roots .index p:nth-child(5),
+  .roots .index p:nth-child(7),
+  .roots .index p:nth-child(9),
+  .roots .index p:nth-child(11) {
+    font-size: 4rem;
+  }
+
+  .roots .index .offer p {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1.7rem;
+    font-weight: 300;
+    line-height: 2.5rem;
+    color: black;
+  }
+
+  .roots .index p {
+    font-size: clamp(1.4rem, 1.5rem + (0.5vw), 1.7rem);
+    font-weight: 300;
+    margin-top: 1rem;
+    letter-spacing: 0.6px;
+    line-height: 2.5rem;
+    text-align: center;
+  }
+
   .rootImages {
     gap: 1.5rem;
   }
 
   .rootImages img {
-    width: 18rem;
+    width: 22rem;
+  }
+
+  .rootImages .image1,
+  .image2,
+  .image3 {
+    height: 22rem;
+  }
+
+  .rootImages .image1 img,
+  .rootImages .image2 img,
+  .rootImages .image3 img {
+    height: 22rem;
+  }
+
+  .rootImages .socialContacts {
+    font-size: 2rem;
+    color: white;
+    position: absolute;
+    display: flex;
+    gap: 1rem;
+    bottom: 1rem;
+    right: 1rem;
+    border-bottom: 1px solid white;
+    padding-bottom: 0.5rem;
+    z-index: 1;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .ourRootsContainer {
+    padding-top: 33rem;
+    padding-bottom: 5rem;
+  }
+
+  .ourRootsContainer .backgroundImage {
+    height: 30rem;
+  }
+
+  .ourRootsContainer .header {
+    top: 20rem;
+  }
+
+  .ourRootsContainer .header::before {
+    width: 15rem;
+  }
+
+  .ourRootsContainer .header h1 {
+    font-size: 4.5rem;
+  }
+  
+  .roots .index {
+    margin-top: 2rem;
+  }
+
+  .roots .index p:nth-child(1),
+  .roots .index p:nth-child(3),
+  .roots .index p:nth-child(5),
+  .roots .index p:nth-child(7),
+  .roots .index p:nth-child(9),
+  .roots .index p:nth-child(11) {
+    font-size: 4rem;
+  }
+
+  .roots .index .offer p {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1.7rem;
+    font-weight: 300;
+    line-height: 2.5rem;
+    color: black;
+  }
+
+  .roots .index p {
+    font-size: clamp(1.4rem, 1.5rem + (0.5vw), 1.7rem);
+    font-weight: 300;
+    margin-top: 1rem;
+    letter-spacing: 0.6px;
+    line-height: 2.5rem;
+    text-align: center;
+  }
+
+  .rootImages {
+    gap: 1.5rem;
+  }
+
+  .rootImages img {
+    width: 22rem;
+  }
+
+  .rootImages .image1,
+  .image2,
+  .image3 {
+    height: 22rem;
+  }
+
+  .rootImages .image1 img,
+  .rootImages .image2 img,
+  .rootImages .image3 img {
+    height: 22rem;
+  }
+
+  .rootImages .socialContacts {
+    font-size: 2rem;
+    color: white;
+    position: absolute;
+    display: flex;
+    gap: 1rem;
+    bottom: 1rem;
+    right: 1rem;
+    border-bottom: 1px solid white;
+    padding-bottom: 0.5rem;
+    z-index: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ourRootsContainer {
+    padding-top: 33rem;
+    padding-bottom: 5rem;
+  }
+
+  .ourRootsContainer .backgroundImage {
+    height: 30rem;
+  }
+
+  .ourRootsContainer .header {
+    top: 20rem;
+  }
+
+  .ourRootsContainer .header::before {
+    width: 20rem;
+  }
+
+  .ourRootsContainer .header h1 {
+    font-size: 3.5rem;
+  }
+  
+  .roots .index {
+    margin-top: 2rem;
+  }
+
+  .roots .index p:nth-child(1),
+  .roots .index p:nth-child(3),
+  .roots .index p:nth-child(5),
+  .roots .index p:nth-child(7),
+  .roots .index p:nth-child(9),
+  .roots .index p:nth-child(11) {
+    font-size: 3rem;
+  }
+
+  .roots .index .offer p {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    line-height: 2.5rem;
+    color: black;
+  }
+
+  .roots .index p {
+    font-size: clamp(1.4rem, 1.5rem + (0.5vw), 1.6rem);
+    font-weight: 300;
+    margin-top: 1rem;
+    letter-spacing: 0.6px;
+    line-height: 2.5rem;
+    text-align: center;
+  }
+
+  .rootImages {
+    gap: 1.5rem;
+  }
+
+  .rootImages img {
+    width: 15rem;
+  }
+
+  .rootImages .image1,
+  .image2,
+  .image3 {
+    height: 17rem;
+  }
+
+  .rootImages .image1 img,
+  .rootImages .image2 img,
+  .rootImages .image3 img {
+    height: 17rem;
+  }
+
+  .rootImages .socialContacts {
+    font-size: 2rem;
+    color: white;
+    position: absolute;
+    display: flex;
+    gap: 1rem;
+    bottom: 1rem;
+    right: 1rem;
+    border-bottom: 1px solid white;
+    padding-bottom: 0.5rem;
+    z-index: 1;
   }
 }
 
 @media screen and (max-width: 540px) {
+  .ourRootsContainer {
+    padding-top: 33rem;
+    padding-bottom: 5rem;
+  }
+
+  .ourRootsContainer .backgroundImage {
+    height: 30rem;
+  }
+
+  .ourRootsContainer .header {
+    top: 20rem;
+  }
+
+  .ourRootsContainer .header::before {
+    content: "";
+    width: 20rem;
+    height: 0.1rem;
+    background-color: white;
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .ourRootsContainer .header h1 {
+    font-family: "Merriweather", serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  .roots .index {
+    margin-top: 2rem;
+  }
+
+  .roots .index p:nth-child(1),
+  .roots .index p:nth-child(3),
+  .roots .index p:nth-child(5),
+  .roots .index p:nth-child(7),
+  .roots .index p:nth-child(9),
+  .roots .index p:nth-child(11) {
+    font-size: 3rem;
+  }
+
+  .roots .index .offer p {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    line-height: 2.5rem;
+    color: black;
+  }
+
+  .roots .index p {
+    font-size: clamp(1.4rem, 1.5rem + (0.5vw), 1.6rem);
+    font-weight: 300;
+    margin-top: 1rem;
+    letter-spacing: 0.6px;
+    line-height: 2.5rem;
+    text-align: center;
+  }
+
   .rootImages {
-    gap: 1rem;
+    gap: 1.5rem;
   }
 
   .rootImages img {
-    width: 16rem;
+    width: 15rem;
+  }
+
+  .rootImages .image1,
+  .image2,
+  .image3 {
+    height: 17rem;
+  }
+
+  .rootImages .image1 img,
+  .rootImages .image2 img,
+  .rootImages .image3 img {
+    height: 17rem;
+  }
+
+  .rootImages .socialContacts {
+    font-size: 2rem;
+    color: white;
+    position: absolute;
+    display: flex;
+    gap: 1rem;
+    bottom: 1rem;
+    right: 1rem;
+    border-bottom: 1px solid white;
+    padding-bottom: 0.5rem;
+    z-index: 1;
   }
 }
 
 @media screen and (max-width: 430px) {
+  .ourRootsContainer {
+    padding-top: 33rem;
+    padding-bottom: 5rem;
+  }
+
+  .ourRootsContainer .backgroundImage {
+    height: 30rem;
+  }
+
+  .ourRootsContainer .header {
+    top: 20rem;
+  }
+
+  .ourRootsContainer .header::before {
+    content: "";
+    width: 20rem;
+    height: 0.1rem;
+    background-color: white;
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .ourRootsContainer .header h1 {
+    font-family: "Merriweather", serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  .roots .index {
+    margin-top: 2rem;
+  }
+
   .rootImages {
-    gap: 1rem;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
   }
 
   .rootImages img {
-    width: 14rem;
+    width: 15rem;
+  }
+
+  .rootImages .image1,
+  .image2,
+  .image3 {
+    height: 25rem;
+  }
+
+  .rootImages .image1 img,
+  .rootImages .image2 img,
+  .rootImages .image3 img {
+    height: 25rem;
   }
 }
 
 @media screen and (max-width: 414px) {
+  .ourRootsContainer {
+    padding-top: 33rem;
+    padding-bottom: 5rem;
+  }
+
+  .ourRootsContainer .backgroundImage {
+    height: 30rem;
+  }
+
+  .ourRootsContainer .header {
+    top: 20rem;
+  }
+
+  .ourRootsContainer .header::before {
+    content: "";
+    width: 20rem;
+    height: 0.1rem;
+    background-color: white;
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .ourRootsContainer .header h1 {
+    font-family: "Merriweather", serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  .roots .index {
+    margin-top: 2rem;
+  }
+
   .rootImages {
-    gap: 1rem;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
   }
 
   .rootImages img {
-    width: 12rem;
+    width: 15rem;
+  }
+
+  .rootImages .image1,
+  .image2,
+  .image3 {
+    height: 25rem;
+  }
+
+  .rootImages .image1 img,
+  .rootImages .image2 img,
+  .rootImages .image3 img {
+    height: 25rem;
   }
 }
-

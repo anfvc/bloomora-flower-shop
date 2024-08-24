@@ -119,6 +119,64 @@
   color: white;
 }
 
+@media screen and (max-width:912px) {
+  .mostPopularContainer .popularHeader::before {
+    top: 5rem;
+    width: 40%;
+  }
+
+  .mostPopularContainer h1 {
+    font-size: 2.8rem;
+    margin-bottom: 60px;
+  }
+
+  .popularProductBox {
+    width: 100%;
+  }
+
+  .popularProductBox .box {
+    width: 25rem;
+  }
+
+  .popularProductBox .box .productImage {
+    width: 25rem;
+  }
+
+  .popularProductBox .box img {
+    border-radius: 3px;
+    width: 25rem;
+  }
+}
+
+@media screen and (max-width:853px) {
+  .mostPopularContainer .popularHeader::before {
+    top: 5rem;
+    width: 40%;
+  }
+
+  .mostPopularContainer h1 {
+    font-size: 2.8rem;
+    margin-bottom: 60px;
+  }
+
+  .popularProductBox {
+    width: 100%;
+  }
+
+  .popularProductBox .box {
+    width: 20rem;
+  }
+
+  .popularProductBox .box .productImage {
+    width: 20rem;
+  }
+
+  .popularProductBox .box img {
+    border-radius: 3px;
+    width: 20rem;
+  }
+}
+
 @media screen and (max-width:768px) {
   .mostPopularContainer .popularHeader::before {
     top: 5rem;
@@ -137,16 +195,48 @@
   }
 
   .mostPopularContainer h1 {
-    font-size: 3rem;
+    font-size: 2.8rem;
+    margin-bottom: 60px;
+  }
+
+  .popularProductBox {
+    width: 100%;
+  }
+
+  .popularProductBox .box {
+    width: 20rem;
+  }
+
+  .popularProductBox .box .productImage {
+    width: 20rem;
+  }
+
+  .popularProductBox .box img {
+    border-radius: 3px;
+    width: 20rem;
   }
 }
 
 @media screen and (max-width:414px) {
   .mostPopularContainer .popularHeader::before {
-    top: 4.5rem;
+    top: 4rem;
   }
 
   .mostPopularContainer h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+    margin-bottom: 60px;
+  }
+
+  .popularProductBox .box {
+    width: 25rem;
+  }
+
+  .popularProductBox .box .productImage {
+    width: 25rem;
+  }
+
+  .popularProductBox .box img {
+    border-radius: 3px;
+    width: 25rem;
   }
 }

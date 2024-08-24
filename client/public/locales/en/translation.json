@@ -26,6 +26,12 @@
     "nextText": "next",
     "page": "Page"
   },
+  "productDetails": {
+    "addToCart": "Add to Cart",
+    "vat": "including VAT plus",
+    "deliveryFee": "Delivery Fee",
+    "total": "Total"
+  },
   "sort": {
     "header": "sort",
     "category1": "select your option",
@@ -193,7 +199,20 @@
   },
   "userPanel": {
     "edit": "Edit",
-    "myOrders": "Orders",
+    "myOrders": {
+      "header": "Orders",
+      "orderedProducts": "Ordered Products :",
+      "productPrice": "Product Price :",
+      "productQuantity": "Product Quantity :",
+      "orderNumber": "Order Number :",
+      "orderStatus": "Order Status :",
+      "orderPlaced": "Order Placed :",
+      "deliveryAddress": "Delivery Address",
+      "street": "Street :",
+      "plz": "PLZ :",
+      "city": "City :",
+      "total": "Total :"
+    },
     "myInvoice": "Invoice",
     "wishList": "Wishlist",
     "adminPanel": "Admin Panel",
