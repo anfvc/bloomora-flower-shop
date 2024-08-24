@@ -166,6 +166,10 @@ export async function saveDeliveryAddress(req, res) {
       res.status(StatusCodes.NOT_FOUND).json({ msg: "User does not exist." });
     }
 
+    if (!deliveryAddress) {
+      res.status(StatusCodes.NOT_FOUND).json({msg: "Please provide your delivery address."})
+    }
+
     const order = await Order.create({
       userId: user._id,
       deliveryAddress,

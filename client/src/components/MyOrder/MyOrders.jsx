@@ -37,8 +37,11 @@ function MyOrders() {
     );
   }
 
+  const filteredOrders = orders?.filter((order) => order.status !== "pending");
+
   return (
     <>
+
       <div className="order-container">
         <div className="orderHeader">
           <h1>{t("userPanel.myOrders.header")}</h1>
@@ -46,6 +49,12 @@ function MyOrders() {
         <div className="orderBox">
           {!!orders?.length &&
             orders.map((order) => (
+
+      /* <div className="wishlist-container">
+        <div className="wishListBox">
+          {!!filteredOrders?.length &&
+            filteredOrders.map((order) => ( */
+
               <div className="productsBox" key={order._id}>
                 <div className="info">
                   <div className="image-info">

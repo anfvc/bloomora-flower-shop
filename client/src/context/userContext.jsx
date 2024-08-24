@@ -19,16 +19,6 @@ const UserProvider = ({ children }) => {
   );
   const [orders, setOrders] = useState(user.orders || []);
 
-  // const [deliveryAddress, setDeliveryAddress] = useState({
-  //   firstName: orders.deliveryAddress?.firstName,
-  //   lastName: orders.deliveryAddress?.lastName,
-  //   street: orders.deliveryAddress?.street,
-  //   houseNum: orders.deliveryAddress?.houseNum,
-  //   zip: orders.deliveryAddress?.zip,
-  //   city: orders.deliveryAddress?.city,
-  //   country: orders.deliveryAddress?.country,
-  // });
-
   const [deliveryAddress, setDeliveryAddress] = useState({
     firstName: "",
     lastName: "",
@@ -89,7 +79,6 @@ const UserProvider = ({ children }) => {
           setSortedProducts(data);
           setOriginalProducts(data);
           // console.log(data);
-          
         } else {
           const { error } = await response.json();
           throw new Error(error.message);
@@ -281,7 +270,7 @@ const UserProvider = ({ children }) => {
         setFilter,
         handleFilter,
         addToCart,
-         addToWishList,
+        addToWishList,
         wishList,
         setWishList,
         cart,
@@ -294,7 +283,6 @@ const UserProvider = ({ children }) => {
         setDeliveryAddress,
         orderId,
         setOrderId,
-
       }}
     >
       {children}
