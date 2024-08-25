@@ -251,7 +251,7 @@
     font-family: "Prata", serif;
     text-transform: capitalize;
     letter-spacing: 1px;
-    color: #353535;
+    /* color: #353535; */
   }
 
   .footerBox .links {
