@@ -76,7 +76,7 @@ function UserPanel() {
         <div className="sidebar">
           <FaUser className="userImage" />
           <button className="sidebarButton" onClick={handleEditProfile}>
-            <p>{t("userPanel.edit")}</p>
+            <p>{t("userPanel.edit.header")}</p>
             <FaUserEdit />
           </button>
           <button
@@ -86,7 +86,7 @@ function UserPanel() {
               navigate("/userPanel?section=orders");
             }}
           >
-            <p>{t("userPanel.myOrders")}</p>
+            <p>{t("userPanel.myOrders.header")}</p>
             <FaClipboardList />
           </button>
           <button
@@ -123,7 +123,7 @@ function UserPanel() {
               className="sidebarButton"
               onClick={() => navigate("/userPanel?section=admin")}
             >
-              <p>{t("userPanel.adminPanel")}</p>
+              <p>{t("userPanel.adminPanel.header")}</p>
               <GrDocumentConfig />
             </button>
           )}

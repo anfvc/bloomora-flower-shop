@@ -6,7 +6,7 @@
   gap: 4rem;
   padding-bottom: 5rem;
   padding-top: 2rem;
-  padding-left: 3rem;
+  padding-left: 0;
 }
 
 .wishListHeader {
@@ -31,9 +31,9 @@
 
 .wishListHeader h2 {
   font-family: "Merriweather", serif;
-  font-size: 3rem;
+  font-size: 3.3rem;
   font-weight: 400;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   color: #6A6A6A;
 }
 

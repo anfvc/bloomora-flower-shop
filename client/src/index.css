@@ -303,6 +303,12 @@ form .box .textField-hear label {
   color: rgb(255, 59, 59);
 }
 
+/* -----------------Admin Panel----------------------- */
+
+[data-theme="dark"] .adminContainer .adminHeader h1 {
+  color: var(--primary-text-color);
+}
+
 /* ------------------------Footer----------------------- */
 
 [data-theme="dark"] .footerBox .header {

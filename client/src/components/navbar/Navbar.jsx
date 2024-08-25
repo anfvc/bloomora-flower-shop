@@ -295,11 +295,15 @@ function Navbar({ toggleTheme, isChecked }) {
         {isMenuOpen && (
           <div className="dropdownMenu">
             <div className="language-switcher">
-              <GrLanguage onClick={toggleLanguageMenu} />
+              <GrLanguage
+                onClick={toggleLanguageMenu}
+                className={`languageIcon ${scrolled ? "scrolled-icon" : ""}`}
+              />
               {languageMenuOpen && (
                 <div className="language-menu">
                   <button onClick={() => changeLanguage("en")}>EN</button>
                   <button onClick={() => changeLanguage("de")}>DE</button>
+                  <button onClick={() => changeLanguage("it")}>IT</button>
                 </div>
               )}
             </div>
@@ -481,7 +485,7 @@ function Navbar({ toggleTheme, isChecked }) {
               >
                 <button>
                   <BsFillBoxSeamFill />
-                  {t("userPanel.myOrders")}
+                  {t("userPanel.myOrders.header")}
                 </button>
               </li>
               <li

@@ -8,8 +8,10 @@ import {
 } from "react-icons/fa";
 import { PiListHeartFill } from "react-icons/pi";
 import { useAlert } from "../../context/alertContext";
+import { useTranslation } from "react-i18next";
 
 function CreateProduct() {
+  const { t } = useTranslation();
   const [data, setData] = useState({
     price: 0,
     name: "",
@@ -96,10 +98,10 @@ function CreateProduct() {
       <form onSubmit={handleSubmit}>
         <div className="formBox">
           <div className="adminHeader">
-            <h1>Admin Panel</h1>
+            <h1>{t("userPanel.adminPanel.header")}</h1>
           </div>
           <div className="selectImages">
-            <p>Please select an image to upload</p>
+            <p>{t("userPanel.adminPanel.selectImage")}</p>
             <img src={image && URL.createObjectURL(image)} alt="" width={100} />
             <label className="custom-file-upload">
               <input
@@ -108,30 +110,30 @@ function CreateProduct() {
                 onChange={(e) => setImage(e.target.files[0])}
                 ref={imageInput}
               />
-              Select file
+              {t("userPanel.adminPanel.selectFile")}
             </label>
           </div>
           <div className="inputs">
             <input
               type="text"
-              placeholder="Name of Product"
+              placeholder={t("userPanel.adminPanel.nameOfProduct")}
               name="name"
               value={data.name}
               onChange={handleChange}
             />
             <input
               type="number"
-              placeholder="Price of Product"
+              placeholder={t("userPanel.adminPanel.nameOfPrice")}
               name="price"
               value={data.price}
               onChange={handleChange}
             />
           </div>
           <div className="description">
-            <p>Product Description</p>
+            <p>{t("userPanel.adminPanel.description")}</p>
             <textarea
               name="description"
-              placeholder="Description"
+              placeholder={t("userPanel.adminPanel.description1")}
               value={data.description}
               onChange={handleChange}
             ></textarea>
@@ -139,14 +141,14 @@ function CreateProduct() {
 
           <div className="category-subcategory">
             <div className="category">
-              <p>Category</p>
+              <p>{t("userPanel.adminPanel.category")}</p>
               <select
                 name="category"
                 value={data.category}
                 onChange={handleChange}
               >
                 <option value="" disabled>
-                  Select your Option
+                {t("userPanel.adminPanel.selectYourOption")}
                 </option>
                 <option value="Decor">Decor</option>
                 <option value="Eustoma">Eustoma</option>
@@ -158,25 +160,25 @@ function CreateProduct() {
               </select>
             </div>
             <div className="subcategory">
-              <p>Subcategory</p>
+              <p>{t("userPanel.adminPanel.subCategory")}</p>
               <select
                 name="subcategory"
                 value={data.subcategory}
                 onChange={handleChange}
               >
                 <option value="" disabled>
-                  Select your Option
+                {t("userPanel.adminPanel.selectYourOption")}
                 </option>
-                <option value="Artificial">Artificial</option>
-                <option value="Christmas">Christmas</option>
-                <option value="For Home">For Home</option>
-                <option value="St. Valentine's Day">St. Valentine's Day</option>
-                <option value="Wedding Anniversary">Wedding Anniversary</option>
-                <option value="Birthday">Birthday</option>
+                <option value="Artificial">{t("userPanel.adminPanel.artificial")}</option>
+                <option value="Christmas">{t("userPanel.adminPanel.christmas")}</option>
+                <option value="For Home">{t("userPanel.adminPanel.forHome")}</option>
+                <option value="St. Valentine's Day">{t("userPanel.adminPanel.stValentineDay")}</option>
+                <option value="Wedding Anniversary">{t("userPanel.adminPanel.weddingAnniversary")}</option>
+                <option value="Birthday">{t("userPanel.adminPanel.birthday")}</option>
               </select>
             </div>
           </div>
-          <button className="createProductButton">Create Product</button>
+          <button className="createProductButton">{t("userPanel.adminPanel.createProduct")}</button>
         </div>
       </form>
     </div>

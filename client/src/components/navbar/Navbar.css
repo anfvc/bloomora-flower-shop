@@ -154,7 +154,7 @@ input:checked + .slider:before {
 }
 
 .scrolled .language-switcher svg {
-  color: rgba(0, 0, 0, 0.8);
+  color: #41664f;
 }
 
 .scrolled .language-switcher button {
@@ -698,6 +698,7 @@ input:checked + .slider:before {
     top: 12rem;
     left: 0;
     width: 100%;
+    height: auto;
     background-color: #e9ecf01f;
     backdrop-filter: blur(10px);
     z-index: 2000;
@@ -708,6 +709,15 @@ input:checked + .slider:before {
     padding: 2rem 0;
     animation: expandDown 0.5s ease-in-out;
     overflow: hidden;
+  }
+
+  .dropdownMenu .language-switcher svg {
+    color: white;
+  }
+
+  .scrolled .language-switcher button {
+    border-color: white;
+    color: white;
   }
 
   @keyframes expandDown {

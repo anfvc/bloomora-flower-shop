@@ -2,12 +2,14 @@ import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../context/userContext";
 import "./editProfile.css";
 import { useAlert } from "../../context/alertContext";
+import { useTranslation } from "react-i18next";
 
 
 function EditProfile() {
 
   const { user, setUser, checkUserAuth } = useContext(UserContext);
   const { showAlert } = useAlert();
+  const { t } = useTranslation();
  
   const [userAddress, setUserAddress] = useState({
     street: user.user.address?.street,
@@ -83,9 +85,9 @@ function EditProfile() {
 
   return (
     <form className="editProfileForm" onSubmit={handleSaveProfile}>
-      <h1>Edit Profile</h1>
+      <h1>{t("userPanel.edit.header")}</h1>
       <label>
-        First Name:
+        {t("userPanel.edit.firstName")}
         <input
           type="text"
           name="firstName"
@@ -94,7 +96,7 @@ function EditProfile() {
         />
       </label>
       <label>
-        Last Name:
+        {t("userPanel.edit.lastName")}
         <input
           type="text"
           name="lastName"
@@ -102,9 +104,9 @@ function EditProfile() {
           onChange={handleChange}
         />
       </label>
-      <label>Invoice Address:</label>
+      <label>{t("userPanel.edit.invoiceAddress")}</label>
       <label>
-        Street:
+        {t("userPanel.edit.street")}
         <input
           type="text"
           name="street"
@@ -115,7 +117,7 @@ function EditProfile() {
         />
       </label>
       <label>
-        Num:
+        {t("userPanel.edit.num")}
         <input
           type="text"
           name="houseNum"
@@ -126,7 +128,7 @@ function EditProfile() {
         />
       </label>
       <label>
-        ZIP:
+        {t("userPanel.edit.zip")}
         <input
           type="text"
           name="zip"
@@ -137,7 +139,7 @@ function EditProfile() {
         />
       </label>
       <label>
-        City:
+        {t("userPanel.edit.city")}
         <input
           type="text"
           name="city"
@@ -148,7 +150,7 @@ function EditProfile() {
         />
       </label>
       <label>
-        Country:
+        {t("userPanel.edit.country")}
         <input
           type="text"
           name="country"
@@ -161,7 +163,7 @@ function EditProfile() {
 
       <div className="save-cancel">
         <button type="submit" className="saveButton">
-          Save
+          {t("userPanel.edit.save")}
         </button>
 
 

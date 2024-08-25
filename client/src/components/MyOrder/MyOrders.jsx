@@ -41,7 +41,6 @@ function MyOrders() {
 
   return (
     <>
-
       <div className="order-container">
         <div className="orderHeader">
           <h1>{t("userPanel.myOrders.header")}</h1>
@@ -49,8 +48,7 @@ function MyOrders() {
         <div className="orderBox">
           {!!orders?.length &&
             orders.map((order) => (
-
-      /* <div className="wishlist-container">
+              /* <div className="wishlist-container">
         <div className="wishListBox">
           {!!filteredOrders?.length &&
             filteredOrders.map((order) => ( */
@@ -66,13 +64,20 @@ function MyOrders() {
                             alt={item.product.name}
                           />
                           <p>
-                            <span>{t("userPanel.myOrders.orderedProducts")}</span> {item.product.name}
+                            <span>
+                              {t("userPanel.myOrders.orderedProducts")}
+                            </span>{" "}
+                            {item.product.name}
                           </p>
                           <p>
-                            <span>{t("userPanel.myOrders.productPrice")}</span> {item.product.price}€
+                            <span>{t("userPanel.myOrders.productPrice")}</span>{" "}
+                            {item.product.price}€
                           </p>
                           <p>
-                            <span>{t("userPanel.myOrders.productQuantity")}</span> {item.quantity}
+                            <span>
+                              {t("userPanel.myOrders.productQuantity")}
+                            </span>{" "}
+                            {item.quantity}
                           </p>
                         </div>
                       );
@@ -80,10 +85,12 @@ function MyOrders() {
                   </div>
                   <div className="orderInfos">
                     <h2>
-                      <span>{t("userPanel.myOrders.orderNumber")}</span> {order._id}
+                      <span>{t("userPanel.myOrders.orderNumber")}</span>{" "}
+                      {order._id}
                     </h2>
                     <p>
-                      <span>{t("userPanel.myOrders.orderStatus")}</span> {order.status}
+                      <span>{t("userPanel.myOrders.orderStatus")}</span>{" "}
+                      {order.status}
                     </p>
                     <p>
                       <span>{t("userPanel.myOrders.orderPlaced")}</span>{" "}
@@ -92,18 +99,22 @@ function MyOrders() {
 
                     <h5>{t("userPanel.myOrders.deliveryAddress")}</h5>
                     <p>
-                      <span>{t("userPanel.myOrders.street")}</span> {order.deliveryAddress.street}{" "}
+                      <span>{t("userPanel.myOrders.street")}</span>{" "}
+                      {order.deliveryAddress.street}{" "}
                       {order.deliveryAddress.houseNum}
                     </p>
                     <p>
-                      <span>{t("userPanel.myOrders.plz")}</span> {order.deliveryAddress.zip}
+                      <span>{t("userPanel.myOrders.plz")}</span>{" "}
+                      {order.deliveryAddress.zip}
                     </p>
                     <p>
-                      <span>{t("userPanel.myOrders.city")}</span> {order.deliveryAddress.city}
+                      <span>{t("userPanel.myOrders.city")}</span>{" "}
+                      {order.deliveryAddress.city}
                     </p>
 
                     <p>
-                      <span>{t("userPanel.myOrders.total")}</span> {total(order)}€
+                      <span>{t("userPanel.myOrders.total")}</span>{" "}
+                      {total(order)}€
                     </p>
                   </div>
                 </div>
