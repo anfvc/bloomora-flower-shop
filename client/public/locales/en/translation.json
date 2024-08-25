@@ -198,7 +198,18 @@
     "close": "X"
   },
   "userPanel": {
-    "edit": "Edit",
+    "edit": {
+      "header": "Edit",
+      "firstName": "First Name :",
+      "lastName": "Last Name :",
+      "invoiceAddress": "Invoice Address",
+      "street": "Street :",
+      "num": "Num :",
+      "zip": "ZIP :",
+      "city": "City :",
+      "country": "Country :",
+      "save": "Save"
+    },
     "myOrders": {
       "header": "Orders",
       "orderedProducts": "Ordered Products :",
@@ -215,7 +226,25 @@
     },
     "myInvoice": "Invoice",
     "wishList": "Wishlist",
-    "adminPanel": "Admin Panel",
+    "adminPanel": {
+      "header": "Admin Panel",
+      "selectImage": "Please select an image to upload",
+      "selectFile": "Select file",
+      "description": "Product Description",
+      "category": "Category",
+      "selectYourOption": "Select your option",
+      "subCategory": "Subcategory",
+      "artificial": "Artificial",
+      "christmas": "Christmas",
+      "forHome": "For Home",
+      "stValentineDay": "St. Valentine's Day",
+      "weddingAnniversary": "Wedding Anniversary",
+      "birthday": "Birthday",
+      "createProduct": "Create Product",
+      "nameOfProduct": "Name of Product",
+      "priceOfProduct": "Price of Product",
+      "description1": "Description"
+    },
     "welcome": "Welcome"
   },
   "delete_user": "Delete user",

@@ -198,7 +198,18 @@
     "close": "X"
   },
   "userPanel": {
-    "edit": "Modifica",
+    "edit": {
+      "header": "Modifica",
+      "firstName": "Nome:",
+      "lastName": "Cognome:",
+      "invoiceAddress": "Indirizzo di Fatturazione",
+      "street": "Via:",
+      "num": "Numero:",
+      "zip": "CAP:",
+      "city": "Città:",
+      "country": "Paese:",
+      "save": "Salva"
+    },
     "myOrders": {
       "header": "Ordini",
       "orderedProducts": "Prodotti ordinati:",
@@ -215,7 +226,25 @@
     },
     "myInvoice": "Fattura",
     "wishList": "Lista dei desideri",
-    "adminPanel": "Pannello di amministrazione",
+    "adminPanel": {
+      "header": "Amministrativo",
+      "selectImage": "Seleziona un'immagine da caricare",
+      "selectFile": "Seleziona file",
+      "description": "Descrizione del prodotto",
+      "category": "Categoria",
+      "selectYourOption": "Seleziona la tua opzione",
+      "subCategory": "Sottocategoria",
+      "artificial": "Artificiale",
+      "christmas": "Natale",
+      "forHome": "Per la casa",
+      "stValentineDay": "San Valentino",
+      "weddingAnniversary": "Anniversario di matrimonio",
+      "birthday": "Compleanno",
+      "createProduct": "Crea prodotto",
+      "nameOfProduct": "Nome del prodotto",
+      "priceOfProduct": "Prezzo del prodotto",
+      "description1": "Descrizione"
+    },
     "welcome": "Benvenuto"
   },
   "delete_user": "Elimina utente",
