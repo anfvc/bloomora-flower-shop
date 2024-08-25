@@ -33,7 +33,9 @@ function Shop() {
           setPage((prev) => (prev > productLength ? 1 : page));
           // setPage(page)
           response = await fetch(
-            `${import.meta.env.VITE_API}/product/show/filtered?page=${page}&category=${filter.category}`
+            `${
+              import.meta.env.VITE_API
+            }/product/show/filtered?page=${page}&category=${filter.category}`
           );
         }
 
@@ -41,8 +43,6 @@ function Shop() {
           const data = await response.json();
           setList(data);
           // console.log(data);
-          
-
         } else {
           const { error } = await response.json();
           throw new Error(error.message);
@@ -109,7 +109,6 @@ function Shop() {
             <div className="productsBox" key={item._id}>
               <div className="imageBox" onClick={() => openModal(item)}>
                 <img src={item.image} alt="" width={100} height={100} />
-
                 <div
                   className="likeButton"
                   onClick={(e) => {

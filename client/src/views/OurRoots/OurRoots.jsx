@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import "./OurRoots.css";
-import P1 from "../../images/ourRootsImage/P1.png";
-import P2 from "../../images/ourRootsImage/P2.png";
-import P3 from "../../images/ourRootsImage/P3.png";
+import P1 from "../../images/ourRootsImage/P1V2.png";
+import P2 from "../../images/ourRootsImage/P2V2.png";
+import P3 from "../../images/ourRootsImage/P3V2.png";
 import Logo from "../../images/logo/bloomoraV6.png";
 import { useTranslation } from "react-i18next";
 import { FaLinkedin } from "react-icons/fa";
@@ -29,7 +29,7 @@ function OurRoots() {
       </div>
       <div className="roots">
         <div className="rootImages">
-        <div className="image2">
+          <div className="image2">
             <img src={P2} alt="image2" className="image2" />
             <div className="socialContacts">
               <NavLink className="socialIcon">

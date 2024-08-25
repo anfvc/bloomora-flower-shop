@@ -1,11 +1,12 @@
 .wishlist-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 4rem;
   padding-bottom: 5rem;
   padding-top: 2rem;
+  padding-left: 3rem;
 }
 
 .wishListHeader {
@@ -160,9 +161,26 @@
   color: white;
 }
 
+@media screen and (max-width: 1024px) {
+  .wishlist-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4rem;
+    padding-bottom: 5rem;
+    padding-top: 2rem;
+  }
+  
+  .wishlist-container .wishListBox {
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .wishlist-container .wishListBox {
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
   }
 }

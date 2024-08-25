@@ -282,3 +282,29 @@ form .box .textField-hear label {
 [data-theme="dark"] .we-box .step span {
   color: var(--primary-text-color);
 }
+
+/* ----------------Orders------------------ */
+
+[data-theme="dark"] .order-container h1 {
+  color: var(--primary-text-color);
+}
+
+/* -----------------Contact---------------- */
+
+.email-address-phone span {
+  color: var(--primary-text-color);
+}
+
+.email-address-phone h2::before {
+  background-color: var(--primary-text-color);
+}
+
+.inputValidation {
+  color: rgb(255, 59, 59);
+}
+
+/* ------------------------Footer----------------------- */
+
+[data-theme="dark"] .footerBox .header {
+  color: var(--primary-text-color);
+}

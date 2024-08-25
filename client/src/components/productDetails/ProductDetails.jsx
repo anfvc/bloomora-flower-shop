@@ -2,11 +2,12 @@ import React, { useState, useEffect, useContext } from "react";
 import "./ProductDetails.css";
 import { UserContext } from "../../context/userContext";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { useTranslation } from "react-i18next";
 
 function ProductDetails({ product, onClose }) {
   const [productCount, setProductCount] = useState(1);
   const [totalPrice, setTotalPrice] = useState(product.price);
-
+  const { t } = useTranslation();
   const { user, setUser, addToCart } = useContext(UserContext);
 
   useEffect(() => {
@@ -51,8 +52,8 @@ function ProductDetails({ product, onClose }) {
           <div className="details">
             <h2>{product.name}</h2>
             <p>
-              {product.price} € <span> - including VAT plus</span>
-              <a href="">Delivery fee</a>
+              {product.price} € <span> - {t("productDetails.vat")}</span>
+              <a href="">{t("productDetails.deliveryFee")}</a>
             </p>
             <p>{product.description}</p>
             <div className="incDecBuy">
@@ -70,12 +71,12 @@ function ProductDetails({ product, onClose }) {
                   <div className="productDetailsAmount">
                     <p>
                       {" "}
-                      <span>Total:</span> {totalPrice.toFixed(2)} €
+                      <span>{t("productDetails.total")}:</span> {totalPrice.toFixed(2)} €
                     </p>
                   </div>
                 </div>
                 <div className="productDetailsAddToCart">
-                  <button onClick={handleAddToCart}>add to cart</button>
+                  <button onClick={handleAddToCart}>{t("productDetails.addToCart")}</button>
                 </div>
               </div>
             </div>
