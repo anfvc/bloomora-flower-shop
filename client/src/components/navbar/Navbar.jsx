@@ -481,7 +481,7 @@ function Navbar({ toggleTheme, isChecked }) {
               >
                 <button>
                   <BsFillBoxSeamFill />
-                  {t("userPanel.myOrders")}
+                  {t("userPanel.myOrders.header")}
                 </button>
               </li>
               <li
