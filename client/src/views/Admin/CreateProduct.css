@@ -119,15 +119,17 @@
   height: 60rem;
 }
 
-.adminHeader {
+.adminContainer .adminHeader {
   margin-bottom: 2rem;
 }
 
-.adminHeader h1 {
-  font-size: 2.5rem;
-  font-weight: 600;
+.adminContainer .adminHeader h1 {
+  font-family: "Merriweather", serif;
+  font-size: 3rem;
+  font-weight: 400;
   letter-spacing: 0.5px;
   text-transform: capitalize;
+  color: #698474;
 }
 
 .selectImages {
@@ -397,7 +399,7 @@
   .createProductButton {
     width: 40rem;
     height: 4rem;
-    border: 1px solid #011e00;
+    border: 1px solid #698474;
     border-radius: 5px;
     background-color: transparent;
     font-size: 1.6rem;

@@ -342,6 +342,7 @@
   height: 3rem;
   border: 1px solid #ccc;
   border-radius: 4px;
+  padding-left: 1rem;
 }
 
 .deliveryAddress-form button {
