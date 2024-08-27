@@ -314,3 +314,9 @@ form .box .textField-hear label {
 [data-theme="dark"] .footerBox .header {
   color: var(--primary-text-color);
 }
+
+/* ----------------------Product Details---------------- */
+
+[data-theme="dark"] .details p, .details span {
+  color: var(--secondary-text-color);
+}
